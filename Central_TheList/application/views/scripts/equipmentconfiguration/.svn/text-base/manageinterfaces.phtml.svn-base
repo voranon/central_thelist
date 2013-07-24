@@ -1,0 +1,94 @@
+
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+
+<script type='text/javascript'>
+$(function(){
+	$('input#addinterface').bind('click',function(){
+		windowW = 1050;
+		windowH = 200;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		window.open('/equipmentconfiguration/addinterface?eq_id=<?php echo $this->eq_id;?>', 'popup5', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=no, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+
+	$('input#manage_interface_config').bind('click',function(){
+		windowW = 800;
+		windowH = 700;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		if_id = $(this).attr('if_id');
+		window.open('/equipmentconfiguration/manageinterfaceconfig?if_id='+if_id, 'popup3', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=yes, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+
+	$('input#syncdeviceinterfaceconfig').bind('click',function(){
+		windowW = 500;
+		windowH = 200;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		window.open('/equipmentconfiguration/syncdeviceallinterfaceconfigs?eq_id=<?php echo $this->eq_id;?>', 'popup5', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=no, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+
+});
+</script>
+
+<body>
+<?= $this->error;?>
+<form method="post" action="" name="credentials">
+
+
+<?php 
+if (isset($this->interfaces)) {
+	
+?>
+<table>
+
+<tr class='header'>
+<td>Name</td>
+<td>Type</td>
+<td>Mac Address</td>
+<td>Service Point</td>
+<td>Interface Configurations</td>
+<td>Remove</td>
+</tr>	
+
+<?php 
+foreach($this->interfaces as $interface) {
+
+echo "<tr>
+					
+					<td><input readonly='readonly' type='text' class='text' name='".$interface['if_id']."[if_name]' value='".$interface['if_name']."'></input></td>
+					<td><SELECT name='".$interface['if_id']."[interface_type]'>".$interface['current_interface_type']."".$this->interface_types."</SELECT></td>
+					<td><input type='text' class='text' name='".$interface['if_id']."[if_mac_address]' value='".$interface['if_mac_address']."'></input></td>
+					<td><SELECT name='".$interface['if_id']."[service_point_id]'>".$interface['current_service_point']."".$this->service_points."</SELECT></td>
+					<td><input type='button' class='button' name='manage_interface_config' if_id='".$interface['if_id']."' id='manage_interface_config' value='Manage Configuration'></input></td>
+					<td><input type='checkbox' name='".$interface['if_id']."[delete]' value='1'></input></td>
+					<td><input type='hidden' name='".$interface['if_id']."[if_id]' value='".$interface['if_id']."'></input></td>
+					</tr>
+					";
+
+	}
+	
+?>
+<td><input type='hidden' class='text' name='eq_id' value='<?= $_GET['eq_id']?>'></input></td>
+<br>
+</table>	
+<?php 
+}
+
+?>
+
+
+
+
+<input type='button' class='button' name='syncdeviceinterfaceconfig' id='syncdeviceinterfaceconfig' value='Sync to Device'></input>
+<input type='button' class='button' name='addinterface' id='addinterface' value='Add Interface'></input>
+
+<br><br>
+<input type='submit' value='Save' />
+</form>
+</body>
+</html>

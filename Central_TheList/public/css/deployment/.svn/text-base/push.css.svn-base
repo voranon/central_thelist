@@ -1,0 +1,13 @@
+@CHARSET "ISO-8859-1";
+.formfield
+{
+	
+	width: 260px;
+
+	
+}
+label span
+{
+	width: 200px;
+	float:left;
+}

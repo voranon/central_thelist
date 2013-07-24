@@ -1,0 +1,98 @@
+
+<?php
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+<html>
+<script type="text/javascript">
+$(function(){
+	
+	$('select#eq_type_id').bind('change',function(){
+	
+		$.ajax({
+			url:"/inventory/getequipmentbyfqdnajax",
+			data:'eq_type_id='+$(this).val(),
+			async: false,
+	    	success: function(data){
+	    		$('select#eq_id').html(data);
+	    		$('select#ip_address_map_id').html('<OPTION value=\'0\'>---Select One ---</OPTION>');
+	    	} 
+		});  
+	});
+
+	$('select#eq_id').bind('change',function(){
+		
+		$.ajax({
+			url:"/equipmentconfiguration/getequipmentgatewaysajax",
+			data:'eq_id='+$(this).val(),
+			async: false,
+	    	success: function(data){
+	    		$('select#ip_address_map_id').html(data);
+	    	} 
+		});  
+	});
+});
+</script>
+
+
+
+
+<body>
+
+<form method="post" action="" name="divide">
+<table>
+<?php
+if (!isset($this->error)) {
+?>
+
+<tr class='header'>
+<td>Subnet Address</td>
+<td>CIDR Mask</td>
+</tr>
+
+
+<tr>
+<td><?= $this->subnet_detail['subnet_address']?></td>
+<td><?= $this->subnet_detail['subnet_cidr']?></td>
+</tr>
+</table>
+
+<table>
+
+<tr class='header'>
+<td>Equipment Type</td>
+<td>Equipment</td>
+<td>Gateway</td>
+<td>Cost</td>
+</tr>
+
+<tr>
+<td><SELECT id='eq_type_id' name='eq_type_id'><OPTION value='0'>---Select One ---</OPTION><?= $this->eq_types?></SELECT></td>
+<td><SELECT id='eq_id' name='eq_id'><OPTION value='0'>---Select One ---</OPTION></SELECT></td>
+<td><SELECT id='ip_address_map_id' name='ip_address_map_id'><OPTION value='0'>---Select One ---</OPTION></SELECT></td>
+<td><input type='number' class='text' name='gateway_cost' maxlength='4' size='4' value='1'></input></td>
+</tr>
+
+<td><input type='hidden' class='text' name='ip_subnet_id' value='<?= $_GET['ip_subnet_id']?>'></input></td>
+
+<br>
+<tr> <td><input type='submit' value='Create Route' /></td></tr>
+
+
+<?php 
+} else {
+?>
+<?= $this->error;?>
+
+<?php
+}
+?>
+
+
+
+
+</table>
+</form>
+</body>
+</html>

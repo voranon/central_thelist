@@ -1,0 +1,231 @@
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+
+<html>
+<script type='text/javascript'>
+$(function(){
+	$('input#manage_credentials').bind('click',function(){
+		windowW = 760;
+		windowH = 520;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		window.open('/equipmentconfiguration/managecredentials?eq_id=<?php echo $this->eq_id;?>', 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=no, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+
+	$('input#manage_backups').bind('click',function(){
+		windowW = 900;
+		windowH = 520;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		window.open('/equipmentconfiguration/managebackups?eq_id=<?php echo $this->eq_id;?>', 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=yes, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+
+	$('input#manage_software').bind('click',function(){
+		windowW = 700;
+		windowH = 520;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		window.open('/equipmentconfiguration/managesoftware?eq_id=<?php echo $this->eq_id;?>', 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=yes, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+
+	$('input#manage_interfaces').bind('click',function(){
+		windowW = 1300;
+		windowH = 700;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		window.open('/equipmentconfiguration/manageinterfaces?eq_id=<?php echo $this->eq_id;?>', 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=yes, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+
+	$('input#manage_roles').bind('click',function(){
+		windowW = 760;
+		windowH = 520;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		window.open('/equipmentconfiguration/manageroles?eq_id=<?php echo $this->eq_id;?>', 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=yes, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+
+	$('input#manage_iproutes').bind('click',function(){
+		windowW = 400;
+		windowH = 400;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		window.open('/equipmentconfiguration/manageiproutes?eq_id=<?php echo $this->eq_id;?>', 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=yes, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+
+	$('input#manage_ipsubnets').bind('click',function(){
+		windowW = 800;
+		windowH = 900;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		window.open('/equipmentconfiguration/manageipsubnets?ip_subnet_master_id=null', 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=yes, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+
+	$('a#addactiveequipment').bind('click',function(){
+		windowW = 570;
+		windowH = 700;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		window.open('/inventory/addactiveequipment', 'popup2','width='+windowW+', height='+windowH+', menubar=no, scrollbars=no, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+
+	});
+
+	$('input#expandapplications').bind('click',function(){
+
+		if($('table#currentapplications').css('display') == 'none') {
+			$('table#currentapplications').css('display','block');
+			
+		} else {
+			$('table#currentapplications').css('display','none');
+		}
+	});
+
+	$('input#showappmetrics').bind('click',function(){
+
+		app_map_id = $(this).attr('app_map_id');
+		
+		if($('table#appmetrics_'+app_map_id).css('display') == 'none') {
+			$('table#appmetrics_'+app_map_id).css('display','block');
+		} else {
+			$('table#appmetrics_'+app_map_id).css('display','none');
+		}
+	});
+
+	$('input#editappmetrics').bind('click',function(){
+		windowW = 650;
+		windowH = 800;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		app_map_id = $(this).attr('app_map_id');
+		window.open('/equipmentconfiguration/manageapplicationmetrics?equipment_application_map_id='+app_map_id, 'popup66','width='+windowW+', height='+windowH+', menubar=no, scrollbars=no, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+
+	});
+
+	$('input#manageapplications').bind('click',function(){
+		windowW = 570;
+		windowH = 700;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		window.open('/equipmentconfiguration/manageapplications?eq_id=<?php echo $this->eq_id;?>', 'popup66','width='+windowW+', height='+windowH+', menubar=no, scrollbars=no, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+
+	});
+
+	
+});
+</script>
+</div>
+<br><br><br><br>
+<table>
+<tr>
+	<td><a href='/inventory/equipmentininventory'>Show All</a></td>
+	<td><a id='addactiveequipment' href=''>Add Active Equipment</a></td>
+</tr>
+
+</table>
+<br>												
+
+<table>
+<tr>
+<td><input type='button' class='button' name='manage_credentials' eq_id='".<?= $this->eq_id ?>."' id='manage_credentials' value='Manage Credentials'></input></td>
+<td><input type='button' class='button' name='manage_iproutes' eq_id='".<?= $this->eq_id ?>."' id='manage_iproutes' value='Manage IP Routes'></input></td>
+<td><input type='button' class='button' name='manage_interfaces' eq_id='".<?= $this->eq_id ?>."' id='manage_interfaces' value='Manage Interfaces'></input></td>
+<td><input type='button' class='button' name='manage_backups' eq_id='".<?= $this->eq_id ?>."' id='manage_backups' value='Manage Backups'></input></td>
+<td><input type='button' class='button' name='manage_roles' eq_id='".<?= $this->eq_id ?>."' id='manage_roles' value='Manage Roles'></input></td>
+<td><input type='button' class='button' name='manage_ipsubnets' eq_id='".<?= $this->eq_id ?>."' id='manage_ipsubnets' value='General Manage IP Subnets'></input></td>
+</tr>
+
+</table>
+
+<br><br>
+<input type='button' class='button' name='expandapplications' id='expandapplications' value='Expand Applications'></input>
+<input type='button' class='button' name='manageapplications' id='manageapplications' value='Manage Applications'></input>
+<input type='button' class='button' name='managesoftware' id='manage_software' value='Manage Software'></input>
+<input type='button' class='button' name='syncallappstodevice' id='syncallappstodevice' value='Sync to Device'></input>
+
+<?php
+if (isset($this->applications)) {
+?>
+<table id='currentapplications' border='1' style='display:none;width:1100px'>
+
+<tr class='header'>
+<td>Application Name</td>
+<td>Show</td>
+<td>Edit</td>
+<td>Sync</td>
+</tr>
+<?php 
+foreach($this->applications as $application) {
+?>
+
+<tr>
+<td width='360px'><?= $application['app_name'] ?></td>
+<td width='360px'><input type='button' class='button' name='showappmetrics' id='showappmetrics' app_map_id='<?= $application['app_map_id'] ?>' value='Show Metrics'></input></td>
+<td width='360px'><input type='button' class='button' name='editappmetrics' id='editappmetrics' app_map_id='<?= $application['app_map_id'] ?>' value='Edit Metrics'></input></td>
+<td width='360px'><input type='button' class='button' name='syncapptodevice' id='syncapptodevice' app_map_id='<?= $application['app_map_id'] ?>' value='Sync to Device'></input></td>
+</tr>
+
+
+<?
+if (isset($application['metrics'])) {
+?>
+<tr>
+<td colspan=100%>
+<table id='appmetrics_<?= $application['app_map_id'] ?>' border='1' style='display:none;width:100%'>
+
+<tr>
+<td>Metric Name</td>
+<td>Value</td>
+</tr>
+<?
+foreach ($application['metrics'] as $metric) {
+?>
+<tr>
+
+<td><?= $metric['metric_name'] ?></td>
+<td><?= $metric['metric_value'] ?></td>
+
+</tr>
+<?
+}
+?>
+
+
+</table>
+
+</td>
+</tr>
+<?
+}
+?>
+
+
+
+
+<?php 
+}
+?>
+
+</table>
+<?php 
+}
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div>
+</body>
+</html>

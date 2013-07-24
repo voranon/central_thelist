@@ -1,0 +1,50 @@
+<?php 
+
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+
+<script type='text/javascript'>
+$(function(){
+
+	$( "#tasks" ).tabs();
+	$("form#search").bind('submit', function(){
+		var keywords	= $(this).find('input#keywords').val();
+		$.ajax({
+			url: "/task/search/",
+			async: false,
+			data:"keywords="+keywords,
+	    	success: function(data) {
+		    	var first_row		= $("div#searchresults table tr:first");
+				first_row.siblings().remove();
+		    	first_row.after(data);
+		    	
+		    	$( "#tasks" ).tabs("select", "searchresults");
+	    	}
+		});
+		return false;
+	});
+	
+});
+</script>
+
+<div style='position:absolute;background-color:#00ff00;width:1220px'>
+	<div style='position:absolute;width:1200px'>
+	
+		<div id="tasks">
+			<ul>
+				<?php echo $this->queue_list?><<li><form id="search" method="get" action="/task/search">Search: <input id="keywords" name="keywords" type="text"></form></li>
+				<li>
+					<?php echo $this->searchbox?>
+				</li>
+				<input style='position:absolute;left:1050px;width:100px;height:40px' name='new_task' id='add_task' task_type='none' type='button' class='button' align='right' value='New Task'></input>
+			</ul>
+			<?php echo $this->content?>
+
+			</div>
+		</div>
+		
+	</div>
+	
+</div>

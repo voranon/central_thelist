@@ -1,0 +1,59 @@
+
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+<html>
+<script type="text/javascript">
+
+$(function(){
+
+});
+</script>
+
+
+
+
+<body>
+
+<form method="post" action="" name="divide">
+<table>
+<?php 
+if (!isset($this->error)) {
+?>
+
+<tr class='header'>
+<td>Subnet Address</td>
+<td>CIDR Mask</td>
+<td>New Mask</td>
+</tr>
+
+<tr>
+<td><?= $this->subnet_detail['subnet_address']?></td>
+<td><?= $this->subnet_detail['subnet_cidr']?></td>
+<td><SELECT id='new_cidr' name='new_cidr'><?= $this->subnet_detail['new_cidr_masks']?></SELECT></td>
+</tr>
+
+<td><input type='hidden' class='text' name='ip_subnet_id' value='<?= $_GET['ip_subnet_id']?>'></input></td>
+
+<br>
+<tr> <td><input type='submit' value='Divide' /></td></tr>
+
+
+<?php 
+} else {
+?>
+<?= $this->error;?>
+
+<?php
+}
+?>
+
+
+
+
+</table>
+</form>
+</body>
+</html>

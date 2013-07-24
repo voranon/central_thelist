@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="11.3">
+  <zoom_level>5</zoom_level>
+  <element>
+    <type>com.umlet.element.custom.Systemborder</type>
+    <coordinates>
+      <x>445</x>
+      <y>255</y>
+      <w>145</w>
+      <h>185</h>
+    </coordinates>
+    <panel_attributes>Salepitch Controller</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.UseCase</type>
+    <coordinates>
+      <x>455</x>
+      <y>275</y>
+      <w>125</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>Create sale quote/revise sale quote</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.UseCase</type>
+    <coordinates>
+      <x>480</x>
+      <y>395</y>
+      <w>80</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes>audit/evaluate</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Actor</type>
+    <coordinates>
+      <x>295</x>
+      <y>270</y>
+      <w>40</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>Sales</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Actor</type>
+    <coordinates>
+      <x>300</x>
+      <y>360</y>
+      <w>40</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>Admins</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.UseCase</type>
+    <coordinates>
+      <x>475</x>
+      <y>330</y>
+      <w>100</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>follow up
+--
+pull up sale quote
+ from follow up pull</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>320</x>
+      <y>270</y>
+      <w>144</w>
+      <h>29</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>135;15;15;20</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>320</x>
+      <y>285</y>
+      <w>164</w>
+      <h>79</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>155;70;15;15</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>325</x>
+      <y>365</y>
+      <w>164</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>155;40;15;15</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.Systemborder</type>
+    <coordinates>
+      <x>450</x>
+      <y>265</y>
+      <w>135</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>phase 1
+
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.Systemborder</type>
+    <coordinates>
+      <x>450</x>
+      <y>320</y>
+      <w>135</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>phase 2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.Systemborder</type>
+    <coordinates>
+      <x>320</x>
+      <y>530</y>
+      <w>410</w>
+      <h>175</h>
+    </coordinates>
+    <panel_attributes>Salepitch Controller extension</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.UseCase</type>
+    <coordinates>
+      <x>330</x>
+      <y>550</y>
+      <w>120</w>
+      <h>25</h>
+    </coordinates>
+    <panel_attributes>Create sale quote/revise sale quote</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.UseCase</type>
+    <coordinates>
+      <x>340</x>
+      <y>600</y>
+      <w>100</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>follow up
+--
+pull up sale quote
+ from follow up pull</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.UseCase</type>
+    <coordinates>
+      <x>350</x>
+      <y>665</y>
+      <w>80</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes>audit/evaluate</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>435</x>
+      <y>535</y>
+      <w>159</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;credit history check from DTV&gt;&gt;</panel_attributes>
+    <additional_attributes>150;25;15;25</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.UseCase</type>
+    <coordinates>
+      <x>585</x>
+      <y>540</y>
+      <w>130</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>Check credit history
+--
+could be Curl/web service/API</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>330</x>
+      <y>560</y>
+      <w>105</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;recall sale pitch page&gt;&gt;</panel_attributes>
+    <additional_attributes>55;15;55;40</additional_attributes>
+  </element>
+</diagram>

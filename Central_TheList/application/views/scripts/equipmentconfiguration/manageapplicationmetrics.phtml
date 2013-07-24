@@ -1,0 +1,82 @@
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+
+
+<script type='text/javascript'>
+$(function(){
+
+	$('input#syncdeviceapplication').bind('click',function(){
+		windowW = 500;
+		windowH = 350;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		window.open('/equipmentconfiguration/syncdeviceapplication?equipment_application_map_id=<?php echo $_GET['equipment_application_map_id'];?>', 'popup5', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=no, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+
+	$('input#addappmetric').bind('click',function(){
+		windowW = 700;
+		windowH = 500;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		window.open('/equipmentconfiguration/addeqapplicationmetric?equipment_application_map_id=<?php echo $_GET['equipment_application_map_id'];?>&eq_id=<?= $this->eq_id;?>', 'popup5', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=yes, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+});
+</script>
+
+<form method="post" action="" name="interfaceconfigs">
+<b>Configurations:</b>
+<table>
+<tr class='header'>
+<td>App Metric Name</td>
+<td>Order Index</td>
+<td>Value</td>
+<td>Remove</td>
+</tr>
+
+<?php 
+if (!isset($this->error)) {
+	if (isset($this->current_metrics)) {
+
+		foreach ($this->current_metrics as $metric) {
+?>
+
+		<tr><td><?= $metric['equipment_application_metric_name'];?></td>
+		<td><input size='35' type='text' class='text' name='<?= $metric['equipment_application_metric_map_id'];?>[equipment_application_metric_value]' value='<?= $metric['equipment_application_metric_value'];?>'></input></td>
+		<td><SELECT name='<?= $metric['equipment_application_metric_map_id'];?>[metric_index]'><OPTION value='<?= $metric['equipment_application_metric_index'];?>'><?= $metric['equipment_application_metric_index'];?></OPTION><OPTION value='0'>0</OPTION><OPTION value='1'>1</OPTION><OPTION value='2'>2</OPTION><OPTION value='3'>3</OPTION>
+		<td><input type='checkbox' name='<?= $metric['equipment_application_metric_map_id'];?>[delete]' value='1'></input></td></tr>
+		<input type='hidden' name='<?= $metric['equipment_application_metric_map_id'];?>[equipment_application_metric_map_id]' value='<?= $metric['equipment_application_metric_map_id'];?>'></input>
+		<input type='hidden' name='<?= $metric['equipment_application_metric_map_id'];?>[equipment_application_metric_id]' value='<?= $metric['equipment_application_metric_id'];?>'></input>
+
+<?php
+		}
+	}
+?>
+</table>
+<br><br>
+
+<?	
+
+} else {
+?>
+
+
+<?= $this->error;?>	
+
+<?php
+}
+?>
+
+<br>
+<input type='button' class='button' name='addappmetric' id='addappmetric' value='Add App Metric'></input>
+<input type='button' class='button' name='syncdeviceapplication' id='syncdeviceapplication' value='Sync to Device'></input>
+<br><br>
+ <input type='submit' value='Save' /> <input type='checkbox' name='just_update' value='1'></input> Just Save
+
+
+<input type='hidden' name='equipment_application_map_id' value='<?= $_GET['equipment_application_map_id'];?>'></input>
+
+</table>
+</form>

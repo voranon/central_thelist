@@ -1,0 +1,213 @@
+<script type="text/javascript">
+
+$(function(){
+
+
+	
+	
+	$('input#add_service_plan').bind('click',function(){
+
+		windowW = 960;
+		windowH = 620;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		
+		window.open('/serviceplan/serviceplanadd/', 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=yes, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+				
+	});
+	
+	
+	
+	$('input#serviceplan_edit').bind('click',function(){
+
+		var service_plan_id = $(this).attr('serviceplan_id');
+
+		windowW = 1060;
+		windowH = 440;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		
+		window.open('/serviceplan/serviceplanedit/?service_plan_id='+service_plan_id, 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=yes, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+				
+	});
+	
+	$('input#edit_feature').bind('click',function(){
+
+		var service_plan_id = $(this).attr('serviceplan_id');
+
+		windowW = 960;
+		windowH = 440;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		
+		window.open('/serviceplan/serviceplaneditfeatures/?service_plan_id='+service_plan_id, 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=yes, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+				
+	});
+	
+	$('input#eq_type').bind('click',function(){
+
+		var service_plan_id = $(this).attr('serviceplan_id');
+		windowW = 1200;
+		windowH = 440;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		window.open('/serviceplan/serviceplanequipment/?service_plan_id='+service_plan_id, 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=yes, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+		
+	});
+
+	$('input#option').bind('click',function(){
+
+		var service_plan_id = $(this).attr('serviceplan_id');
+		windowW = 1200;
+		windowH = 440;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		window.open('/serviceplan/serviceplanoption/?service_plan_id='+service_plan_id, 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=yes, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+		
+	});
+
+
+	$('input#if_mapping').bind('click',function(){
+
+		var service_plan_id = $(this).attr('serviceplan_id');
+		windowW = 1000;
+		windowH = 440;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		
+		window.open('/serviceplan/serviceplanifmapping/?service_plan_id='+service_plan_id, 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=yes, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+		
+	});
+
+
+	$('input#static_if').bind('click',function(){
+		var service_plan_id = $(this).attr('serviceplan_id');
+		windowW = 1000;
+		windowH = 440;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+	
+		window.open('/serviceplan/serviceplanhomerunmapping/?service_plan_id='+service_plan_id, 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=yes, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+		
+	});
+
+	
+
+	
+
+
+
+
+	
+	
+});
+
+</script>
+
+
+
+<div style='position:relative;background-color:#77ee77;width:1200px;'>
+
+	<label style='display:block'>Internet Serviceplan</label>
+	
+	<input type='button' class='button' name='add_service_plan' 	id='add_service_plan'     value='Add service plan'></input>
+		 
+	<table border='1' align='center' style='width:1150px'>
+		<tr>
+			<td style='width:240px'>Service Plan Name</td>
+			<td style='width:90px'>Install Time</td>
+			<td style='width:60px'>Mrc</td>
+			<td style='width:60px'>Nrc</td>
+			<td style='width:70px'>Mrc Term</td>
+			<td style='width:60px'>Edit</td>
+			<td>Edit features</td>
+			<td>Equipment type</td>
+			<td>Options</td>
+			<td>Interface Mapping</td>
+			<td>Home run/Static IF</td>
+		</tr>
+		<?php foreach($this->internet_serviceplans as $serviceplan){?>
+		<tr>
+			<td><?php echo $serviceplan['service_plan_name']?></td>
+			<td><?php echo $serviceplan['service_plan_install_required_time'] ?></td>
+			<td><?php echo $serviceplan['service_plan_default_mrc'] ?></td>
+			<td><?php echo $serviceplan['service_plan_default_nrc'] ?></td>
+			<td><?php echo $serviceplan['service_plan_default_mrc_term'] ?></td>
+			<td><input type='button' class='button' id='serviceplan_edit' serviceplan_id='<?php echo $serviceplan['service_plan_id']?>' value='Edit'></input></td>
+			<td><input type='button' class='button' id='edit_feature'     serviceplan_id='<?php echo $serviceplan['service_plan_id']?>' value='Edit'></input></td>
+			<td><input type='button' class='button' id='eq_type' 		  serviceplan_id='<?php echo $serviceplan['service_plan_id']?>' value='Edit'></input></td>
+			<td><input type='button' class='button' id='option'  		  serviceplan_id='<?php echo $serviceplan['service_plan_id']?>' value='Edit'></input></td>
+			<td><input type='button' class='button' id='if_mapping'  	  serviceplan_id='<?php echo $serviceplan['service_plan_id']?>' value='Edit'></input></td>
+			<td><input type='button' class='button' id='static_if'  	  serviceplan_id='<?php echo $serviceplan['service_plan_id']?>' value='Edit'></input></td>
+		</tr>
+		<?php }?>
+	</table>
+	
+		
+	<label>Phone</label>
+	<table border='1' align='center' style='width:1150px'>
+		<tr>
+			<td style='width:240px'>Service Plan Name</td>
+			<td style='width:90px'>Install Time</td>
+			<td style='width:60px'>Mrc</td>
+			<td style='width:60px'>Nrc</td>
+			<td style='width:70px'>Mrc Term</td>
+			<td style='width:60px'>Edit</td>
+			<td>Edit features</td>
+			<td>Equipment type</td>
+			<td>Options</td>
+			<td>Interface Mapping</td>
+			<td>Home run/Static IF</td>
+		</tr>
+		<?php foreach($this->phone_serviceplans as $serviceplan){?>
+		<tr>
+			<td><?php echo $serviceplan['service_plan_name']?></td>
+			<td><?php echo $serviceplan['service_plan_install_required_time'] ?></td>
+			<td><?php echo $serviceplan['service_plan_default_mrc'] ?></td>
+			<td><?php echo $serviceplan['service_plan_default_nrc'] ?></td>
+			<td><?php echo $serviceplan['service_plan_default_mrc_term'] ?></td>
+			<td><input type='button' class='button' id='serviceplan_edit' serviceplan_id='<?php echo $serviceplan['service_plan_id']?>' value='Edit'></input></td>
+			<td><input type='button' class='button' id='edit_feature'     serviceplan_id='<?php echo $serviceplan['service_plan_id']?>' value='Edit'></input></td>
+			<td><input type='button' class='button' id='eq_type' 		  serviceplan_id='<?php echo $serviceplan['service_plan_id']?>' value='Edit'></input></td>
+			<td><input type='button' class='button' id='option'  		  serviceplan_id='<?php echo $serviceplan['service_plan_id']?>' value='Edit'></input></td>
+			<td><input type='button' class='button' id='if_mapping'  	  serviceplan_id='<?php echo $serviceplan['service_plan_id']?>' value='Edit'></input></td>
+			<td><input type='button' class='button' id='static_if'  	  serviceplan_id='<?php echo $serviceplan['service_plan_id']?>' value='Edit'></input></td>
+		</tr>
+		<?php }?>
+	</table>
+	
+	<label>TV</label>
+	<table border='1' align='center' style='width:1150px'>
+		<tr>
+			<td style='width:240px'>Service Plan Name</td>
+			<td style='width:90px'>Install Time</td>
+			<td style='width:60px'>Mrc</td>
+			<td style='width:60px'>Nrc</td>
+			<td style='width:70px'>Mrc Term</td>
+			<td style='width:60px'>Edit</td>
+			<td>Edit features</td>
+			<td>Equipment type</td>
+			<td>Options</td>
+			<td>Interface Mapping</td>
+			<td>Home run/Static IF</td>
+		</tr>
+		<?php foreach($this->tv_serviceplans as $serviceplan){?>
+		<tr>
+			<td><?php echo   $serviceplan['service_plan_name']?></td>
+			<td><?php echo $serviceplan['service_plan_install_required_time'] ?></td>
+			<td><?php echo $serviceplan['service_plan_default_mrc'] ?></td>
+			<td><?php echo $serviceplan['service_plan_default_nrc'] ?></td>
+			<td><?php echo $serviceplan['service_plan_default_mrc_term'] ?></td>
+			<td><input type='button' class='button' id='serviceplan_edit' serviceplan_id='<?php echo $serviceplan['service_plan_id']?>' value='Edit'></input></td>
+			<td><input type='button' class='button' id='edit_feature'     serviceplan_id='<?php echo $serviceplan['service_plan_id']?>' value='Edit'></input></td>
+			<td><input type='button' class='button' id='eq_type' 		  serviceplan_id='<?php echo $serviceplan['service_plan_id']?>' value='Edit'></input></td>
+			<td><input type='button' class='button' id='option'  		  serviceplan_id='<?php echo $serviceplan['service_plan_id']?>' value='Edit'></input></td>
+			<td><input type='button' class='button' id='if_mapping'  	  serviceplan_id='<?php echo $serviceplan['service_plan_id']?>' value='Edit'></input></td>
+			<td><input type='button' class='button' id='static_if'  	  serviceplan_id='<?php echo $serviceplan['service_plan_id']?>' value='Edit'></input></td>
+		</tr>
+		<?php }?>
+	</table>
+	 
+
+
+</div>

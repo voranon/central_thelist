@@ -1,0 +1,28 @@
+<html>
+<body>
+
+<form action="" method="post" enctype="multipart/form-data">
+<center>
+<table width='400' border=2>
+<tr><td colspan=2><label for="file"><center>New Device Config File:</center></label></td></tr>
+<tr><td>File Name:</td><td><input type="text" name="deviceconfigfilename"/></td></tr>
+<tr><td>Override if file Exists?</td><td><input type='checkbox' name='overrideexistingfile' value='1'></input></td></tr>
+<tr><td>File to Upload:</td><td><input type="file" name="deviceconfigfile" id="file" /></td></tr>
+<tr><td>Type:</td><td><SELECT name='device_type'><OPTION value=''> --- Device Type --- </OPTION><?= $this->devicetypes ?></SELECT></td></tr>
+<tr><td colspan=2><center><input type="submit" name="submit" value="Upload" /></center></td></tr>
+</table>
+</center>
+</form>
+
+<?php 
+if (isset($this->error)) {
+?>
+<br><br>
+<?=$this->error ?>
+
+<? 
+}
+?>
+
+</body>
+</html> 

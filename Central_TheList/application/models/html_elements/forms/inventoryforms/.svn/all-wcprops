@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/central_thelist/!svn/ver/1953/trunk/application/models/html_elements/forms/inventoryforms
+END
+createstaticif.php
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/central_thelist/!svn/ver/1750/trunk/application/models/html_elements/forms/inventoryforms/createstaticif.php
+END
+addconfmap.php
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/central_thelist/!svn/ver/1750/trunk/application/models/html_elements/forms/inventoryforms/addconfmap.php
+END
+confdatatype.php
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/central_thelist/!svn/ver/1750/trunk/application/models/html_elements/forms/inventoryforms/confdatatype.php
+END
+addequipmenttoinventoryform.php
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/central_thelist/!svn/ver/1750/trunk/application/models/html_elements/forms/inventoryforms/addequipmenttoinventoryform.php
+END
+confoption.php
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/central_thelist/!svn/ver/1750/trunk/application/models/html_elements/forms/inventoryforms/confoption.php
+END
+addactiveequipmenttoinventoryform.php
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/central_thelist/!svn/ver/1953/trunk/application/models/html_elements/forms/inventoryforms/addactiveequipmenttoinventoryform.php
+END
+iftypefeature.php
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/central_thelist/!svn/ver/1750/trunk/application/models/html_elements/forms/inventoryforms/iftypefeature.php
+END
+eqtypesoftwaremap.php
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/central_thelist/!svn/ver/1750/trunk/application/models/html_elements/forms/inventoryforms/eqtypesoftwaremap.php
+END
+createeqtype.php
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/central_thelist/!svn/ver/1750/trunk/application/models/html_elements/forms/inventoryforms/createeqtype.php
+END
+assignequipmenttounitform.php
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/central_thelist/!svn/ver/1750/trunk/application/models/html_elements/forms/inventoryforms/assignequipmenttounitform.php
+END
+serialregex.php
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/central_thelist/!svn/ver/1750/trunk/application/models/html_elements/forms/inventoryforms/serialregex.php
+END
+addconfig.php
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/central_thelist/!svn/ver/1750/trunk/application/models/html_elements/forms/inventoryforms/addconfig.php
+END

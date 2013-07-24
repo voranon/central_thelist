@@ -1,0 +1,25 @@
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+
+<form method="post" action="" name="interfaceallowedconfigs">
+<table>
+<tr class='header'>
+<td>Start Value</td>
+<td>End Value</td>
+</tr>
+
+
+<tr>
+<td>Start: <input type='text' class='text' name='if_type_allowed_config_value_start' value=''></input></td>
+<td>End: <input type='text' class='text' name='if_type_allowed_config_value_end' value=''></input></td>
+</tr>
+
+<br>
+<tr><td><input type='submit' value='Save' /></td></tr>
+<input type='hidden' name='interface_type_configuration_id' value='<?= $_GET['interface_type_configuration_id'];?>'></input>
+
+</table>
+</form>

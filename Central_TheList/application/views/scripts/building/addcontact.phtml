@@ -1,0 +1,100 @@
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+
+<script type='text/javascript'>
+$(function(){
+	
+$('select#contact').bind('change',function(){
+	if($(this).val()==0){
+
+			$('input#firstname').val('');
+	    	$('input#firstname').removeAttr('readonly');
+	    	$('input#lastname').val('');
+	    	$('input#lastname').removeAttr('readonly');
+	    	$('input#streetnumber').val('');
+	    	$('input#streetnumber').removeAttr('readonly');
+	    	$('input#streetname').val('');
+	    	$('input#streetname').removeAttr('readonly');
+	    	$('input#streettype').val('');
+	    	$('input#streettype').removeAttr('readonly');
+	    	$('input#city').val('');
+	    	$('input#city').removeAttr('readonly');
+	    	$('select#state').val('CA');
+	    	$('select#state').removeAttr('readonly');
+	    	$('input#zip').val('');
+	    	$('input#zip').removeAttr('readonly');
+	    	$('input#cellphone').val('');
+	    	$('input#cellphone').removeAttr('readonly');
+	    	$('input#homephone').val('');
+	    	$('input#homephone').removeAttr('readonly');
+	    	$('input#officephone').val('');
+	    	$('input#officephone').removeAttr('readonly');
+	    	$('input#fax').val('');
+	    	$('input#fax').removeAttr('readonly');
+	    	$('input#email').val('');
+	    	$('input#email').removeAttr('readonly');
+		
+	}else{// contact is selected
+		
+	$.ajax({
+			url: "/project/getcontactajax/",
+			data:"contactid="+$(this).val(),
+		    success: function(data) {
+  		    $temp=data.split('!');
+  		  		
+			
+		    	$('input#firstname').val($temp[0]);
+		    	$('input#firstname').attr('readonly','true');
+		    	
+		    	$('input#lastname').val($temp[1]);
+		    	$('input#lastname').attr('readonly','true');
+		    	
+		    	$('input#streetnumber').val($temp[2]);
+		    	$('input#streetnumber').attr('readonly','true');
+		    	
+		    	$('input#streetname').val($temp[3]);
+		    	$('input#streetname').attr('readonly','true');
+
+		    	$('input#streettype').val($temp[4]);
+		    	$('input#streettype').attr('readonly','true');
+		    	
+		    	$('input#city').val($temp[5]);
+		    	$('input#city').attr('readonly','true');
+		    
+		    	$('select#state').val($temp[6]);
+		    	$('select#state').attr('readonly','true');
+		    	
+		    	$('input#zip').val($temp[7]);
+		    	$('input#zip').attr('readonly','true');
+		    	
+		    	$('input#cellphone').val($temp[8]);
+		    	$('input#cellphone').attr('readonly','true');
+		    	
+		    	$('input#homephone').val($temp[9]);
+		    	$('input#homephone').attr('readonly','true');
+
+		    	$('input#officephone').val($temp[10]);
+		    	$('input#officephone').attr('readonly','true');
+		    	
+		    	$('input#fax').val($temp[11]);
+		    	$('input#fax').attr('readonly','true');
+		    	
+		    	$('input#email').val($temp[12]);
+		    	$('input#email').attr('readonly','true');
+		    	  		    	
+		    }
+	});
+	}
+});
+
+});
+</script>
+
+<div style='position:absolute;width:100%;height:100%'>
+	<div style="position: absolute;left:0px;top:0px;">
+	   		<?php echo $this->addcontactform;?>	
+    </div>
+</div>

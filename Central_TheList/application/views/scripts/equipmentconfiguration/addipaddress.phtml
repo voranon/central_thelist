@@ -1,0 +1,62 @@
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+<html>
+<script type="text/javascript">
+
+$(function(){
+	
+	$('select#ip_subnet_id').bind('change',function(){
+	
+		$.ajax({
+			url:"/equipmentconfiguration/getsubnethostipoptionsajax/",
+			data:'get_host_ips=1&ip_subnet_id='+$(this).val(),
+			async: false,
+	    	success: function(data){
+				
+	    		$('select#ip_address_1').html(data);
+	    		$('select#ip_address_2').html(data);
+	    	} 
+		});  
+	});
+});
+</script>
+
+<body>
+<?= $this->error;?>
+<form method="post" action="" name="credentials">
+<table>
+
+<tr class='header'>
+<td>Subnet</td>
+<td>First Host IP</td>
+<td>End Host IP</td>
+<td>Interface</td>
+<td>Mapping Type</td>
+</tr>
+
+<?php 
+echo "<tr>
+<td><SELECT id='ip_subnet_id' name='ip_subnet_id'>".$this->subnets."</SELECT></td>
+<td><SELECT id='ip_address_1' name='ip_address_1'><OPTION value='0'>---Select One---</OPTION></SELECT></td>
+<td><SELECT id='ip_address_2' name='ip_address_2'><OPTION value='0'>---Select One---</OPTION></SELECT></td>
+<td><SELECT name='if_id'>".$this->interfaces."</SELECT></td>
+<td><SELECT name='mapping_type_item_id'>".$this->mapping_types."</SELECT></td>
+</tr>
+";
+
+?>
+
+
+<td><input type='hidden' class='text' name='eq_id' value='<?= $_GET['eq_id']?>'></input></td>
+
+<br>
+<tr> <td><input type='submit' value='Save' /></td></tr>
+
+
+</table>
+</form>
+</body>
+</html>

@@ -1,0 +1,24 @@
+@CHARSET "ISO-8859-1";
+table, td, th
+{
+	border: 1px solid black;
+	border-collapse: collapse;
+	font-size: small;
+}
+th
+{
+	padding: 15px;
+	background-color: #D1EEEE;
+}
+td
+{
+	padding: 5px;
+}
+input[id=search]
+{
+	width: 200px;
+}
+body
+{
+	font-family: arial;
+}

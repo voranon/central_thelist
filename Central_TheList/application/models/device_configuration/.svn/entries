@@ -1,0 +1,40 @@
+10
+
+dir
+2182
+http://svn.belairinternet.com/svn/central_thelist/trunk/application/models/device_configuration
+http://svn.belairinternet.com/svn/central_thelist
+
+
+
+2012-10-04T00:13:50.320210Z
+2078
+martin
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+16c4ef8c-f5c2-442c-af5e-f416435c4270
+
+bairos
+dir
+
+cisco
+dir
+
+multipledevice
+dir
+
+routeros
+dir
+

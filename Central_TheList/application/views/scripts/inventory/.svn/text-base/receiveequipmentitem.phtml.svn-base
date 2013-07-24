@@ -1,0 +1,87 @@
+<?php 
+
+	$po_id = $_GET['po_id'];
+	$receive_barcode = $_GET['receive_barcode'];
+
+		echo "<div style=\"position:absolute;left:10px;top:50px\">
+		Equipment Desc: <input type=\"text\" style=\"width:300px\" value='".$this->eq_friendly_name."'></input>
+		</div>";
+
+		if ($this->serialized == true) {
+	
+			echo "<body OnLoad=\"document.scan_serial.eq_serial_number.focus();\">
+	
+							<div style=\"position:absolute;width:1250px;height:800px\">
+									<form method=\"post\" action=\"\" name=\"scan_serial\">
+									<div style=\"position:absolute;left:10px;top:100px\">
+									Amount Ordered: <input type=\"readonly\" style=\"width:50px\" value='".$this->eq_quantity."'></input>
+									</div>
+									<div style=\"position:absolute;left:10px;top:150px\">
+									Amount Remaining: <input type=\"readonly\" style=\"width:50px\" value='".$this->eq_remaining_amount."'></input>
+									</div>
+									<div style=\"position:absolute;left:10px;top:200px\">
+									Serial number: <input type=\"text\" name=\"eq_serial_number\" style=\"width:250px\" value=\"\"></input>
+									</div>
+									<div style=\"position:absolute;left:10px;top:250px\">
+									Amount Canceled: <input type=\"text\" name=\"amount_canceled\" style=\"width:50px\" value='".$this->eq_canceled_amount."'></input>
+									</div>
+									<div style=\"position:absolute;left:175px;top:300px\">
+									<button name=\"add\" value=\"submit\" onclick=\"saveComment();window.close();return false;\">Add</button>
+									</div>
+									<div style=\"position:absolute;left:250px;top:300px\">
+									<button name=\"done\" value=\"Done\" onclick=\"saveComment();window.close();\">Finished</button>
+									</div>
+									<input type=\"hidden\" name=\"po_id\" value='".$po_id."'></input>
+									<input type=\"hidden\" name=\"receive_barcode\" value='".$receive_barcode."'></input>
+									</form>
+									<div style=\"position:absolute;left:10px;top:100px\">
+									</div>
+							</div>";
+	
+	
+	
+	
+			} else if ($this->serialized == false) {
+		
+				echo "<body OnLoad=\"document.no_serial_receive.amount_received.focus();\">
+									
+										<div style=\"position:absolute;width:1250px;height:800px\">
+												<form method=\"post\" action=\"\" name=\"no_serial_receive\">
+												<div style=\"position:absolute;left:10px;top:100px\">
+												Amount Ordered: <input type=\"readonly\" style=\"width:50px\" value='".$this->eq_quantity."'></input>
+												</div>
+												<div style=\"position:absolute;left:10px;top:150px\">
+												Amount Remaining: <input type=\"readonly\" style=\"width:50px\" value='".$this->eq_remaining_amount."'></input>
+												</div>
+												<div style=\"position:absolute;left:10px;top:200px\">
+												Amount Received: <input type=\"text\" name=\"amount_received\" style=\"width:50px\" value=\"\"></input>
+												</div>
+												<div style=\"position:absolute;left:10px;top:250px\">
+												Amount Canceled: <input type=\"text\" name=\"amount_canceled\" style=\"width:50px\" value='".$this->eq_canceled_amount."'></input>
+												</div>
+												<div style=\"position:absolute;left:175px;top:300px\">
+												<button name=\"add\" value=\"submit\" onclick=\"saveComment();window.close();return false;\">Add</button>
+												</div>
+												<div style=\"position:absolute;left:250px;top:300px\">
+												<button name=\"done\" value=\"Done\" onclick=\"saveComment();window.close();\">Finished</button>
+												</div>
+												<input type=\"hidden\" name=\"po_id\" value='".$po_id."'></input>
+												<input type=\"hidden\" name=\"receive_barcode\" value='".$receive_barcode."'></input>
+												</form>
+												<div style=\"position:absolute;left:10px;top:100px\">
+												</div>
+										</div>";
+				
+				
+			}
+
+
+
+?>
+
+<script type='text/javascript'>
+$(function() {
+	  $("#eq_serial_number").focus();
+	});
+</script>
+

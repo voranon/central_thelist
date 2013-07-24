@@ -1,0 +1,11 @@
+
+<script type="text/javascript">
+$(function(){
+
+});
+
+</script>
+
+<form name='test' action='/search/index/' method='post'>
+<input name='search_box' id='search_box' search_box_id='5'></input>
+</form>

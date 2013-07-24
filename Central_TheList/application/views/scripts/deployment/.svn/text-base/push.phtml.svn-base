@@ -1,0 +1,54 @@
+<?php $this->headScript()->appendFile('/javascripts/global/jquery/jquery.xml2json.js');?>
+<?php $this->headScript()->appendFile('/javascripts/deployment/push.js');?>
+<?php $this->headLink()->appendStylesheet('/css/deployment/push.css');?>
+<div id='main'>
+	<div>
+		<fieldset style='width: 500px'>
+			<legend>Deployment Type</legend>
+			<label>Deploy To</label>
+			<select id='push_type'>
+				<option value=''>--Select One--</option>
+				<option value='staging'>Staging</option>
+				<option value='production'>Production</option>
+			</select>
+		</fieldset>		
+	</div>
+	<div id='staging' class='subform' style='position: relative'>
+		<form method='post' action='/deployment/push'>
+			<fieldset style='width: 500px; text-align: left'>
+				<legend>Staging</legend>
+				<dl>
+					<dt><label><span>Branch<span></span></label></dt><dd><select name='branch' class='formfield'></select><img class='loading' src='/images/ajax-loader.gif' /></dd>
+					<dt><label><span>Revision Number<span></span></label></dt><dd><select name='revision_number' class='formfield'></select><img class='loading' src='/images/ajax-loader.gif' /></dd>
+					<dt><label><span>Commited By<span></span></label></dt><dd><input type='text' name='author' class='readonly formfield'></input></dd>
+					<dt><label><span>Date</span></label></dt><dd><input type='text' name='date' class='readonly formfield'></input></dd>
+					<dt><label><span>SVN Comments</span></label></dt><dd><textarea name='svn_comments' class='readonly formfield'></textarea></dd>
+					<dt><label><span>Add Comment:</span></label></dt><dd><textarea name='comments' class='formfield'></textarea></dd>
+					<input type='checkbox' name='refresh' value='1' />Refresh Database</br>
+					<input type='submit' value='deploy'></input>
+				</dl>
+				<input type="hidden" name="deploymenttype" value="staging" />
+			</fieldset>
+		</form>
+	</div>
+	<div id='production' class='subform'>
+		<form method='post' action='/deployment/push'>
+			<fieldset style='width: 500px; text-align: left'>
+				<legend>Production</legend>
+				<dl>
+					<dt><label><span>Branch<span></span></label></dt><dd><select name='branch' class='formfield'></select><img class='loading' src='/images/ajax-loader.gif' /></dd>		
+					<dt><label><span>Revision Number<span></span></label></dt><dd><select name='revision_number' class='formfield'></select><img class='loading' src='/images/ajax-loader.gif' /></dd>
+					<dt><label><span>Comitted By<span></span></label></dt><dd><input type='text' name='author' class='readonly formfield'></input></dd>
+					<dt><label><span>SVN Date</span></label></dt><dd><input type='text' name='date' class='readonly formfield'></input></dd>
+					<dt><label><span>SVN Comments</span></label></dt><dd><textarea name='svn_comments' class='readonly formfield'></textarea></dd>
+					<dt><label><span>Staging Deployer<span></span></label></dt><dd><input type='text' name='deployer' class='readonly formfield'></input></dd>
+					<dt><label><span>Staging Date<span></span></label></dt><dd><input type='text' name='deploymentdate' class='readonly formfield'>				
+					<dt><label><span>Staging Comment:</span></label></dt><dd><textarea name='deployercomments' class='readonly formfield'></textarea></dd>
+					<dt><label><span>Add Comments:</span></label></dt><dd><textarea name='comments' class='formfield'></textarea></dd>
+					<input type='submit' value='deploy'></input>
+				</dl>		
+				<input type="hidden" name="deploymenttype" value="production" />
+			</fieldset>
+		</form>
+	</div>
+</div>

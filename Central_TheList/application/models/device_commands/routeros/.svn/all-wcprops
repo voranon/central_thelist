@@ -1,0 +1,251 @@
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/central_thelist/!svn/ver/2168/trunk/application/models/device_commands/routeros
+END
+getequipment.php
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/central_thelist/!svn/ver/2097/trunk/application/models/device_commands/routeros/getequipment.php
+END
+getinterfacedescription.php
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/central_thelist/!svn/ver/2097/trunk/application/models/device_commands/routeros/getinterfacedescription.php
+END
+getsoftware.php
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/central_thelist/!svn/ver/2168/trunk/application/models/device_commands/routeros/getsoftware.php
+END
+uploadfile.php
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/central_thelist/!svn/ver/2168/trunk/application/models/device_commands/routeros/uploadfile.php
+END
+getinterfacewirelesstxcenterfrequency.php
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/central_thelist/!svn/ver/2064/trunk/application/models/device_commands/routeros/getinterfacewirelesstxcenterfrequency.php
+END
+getinterfacespeed.php
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/central_thelist/!svn/ver/2095/trunk/application/models/device_commands/routeros/getinterfacespeed.php
+END
+setinterfacedescription.php
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/central_thelist/!svn/ver/2097/trunk/application/models/device_commands/routeros/setinterfacedescription.php
+END
+getinterfacewirelesssecurityprofile.php
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/central_thelist/!svn/ver/2064/trunk/application/models/device_commands/routeros/getinterfacewirelesssecurityprofile.php
+END
+setsoftware.php
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/central_thelist/!svn/ver/2160/trunk/application/models/device_commands/routeros/setsoftware.php
+END
+getinterfacelayer2mtu.php
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/central_thelist/!svn/ver/2095/trunk/application/models/device_commands/routeros/getinterfacelayer2mtu.php
+END
+logout.php
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/central_thelist/!svn/ver/1932/trunk/application/models/device_commands/routeros/logout.php
+END
+setinterfaceadminstatus.php
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/central_thelist/!svn/ver/2075/trunk/application/models/device_commands/routeros/setinterfaceadminstatus.php
+END
+getmanagementinterfacename.php
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/central_thelist/!svn/ver/2064/trunk/application/models/device_commands/routeros/getmanagementinterfacename.php
+END
+setinterfacel3mtu.php
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/central_thelist/!svn/ver/2075/trunk/application/models/device_commands/routeros/setinterfacel3mtu.php
+END
+setinterfacespeed.php
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/central_thelist/!svn/ver/2076/trunk/application/models/device_commands/routeros/setinterfacespeed.php
+END
+resetconfig.php
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/central_thelist/!svn/ver/2160/trunk/application/models/device_commands/routeros/resetconfig.php
+END
+getserialnumber.php
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/central_thelist/!svn/ver/2098/trunk/application/models/device_commands/routeros/getserialnumber.php
+END
+getinterfacestatus.php
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/central_thelist/!svn/ver/2097/trunk/application/models/device_commands/routeros/getinterfacestatus.php
+END
+setinterfacevlanid.php
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/central_thelist/!svn/ver/2075/trunk/application/models/device_commands/routeros/setinterfacevlanid.php
+END
+setinterfaceduplex.php
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/central_thelist/!svn/ver/2076/trunk/application/models/device_commands/routeros/setinterfaceduplex.php
+END
+getinterfaceipaddresses.php
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/central_thelist/!svn/ver/2095/trunk/application/models/device_commands/routeros/getinterfaceipaddresses.php
+END
+setinterfaceconfig.php
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/central_thelist/!svn/ver/2078/trunk/application/models/device_commands/routeros/setinterfaceconfig.php
+END
+getinterfacetype.php
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/central_thelist/!svn/ver/2104/trunk/application/models/device_commands/routeros/getinterfacetype.php
+END
+getroutingtable.php
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/central_thelist/!svn/ver/2064/trunk/application/models/device_commands/routeros/getroutingtable.php
+END
+getinterfacessid.php
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/central_thelist/!svn/ver/2064/trunk/application/models/device_commands/routeros/getinterfacessid.php
+END
+getinterfacevlanid.php
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/central_thelist/!svn/ver/2075/trunk/application/models/device_commands/routeros/getinterfacevlanid.php
+END
+setinterfacename.php
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/central_thelist/!svn/ver/2097/trunk/application/models/device_commands/routeros/setinterfacename.php
+END
+getinterfaceduplex.php
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/central_thelist/!svn/ver/2075/trunk/application/models/device_commands/routeros/getinterfaceduplex.php
+END
+getinterfacewirelessmode.php
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/central_thelist/!svn/ver/2064/trunk/application/models/device_commands/routeros/getinterfacewirelessmode.php
+END
+getarptable.php
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/central_thelist/!svn/ver/2075/trunk/application/models/device_commands/routeros/getarptable.php
+END
+getinterfaceconfig.php
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/central_thelist/!svn/ver/2075/trunk/application/models/device_commands/routeros/getinterfaceconfig.php
+END
+getinterfacewirelesstxchannelwidth.php
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/central_thelist/!svn/ver/2063/trunk/application/models/device_commands/routeros/getinterfacewirelesstxchannelwidth.php
+END
+getmemorystats.php
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/central_thelist/!svn/ver/2127/trunk/application/models/device_commands/routeros/getmemorystats.php
+END
+getinterfacemacaddress.php
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/central_thelist/!svn/ver/2083/trunk/application/models/device_commands/routeros/getinterfacemacaddress.php
+END
+getinterfacelayer3mtu.php
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/central_thelist/!svn/ver/2095/trunk/application/models/device_commands/routeros/getinterfacelayer3mtu.php
+END
+getfilelist.php
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/central_thelist/!svn/ver/2160/trunk/application/models/device_commands/routeros/getfilelist.php
+END
+getinterfaces.php
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/central_thelist/!svn/ver/2168/trunk/application/models/device_commands/routeros/getinterfaces.php
+END
+placedeviceconnectioninrootfolder.php
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/central_thelist/!svn/ver/1820/trunk/application/models/device_commands/routeros/placedeviceconnectioninrootfolder.php
+END
+getequipmenttype.php
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/central_thelist/!svn/ver/2083/trunk/application/models/device_commands/routeros/getequipmenttype.php
+END
+getinterfacesupportedwirelessprotocols.php
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/central_thelist/!svn/ver/2072/trunk/application/models/device_commands/routeros/getinterfacesupportedwirelessprotocols.php
+END
+setinterfacestandardnames.php
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/central_thelist/!svn/ver/2097/trunk/application/models/device_commands/routeros/setinterfacestandardnames.php
+END

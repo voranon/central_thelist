@@ -1,0 +1,275 @@
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/central_thelist/!svn/ver/2127/trunk/application/models/device_commands/bairos
+END
+removeinterfaceconfig.php
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/central_thelist/!svn/ver/2026/trunk/application/models/device_commands/bairos/removeinterfaceconfig.php
+END
+setinterfaceconnectionqueues.php
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/central_thelist/!svn/ver/1944/trunk/application/models/device_commands/bairos/setinterfaceconnectionqueues.php
+END
+getequipment.php
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/central_thelist/!svn/ver/1957/trunk/application/models/device_commands/bairos/getequipment.php
+END
+getinterfacedescription.php
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/central_thelist/!svn/ver/1929/trunk/application/models/device_commands/bairos/getinterfacedescription.php
+END
+getdhcpserverstatus.php
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/central_thelist/!svn/ver/2070/trunk/application/models/device_commands/bairos/getdhcpserverstatus.php
+END
+getsoftware.php
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/central_thelist/!svn/ver/2127/trunk/application/models/device_commands/bairos/getsoftware.php
+END
+removefile.php
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/central_thelist/!svn/ver/2040/trunk/application/models/device_commands/bairos/removefile.php
+END
+getinterfaceconnectionqueues.php
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/central_thelist/!svn/ver/1943/trunk/application/models/device_commands/bairos/getinterfaceconnectionqueues.php
+END
+getinterfacespeed.php
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/central_thelist/!svn/ver/2064/trunk/application/models/device_commands/bairos/getinterfacespeed.php
+END
+getsubnetarpentries.php
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/central_thelist/!svn/ver/2100/trunk/application/models/device_commands/bairos/getsubnetarpentries.php
+END
+setdhcpserverstatus.php
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/central_thelist/!svn/ver/2041/trunk/application/models/device_commands/bairos/setdhcpserverstatus.php
+END
+logout.php
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/central_thelist/!svn/ver/1932/trunk/application/models/device_commands/bairos/logout.php
+END
+setinterfaceadminstatus.php
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/central_thelist/!svn/ver/1932/trunk/application/models/device_commands/bairos/setinterfaceadminstatus.php
+END
+getmanagementinterfacename.php
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/central_thelist/!svn/ver/1926/trunk/application/models/device_commands/bairos/getmanagementinterfacename.php
+END
+getdhcpserverconfig.php
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/central_thelist/!svn/ver/2070/trunk/application/models/device_commands/bairos/getdhcpserverconfig.php
+END
+removeinterfacequeuedisc.php
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/central_thelist/!svn/ver/1944/trunk/application/models/device_commands/bairos/removeinterfacequeuedisc.php
+END
+getsystemtime.php
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/central_thelist/!svn/ver/2040/trunk/application/models/device_commands/bairos/getsystemtime.php
+END
+getserialnumber.php
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/central_thelist/!svn/ver/1926/trunk/application/models/device_commands/bairos/getserialnumber.php
+END
+getinterfacestatus.php
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/central_thelist/!svn/ver/1932/trunk/application/models/device_commands/bairos/getinterfacestatus.php
+END
+setdhcpserverconfig.php
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/central_thelist/!svn/ver/2040/trunk/application/models/device_commands/bairos/setdhcpserverconfig.php
+END
+getinterfaceipaddresses.php
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/central_thelist/!svn/ver/1929/trunk/application/models/device_commands/bairos/getinterfaceipaddresses.php
+END
+setinterfaceconfig.php
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/central_thelist/!svn/ver/1932/trunk/application/models/device_commands/bairos/setinterfaceconfig.php
+END
+setfilecontent.php
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/central_thelist/!svn/ver/2078/trunk/application/models/device_commands/bairos/setfilecontent.php
+END
+getroutingtable.php
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/central_thelist/!svn/ver/1926/trunk/application/models/device_commands/bairos/getroutingtable.php
+END
+getinterfacevlanid.php
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/central_thelist/!svn/ver/1927/trunk/application/models/device_commands/bairos/getinterfacevlanid.php
+END
+setinterfacequeuefilters.php
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/central_thelist/!svn/ver/1947/trunk/application/models/device_commands/bairos/setinterfacequeuefilters.php
+END
+getinterfaceduplex.php
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/central_thelist/!svn/ver/2064/trunk/application/models/device_commands/bairos/getinterfaceduplex.php
+END
+getarptable.php
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/central_thelist/!svn/ver/1921/trunk/application/models/device_commands/bairos/getarptable.php
+END
+getinterfaceconfig.php
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/central_thelist/!svn/ver/2072/trunk/application/models/device_commands/bairos/getinterfaceconfig.php
+END
+getprocessstats.php
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/central_thelist/!svn/ver/1931/trunk/application/models/device_commands/bairos/getprocessstats.php
+END
+getfilecontent.php
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/central_thelist/!svn/ver/2040/trunk/application/models/device_commands/bairos/getfilecontent.php
+END
+removedhcpleasereservationfromdevice.php
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/central_thelist/!svn/ver/1798/trunk/application/models/device_commands/bairos/removedhcpleasereservationfromdevice.php
+END
+removeconnectionqueuefilter.php
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/central_thelist/!svn/ver/1947/trunk/application/models/device_commands/bairos/removeconnectionqueuefilter.php
+END
+getinterfacemacaddress.php
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/central_thelist/!svn/ver/1926/trunk/application/models/device_commands/bairos/getinterfacemacaddress.php
+END
+getinterfacelayer3mtu.php
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/central_thelist/!svn/ver/1929/trunk/application/models/device_commands/bairos/getinterfacelayer3mtu.php
+END
+addconnectionqueuefilter.php
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/central_thelist/!svn/ver/1947/trunk/application/models/device_commands/bairos/addconnectionqueuefilter.php
+END
+getinterfacequeuefilters.php
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/central_thelist/!svn/ver/1943/trunk/application/models/device_commands/bairos/getinterfacequeuefilters.php
+END
+getinterfacebootprotocol.php
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/central_thelist/!svn/ver/2029/trunk/application/models/device_commands/bairos/getinterfacebootprotocol.php
+END
+addinterfacequeuedisc.php
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/central_thelist/!svn/ver/1944/trunk/application/models/device_commands/bairos/addinterfacequeuedisc.php
+END
+removeconnectionqueue.php
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/central_thelist/!svn/ver/1944/trunk/application/models/device_commands/bairos/removeconnectionqueue.php
+END
+getfilelist.php
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/central_thelist/!svn/ver/2040/trunk/application/models/device_commands/bairos/getfilelist.php
+END
+getinterfaces.php
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/central_thelist/!svn/ver/2095/trunk/application/models/device_commands/bairos/getinterfaces.php
+END
+getinterfacequeuediscs.php
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/central_thelist/!svn/ver/1944/trunk/application/models/device_commands/bairos/getinterfacequeuediscs.php
+END
+getequipmenttype.php
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/central_thelist/!svn/ver/1957/trunk/application/models/device_commands/bairos/getequipmenttype.php
+END
+addconnectionqueue.php
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/central_thelist/!svn/ver/1944/trunk/application/models/device_commands/bairos/addconnectionqueue.php
+END

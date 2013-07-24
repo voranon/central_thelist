@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/central_thelist/!svn/ver/2097/trunk/application/models/utilities/device_information
+END
+macaddressinformation.php
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/central_thelist/!svn/ver/2097/trunk/application/models/utilities/device_information/macaddressinformation.php
+END
+routeentry.php
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/central_thelist/!svn/ver/2064/trunk/application/models/utilities/device_information/routeentry.php
+END
+camentry.php
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/central_thelist/!svn/ver/2075/trunk/application/models/utilities/device_information/camentry.php
+END
+arpentry.php
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/central_thelist/!svn/ver/2075/trunk/application/models/utilities/device_information/arpentry.php
+END
+ipaddressentry.php
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/central_thelist/!svn/ver/2078/trunk/application/models/utilities/device_information/ipaddressentry.php
+END

@@ -1,0 +1,51 @@
+<script type="text/javascript" src="/javascripts/global/getlocation.js"></script>
+<script type="text/javascript" src="/javascripts/global/browser.js"></script>
+
+<form action='' method='post'>
+<table border='0' align='center'>
+	<tr>
+		<td colspan='100%'><font color='red'><?php echo $this->message?></font></td>
+	</tr>
+	<tr>
+		<td align="left">User:</td>
+		<td><input type="text" class="test" name='username'></input></td>
+	</tr>
+	<tr>
+		<td align="left">Password:</td>
+		<td><input type="password" name='password'></input></td>
+	</tr>
+	<tr>
+		<td	colspan="100%">
+			Keep me logged in<input name='keep' id='keep' type="checkbox" value="yes"></input>
+		</td>
+	</tr>  
+	<tr>
+		<td align="center" colspan="100%">
+			<input type="submit" class="button" name="login" value="Log In"></input>
+		</td>
+	</tr>
+	    <input type="hidden" name="latitude" id="latitude">
+        <input type="hidden" name="longitude" id="longitude">
+       	<input type="hidden" name="accuracy" id="accuracy">
+        <input type="hidden" name="altitude" id="altitude">
+   		<input type="hidden" name="altitudeaccuracy" id="altitudeaccuracy">
+        <input type="hidden" name="heading" id="heading">
+		<input type="hidden" name="speed" id="speed">
+		
+		<input type="hidden" name="browsercode" id="browsercode">
+        <input type="hidden" name="browsername" id="browsername">
+       	<input type="hidden" name="browserversion" id="browserversion">
+        <input type="hidden" name="cookiesenabled" id="cookiesenabled">
+   		<input type="hidden" name="platform" id="platform">
+        <input type="hidden" name="useragentheader" id="useragentheader">
+
+	<tr>
+		<td align="center" colspan="100%">
+			<input type="submit" class="button" name="setting" value="Setting"></input
+		</td>
+	</tr>
+	
+</table>
+
+
+</form>

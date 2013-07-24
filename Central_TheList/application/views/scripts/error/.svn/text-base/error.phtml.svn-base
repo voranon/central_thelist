@@ -1,0 +1,28 @@
+
+  <h3>
+  	<font color="red">
+  		<?php echo $this->message ?>
+  		to user
+  		<?php echo $this->user?>
+  	</font>
+  </h3>
+ 
+
+  Notify: <?php echo $this->recipient?>  <?php if (isset($this->exception)): ?>
+  
+  <h4><font color="red">Exception information:</font></h4>
+  <p>
+  	  <b>Code:</b> <?php echo $this->exception->getCode() ?><br>
+      <b>Message:</b> <?php echo $this->exception->getMessage() ?>
+  </p>
+
+  <h4><font color="red">Stack trace:</font></h4>
+  <pre><?php echo $this->exception->getTraceAsString() ?>
+  </pre>
+
+  <h4><font color="red">Request Parameters:</font></h4>
+  <pre><?php echo $this->escape(var_export($this->request->getParams(), true)) ?>
+  </pre>
+
+  <?php endif ?>
+

@@ -1,0 +1,31 @@
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+
+<script type='text/javascript'>
+$(function(){
+	$('a#addconfig').bind('click',function(){
+		windowW = 570;
+		windowH = 400;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		window.open('/inventory/addconfig', 'popup2','width='+windowW+', height='+windowH+', menubar=no, scrollbars=no, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+
+	});
+});
+</script>
+
+<div style="position:absolute;left:10px;top:10px">
+<table class='display' style='width:200px;left:250px'>
+	<?php echo $this->configurations_menu_table;?>
+</table>
+</div>
+
+<div style="position:absolute;top:60px;">
+<table class='display' style='width:900px;left:250px'>
+		<?php echo $this->configurations_table;?>
+</table>
+</div>
+</div>

@@ -1,0 +1,52 @@
+<?php $this->headScript()->appendFile('/javascripts/inventory/addequipment.js');?>
+<html>
+		<body onLoad="document.forms.addinveq.eq_serial.focus()">
+		
+		<br><br><br><br><br>
+		
+		<table align='center' width='1175px' cellpadding="10" border="2px" bordercolor="#CCCCCC" rules="none" class="bodytext" style="padding-top:10px">
+		
+		<form name='addinveq' action="/equipment/testmonitorvlan" method="post">
+		
+		<tr>
+		<td>
+		Equipment ID:
+		</td>
+		<td>
+		<input size='35' type='text' name='eq_id' value='1'>
+		</td>
+		</tr>
+		
+		<tr>
+		<td>
+		Interface ID:
+		</td>
+		<td>
+		<input size='35' type='text' name='if_id' value='2'>
+		</td>
+		</tr>
+		
+		<tr>
+		<td>
+		VLAN Pri Key:
+		</td>
+		<td>
+		<input size='35' type='text' name='vlan_pri_key_id' value='6'>
+		</td>
+		</tr>
+
+		
+		
+		<tr>
+		<td>
+		</td>
+		<td>
+		<input type="submit" value="Setup Monitoring of Vlan" />
+		</td>
+		</tr>
+		</form>
+		
+		
+		</table>
+		</body>
+		</html>

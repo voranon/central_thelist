@@ -1,0 +1,151 @@
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+
+<script type='text/javascript'>
+$(function(){
+
+	$('input#manage_equipment').bind('click',function(){
+		windowW = 1200;
+		windowH = 900;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		eq_id = $(this).attr('eq_id');
+		window.open('/equipmentconfiguration/manualconfigureequipment?eq_id='+eq_id, '9988', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=yes, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+
+	$('input#mass_configure_equipment').bind('click',function(){
+		windowW = 1400;
+		windowH = 900;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		eq_ids = $(this).attr('eq_ids');
+		window.open('/equipmentconfiguration/massdefaultconfigureequipment?eq_ids='+eq_ids, '11588', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=yes, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+});
+</script>
+</div>
+<center>
+<form autocomplete="off" method='post' action="">
+
+<br><br><br><br><br><br><br>
+Get Equipment that is reachable from this router
+<br><br>
+<SELECT id='eq_id' name='eq_id'><?= $this->routers ?></SELECT></td>
+<br><br>
+<input type='submit' name='get_equipment' id='addproject' class='button' value='Get Equipment'></input>
+</form>
+<br><br>
+
+<?php 
+
+if (isset($this->equipment)) {
+	
+	if (isset($this->equipment['equipment'])) {
+?>
+
+<table border=2>
+
+<tr class='header'>
+<td>Manufacturer</td>
+<td>Model</td>
+<td>Fqdn / IP</td>
+<td>Configure</td>
+</tr>
+
+<?php 
+		
+		foreach ($this->equipment['equipment'] as $equipment) {
+?>
+<tr>
+<td><?= $equipment['manufacturer'] ?></td>
+<td><?= $equipment['model'] ?></td>
+<td><?= $equipment['fqdn'] ?></td>
+<td><input type='button' class='button' name='manage_equipment' eq_id='<?= $equipment['eq_id'] ?>' id='manage_equipment' value='Configure Equipment'></input></td>
+
+<?
+//create variable with all eq_ids
+if (!isset($string_eq_ids)) {
+	$string_eq_ids = $equipment['eq_id'];
+} else {
+	$string_eq_ids .= "," . $equipment['eq_id'];
+}
+
+
+?>
+</tr>
+
+<?php
+		}
+?>
+</table>
+
+<?
+	} else {
+?>
+No Found Hosts were converted to equipment
+
+<?	
+	
+	}
+?>
+
+<input type='button' class='button' eq_ids='<?= $string_eq_ids ?>' id='mass_configure_equipment' value='Mass Configure Equipment'>
+
+<?	
+	if (isset($this->equipment['ips'])) {
+?>
+<br><br>
+<table>
+
+<tr class='header'>
+<td>IP Address</td>
+<td>Manufacturer</td>
+<td>Status</td>
+<td>Error Message</td>
+</tr>
+
+<?		
+		foreach ($this->equipment['ips'] as $ip_address) {
+?>
+<tr>
+<td><?= $ip_address['ip_address'] ?></td>
+<td><?= $ip_address['mac_vendor'] ?></td>
+
+<?
+if ($ip_address['ip_status'] == 0) {
+?>
+<td>Failed to Convert</td>
+<td><?= $ip_address['ip_error'] ?></td>
+
+<?
+} else {
+?>
+<td><b>Converted To Equipment</b></td>
+<td></td>
+<?
+}
+?>
+</tr>
+
+<?
+		}
+?>
+</table>
+<? 
+		
+	} else {
+
+?>
+All Found IP's were converted to equipment
+
+<?
+	}
+}
+
+?>
+</center>
+<div>		
+	

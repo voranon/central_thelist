@@ -1,0 +1,275 @@
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/central_thelist/!svn/ver/2164/trunk/application/views/scripts/inventory
+END
+addequipmenttoinventory.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/central_thelist/!svn/ver/1680/trunk/application/views/scripts/inventory/addequipmenttoinventory.phtml
+END
+equipmenttypeinventory.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/central_thelist/!svn/ver/1750/trunk/application/views/scripts/inventory/equipmenttypeinventory.phtml
+END
+editeqtyperegex.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/central_thelist/!svn/ver/187/trunk/application/views/scripts/inventory/editeqtyperegex.phtml
+END
+eqtransfer.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/central_thelist/!svn/ver/507/trunk/application/views/scripts/inventory/eqtransfer.phtml
+END
+geteqifxml.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/central_thelist/!svn/ver/1990/trunk/application/views/scripts/inventory/geteqifxml.phtml
+END
+confoption.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/central_thelist/!svn/ver/862/trunk/application/views/scripts/inventory/confoption.phtml
+END
+showconfiguration.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/central_thelist/!svn/ver/864/trunk/application/views/scripts/inventory/showconfiguration.phtml
+END
+addtype.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/central_thelist/!svn/ver/1479/trunk/application/views/scripts/inventory/addtype.phtml
+END
+verifytaskinstall.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/central_thelist/!svn/ver/2016/trunk/application/views/scripts/inventory/verifytaskinstall.phtml
+END
+addinvequipment.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/central_thelist/!svn/ver/1750/trunk/application/views/scripts/inventory/addinvequipment.phtml
+END
+receiveequipmentitem.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/central_thelist/!svn/ver/457/trunk/application/views/scripts/inventory/receiveequipmentitem.phtml
+END
+addeqtyperegex.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/central_thelist/!svn/ver/187/trunk/application/views/scripts/inventory/addeqtyperegex.phtml
+END
+editiftype.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/central_thelist/!svn/ver/2029/trunk/application/views/scripts/inventory/editiftype.phtml
+END
+checktechequipmentinventoryfortask.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/central_thelist/!svn/ver/1680/trunk/application/views/scripts/inventory/checktechequipmentinventoryfortask.phtml
+END
+createeqtype.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/central_thelist/!svn/ver/105/trunk/application/views/scripts/inventory/createeqtype.phtml
+END
+removeconnection.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/central_thelist/!svn/ver/1479/trunk/application/views/scripts/inventory/removeconnection.phtml
+END
+addconfig.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/central_thelist/!svn/ver/864/trunk/application/views/scripts/inventory/addconfig.phtml
+END
+addstaticiftype.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/central_thelist/!svn/ver/105/trunk/application/views/scripts/inventory/addstaticiftype.phtml
+END
+addequipmenttounit.php
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/central_thelist/!svn/ver/1750/trunk/application/views/scripts/inventory/addequipmenttounit.php
+END
+eqtypesoftwaremap.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/central_thelist/!svn/ver/575/trunk/application/views/scripts/inventory/eqtypesoftwaremap.phtml
+END
+showinventoryequipment.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/central_thelist/!svn/ver/2024/trunk/application/views/scripts/inventory/showinventoryequipment.phtml
+END
+editeqtype.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/central_thelist/!svn/ver/2030/trunk/application/views/scripts/inventory/editeqtype.phtml
+END
+unitdropdownajax.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/central_thelist/!svn/ver/1750/trunk/application/views/scripts/inventory/unitdropdownajax.phtml
+END
+submitequipment.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/central_thelist/!svn/ver/16/trunk/application/views/scripts/inventory/submitequipment.phtml
+END
+addconfmap.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/central_thelist/!svn/ver/864/trunk/application/views/scripts/inventory/addconfmap.phtml
+END
+establishconnections.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/central_thelist/!svn/ver/532/trunk/application/views/scripts/inventory/establishconnections.phtml
+END
+iftypes.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/central_thelist/!svn/ver/777/trunk/application/views/scripts/inventory/iftypes.phtml
+END
+configurations.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/central_thelist/!svn/ver/864/trunk/application/views/scripts/inventory/configurations.phtml
+END
+assignequipmenttounit.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/central_thelist/!svn/ver/1715/trunk/application/views/scripts/inventory/assignequipmenttounit.phtml
+END
+iftypefeature.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/central_thelist/!svn/ver/801/trunk/application/views/scripts/inventory/iftypefeature.phtml
+END
+addconnection.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/central_thelist/!svn/ver/1479/trunk/application/views/scripts/inventory/addconnection.phtml
+END
+equipmentdropdownajax.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/central_thelist/!svn/ver/2007/trunk/application/views/scripts/inventory/equipmentdropdownajax.phtml
+END
+checkequipment.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/central_thelist/!svn/ver/16/trunk/application/views/scripts/inventory/checkequipment.phtml
+END
+addactiveequipment.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/central_thelist/!svn/ver/2164/trunk/application/views/scripts/inventory/addactiveequipment.phtml
+END
+confdatatype.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/central_thelist/!svn/ver/862/trunk/application/views/scripts/inventory/confdatatype.phtml
+END
+getequipmentreachablefromrouter.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/central_thelist/!svn/ver/2118/trunk/application/views/scripts/inventory/getequipmentreachablefromrouter.phtml
+END
+equipmentininventory.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/central_thelist/!svn/ver/2164/trunk/application/views/scripts/inventory/equipmentininventory.phtml
+END
+newbaidiplexer.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/central_thelist/!svn/ver/45/trunk/application/views/scripts/inventory/newbaidiplexer.phtml
+END
+receiveequipment.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/central_thelist/!svn/ver/457/trunk/application/views/scripts/inventory/receiveequipment.phtml
+END
+addequipmenttounit.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/central_thelist/!svn/ver/1750/trunk/application/views/scripts/inventory/addequipmenttounit.phtml
+END
+eqtypes.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/central_thelist/!svn/ver/89/trunk/application/views/scripts/inventory/eqtypes.phtml
+END
+equipmentinventory.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/central_thelist/!svn/ver/1750/trunk/application/views/scripts/inventory/equipmentinventory.phtml
+END
+equipmenttypeininventory.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/central_thelist/!svn/ver/1750/trunk/application/views/scripts/inventory/equipmenttypeininventory.phtml
+END
+editstaticiftype.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/central_thelist/!svn/ver/105/trunk/application/views/scripts/inventory/editstaticiftype.phtml
+END
+index.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/central_thelist/!svn/ver/1480/trunk/application/views/scripts/inventory/index.phtml
+END

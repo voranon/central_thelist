@@ -1,0 +1,139 @@
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+
+<script type='text/javascript'>
+$(function(){
+	$('input#manageiftypeallowedvalues').bind('click',function(){
+		windowW = 700;
+		windowH = 400;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		interface_type_configuration_id = $(this).attr('interface_type_configuration_id');
+		window.open('/equipmentconfiguration/manageiftypeconfallowedvalues?interface_type_configuration_id='+interface_type_configuration_id, 'popup5', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=no, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+
+	$('input#addiftypeconfig').bind('click',function(){
+		windowW = 400;
+		windowH = 200;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		window.open('/equipmentconfiguration/addinterfacetypeconfiguration?if_type_id=<?= $_GET['if_type_id']?>', 'popup5', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=yes, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+});
+</script>
+<body>
+
+<?php 
+if (!isset($this->error)) {
+?>
+	
+<form method="post" action="" name="typeconfigs">
+<table>
+
+<tr class='header'>
+<td>Configuration Name</td>
+<td>Default Value</td>
+<td>Max Maps</td>
+<td>Manage Allowed Values</td>
+<td>Def. Map</td>
+<td>Req.</td>
+<td>Edit</td>
+<td>Remove</td>
+</tr>
+
+<?php 
+	if (isset($this->if_type_confs)) {
+		foreach ($this->if_type_confs as $conf) {
+?>
+
+<tr>
+<td><?= $conf['if_conf_name']?></td>
+<td><input type='text' class='text' name='<?= $conf['if_conf_id'];?>[if_conf_default_value_1]' value='<?= $conf['if_conf_default_value_1'];?>'></input></td>
+<td><input type='text' class='text' name='<?= $conf['if_conf_id'];?>[if_conf_max_maps]' value='<?= $conf['if_conf_max_maps'];?>'></input></td>
+
+<td><input type='button' class='button' id='manageiftypeallowedvalues' name='manageiftypeallowedvalues' interface_type_configuration_id='<?= $conf['interface_type_configuration_id'];?>' value='Manage Allowed Values'></input></td>
+
+<?php
+if ($conf['if_conf_default_map'] == 1 || $conf['if_conf_mandetory'] == 1) {
+?>
+<td><input type='checkbox' name='<?= $conf['if_conf_id'];?>[if_conf_default_map]' checked="checked" value='1'></input></td>
+<?php 
+} else {
+?>
+<td><input type='checkbox' name='<?= $conf['if_conf_id'];?>[if_conf_default_map]' value='1'></input></td>
+<?php 
+}
+?>
+
+<?php
+if ($conf['if_conf_mandetory'] == 1) {
+?>
+<td><input type='checkbox' name='<?= $conf['if_conf_id'];?>[if_conf_mandetory]' checked="checked" value='1'></input></td>
+<?php 
+} else {
+?>
+<td><input type='checkbox' name='<?= $conf['if_conf_id'];?>[if_conf_mandetory]' value='1'></input></td>
+<?php 
+}
+?>
+
+<?php
+if ($conf['if_type_conf_allow_edit'] == 1) {
+?>
+<td><input type='checkbox' name='<?= $conf['if_conf_id'];?>[if_type_conf_allow_edit]' checked="checked" value='1'></input></td>
+<?php 
+} else {
+?>
+<td><input type='checkbox' name='<?= $conf['if_conf_id'];?>[if_type_conf_allow_edit]' value='1'></input></td>
+<?php 
+}
+?>
+
+<td><input type='checkbox' name='<?= $conf['if_conf_id'];?>[delete]' value='1'></input></td>
+<td><input type='hidden' name='<?= $conf['if_conf_id'];?>[interface_type_configuration_id]' value='<?= $conf['interface_type_configuration_id'];?>'></input></td>
+<td><input type='hidden' name='<?= $conf['if_conf_id'];?>[if_conf_id]' value='<?= $conf['if_conf_id'];?>'></input></td>
+</tr>
+
+<?php
+		}
+	}
+	
+?>
+
+<td><input type='hidden' class='text' name='if_type_id' value='<?= $_GET['if_type_id']?>'></input></td>
+<br>
+<tr><td><input type='button' class='button' name='addiftypeconfig' id='addiftypeconfig' value='Add Configuration'></input></td> <td><input type='submit' value='Save' /></td></tr>
+
+<?php 
+	
+}
+?>
+
+
+
+
+<?php 
+if (isset($this->iproutes)) {
+	foreach($this->iproutes as $iproute) {
+	
+	echo "<tr>
+			<td>".$iproute['subnet_address']."</td>
+
+			</tr>
+			";
+	
+	}
+}
+
+?>
+
+
+
+
+</table>
+</form>
+</body>
+</html>

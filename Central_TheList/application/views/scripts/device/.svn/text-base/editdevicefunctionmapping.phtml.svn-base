@@ -1,0 +1,140 @@
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+
+<script type='text/javascript'>
+$(function(){
+	$('input#adddevicecommandmap').bind('click',function(){
+		windowW = 550;
+		windowH = 400;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		window.open('/device/devicecommandmapping/?device_function_map_id=<?php echo $_GET["device_function_map_id"]?>', 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=no, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+
+	$('input#editdevicecommandmap').bind('click',function(){
+		windowW = 550;
+		windowH = 400;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		device_command_map_id = $(this).attr('device_command_map_id');
+		window.open('/device/devicecommandmapping/?device_command_map_id='+device_command_map_id, 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=no, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+
+	$('input#addcommandparameter').bind('click',function(){
+		windowW = 550;
+		windowH = 200;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		device_command_id = $(this).attr('device_command_id');
+		window.open('/device/commandparameter/?device_function_map_id=<?php echo $_GET["device_function_map_id"]?>&device_command_id='+device_command_id, 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=no, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+
+	$('input#editcommandparameter').bind('click',function(){
+		windowW = 550;
+		windowH = 200;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		device_command_parameter_id = $(this).attr('device_command_parameter_id');
+		window.open('/device/commandparameter/?device_function_map_id=<?php echo $_GET["device_function_map_id"]?>&device_command_parameter_id='+device_command_parameter_id, 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=no, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+
+	$('input#addcommandregex').bind('click',function(){
+		windowW = 550;
+		windowH = 200;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		device_command_id = $(this).attr('device_command_id');
+		window.open('/device/commandregexmapping/?device_function_map_id=<?php echo $_GET["device_function_map_id"]?>&device_command_id='+device_command_id, 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=no, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+
+	$('input#editcommandregex').bind('click',function(){
+		windowW = 550;
+		windowH = 200;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		command_regex_map_id = $(this).attr('command_regex_map_id');
+		window.open('/device/commandregexmapping/?device_function_map_id=<?php echo $_GET["device_function_map_id"]?>&command_regex_map_id='+command_regex_map_id, 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=no, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+
+	$('input#addregexparameter').bind('click',function(){
+		windowW = 550;
+		windowH = 200;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		command_regex_id = $(this).attr('command_regex_id');
+		device_command_id = $(this).attr('device_command_id');
+		window.open('/device/commandregexparameter/?device_function_map_id=<?php echo $_GET["device_function_map_id"]?>&command_regex_id='+command_regex_id+'&device_command_id='+device_command_id, 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=no, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+
+	$('input#editregexparameter').bind('click',function(){
+		windowW = 550;
+		windowH = 200;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		command_regex_parameter_id = $(this).attr('command_regex_parameter_id');
+		device_command_id = $(this).attr('device_command_id');
+		window.open('/device/commandregexparameter/?device_function_map_id=<?php echo $_GET["device_function_map_id"]?>&command_regex_parameter_id='+command_regex_parameter_id+'&device_command_id='+device_command_id, 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=no, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+	
+});
+</script>
+
+
+
+
+<div style="position:absolute;width:1250px;height:800px">
+	
+	<div style="position:absolute;left:10px;top:10px">
+		<?php echo $this->placeholder('device_functions_menu');?>
+	</div>
+	
+	<div style="position:absolute;left:42px;top:50px">
+		Function Name: <input type="text" class="text" name='device_function_name' style="width:500px" value="<?php echo $this->device_function_name?>"></input>
+	</div>
+	
+	<div style="position:absolute;left:10px;top:100px">
+		Function Description: <input type="text" class="text" name='device_function_desc' style="width:500px" value="<?php echo $this->device_function_desc?>"></input>
+	</div>
+	
+	<div style="position:absolute;left:655px;top:50px">
+		Primary Key Table: <input type="text" class="text" name='device_function_desc' style="width:200px" value="<?php echo $this->device_command_parameter_table?>"></input>
+	</div>
+	
+	<div style="position:absolute;left:38px;top:150px">
+		Software Name: <input type="text" class="text" name='software_package_name' style="width:250px" value="<?php echo $this->software_package_name?>"></input>
+	</div>
+	
+	<div style="position:absolute;left:410px;top:150px">
+		Software Manufacturer: <input type="text" class="text" name='software_package_manufacturer' style="width:100px" value="<?php echo $this->software_package_manufacturer?>"></input>
+	</div>
+	
+	<div style="position:absolute;left:665px;top:150px">
+		Architecture: <input type="text" class="text" name='software_package_architecture' style="width:50px" value="<?php echo $this->software_package_architecture?>"></input>
+	</div>
+	
+	<div style="position:absolute;left:805px;top:150px">
+		Version: <input type="text" class="text" name='software_package_version' style="width:115px" value="<?php echo $this->software_package_version?>"></input>
+	</div>
+	
+	<div style="position:absolute;left:25px;top:200px">
+		Equipment Model: <input type="text" class="text" name='eq_model_name' style="width:250px" value="<?php echo $this->eq_model_name?>"></input>
+	</div>
+	
+	<div style="position:absolute;left:400px;top:200px">
+		Equipment Manufacturer: <input type="text" class="text" name='eq_manufacturer' style="width:418px" value="<?php echo $this->eq_manufacturer?>"></input>
+	</div>
+	
+
+	<div style="position:absolute;top:250px;">
+		<table class='display' style='width:1050px;left:250px'>
+		<?php echo $this->device_command_map_table ?>
+		</table>
+	</div>
+	
+	
+	
+	
+</div>

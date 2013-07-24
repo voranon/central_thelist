@@ -1,0 +1,67 @@
+
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+
+<script type='text/javascript'>
+$(function(){
+	$('input#addiproute').bind('click',function(){
+		windowW = 700;
+		windowH = 200;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		window.open('/equipmentconfiguration/addiproute?eq_id=<?php echo $this->eq_id;?>', 'popup5', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=no, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+
+	$('input#manageiproutegateways').bind('click',function(){
+		windowW = 300;
+		windowH = 200;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		ip_route_id = $(this).attr('ip_route_id');
+		window.open('/equipmentconfiguration/manageiproutegateways?eq_id=<?php echo $this->eq_id;?>&ip_route_id='+ip_route_id, 'popup5', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=yes, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+});
+</script>
+<body>
+<?= $this->error;?>
+<form method="post" action="" name="ipaddresses">
+<table>
+
+<tr class='header'>
+<td>Subnet</td>
+<td>Subnet CIDR</td>
+<td>Edit Gateways</td>
+<td>Remove</td>
+</tr>
+
+<?php 
+if (isset($this->iproutes)) {
+	foreach($this->iproutes as $iproute) {
+	
+	echo "<tr>
+			<td>".$iproute['subnet_address']."</td>
+			<td>".$iproute['subnet_cidr']."</td>
+			<td><input type='button' class='button' name='manageiproutegateways' ip_route_id='".$iproute['ip_route_id']."' id='manageiproutegateways' value='Manage Gateways'></input></td>
+			<td><input type='checkbox' name='".$iproute['ip_route_id']."[delete]' value='1'></input></td>
+			<td><input type='hidden' name='".$iproute['ip_route_id']."[ip_route_id]' value='".$iproute['ip_route_id']."'></input></td>
+			</tr>
+			";
+	
+	}
+}
+
+?>
+
+<td><input type='hidden' class='text' name='eq_id' value='<?= $_GET['eq_id']?>'></input></td>
+
+<br>
+<tr><td><input type='button' class='button' name='addiproute' id='addiproute' value='Add IP Route'></input></td> <td><input type='submit' value='Save' /></td></tr>
+
+
+</table>
+</form>
+</body>
+</html>

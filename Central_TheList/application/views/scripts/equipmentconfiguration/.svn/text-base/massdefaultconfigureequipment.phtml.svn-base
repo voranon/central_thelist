@@ -1,0 +1,108 @@
+<?php
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+
+<script type='text/javascript'>
+$(function(){
+
+	$('input#uploadconfigfile').bind('click',function(){
+		windowW = 500;
+		windowH = 500;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		window.open('/equipmentconfiguration/uploaddeviceconfigfile', 'popup2015', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=no, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+});
+</script>
+<body>
+<center>
+
+<?php 
+
+if (isset($this->equipment)) {
+?>
+
+<form autocomplete="off" method='post' action="">
+
+<table width='1200' border=2>
+
+<tr class='header'>
+<td>Manufacturer</td>
+<td>Model</td>
+<td>Fqdn / IP</td>
+<td>Software Name</td>
+<td>Current Version</td>
+<td>Update</td>
+<td>Force Downgrade</td>
+
+
+
+</tr>
+
+<?php 
+		
+		foreach ($this->equipment as $equipment) {
+
+?>
+<tr>
+<td><?= $equipment['manufacturer'] ?></td>
+<td><?= $equipment['model'] ?></td>
+<td><?= $equipment['fqdn'] ?></td>
+<td><?= $equipment['software_name'] ?></td>
+<td><?= $equipment['software_version'] ?></td>
+<td><input type='checkbox' name='<?= $equipment['eq_id'] ?>[update]' value='1'></input></td>
+<td><input type='checkbox' name='<?= $equipment['eq_id'] ?>[force]' value='1'></input></td>
+<input type='hidden' name='<?= $equipment['eq_id'] ?>[eq_id]' value='<?= $equipment['eq_id'] ?>'></input>
+</tr>
+
+<?php
+		}
+?>
+</table>
+<br><br>
+<table width='800' border=2>
+<tr><td>Deploy new Firmware:</td><td><SELECT name='software_package_id'><OPTION value=''> --- SELECT NEW SOFTWARE ---</OPTION><?= $this->new_software_versions ?></SELECT></td></tr>
+
+<tr><td>Deploy new Configuration:</td><td><SELECT name='default_config_file'><OPTION value=''> --- SELECT NEW CONFIG --- </OPTION><?= $this->new_config_file ?></SELECT></td>
+<td><input type='button' id='uploadconfigfile' name='uploadconfigfile' class='button' value='Upload New Config File'></input></center></td></tr>
+
+<tr><td colspan=3><center><input type='submit' name='update_selected' class='button' value='Update Devices'></input></center></td></tr>
+</table>
+</form>
+<?
+}
+?>
+
+Note: Force Downgrade will allow the firmware to be downgraded, otherwise the upgrade request will be ignored
+
+<?php 
+if (isset($this->update_result)) {
+?>
+<br><br>
+<table border=1 width='800'>
+<tr class='header'>
+<td>Update Result</td>
+</tr>
+
+<?php 
+foreach ($this->update_result as $update_result) {
+?>
+
+<tr><td><?= $update_result ?></td></tr>
+
+<?php 
+}
+?>
+</table>
+<?php 
+}
+?>
+</center>
+
+
+
+
+
+

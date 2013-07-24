@@ -1,0 +1,83 @@
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+
+<script type='text/javascript'>
+$(function(){
+	$('input#addeqtypeapp').bind('click',function(){
+		windowW = 700;
+		windowH = 400;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		window.open('/equipmentconfiguration/addequipmenttypeapplication?eq_type_id=<?= $_GET['eq_type_id']?>', 'popup5', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=no, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+
+	$('input#manageeqtypeappmetrics').bind('click',function(){
+		windowW = 900;
+		windowH = 400;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		eq_type_application_id = $(this).attr('eq_type_application_id');
+		window.open('/equipmentconfiguration/manageeqtypeapplicationmetrics?eq_type_application_id='+eq_type_application_id, 'popup5', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=yes, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+	
+});
+</script>
+<body>
+
+<?php 
+if (!isset($this->error)) {
+?>
+	
+<form method="post" action="" name="eqtypeapps">
+<table>
+
+
+
+<?php 
+	if (isset($this->current_apps)) {
+		
+?>
+<tr class='header'>
+<td>Application Name</td>
+<td>Manage Metrics</td>
+<td>Remove</td>
+</tr>		
+<?php 
+		
+foreach ($this->current_apps as $current_app) {
+?>
+
+<tr>
+<td><?= $current_app['equipment_application_name']?></td>
+<td><input type='button' class='button' id='manageeqtypeappmetrics' name='manageeqtypeappmetrics' eq_type_application_id='<?= $current_app['eq_type_application_id'];?>' value='Manage Metrics'></input></td>
+<td><input type='checkbox' name='<?= $current_app['eq_type_application_id'];?>[delete]' value='1'></input></td>
+<input type='hidden' name='<?= $current_app['eq_type_application_id'];?>[eq_type_application_id]' value='<?= $current_app['eq_type_application_id'];?>'></input>
+<input type='hidden' name='<?= $current_app['eq_type_application_id'];?>[equipment_application_id]' value='<?= $current_app['equipment_application_id'];?>'></input>
+</tr>
+
+<?php
+		}
+	} else {
+		
+	
+?>
+
+No applications have been mapped
+
+<?php 
+	}
+}
+?>
+
+</table>
+
+<input type='hidden' class='text' name='eq_type_id' value='<?= $_GET['eq_type_id']?>'></input>
+<input type='button' class='button' name='addeqtypeapp' id='addeqtypeapp' value='Add Application'></input>
+<br><br>
+<input type='submit' value='Save' />
+</form>
+</body>
+</html>

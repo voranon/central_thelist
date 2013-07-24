@@ -1,0 +1,59 @@
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+
+
+<form method="post" action="">
+
+<center>
+<input type='hidden' name='task_id' value='<?= $_GET['task_id']?>'/>
+<?php 
+if(isset($this->task_equipment_array['equipment_name'])){
+
+	echo "Please check off all and any item's you are missing \n";
+	
+	echo 	"<table border='0' style='width:575px'>
+		 		 			<tr class='header'>
+		 		 			<td>Equipment Items</td>
+		 		 			<td>Missing Item?</td>
+		 		 			</tr>";
+
+	$i=0;
+	foreach($this->task_equipment_array['equipment_name'] as $key => $equipment) {
+
+		echo "
+			<tr><td>".$equipment."</td>
+			<td><input type='checkbox' name='missing_item_".$i."' value='".$this->task_equipment_array['eq_type_group_ids'][$key]."'/></td>
+			</tr>
+			";
+			
+		$i++;
+	}
+
+	echo "</table></td></tr>";
+	echo "<input type='submit' value='Submit' />";
+}
+
+
+
+?>
+
+<?php 
+if(isset($this->error)){
+	
+	echo "\n\n\n\n".$this->error;
+	
+}
+?>
+
+
+
+
+
+</center>
+
+
+</form> 
+

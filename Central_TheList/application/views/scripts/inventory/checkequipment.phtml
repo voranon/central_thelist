@@ -1,0 +1,64 @@
+<html>
+
+<head>
+<script type="text/javascript">
+function setTable(what){
+	if(document.getElementById(what).style.display=="none"){
+	document.getElementById(what).style.display="block";
+	}
+	else if(document.getElementById(what).style.display=="block"){
+	document.getElementById(what).style.display="none";
+	}
+}
+</script>
+</head>
+
+<body>
+<form action="/inventory/submitequipment/" method="post">
+
+<table id='main' align='center' width='1100' cellpadding='2' border='2px' bordercolor='#CCCCCC' class='bodytext' style='padding-top:10px'>
+<tr>
+<td>
+<a href="#" onclick="setTable('host_info');return false"></a>
+<center>
+<?= $this->device_info['hosts']; ?>
+</center>
+</td>
+</tr>
+
+<tr>
+<td>
+<a href="#" onclick="setTable('ip_addresses');return false">Show/Hide Equipment Connected IP Addresses</a>
+<center>
+<?= $this->device_info['ip_addresses']; ?>
+</center>
+</td>
+</tr>
+
+<tr>
+<td>
+<a href="#" onclick="setTable('interfaces');return false">Show/Hide Equipment Connected Interfaces</a>
+<center>
+<?= $this->device_info['interfaces']; ?>
+</center>
+</td>
+</tr>
+
+<tr>
+<td>
+<a href="#" onclick="setTable('queues');return false">Show/Hide Equipment Connected Queues</a>
+<center>
+<?= $this->device_info['queues']; ?>
+</center>
+</td>
+</tr>
+
+</table>
+<br>
+
+<center>
+<input type="submit" value="Add This Device To Monitoring" />
+</center>
+
+</body>
+</html>

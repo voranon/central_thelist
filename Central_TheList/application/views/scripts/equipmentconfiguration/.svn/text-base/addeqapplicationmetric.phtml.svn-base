@@ -1,0 +1,85 @@
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+
+<script type="text/javascript">
+$(function(){
+	
+	$('select#equipment_type_application_metric_id').bind('change',function(){
+
+		$.ajax({
+			url:"/equipmentconfiguration/getallowedeqappmetricvaluesajax/",
+			data:'equipment_type_application_metric_id='+$(this).val()+'&eq_id=<?= $_GET['eq_id']?>',
+			async: false,
+	    	success: function(data){
+
+	    		if(data == ''){
+		    		
+	    			$('input#value3').css('display','none');
+	    			$('select#value1').css('display','none');
+	    			$('input#value2').css('display','inline');
+	    		}else{
+	    			$('input#value3').css('display','none');
+	    			$('input#value2').css('display','none');
+	    			$('select#value1').css('display','inline');
+	    			$('select#value1').html(data);
+	    		}
+	    	} 
+		});  
+	});
+});
+</script>
+
+<body>
+<?= $this->error;?>
+<form method="post" action="" name="credentials">
+<table>
+
+<tr class='header'>
+<td>Configuration name</td>
+<td>Value</td>
+</tr>
+
+<?php 
+
+if (!isset($this->error)) {
+	if (isset($this->available_metrics)) {	
+?>
+
+<tr><td><SELECT id='equipment_type_application_metric_id' name='equipment_type_application_metric_id'><OPTION value='0'>---Select One---</OPTION>
+
+<?php 
+		
+		foreach ($this->available_metrics as $metric) {
+?>
+
+<OPTION value='<?= $metric['equipment_type_application_metric_id']?>'><?= $metric['equipment_application_metric_name']?></OPTION>
+
+<?php
+		}
+?>
+</SELECT></td>
+
+<?
+	}
+}
+?>
+
+<td>
+<input type='test' readonly="readonly" id='value3' name='value3' value='Select Something' style='display:inline'></input>
+<select name='value1' id='value1' style='display:none'></select>
+<input type='text' id='value2' name='value2' value='' style='display:none'></input>
+</td></tr>
+
+<tr><td><input type='hidden' class='text' name='equipment_application_map_id' value='<?= $_GET['equipment_application_map_id']?>'></input></td></tr>
+
+<br>
+<tr> <td><input type='submit' value='Save' /></td></tr>
+
+
+</table>
+</form>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<?php $this->headScript()->appendFile('/javascripts/inventory/addequipment.js');?>
+<html>
+<body onLoad="document.forms.addinveq.eq_serial.focus()">
+
+<center>
+<?php 
+if (isset($this->error)) {
+	
+	echo $this->error;
+}
+
+
+?>
+
+<br><br>
+<?= $this->addequipmenttoinventoryform ?>
+</center>
+
+
+
+
+</body>
+</html>

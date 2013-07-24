@@ -1,0 +1,49 @@
+10
+
+dir
+2182
+http://svn.belairinternet.com/svn/central_thelist/trunk/application/models/device_commands
+http://svn.belairinternet.com/svn/central_thelist
+
+
+
+2012-10-15T00:24:49.720139Z
+2168
+martin
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+16c4ef8c-f5c2-442c-af5e-f416435c4270
+
+bairos
+dir
+
+cisco
+dir
+
+customerrouter
+dir
+
+directvstb
+dir
+
+linuxserver
+dir
+
+multipledevice
+dir
+
+routeros
+dir
+

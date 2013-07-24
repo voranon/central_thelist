@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/central_thelist/!svn/ver/2127/trunk/application/models/device_commands/directvstb
+END
+getequipment.php
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/central_thelist/!svn/ver/2118/trunk/application/models/device_commands/directvstb/getequipment.php
+END
+getinterfacemacaddress.php
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/central_thelist/!svn/ver/1750/trunk/application/models/device_commands/directvstb/getinterfacemacaddress.php
+END
+getsoftware.php
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/central_thelist/!svn/ver/2127/trunk/application/models/device_commands/directvstb/getsoftware.php
+END
+getequipmenttype.php
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/central_thelist/!svn/ver/2118/trunk/application/models/device_commands/directvstb/getequipmenttype.php
+END
+getserialnumber.php
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/central_thelist/!svn/ver/1583/trunk/application/models/device_commands/directvstb/getserialnumber.php
+END

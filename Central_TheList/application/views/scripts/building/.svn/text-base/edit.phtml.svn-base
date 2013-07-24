@@ -1,0 +1,151 @@
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+
+<script type='text/javascript'>
+$(function(){
+
+
+	/*
+	$('input#edit_contact').live('click',function()
+	{
+		windowW = 760;
+		windowH = 520;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		contact_id = $(this).attr('contact_id');
+		
+		window.open('/building/editcontact/?building_id=<?php echo $_GET["building_id"]?>&contact_id='+contact_id, 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=yes, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+	*/
+	$('input#add_unit').live('click',function()
+	{
+		windowW = 1200;
+		windowH = 950;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+	
+		window.open('/building/addunit/?building_id=<?php echo $_GET["building_id"]?>', 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=yes, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+
+
+
+	$('input#add_resources').live('click',function(){
+		windowW = 1200;
+		windowH = 950;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+	
+		window.open('/building/addresources/?building_id=<?php echo $_GET["building_id"]?>', 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=yes, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+
+
+/////////////////
+	
+	$('input#edit_unit').live('click',function(){
+		windowW = 320;
+		windowH = 400;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		var unit_id = $(this).attr('unit_id');
+		window.open('/building/editunit/?unit_id='+unit_id, 'popup2', 'width='+windowW+', height='+windowH+', menubar=0, scrollbars=yes, toolbar=0, location=0, status=0, resizable=0, top='+y+', left='+x);
+	});
+
+	
+});
+</script>
+
+
+
+<div style="position:absolute;width:1250px;height:800px">
+	<div style="position:absolute;left:10px;top:10px">
+		<?php echo $this->placeholder('building_menu');?>
+	</div>
+	
+	<form method='post' action=''>
+	<div style="position:absolute;left:10px;top:50px">
+		Building Name:<input type="text" class="text" name='building_name' style="width:150px" value="<?php echo $this->building_name?>"></input>
+	</div>
+	<div style="position:absolute;left:320px;top:50px">
+		Project Name:<input type="text" class="text" name='project_name' readonly style="width:150px" value="<?php echo $this->building_project_name?>"></input>
+	</div>
+	<div style="position:absolute;left:620px;top:50px">
+		<input type='submit' class='button' value='Save'></input>
+	</div>
+	<div style="position:absolute;left:10px;top:100px">
+		Address: <textarea cols='35' rows='3' name='address' id='address'  style="resize:none"><?php echo $this->building_note1?></textarea>
+	</div>
+	<div style="position:absolute;left:390px;top:100px">
+		Must Know: <textarea cols='35' rows='3' name='mustknow' id='mustknow'  style="resize:none"><?php echo $this->building_note2?></textarea>
+	</div>
+	<div style="position:absolute;left:780px;top:100px">
+		Number of units: <input type='number' class='text' name='numofunit' id='numofunit' value="<?php echo $this->building_note3?>"></input>
+		<!-- Number of units: <textarea cols='35' rows='3' name='numofunit' id='numofunit'  style="resize:none"><?php echo $this->building_note3?></textarea>-->
+	</div>
+	</form>
+	
+	<div style="position:absolute;left:0px;top:200px">
+		
+		<table class='display' style='width:500px'>	
+			<tr>
+				<td colspan='4' align='left'>Contacts:</td>
+				<td align='right' style='width:45px'><input class='button' type='button' id='add_contact' contact_type='building' contact_type_id='<?php echo $this->building_id?>' value='Add'></input></td>
+			</tr>
+			<tr class='header'>
+				<td class='display'>Title:</td>
+				<td class='display'>Name:</td>
+				<td class='display'>Cellphone:</td>
+				<td class='display'>Email:</td>
+				<td class='display'>Edit</td>
+			</tr>
+			<?php
+				echo $this->contact_list; 
+			?>
+			
+		</table>
+	</div>
+	<div style="position:absolute;left:510px;top:200px">
+		<table class='display' style='width:180px'>
+			<tr>
+				<td align='left'>Tasks:</td>
+				<td align='right' style='width:45px'><input class='button' type='button' id='add_task' task_type='building' task_type_id='<?php echo $this->building_id?>' value='Add'></input>
+				</td>
+			</tr>
+			<tr class='header'>
+				<td class='display'>Taks Name:</td>
+				<td class='display'>Edit</td>
+			</tr>
+			<?php
+				echo $this->task_list; 
+			?>
+		</table>
+	</div>
+	<div style="position:absolute;left:710px;top:200px">
+		<table class='display' style='width:180px'>
+			<tr>
+				<td colspan='100%'>
+					<table border='0' style='width:190px'>
+						<tr>
+							
+							<td align='left' style='width:190px'>
+								Units:
+								<input class='button' type='button' id='add_resources' value='Resource'></input>
+								<input class='button' type='button' id='add_unit' value='Add'></input>
+							</td>
+						</tr>
+					</table>
+				</td>
+				
+			</tr>
+			<tr class='header'>
+				<td class='display'>Unit Number:</td>
+				<td class='display'>Edit</td>
+			</tr>
+			<?php
+				echo $this->unit_list; 
+			?>
+		</table>
+	</div>
+</div>

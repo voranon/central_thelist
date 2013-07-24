@@ -1,0 +1,45 @@
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+
+<form method="post" action="" name="addequipmentapplication">
+
+
+<?php 
+if (!isset($this->error)) {
+	if (isset($this->available_applications)) {
+?>
+Add A new Application to this equipment type:<br><br>
+<SELECT id='equipment_application_id' name='equipment_application_id'><OPTION value='0'>---Select One---</OPTION>
+
+<?php 
+		
+		foreach ($this->available_applications as $application) {
+?>
+
+<OPTION value='<?= $application['equipment_application_id']?>'><?= $application['equipment_application_name']?></OPTION>
+
+<?php
+		}
+?>
+</SELECT>
+<input type='submit' value='Add Application' />
+<input type='hidden' name='eq_id' value='<?= $_GET['eq_id'];?>'></input>
+<?
+} else {
+?>
+
+There are no applications avaliable in the database
+<?php 
+		
+	}
+} else {
+	
+?>	
+<?= $this->error?>
+<?php 	
+}
+?>
+</form>

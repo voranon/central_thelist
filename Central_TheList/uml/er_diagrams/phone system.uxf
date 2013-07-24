@@ -1,0 +1,1108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="11.3">
+  <zoom_level>8</zoom_level>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>656</x>
+      <y>944</y>
+      <w>152</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>phone_servers
+--
+phone_server_id
+server_fqdn
+manager_user
+manager_pass
+db_name
+db_table
+db_user
+db_pass
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>888</x>
+      <y>696</y>
+      <w>144</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>tdm_cards
+--
+tdm_card_id
+manufacturer
+spans
+phone_server_id
+bg=yellow
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>776</x>
+      <y>696</y>
+      <w>128</w>
+      <h>264</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;EER</panel_attributes>
+    <additional_attributes>112;24;24;248</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>1240</x>
+      <y>800</y>
+      <w>144</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>channel_bank_spans
+--
+channel_bank_span_id
+channel_bank_id
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>704</x>
+      <y>656</y>
+      <w>152</w>
+      <h>272</h>
+    </coordinates>
+    <panel_attributes>cdr
+--
+localcdrid
+uniqueid
+userfield
+accountcode
+src
+dst
+dcontext
+clid
+channel
+dstchannel
+lastapp
+lastdata
+calldate
+duration
+billsec
+disposition
+amaflags
+copied
+bg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>1320</x>
+      <y>944</y>
+      <w>152</w>
+      <h>152</h>
+    </coordinates>
+    <panel_attributes>zapata_dahdi
+--
+id
+cat_metric
+var_metric
+commented
+filename
+category
+var_name
+var_val
+(FK)channel_id
+bg=blue
+
+//realtime table </panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>984</x>
+      <y>1048</y>
+      <w>152</w>
+      <h>728</h>
+    </coordinates>
+    <panel_attributes>sip_peers
+--
+id
+name
+secret
+md5secret
+auth
+host
+type
+context
+callerid
+mailbox
+accountcode
+subscribecontext
+deny
+permit
+disallow
+allow
+call-limit
+transport
+dtmfmode
+rfc2833compensate
+directmedia
+canreinvite
+nat
+qualify
+qualifyfreq
+parkinglot
+setvar
+amaflags
+callcounter
+callgroup
+pickupgroup
+subscribemwi
+allowtransfer
+rtpkeepalive
+faxdetect
+defaultip
+lastms
+ipaddr
+port
+regseconds
+defaultuser
+useragent
+fullcontact
+regserver
+
+(FK)ATA_ID
+bg=blue
+
+//realtime table </panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>400</x>
+      <y>936</y>
+      <w>152</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>local_dialplans
+--
+dialplan_id
+context
+exten
+priority
+app
+appdata
+bg=blue
+
+//realtime table </panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>1192</x>
+      <y>288</y>
+      <w>152</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>##efax_mapping
+--
+efax_mapping_id
+did_id
+efax_email_id
+primary_did
+active_date
+deactive_date
+temp_disconnect
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>1448</x>
+      <y>288</y>
+      <w>152</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>efax_email_address
+--
+efax_email_id
+emailaddress
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>1264</x>
+      <y>1248</y>
+      <w>192</w>
+      <h>544</h>
+    </coordinates>
+    <panel_attributes>sip_grandstream_configs
+--
+ATA_ID int (10)
+ATA_macaddress varchar (36)
+ATA_SN varchar (90)
+ATA_model varchar (90)
+ATA_activation_date datetime 
+ATA_deactivation_date datetime 
+ATA_bad int (1)
+activ_flg int (1)
+unitid int (11)
+P9999 int (1)
+P9998 varchar (300)
+P9997 varchar (300)
+P2 varchar (300)
+P84 int (10)
+P474 int (1)
+P212 int (1)
+P192 varchar (300)
+P237 varchar (300)
+P145 int (1)
+P238 int (1)
+P88 int (1)
+P253 int (1)
+P277 int (1)
+P30 varchar (300)
+P207 varchar (300)
+P208 int (1)
+P271 int (1)
+P47 varchar (300)
+P967 varchar (300)
+P4567 int (1)
+P48 varchar (300)
+P130 int (1)
+P52 int (1)
+P35 varchar (300)
+P36 varchar (300)
+P34 varchar (300)
+P3 varchar (300)
+P103 int (1)
+P63 int (1)
+P31 int (1)
+P81 int (1)
+P109 int (1)
+P32 int (10)
+P138 int (10)
+P40 int (5)
+P39 int (5)
+P78 int (1)
+P258 int (1)
+P243 int (1)
+P209 int (10)
+P250 int (10)
+P79 int (10)
+P850 int (3)
+P851 int (3)
+P852 int (3)
+P4825 int (1)
+P74 int (1)
+P191 int (1)
+P185 int (3)
+P139 int (3)
+P4200 varchar (300)
+P99 int (1)
+P65 int (1)
+P129 int (1)
+P260 int (10)
+P4363 int (1)
+P57 int (3)
+P58 int (3)
+P59 int (3)
+P60 int (3)
+P61 int (3)
+P62 int (3)
+P46 int (3)
+P98 int (3)
+P50 int (1)
+P291 int (1)
+P228 int (1)
+P894 int (1)
+P853 int (2)
+P205 int (1)
+P892 int (1)
+P856 int (5)
+P251 int (5)
+P252 int (5)
+P833 int (5)
+P824 int (1)
+P401 int (1)
+P747 varchar (300)
+P987 varchar (300)
+P4568 int (1)
+P748 varchar (300)
+P830 int (1)
+P730 int (1)
+P735 varchar (300)
+P736 varchar (300)
+P734 varchar (300)
+P703 varchar (300)
+P702 int (1)
+P763 int (1)
+P731 int (1)
+P752 int (1)
+P813 int (1)
+P732 int (10)
+P471 int (10)
+P740 int (5)
+P739 int (5)
+P778 int (1)
+P449 int (1)
+P4043 int (1)
+P440 int (10)
+P441 int (10)
+P779 int (10)
+P860 int (3)
+P861 int (3)
+P862 int (3)
+P4826 int (1)
+P774 int (1)
+P751 int (1)
+P816 int (3)
+P470 int (3)
+P4201 varchar (300)
+P709 int (1)
+P765 int (1)
+P446 int (1)
+P434 int (10)
+P4364 int (1)
+P757 int (3)
+P758 int (3)
+P759 int (3)
+P760 int (3)
+P761 int (3)
+P762 int (3)
+P814 int (3)
+P815 int (3)
+P750 int (1)
+P460 int (1)
+P710 int (1)
+P895 int (1)
+P863 int (2)
+P865 int (1)
+P893 int (1)
+P857 int (5)
+P811 int (5)
+P812 int (5)
+P834 int (5)
+P825 int (1)
+P196 varchar (300)
+P901 int (5)
+P276 int (1)
+P8 int (1)
+P64 varchar (30)
+P342 int (5)
+P231 int (1)
+P189 int (1)
+P190 int (1)
+P5001 int (1)
+P111 varchar (300)
+P5002 int (3)
+P5003 int (3)
+P110 varchar (300)
+P112 int (5)
+P247 int (1)
+P249 int (1)
+P248 int (1)
+P283 int (1)
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>624</x>
+      <y>1168</y>
+      <w>152</w>
+      <h>128</h>
+    </coordinates>
+    <panel_attributes>sip_phone_aastra
+--
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>880</x>
+      <y>280</y>
+      <w>152</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>DIDs
+--
+did
+efax
+reserved
+available_date
+carrier
+e911_added
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1320</x>
+      <y>272</y>
+      <w>144</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;EER</panel_attributes>
+    <additional_attributes>24;24;128;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1008</x>
+      <y>272</y>
+      <w>200</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;</panel_attributes>
+    <additional_attributes>24;24;184;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>752</x>
+      <y>1040</y>
+      <w>248</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;EER</panel_attributes>
+    <additional_attributes>232;24;24;128</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>896</x>
+      <y>592</y>
+      <w>152</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>##phone_bill
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>856</x>
+      <y>480</y>
+      <w>152</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>callrates
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>832</x>
+      <y>592</y>
+      <w>80</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;EER</panel_attributes>
+    <additional_attributes>64;24;24;80</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>880</x>
+      <y>488</y>
+      <w>40</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;EER</panel_attributes>
+    <additional_attributes>24;104;24;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>1704</x>
+      <y>288</y>
+      <w>152</w>
+      <h>352</h>
+    </coordinates>
+    <panel_attributes>fax_status
+--
+fid
+faxtime
+src
+dst
+application
+email
+faxstatus
+statusstr
+error
+ecm
+filename
+filenames
+pages
+resolution
+headerinfo
+localstationid
+remotestationid
+maxrate
+minrate
+rate
+modem
+scriptstatus
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1576</x>
+      <y>272</y>
+      <w>144</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;EER</panel_attributes>
+    <additional_attributes>24;24;128;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>600</x>
+      <y>264</y>
+      <w>88</w>
+      <h>264</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;EER&gt;</panel_attributes>
+    <additional_attributes>72;248;24;200;24;64;72;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>1496</x>
+      <y>448</y>
+      <w>192</w>
+      <h>592</h>
+    </coordinates>
+    <panel_attributes>phone_channels
+--
+channel_id
+(FK)tdm_span_id
+channel_type (fxs,pri,sip)
+channel_name (e.g Zap/1, Sip/ekk)
+phone_server_id
+temp_disconnect
+bad
+channelactivation
+channeldeactivation
+channellastupdate
+vmpasswd
+del_flg
+activ_flg
+context
+usecallerid
+hidecallerid
+usecallingpres
+immediate
+echocancelwhenbridged
+echocancel
+echotraining
+busydetect
+busycount
+callprogress
+callwaiting
+callwaitingcallerid
+cancallforward
+callreturn
+transfer
+threewaycalling
+faxdetect
+relaxdtmf
+rxgain
+txgain
+channellanguage
+progzone
+amaflags
+accountcode
+callerid
+mailbox
+callgroup
+pickupgroup
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1336</x>
+      <y>440</y>
+      <w>176</w>
+      <h>520</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;EER</panel_attributes>
+    <additional_attributes>24;504;160;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>656</x>
+      <y>648</y>
+      <w>64</w>
+      <h>312</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;EER&gt;</panel_attributes>
+    <additional_attributes>48;24;24;296</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1000</x>
+      <y>280</y>
+      <w>40</w>
+      <h>328</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;</panel_attributes>
+    <additional_attributes>24;24;24;312</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1024</x>
+      <y>424</y>
+      <w>488</w>
+      <h>200</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;</panel_attributes>
+    <additional_attributes>472;24;24;184</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1256</x>
+      <y>432</y>
+      <w>256</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;EER</panel_attributes>
+    <additional_attributes>240;24;24;128</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1112</x>
+      <y>1048</y>
+      <w>168</w>
+      <h>232</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;EER</panel_attributes>
+    <additional_attributes>24;24;152;216</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>1552</x>
+      <y>1248</y>
+      <w>152</w>
+      <h>128</h>
+    </coordinates>
+    <panel_attributes>sip_grandstream_configs_desc
+--
+config_code
+config_default
+config_desc
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1432</x>
+      <y>1232</y>
+      <w>136</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;</panel_attributes>
+    <additional_attributes>120;24;24;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>0</x>
+      <y>456</y>
+      <w>328</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>WORKS EITHER IN PRODUCTION OR LAB
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>0</x>
+      <y>496</y>
+      <w>328</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>NEW DESIGN OR NOT EXISTING
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>0</x>
+      <y>536</y>
+      <w>328</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>MAY BE REMOVED
+AS UNNECCESSARY
+bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>0</x>
+      <y>584</y>
+      <w>328</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>USED BY AN ASTERISK SERVER
+ALL ATTRIBUTES MUST REMAIN
+bg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>568</x>
+      <y>32</y>
+      <w>128</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>static_call_forward_logs
+--
+logid
+calldate
+did
+forward_number
+password
+orig_callerid
+saydigits
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>792</x>
+      <y>32</y>
+      <w>128</w>
+      <h>176</h>
+    </coordinates>
+    <panel_attributes>static_call_forward
+--
+
+scf_password
+scf_override_callerid
+scf_saydigits
+scf_forward_number
+scf_comments
+scf_startdate
+scf_stopdate
+scf_enabled
+bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>896</x>
+      <y>24</y>
+      <w>80</w>
+      <h>272</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;EER&gt;</panel_attributes>
+    <additional_attributes>64;256;24;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>672</x>
+      <y>16</y>
+      <w>136</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;</panel_attributes>
+    <additional_attributes>120;24;24;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>1264</x>
+      <y>40</y>
+      <w>128</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>blacklists_logs
+--
+logid
+calldate
+did
+telephone_number_blocked
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>1024</x>
+      <y>40</y>
+      <w>128</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>blacklists
+--
+blacklist_id
+(FK)did
+telephone_number_blocked
+comments
+startdate
+stopdate
+enabled
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>984</x>
+      <y>24</y>
+      <w>56</w>
+      <h>272</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;EER</panel_attributes>
+    <additional_attributes>40;24;24;256</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>752</x>
+      <y>264</y>
+      <w>144</w>
+      <h>256</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;EER</panel_attributes>
+    <additional_attributes>24;240;128;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>640</x>
+      <y>496</y>
+      <w>48</w>
+      <h>464</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;EER</panel_attributes>
+    <additional_attributes>24;448;32;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1128</x>
+      <y>24</y>
+      <w>152</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;EER</panel_attributes>
+    <additional_attributes>136;24;24;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>0</x>
+      <y>632</y>
+      <w>328</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>bg=orange
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>1256</x>
+      <y>688</y>
+      <w>144</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>##tdmspan_cb_mapping
+--
+tdm_span_id
+channel_span_id
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>1040</x>
+      <y>800</y>
+      <w>144</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>channel_banks
+--
+channel_bank_id
+manufacturer
+model
+channels
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>1256</x>
+      <y>560</y>
+      <w>144</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>tdm_spans
+--
+tdm_span_id
+tdm_card_id
+bg=yellow
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>920</x>
+      <y>552</y>
+      <w>352</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;</panel_attributes>
+    <additional_attributes>24;144;336;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1344</x>
+      <y>688</y>
+      <w>40</w>
+      <h>128</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;</panel_attributes>
+    <additional_attributes>24;112;24;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1352</x>
+      <y>560</y>
+      <w>40</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;EER</panel_attributes>
+    <additional_attributes>24;128;24;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1160</x>
+      <y>792</y>
+      <w>96</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;EER</panel_attributes>
+    <additional_attributes>80;24;24;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>784</x>
+      <y>944</y>
+      <w>216</w>
+      <h>128</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;EER&gt;</panel_attributes>
+    <additional_attributes>24;24;200;112</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>528</x>
+      <y>936</y>
+      <w>144</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;EER&gt;</panel_attributes>
+    <additional_attributes>128;24;24;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>784</x>
+      <y>928</y>
+      <w>552</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;EER&gt;</panel_attributes>
+    <additional_attributes>24;24;536;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>672</x>
+      <y>504</y>
+      <w>128</w>
+      <h>128</h>
+    </coordinates>
+    <panel_attributes>##global_dialplans
+--
+dialplan_id
+context
+exten (did)
+priority
+app
+appdata
+phone_server_id
+bg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>672</x>
+      <y>280</y>
+      <w>128</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>voicemail
+--
+vm_id
+context
+mailbox
+password
+fullname
+emailaddress
+attached
+saycid
+bg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

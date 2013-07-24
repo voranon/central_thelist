@@ -1,0 +1,48 @@
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+
+<script>
+
+$(function(){
+	$('input#addpurchaseorderitem').bind('keypress',function(event){
+		
+		if(event.which ==13){
+			var bar_code = $(this).val();
+			var po_id = $("#po_id").val();
+			var url;
+			windowW = 760;
+			windowH = 520;
+			x    = (screen.width/2)-(windowW/2);
+			y    = (screen.height/2)-(windowH/2);
+			window.open('/inventory/receiveequipmentitem/?po_id=' + po_id + '&receive_barcode=' + bar_code, 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=yes, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);	
+		}
+		
+
+		//
+	});
+});
+
+</script>
+
+<body OnLoad="document.scan_items.po_item_barcode.focus();">
+
+<div style="position:absolute;width:1250px;height:800px">
+		
+		<form method='post' action='' name='scan_items'>
+		<div style="position:absolute;left:10px;top:50px">
+			Item Scan: 
+			<input autocomplete='off' type="password" class='text' id='addpurchaseorderitem' name='po_item_barcode' style="width:200px" value=""></input>
+		</div>
+		<input type="hidden" id="po_id" value="<?php echo $_GET['po_id']; ?>"></input>
+		</form>
+		<div style="position:absolute;left:10px;top:100px">
+		<?php echo $this->po_item_list;?>
+		</div>
+</div>
+
+
+
+

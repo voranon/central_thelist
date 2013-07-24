@@ -1,0 +1,75 @@
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<style type="text/css">
+
+#div1 {width:350px;height:70px;padding:10px;border:1px solid #aaaaaa;}
+
+</style>
+<script type="text/javascript">
+
+$(function(){
+
+	$('#drag1').bind('dragstart',function(ev){
+		ev.dataTransfer.setData("Text",ev.target.id);
+		var dt = ev.originalEvent.dataTransfer;
+		dt.setData("Text", ev.target.id);
+	});
+
+	$('#div1').bind('dragover',function(ev){
+		ev.preventDefault();
+	});
+
+	$('#div1').bind('drop',function(ev){
+		
+		ev.preventDefault();
+		var dt = ev.originalEvent.dataTransfer;
+		data = dt.getData("Text");
+		ev.target.appendChild(document.getElementById(data));
+		
+	});
+	
+});
+
+function drag(ev)
+{
+ev.dataTransfer.setData("Text",ev.target.id);
+}
+
+
+
+</script>
+</head>
+<body>
+
+<p>Drag the W3Schools image into the rectangle:</p>
+
+<div id="div1"></div>
+<br />
+<img id="drag1" src="/images/red_cross_no.jpg"  width="336" height="69"/>
+
+
+<table border='1' width='200px'  >
+	<tr>
+		<td id='drag1' ondragstart="drag(event)" draggable="true">d</td>
+	</tr>
+		
+	<tr>
+		<td id='drag1' draggable="true">s</td>
+	</tr>
+</table>
+
+</body>
+</html>
+
+
+
+
+
+

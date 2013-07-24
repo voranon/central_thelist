@@ -1,0 +1,51 @@
+<?php $this->headScript()->appendFile('/javascripts/inventory/addequipment.js');?>
+<html>
+		<body onLoad="document.forms.addinveq.eq_serial.focus()">
+		
+		<br><br><br><br><br>
+		
+		<table align='center' width='1175px' cellpadding="10" border="2px" bordercolor="#CCCCCC" rules="none" class="bodytext" style="padding-top:10px">
+		
+		<form name='addinveq' action="/equipment/testaddinterfacetosoftwareinterfaceondevice" method="post">
+		
+		<tr>
+		<td>
+		Equipment ID:
+		</td>
+		<td>
+		<input size='35' type='text' name='eq_id' value='1'>
+		</td>
+		</tr>
+		
+		<tr>
+		<td>
+		Interface Name:
+		</td>
+		<td>
+		<?php echo $this->list_of_hard_interfaces;?>
+		</td>
+		</tr>
+		
+		<tr>
+		<td>
+		Soft Interface:
+		</td>
+		<td>
+		<?php echo $this->list_of_soft_interfaces;?>
+		</td>
+		</tr>
+		
+				
+		<tr>
+		<td>
+		</td>
+		<td>
+		<input type="submit" value="Add to Soft Interface" />
+		</td>
+		</tr>
+		</form>
+		
+		
+		</table>
+		</body>
+		</html>

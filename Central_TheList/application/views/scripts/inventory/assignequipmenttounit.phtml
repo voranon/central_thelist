@@ -1,0 +1,85 @@
+<?php
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+
+<html>
+<script type="text/javascript">
+var unit_group_id = getUrlVars()["unit_group_id"];
+
+$(function(){
+
+	$('select#building_id').bind('change',function(){
+		
+		if($(this).val() != 0){
+			$('select#unit_id').css('display','inline');
+			$('label#unit_id').css('display','inline');
+		}else{
+			$('select#unit_id').css('display','none');
+			$('label#unit_id').css('display','none');
+			$('div#display').html('');
+		}
+		
+		$.ajax({
+			//unit_group_id: $(_GET).val('unit_group_id'),
+			url:"/enduser/unitdropdownajax/",
+			data:'building_id='+$(this).val()+'&unit_group_id='+unit_group_id,
+			async: false,
+	    	success: function(data){
+				
+	    		$('select#unit_id').html(data);
+	    	} 
+		});  
+	});
+
+	$('select#eq_type_id').bind('change',function(){
+		
+		if($(this).val() != 0){
+			$('select#eq_id').css('display','inline');
+			$('label#eq_id').css('display','inline');
+		}else{
+			$('select#eq_id').css('display','none');
+			$('label#eq_id').css('display','none');
+			$('div#display').html('');
+		}
+		
+		$.ajax({
+			url:"/inventory/equipmentdropdownajax/",
+			data:'eq_type_id='+$(this).val(),
+			async: false,
+	    	success: function(data){
+				
+	    		$('select#eq_id').html(data);
+	    	}
+		});  
+	});
+
+});
+
+</script>
+
+<center>
+<?php 
+if (isset($this->error)) {
+	
+	echo $this->error;
+}
+
+
+?>
+<br>
+<a href='/inventory/assignequipmenttounit?unit_group_id=1'>Assign To Residential</a>   
+<a href='/inventory/assignequipmenttounit?unit_group_id=2'>Assign To Business</a>   
+<a href='/inventory/assignequipmenttounit?unit_group_id=3'>Assign To Infrastructure</a>
+
+
+<br><br>
+<?= $this->assignequipmenttounitform ?>
+</center>
+
+
+
+
+</body>
+</html>

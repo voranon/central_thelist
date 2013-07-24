@@ -1,0 +1,97 @@
+
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+
+
+<script type='text/javascript'>
+$(function(){
+	$('input#addiproute').bind('click',function(){
+		windowW = 700;
+		windowH = 200;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		window.open('/equipmentconfiguration/addiproute?eq_id=<?php echo $this->eq_id;?>', 'popup5', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=no, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+
+	$('input#manage_ipsubnets').bind('click',function(){
+		windowW = 700;
+		windowH = 900;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		ip_subnet_master_id = $(this).attr('ip_subnet_master_id');
+		window.open('/equipmentconfiguration/manageipsubnets?ip_subnet_master_id='+ip_subnet_master_id, 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=yes, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+
+	$('input#ipsubnet_divide').bind('click',function(){
+		windowW = 700;
+		windowH = 300;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		ip_subnet_id = $(this).attr('ip_subnet_id');
+		window.open('/equipmentconfiguration/ipsubnetdivide?ip_subnet_id='+ip_subnet_id, 'popup19', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=yes, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+
+	$('input#ipsubnet_route').bind('click',function(){
+		windowW = 700;
+		windowH = 300;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		ip_subnet_id = $(this).attr('ip_subnet_id');
+		window.open('/equipmentconfiguration/ipsubnetroute?ip_subnet_id='+ip_subnet_id, 'popup19', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=yes, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+});
+</script>
+<body>
+<?= $this->error;?>
+<form method="post" action="" name="ipaddresses">
+<table>
+
+<tr class='header'>
+<td>Subnet Address</td>
+<td>Subnet CIDR</td>
+<td>Manage Subnets</td>
+<td>Divide</td>
+<td>Route Subnet</td>
+<td>Combine</td>
+</tr>
+
+<?php 
+if (isset($this->subnets)) {
+	foreach($this->subnets as $ip_subnet) {
+	
+	echo "<tr>
+			<td>".$ip_subnet['ip_subnet_address']."</td>
+			<td>".$ip_subnet['ip_subnet_cidr_mask']."</td>
+			<td><input type='button' class='button' name='manage_ipsubnets' ip_subnet_master_id='".$ip_subnet['ip_subnet_id']."' id='manage_ipsubnets' value='Manage IP Subnet Childs'></input></td>
+			<td><input type='button' class='button' name='ipsubnet_divide' ip_subnet_id='".$ip_subnet['ip_subnet_id']."' id='ipsubnet_divide' value='Divide IP Subnet'></input></td>
+			<td><input type='button' class='button' name='ipsubnet_route' ip_subnet_id='".$ip_subnet['ip_subnet_id']."' id='ipsubnet_route' value='Route IP Subnet'></input></td>
+			";
+	
+	//not for root subnets
+	if ($ip_subnet['ip_subnet_cidr_mask'] != 0) {
+		echo "<td><input type='checkbox' name='".$ip_subnet['ip_subnet_id']."[combine]' value='1'></input></td>";
+	}
+			
+			
+	echo "	<td><input type='hidden' name='".$ip_subnet['ip_subnet_id']."[ip_subnet_id]' value='".$ip_subnet['ip_subnet_id']."'></input></td>
+			</tr>
+			";
+	
+	}
+}
+
+?>
+
+<td><input type='hidden' class='text' name='eq_id' value='<?= $_GET['eq_id']?>'></input></td>
+
+<br>
+<tr><td><input type='submit' value='Save' /></td></tr>
+
+
+</table>
+</form>
+</body>
+</html>

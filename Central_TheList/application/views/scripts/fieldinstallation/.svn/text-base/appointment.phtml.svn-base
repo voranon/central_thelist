@@ -1,0 +1,148 @@
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+
+
+	//create enduser table
+	$end_users = "";
+	
+	$end_users .= "
+	
+	<table border='0' style='width:1150px'>
+	<tr>
+	<td align='center' style='font-size:18; color:#0E598C;'>Customer Info</td>
+	</tr>
+	</table>
+	
+	<table border='0' style='width:1150px'>
+	<tr class='header'>
+	<td>Name</td>
+	<td>Address</td>
+	<td>Cell</td>
+	<td>Home</td>
+	<td>Office</td>
+	</tr>
+	
+	";
+
+	 foreach ($this->appointment['end_users'] as $enduser) {
+
+	 	$end_users .= "
+	 	<tr>
+	 	<td>".$enduser['primary_contact']['first_name']." ".$enduser['primary_contact']['last_name']."</td>
+	 	<td>".$enduser['unit']['street_number']." ".$enduser['unit']['street_name']." ".$enduser['unit']['street_type']." #".$enduser['unit']['unit_number']."
+	 	<br>".$enduser['unit']['city']." ".$enduser['unit']['state']." ".$enduser['unit']['zipcode']."</td>
+	 	<td>".$enduser['primary_contact']['cell_phone']."</td>
+	 	<td>".$enduser['primary_contact']['home_phone']."</td>
+	 	<td>".$enduser['primary_contact']['office_phone']."</td>
+
+
+	 	</tr>
+	 	";
+	 }
+	 
+	 $end_users .= "</table>";
+	 
+	 //create tasks table
+	 $tasks = "";
+	 
+	 $tasks .= "
+ 	 		 	<br><br>
+ 	 		 	<table border='0' style='width:1150px'>
+ 	 		 	<tr>
+ 	 		 	<td align='center' style='font-size:18; color:#0E598C;'>Tasks</td>
+ 	 		 	</tr>
+				</table>
+				";
+
+	 
+	
+
+	 foreach ($this->appointment['tasks'] as $task) {
+	 	
+	 	$tasks .= "<table border='0' style='width:1150px'>";
+	 	
+	 	$tasks .= "
+	 			<tr class='header'>
+	 		 	<td bgcolor='#BB9966' width='50%'>Name</td>
+	 		 	";
+
+	 	if ($task['task_status'] == 'Open') {
+	 		
+	 		$tasks .= "<td bgcolor='#BB9966' width='50%'>Status  <input type='button' class='button' task_id='".$task['task_id']."' id='work_the_task' value='Work this Task'></input></td>";
+	 		
+	 	} else {
+	 		
+	 		$tasks .= "<td bgcolor='#BB9966' width='50%'>Status</td>";
+	 		
+	 	}
+	 		 	
+	 	
+	 	
+	 	$tasks .= "</tr>";
+	 
+	 	$tasks .= "
+	 	 	<tr>
+	 	 	<td>".$task['task_name']."</td>
+	 	 	<td>".$task['task_status']."</td>
+	 		</tr><tr><td>";
+	 	 	
+	 	
+	 	$tasks .= 	"<table border='0' style='width:575px'>
+	 		 		<tr class='header'>
+	 		 		<td>Notes</td>
+	 		 		</tr>";
+	 	
+	 	if(isset($task['task_notes'])){
+
+	 	 	foreach($task['task_notes'] as $task_note) {
+	 	 		
+	 	 		$tasks .= "<tr><td>".$task_note."</td></tr>";
+	 	 	}
+	 	}
+	 	$tasks .= "</table>";
+	 	 	
+	 	$tasks .= "</td><td>";
+	 	
+	 	$tasks .= 	"<table border='0' style='width:575px'>
+	 		 		<tr class='header'>
+	 		 		<td>Required Equipment</td>
+	 		 		</tr>";
+	 	 
+	 	if(isset($task['required_equipment'])){
+	 	
+	 		foreach($task['required_equipment'] as $equipment) {
+	 	
+	 			$tasks .= "<tr><td>".$equipment."</td></tr>";
+	 		}
+	 	}
+	 	$tasks .= "</table></td></tr>";
+	 	$tasks .= "</table><br><br>";
+	 }
+?>
+
+<script type='text/javascript'>
+$(function(){
+
+	$('input#work_the_task').bind('click',function(){
+		windowW = 900;
+		windowH = 400;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		task_id = $(this).attr('task_id');
+		window.open('/inventory/checktechequipmentinventoryfortask/?task_id='+task_id, 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=no, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+
+});
+</script>
+
+<div style="position:absolute;left:10px;top:0px">
+	<table class='display' style='width:100px;left:250px'>
+			<?= $this->placeholder('installerdashboard');?>
+	</table>
+</div>
+
+<?= $end_users;?>
+
+<?= $tasks;?>

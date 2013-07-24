@@ -1,0 +1,22 @@
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+
+
+<script type="text/javascript">
+
+$(function(){
+	$("#activate_date" ).datepicker();
+
+	$("#deactivate_date" ).datepicker();
+});
+
+</script>
+
+
+
+<div style='position:relative;background-color:#77ee77;width:900px;height:400px'>
+		<?php echo $this->serverplanedit_form;?>
+</div>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+					<definitions name='ParsingService'
+					  targetNamespace='http://parsing.belairinternet.com/parser_service'
+					  xmlns:tns=' http://parsing.belairinternet.com/parser_service '
+					  xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/'
+					  xmlns:xsd='http://www.w3.org/2001/XMLSchema'
+					  xmlns:soapenc='http://schemas.xmlsoap.org/soap/encoding/'
+					  xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/'
+					  xmlns='http://schemas.xmlsoap.org/wsdl/'>
+					  
+									<message name='XML_Request'>
+										<part name='input_xml' type='xsd:string'/>
+									</message>
+									
+									<message name='XML_Post_Info'>
+										<part name='input_xml' type='xsd:string'/>
+									</message>
+									
+									<message name='XML_Response'>
+									  	<part name='return_xml' type='xsd:string'/>
+									</message>
+
+								
+											<portType name='genericXMLPortType'>
+											  <operation name='getInformation'>
+											    <input message='tns:XML_Request'/>
+											    <output message='tns:XML_Response'/>
+											  </operation>
+											   <operation name='postInformation'>
+											    <input message='tns:XML_Post_Info'/>
+											    <output message='tns:XML_Response'/>
+											  </operation>
+											</portType>
+								
+													<binding name='getInformationBinding' type='tns:genericXMLPortType'>
+													  <soap:binding style='rpc'
+													    transport='http://schemas.xmlsoap.org/soap/http'/>
+													  <operation name='getInformation'>
+													    <soap:operation soapAction='urn:xmethods-getInformation#getInformation'/>
+													    <input>
+													      <soap:body use='encoded' namespace='urn:xmethods-getInformation'
+													        encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/>
+													    </input>
+													    <output>
+													      <soap:body use='encoded' namespace='urn:xmethods-getInformation'
+													        encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/>
+													    </output>
+													  </operation>
+													  
+													  	<operation name='postInformation'>
+													    <soap:operation soapAction='urn:xmethods-getInformation#postInformation'/>
+													    <input>
+													      <soap:body use='encoded' namespace='urn:xmethods-postInformation'
+													        encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/>
+													    </input>
+													    <output>
+													      <soap:body use='encoded' namespace='urn:xmethods-postInformation'
+													        encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/>
+													    </output>
+													  </operation>
+													</binding>
+								
+																<service name='getPreInstallDetailService'>
+																  <port name='genericXMLPortType' binding='getInformationBinding'>
+																    <soap:address location='http://martin-zend-dev.belairinternet.com/soap'/>
+																  </port>
+																</service>
+																
+																<service name='postDataService'>
+																  <port name='genericXMLPortType' binding='getInformationBinding'>
+																    <soap:address location='http://martin-zend-dev.belairinternet.com/soap'/>
+																  </port>
+																</service>
+					</definitions>

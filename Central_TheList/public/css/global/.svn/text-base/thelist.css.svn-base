@@ -1,0 +1,117 @@
+@CHARSET "ISO-8859-1";
+
+
+
+select {
+   background: #ebfbff;
+   border-radius:5px;
+   padding: 2px;
+   font-size: 14px;
+   border: 1px solid #ccc;
+   height: 26px;
+   'width:319px'
+}
+
+input.button
+{
+border-radius:5px;
+background-color:#abfdff;
+}
+
+input.text{
+border-radius:5px;
+background-color:#ebfbff;
+height: 22px;
+}
+
+textarea{
+border-radius:5px;
+background-color:#ebfbff;
+}
+
+
+
+div.test2{
+	
+	text-align: center;
+	vertical-align: middle;
+	border-radius:15px;
+	background-color:#ddeefe;
+}
+
+
+div.test1{
+	
+	text-align: center;
+	vertical-align: middle;
+	border-radius:15px;
+	background-color:#eee4fe;
+}
+
+div{
+	
+	text-align: center;
+	vertical-align: middle;
+	border-radius:15px;
+}
+
+
+div.title{
+	border-radius:15px;
+	background-color:#6ee4fe;
+	text-align: center;
+	height:60px;
+	font-size:35pt;
+	font-family:times new roman;
+	font-weight:bold;
+	color:#23238e;
+}
+
+
+
+
+
+table.display{
+	//position:absolute;
+	//border-radius:5px;
+	//border: 1px solid black;
+}
+
+td.display{
+	border: 1px solid black;
+	border-radius:5px;
+}
+tr.header{
+	border-radius:5px;
+	background-color:#cccccc;
+	font-weight: bold;
+	font-style: italic;
+}
+
+
+input.searchbox{
+	border-radius:5px;
+	background-color:#ebfbff;
+	width:250px;
+	max-width:22ex; 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

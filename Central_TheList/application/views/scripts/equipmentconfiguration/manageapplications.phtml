@@ -1,0 +1,70 @@
+
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+
+<script type='text/javascript'>
+$(function(){
+	$('input#addequipmentapplication').bind('click',function(){
+		windowW = 700;
+		windowH = 200;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		window.open('/equipmentconfiguration/addequipmentapplication?eq_id=<?= $_GET['eq_id']?>', 'popup5', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=no, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+
+	$('input#manageapplicationmetrics').bind('click',function(){
+		windowW = 650;
+		windowH = 800;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		equipment_application_map_id = $(this).attr('equipment_application_map_id');
+		window.open('/equipmentconfiguration/manageapplicationmetrics?equipment_application_map_id='+equipment_application_map_id, 'popup11', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=yes, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+});
+</script>
+<body>
+<?= $this->error;?>
+<form method="post" action="" name="ipaddresses">
+
+<?php 
+if (isset($this->applications)) {
+	
+?>
+<table>
+<tr class='header'>
+<td>Application Name</td>
+<td>Manage Metrics</td>
+<td>Remove</td>
+</tr>
+	
+<?php 
+	foreach($this->applications as $application) {
+?>
+<tr>
+
+
+<td><?= $application['equipment_application_name']?></td>
+<td><input type='button' class='button' name='manageapplicationmetrics' equipment_application_map_id='<?= $application['equipment_application_map_id']?>' id='manageapplicationmetrics' value='Manage Application Metrics'></input></td>
+<td><input type='checkbox' name='<?= $application['equipment_application_map_id']?>[delete]' value='1'></input></td>
+</tr>
+<input type='hidden' class='text' name='<?= $application['equipment_application_map_id']?>[equipment_application_id]' value='<?= $application['equipment_application_id']?>'></input>
+<input type='hidden' class='text' name='<?= $application['equipment_application_map_id']?>[equipment_application_map_id]' value='<?= $application['equipment_application_map_id']?>'></input>
+<?php
+	}
+?>
+</table><?php
+}
+?>
+
+<br>
+<input type='button' class='button' name='addequipmentapplication' id='addequipmentapplication' value='Add Application'></input>
+<br><br>
+<input type='submit' value='Save' />
+
+<input type='hidden' class='text' name='eq_id' value='<?= $_GET['eq_id']?>'></input>
+</form>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+
+
+<script type='text/javascript'>
+$(function(){
+	$('a#addconfig').bind('click',function(){
+		windowW = 570;
+		windowH = 400;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		window.open('/inventory/addconfig', 'popup2','width='+windowW+', height='+windowH+', menubar=no, scrollbars=no, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+
+	});
+});
+</script>
+
+
+
+<div style="position:absolute;width:1250px;height:800px">
+	
+<div style="position:absolute;left:10px;top:10px">
+	<table class='display' style='width:200px;left:250px'>
+			<?php echo $this->configurations_menu_table;?>
+	</table>
+</div>
+
+	<form method='post' action=''>
+	
+	<div style="position:absolute;left:42px;top:50px">
+		Configuration Name: <input type="text" class="text" name='conf_name' style="width:400px" value="<?php echo $this->conf_name?>"></input>
+	</div>
+	<div style="position:absolute;left:10px;top:100px">
+		Configuration Description: <input type="text" class="text" name='conf_desc' style="width:400px" value="<?php echo $this->conf_desc?>"></input>
+	</div>
+		<div style="position:absolute;left:630px;top:50px">
+		Device Function: <?php echo $this->device_function_dd?>
+	</div>
+	
+	<div style="position:absolute;left:970px;top:50px">
+		<input type='submit' class='button' name='save' value='Save'></input>
+	</div>
+	
+	<div style="position:absolute;left:10px;top:150px">
+		<table  style='width:1050px;left:10px'>
+			<?php echo $this->something; ?>
+				
+		</table>
+
+	</div>
+
+</div>

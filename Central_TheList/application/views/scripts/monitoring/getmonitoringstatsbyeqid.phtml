@@ -1,0 +1,16 @@
+<?php 
+if ($this->return_type == 'array') {
+
+	echo "<pre>";
+	print_r($this->return_value);
+	echo "</pre>";
+	
+} elseif ($this->return_type == 'xml') {
+
+	header( "content-type: application/xml; charset=ISO-8859-15" );
+	echo $this->return_value;
+
+}
+
+
+?>

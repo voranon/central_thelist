@@ -1,0 +1,122 @@
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+
+<script type='text/javascript'>
+$(function(){
+
+
+});
+</script>
+</div>
+
+<?
+if (!isset($this->error)) {
+?>
+
+<?
+if (isset($this->available_service_plans)) {
+?>
+<form method="post" action="" name="createsalesquote">
+<center>
+<?
+	if (isset($this->available_service_plans['internet'])) {
+?>
+<br>
+<table border=2>
+<tr class=header'>
+<td>Internet Service Plan Name</td>
+<td>Create</td>
+</tr>
+<?
+		foreach($this->available_service_plans['internet'] as $internet_plan) {
+?>
+<tr>
+<td><?= $internet_plan['sp_name']?></td>
+<td><input type='checkbox' name='create_internet_sps[<?= $internet_plan['sp_id']?>]' value='<?= $internet_plan['sp_id']?>'></input></td>
+</tr>
+<?
+		}
+?>
+</table>
+<?
+	}
+	
+	if (isset($this->available_service_plans['phone'])) {
+?>
+<br>
+<table border=2>
+<tr class=header'>
+<td>Phone Service Plan Name</td>
+<td>Create</td>
+</tr>
+<?
+		foreach($this->available_service_plans['phone'] as $phone_plan) {
+?>
+<tr>
+<td><?= $phone_plan['sp_name']?></td>
+<td><input type='checkbox' name='create_phone_sps[<?= $phone_plan['sp_id']?>]' value='<?= $phone_plan['sp_id']?>'></input></td>
+</tr>
+<?	
+		}
+?>
+</table>
+<?
+	}
+	
+	if (isset($this->available_service_plans['tv'])) {
+?>
+<br>
+<table border=2>
+<tr class=header'>
+<td>TV Service Plan Name</td>
+<td>Create</td>
+</tr>
+<?
+		foreach($this->available_service_plans['tv'] as $tv_plan) {
+?>
+<tr>
+<td><?= $tv_plan['sp_name']?></td>
+<td><input type='checkbox' name='create_tv_sps[<?= $tv_plan['sp_id']?>]' value='<?= $tv_plan['sp_id']?>'></input></td>
+</tr>
+<?	
+		}
+?>
+</table>
+<?
+	}
+?>
+<br>
+<?
+if (isset($this->available_installers)) {
+?>
+<td><SELECT name='installer_uid'><OPTION value=''> --- SELECT INSTALLER --- </OPTION><?= $this->available_installers ?></SELECT></td>
+<?
+}
+?>
+</center>
+<input type='hidden' name='end_user_service_id' value='<?= $this->end_user_service_id ?>'></input>
+<br>
+<center><input type='submit' value='Create New Sales Quote' /></center>
+
+
+</form>
+
+<?
+} else {
+?>
+There are no Avaliable Service Plans for this End User, because no service plans are mapped to the unit.
+<?
+}
+?>
+<?
+} else {
+?>
+<?= $this->error;?>
+<?	
+}
+?>
+
+<div>

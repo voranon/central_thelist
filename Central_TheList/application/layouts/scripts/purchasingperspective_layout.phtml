@@ -1,0 +1,49 @@
+<?php echo $this->doctype() ?>
+<!--
+ * Created on Sep 8, 2011
+ *
+ * To change the template for this generated file go to
+ * Window - Preferences - PHPeclipse - PHP - Code Templates
+-->
+<head>
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+
+
+</head>
+<body>
+<div style='position:absolute;width:100%'>
+
+	<div style='position:absolute;width:100%'>
+		<div style='position:absolute;' >
+		<fieldset>
+		<legend>Main Menu:</legend>
+			<?php echo $this->placeholder('mainmenu')?>
+		</fieldset>
+		</div>
+		<div style='position:absolute;left:1000px;top:3px'>
+			
+		<fieldset>
+		<legend>Perspective Menu:</legend>
+			<?php echo $this->placeholder('perspective_menu')?>
+		</fieldset>
+		</div>
+	</div>
+	<div style='position:absolute;width:100%;top:75px;background-color:#444444;'>
+	
+		<div style='position:absolute;left:1040px' >
+		<a href="/index/logout/">Log out</a>
+		<a href="<?php echo $this->placeholder('homelink')?>">Home</a>
+		</div>
+	</div>
+	
+</div>
+<div style="position:absolute;top:130px">
+	<?php echo $this->layout()->content;?>
+</div>
+</body>
+ 
+</html>

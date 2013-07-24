@@ -1,0 +1,25 @@
+<?php echo $this->doctype() ?>
+<html>
+<!--
+ * Created on Sep 8, 2011
+ *
+ * To change the template for this generated file go to
+ * Window - Preferences - PHPeclipse - PHP - Code Templates
+-->
+<head>
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+</head>
+
+<body>
+
+	<div style="position:absolute;top:100px">
+	<?php echo $this->layout()->content;?>
+	</div>
+
+</body>
+ 
+</html>

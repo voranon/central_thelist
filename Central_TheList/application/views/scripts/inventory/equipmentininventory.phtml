@@ -1,0 +1,28 @@
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+<html>
+<script type='text/javascript'>
+$(function(){
+	$('input#addactiveequipment').bind('click',function(){
+		windowW = 760;
+		windowH = 520;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		window.open('/inventory/addactiveequipment', 'popup2sdf', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=no, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+});
+</script>
+
+<div style="position:absolute;width:1250px;height:800px">
+	<div style="position:absolute;left:10px;top:10px">
+<input type='button' class='button' name=addactiveequipment id='addactiveequipment' value='Add Active Equipment'></input>
+	</div>
+<div style="position:absolute;top:60px;">
+<table class='display' style='width:900px;left:250px'>
+		<?php echo $this->placeholder('equipment_type_inventory_table');?>
+</table>
+</div>
+</div>

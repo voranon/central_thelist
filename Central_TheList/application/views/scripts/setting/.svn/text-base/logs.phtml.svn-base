@@ -1,0 +1,51 @@
+
+<script type="text/javascript">
+$(function(){
+		
+	$("#datepicker" ).datepicker({
+		changeMonth: true,
+		changeYear: true
+	});
+	
+	var currentTime = new Date();
+	var month = currentTime.getMonth()+1;
+	var day = currentTime.getDate();
+	var year = currentTime.getFullYear();
+	var date = month + "/" + day + "/" + year;
+	
+	$('#datepicker').datepicker('setDate',date);
+
+	$("input#show").bind('click',function(){
+		var user_id = $('select#user_list').val();
+		var date 	= $('input#datepicker').val();
+		//alert(date);
+		
+		$.ajax({
+			url:"/setting/getuserlogajax/",
+			data:"user_id="+user_id+"&date="+date,
+		    success: function(data) {
+		    	$("div#logs").html(data);
+		    }
+		});
+		
+	});
+
+
+	
+});
+</script>
+
+<div style="position:absolute;">
+	<div style="position:absolute;left:10px;top:10px">
+		<select name="user_list" id="user_list" style="width:183px">
+			<?php echo $this->user_list;?>
+		</select>
+	</div>
+	
+	<input type="text" class="text" id="datepicker"  style="position:absolute;left:10px;top:50px;width:180px;"></input>
+	<input type="button" class="button" id="show" value="show" style="position:absolute;left:60px;top:80px;"></input>
+	<div id="logs" style="position:absolute;left:210px;top:40px;height:500px;width:800px;background-color:#DDDDDD;">
+		
+	</div>	
+	
+</div>

@@ -1,0 +1,15 @@
+<?php $this->headLink()->appendStylesheet('/css/arp_table.css');?>
+<?php $this->headScript()->appendFile('/javascripts/table_sort.js');?>
+<?php $this->headScript()->appendFile('/javascripts/arp_table.js');?>
+
+
+
+
+<br /><br />
+<div id="view-content">
+	
+	<input type="text" id="search"/>
+	<table id='arp_table'>
+	<?php echo $this->arp_table;?>
+	</table>
+</div>

@@ -1,0 +1,323 @@
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/central_thelist/!svn/ver/2161/trunk/application/views/scripts/equipmentconfiguration
+END
+addeqapplicationmetric.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/central_thelist/!svn/ver/2040/trunk/application/views/scripts/equipmentconfiguration/addeqapplicationmetric.phtml
+END
+uploaddeviceconfigfile.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/central_thelist/!svn/ver/2157/trunk/application/views/scripts/equipmentconfiguration/uploaddeviceconfigfile.phtml
+END
+manageipaddresses.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/central_thelist/!svn/ver/2001/trunk/application/views/scripts/equipmentconfiguration/manageipaddresses.phtml
+END
+manageiproutes.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/central_thelist/!svn/ver/1997/trunk/application/views/scripts/equipmentconfiguration/manageiproutes.phtml
+END
+editdevicefunctionmapping.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/central_thelist/!svn/ver/1538/trunk/application/views/scripts/equipmentconfiguration/editdevicefunctionmapping.phtml
+END
+addrole.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/central_thelist/!svn/ver/1991/trunk/application/views/scripts/equipmentconfiguration/addrole.phtml
+END
+manageapplicationmetrics.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/central_thelist/!svn/ver/2040/trunk/application/views/scripts/equipmentconfiguration/manageapplicationmetrics.phtml
+END
+addeqtypeapplicationmetric.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/central_thelist/!svn/ver/2040/trunk/application/views/scripts/equipmentconfiguration/addeqtypeapplicationmetric.phtml
+END
+ipaddressdnsmanagement.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/central_thelist/!svn/ver/1719/trunk/application/views/scripts/equipmentconfiguration/ipaddressdnsmanagement.phtml
+END
+addequipmentapplication.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/central_thelist/!svn/ver/2038/trunk/application/views/scripts/equipmentconfiguration/addequipmentapplication.phtml
+END
+viewbackup.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/central_thelist/!svn/ver/1953/trunk/application/views/scripts/equipmentconfiguration/viewbackup.phtml
+END
+syncdeviceallinterfaceconfigs.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/central_thelist/!svn/ver/2026/trunk/application/views/scripts/equipmentconfiguration/syncdeviceallinterfaceconfigs.phtml
+END
+addequipmenttypeapplication.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/central_thelist/!svn/ver/2030/trunk/application/views/scripts/equipmentconfiguration/addequipmenttypeapplication.phtml
+END
+syncdeviceinterfaceconfig.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/central_thelist/!svn/ver/2026/trunk/application/views/scripts/equipmentconfiguration/syncdeviceinterfaceconfig.phtml
+END
+manageiftypeconfallowedvalues.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/central_thelist/!svn/ver/2013/trunk/application/views/scripts/equipmentconfiguration/manageiftypeconfallowedvalues.phtml
+END
+manageipsubnets.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/central_thelist/!svn/ver/2029/trunk/application/views/scripts/equipmentconfiguration/manageipsubnets.phtml
+END
+addipaddress.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/central_thelist/!svn/ver/2001/trunk/application/views/scripts/equipmentconfiguration/addipaddress.phtml
+END
+syncdevicefirmware.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/central_thelist/!svn/ver/2120/trunk/application/views/scripts/equipmentconfiguration/syncdevicefirmware.phtml
+END
+managebackups.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/central_thelist/!svn/ver/1953/trunk/application/views/scripts/equipmentconfiguration/managebackups.phtml
+END
+manageiproutegateways.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/central_thelist/!svn/ver/2118/trunk/application/views/scripts/equipmentconfiguration/manageiproutegateways.phtml
+END
+devicefunction.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/central_thelist/!svn/ver/1528/trunk/application/views/scripts/equipmentconfiguration/devicefunction.phtml
+END
+manageeqtypeapplications.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/central_thelist/!svn/ver/2031/trunk/application/views/scripts/equipmentconfiguration/manageeqtypeapplications.phtml
+END
+manualconfigureequipment.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/central_thelist/!svn/ver/2141/trunk/application/views/scripts/equipmentconfiguration/manualconfigureequipment.phtml
+END
+addeqtypeapplicationallowedvalue.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/central_thelist/!svn/ver/2038/trunk/application/views/scripts/equipmentconfiguration/addeqtypeapplicationallowedvalue.phtml
+END
+commandregexmapping.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/central_thelist/!svn/ver/1528/trunk/application/views/scripts/equipmentconfiguration/commandregexmapping.phtml
+END
+massdefaultconfigureequipment.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/central_thelist/!svn/ver/2161/trunk/application/views/scripts/equipmentconfiguration/massdefaultconfigureequipment.phtml
+END
+addinterfaceipaddress.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/central_thelist/!svn/ver/2023/trunk/application/views/scripts/equipmentconfiguration/addinterfaceipaddress.phtml
+END
+manageipsubnetrecursively.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/central_thelist/!svn/ver/2007/trunk/application/views/scripts/equipmentconfiguration/manageipsubnetrecursively.phtml
+END
+manageinterfaceconfig.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/central_thelist/!svn/ver/2026/trunk/application/views/scripts/equipmentconfiguration/manageinterfaceconfig.phtml
+END
+managecredentials.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/central_thelist/!svn/ver/1718/trunk/application/views/scripts/equipmentconfiguration/managecredentials.phtml
+END
+manageroles.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/central_thelist/!svn/ver/1991/trunk/application/views/scripts/equipmentconfiguration/manageroles.phtml
+END
+addinterface.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/central_thelist/!svn/ver/1995/trunk/application/views/scripts/equipmentconfiguration/addinterface.phtml
+END
+editdevicefunction.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/central_thelist/!svn/ver/1531/trunk/application/views/scripts/equipmentconfiguration/editdevicefunction.phtml
+END
+devicecommandmapping.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/central_thelist/!svn/ver/1538/trunk/application/views/scripts/equipmentconfiguration/devicecommandmapping.phtml
+END
+manageiftypeconfigurations.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/central_thelist/!svn/ver/2026/trunk/application/views/scripts/equipmentconfiguration/manageiftypeconfigurations.phtml
+END
+adddnsrecord.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/central_thelist/!svn/ver/1719/trunk/application/views/scripts/equipmentconfiguration/adddnsrecord.phtml
+END
+addinterfaceconfig.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/central_thelist/!svn/ver/2038/trunk/application/views/scripts/equipmentconfiguration/addinterfaceconfig.phtml
+END
+ipsubnetdivide.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/central_thelist/!svn/ver/2006/trunk/application/views/scripts/equipmentconfiguration/ipsubnetdivide.phtml
+END
+manageeqtypeapplicationmetrics.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/central_thelist/!svn/ver/2031/trunk/application/views/scripts/equipmentconfiguration/manageeqtypeapplicationmetrics.phtml
+END
+commandparameter.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/central_thelist/!svn/ver/1528/trunk/application/views/scripts/equipmentconfiguration/commandparameter.phtml
+END
+syncdeviceapplication.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/central_thelist/!svn/ver/2040/trunk/application/views/scripts/equipmentconfiguration/syncdeviceapplication.phtml
+END
+manageinterfaces.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/central_thelist/!svn/ver/2056/trunk/application/views/scripts/equipmentconfiguration/manageinterfaces.phtml
+END
+addiproute.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/central_thelist/!svn/ver/2004/trunk/application/views/scripts/equipmentconfiguration/addiproute.phtml
+END
+addinterfaceconfigallowedvalue.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/central_thelist/!svn/ver/2013/trunk/application/views/scripts/equipmentconfiguration/addinterfaceconfigallowedvalue.phtml
+END
+addinterfacetypeconfiguration.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/central_thelist/!svn/ver/2013/trunk/application/views/scripts/equipmentconfiguration/addinterfacetypeconfiguration.phtml
+END
+manageeqtypeapplicationallowedvalues.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/central_thelist/!svn/ver/2038/trunk/application/views/scripts/equipmentconfiguration/manageeqtypeapplicationallowedvalues.phtml
+END
+manualconfigureequipmentsinglepage.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/central_thelist/!svn/ver/2024/trunk/application/views/scripts/equipmentconfiguration/manualconfigureequipmentsinglepage.phtml
+END
+ipsubnetroute.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/central_thelist/!svn/ver/2007/trunk/application/views/scripts/equipmentconfiguration/ipsubnetroute.phtml
+END
+devicefunctions.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/central_thelist/!svn/ver/1527/trunk/application/views/scripts/equipmentconfiguration/devicefunctions.phtml
+END
+assignmanagementfqdn.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/central_thelist/!svn/ver/1718/trunk/application/views/scripts/equipmentconfiguration/assignmanagementfqdn.phtml
+END
+manageapplications.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/central_thelist/!svn/ver/2038/trunk/application/views/scripts/equipmentconfiguration/manageapplications.phtml
+END
+managesoftware.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/central_thelist/!svn/ver/2121/trunk/application/views/scripts/equipmentconfiguration/managesoftware.phtml
+END
+commandregexparameter.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/central_thelist/!svn/ver/1528/trunk/application/views/scripts/equipmentconfiguration/commandregexparameter.phtml
+END

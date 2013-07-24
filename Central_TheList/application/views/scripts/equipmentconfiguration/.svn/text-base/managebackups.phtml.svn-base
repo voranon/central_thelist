@@ -1,0 +1,17 @@
+<?php
+?>
+
+<html>
+<script type='text/javascript'>
+$(function(){
+
+});
+</script>
+
+<body>
+
+<table border='2'>
+<?= $this->backups ?>
+</table>
+</body>
+</html>

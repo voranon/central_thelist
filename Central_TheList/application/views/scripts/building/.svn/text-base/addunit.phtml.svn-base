@@ -1,0 +1,174 @@
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+
+<script type='text/javascript'>
+$(function(){
+	$('input#add').bind('click',function(){
+
+			var streetnumber =$('input#streetnumber').val();
+			var streetname   =$('input#streetname').val();
+			var streettype   =$('input#streettype').val();
+			var numberofunit =$('input#numberofunit').val();
+			var from         =$('input#from').val();
+			var to 			 =$('input#to').val();
+			var building_id = $(this).attr("building_id");
+			var error        =0;
+			
+			
+			if(isNaN(streetnumber)){
+				alert(streetnumber+' is not a valid street number');
+				error=1;
+			}
+			if(isNaN(numberofunit)){
+				alert(numberofunit+' is not a valid number of unit');
+				error=1;
+			}
+			if(isNaN(from)){
+				alert(from+' is not a valid from number');
+				error=1;
+			}
+			if(isNaN(to)){
+				alert(to+' is not a valid to number');
+				error=1;
+			}
+			if(!isNaN(from) && !isNaN(to)){
+				
+				
+				if( parseInt(to) < parseInt(from) ){
+					alert('to is less than from');
+					error=1;
+				}
+				
+			}
+			
+			if(!error){
+				$.ajax({
+					url: "/building/previewunitajax/",
+					data:"building_id="+building_id+"&from="+from+"&to="+to+"&streetnumber="+streetnumber+"&streetname="+streetname+"&streettype="+streettype,
+				    success: function(data){
+					   //alert(data);
+						$('table#preview_unit').append(data);   
+						$('input#from').val(++to);
+						$('input#to').val(to);
+				    }
+				});
+			}
+
+	});	
+
+	$('input#remove').live('click',function(){
+		id =$(this).attr('list_id');
+		$('tr[list_id='+id+']').remove();
+		//$('table#preview_unit').remove($this);
+		//alert($(this).attr('list_id'));
+	});
+
+	$('input#addunit').bind('click',function(){
+		
+		var count = $("tr#adding_list").length;
+		var data  ='';
+
+		var city        = $("input#city").val();
+		var state       = $("select#state").val();
+		var zip			= $("input#zip").val();
+		var note   		= $("input#numberofunit").val();
+		for(var i=0;i<count;i++){
+
+			var unitnumber 	= $( $("tr#adding_list").get(i) ).find("input#unitnumber").val();	
+			var streetnumber= $( $("tr#adding_list").get(i) ).find("input#streetnumber").val();		
+			var streetname 	= $( $("tr#adding_list").get(i) ).find("input#streetname").val();
+			var streettype 	= $( $("tr#adding_list").get(i) ).find("input#streettype").val();
+			
+			
+			
+			var building_id = $(this).attr("building_id");
+			
+			data+=unitnumber+'^'+streetnumber+'^'+streetname+'^'+streettype+'^'+city+'^'+state+'^'+zip+'~';
+		}
+		
+		$.ajax({
+			url: "/building/addunitajax/",
+			data:"building_id="+building_id+"&data="+data+"&note"+note,
+		    success: function(data){
+			    //alert(data);
+		    	$('tr#adding_list').remove();
+				
+		    }
+		});	
+	});
+});
+
+</script>
+
+<div style='position:absolute;width:100%;height:100%'>
+	<div style="position: absolute;left:0px;top:0px;">
+		
+		<table>
+			<tr>
+				<td align='center' colspan='100%'>Add units</td>
+			</tr>
+			<tr>
+				<td>Street Number</td>
+				<td>Street Name</td>
+				<td>Street Type</td>
+				<td>City</td>
+				<td>State</td>
+				<td>Zip</td>
+				<td>Estimate number of unit</td>
+			</tr>
+			<tr>
+				<td align='center'><input type='text' style='width:50px' class='text' name='streetnumber' id='streetnumber'></input></td>
+				<td><input type='text' style='width:140px' class='text' name='streetname' id='streetname'></input></td>
+				<td align='center'><input type='text' style='width:50px' class='text' name='streettype' id='streettype'></input></td>
+				<td align='center'><input type='text' style='width:120px' class='text' name='city' id='city'></input></td>
+				<td>
+					<select name="state" id="state" style="width:60px;" id="bstate_input"><option value="0">--Select One--</option>
+							   <option value="AL">AL</option><option value="AK">AK</option><option value="AZ">AZ</option><option value="AR">AR</option><option value="CA" selected>CA</option><option value="CO">CO</option><option value="CT">CT</option><option value="DE">DE</option><option value="FL">FL</option><option value="GA">GA</option>
+							   <option value="HI">HI</option><option value="ID">ID</option><option value="IL">IL</option><option value="IN">IN</option><option value="IA">IA</option><option value="KS">KS</option><option value="KY">KY</option><option value="LA">LA</option><option value="ME">ME</option><option value="MD">MD</option>															   <option value="Massachusetts">MA</option>
+							   <option value="MI">MI</option><option value="MN">MN</option><option value="MS">MS</option><option value="MO">MO</option><option value="MT">MT</option><option value="NE">NE</option><option value="NV">NV</option><option value="NH">NH</option><option value="NJ">NJ</option><option value="NM">NM</option>
+							   <option value="NY">NY</option><option value="NC">NC</option><option value="ND">ND</option><option value="OH">OH</option><option value="OK">OK</option><option value="OR">OR</option><option value="PA">PA</option><option value="RI">RI</option><option value="SC">SC</option><option value="SD">SD</option>															   <option value="Tennessee">TN</option>
+							   <option value="TX">TX</option><option value="UT">UT</option><option value="VT">VT</option><option value="VA">VA</option><option value="WA">WA</option><option value="WV">WV</option><option value="WI">WI</option><option value="WY">WY</option>
+					</select>
+				</td>
+				<td><input type='text' style='width:85px' class='text' name='zip' id='zip'></input></td>
+				<td align='center'><input type='text' style='width:50px' class='text' name='numberofunit' id='numberofunit'></input></td>
+			</tr>
+			<tr>
+				<td colspan='7' align='center'>
+					<table>
+						<tr>
+							<td>From:<input name='from' id='from' type='text' style='width:50px' class='text' value='1'></input></td>
+							<td>To:<input name='to' id='to' type='text' style='width:50px' class='text' value='1'></input></td>
+							<td><input type='button' value='Add to adding list' name='add' id='add' class='button' building_id='<?php echo $_GET['building_id']?>'></input></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td colspan='7'>
+					<table name='preview_unit' id='preview_unit' border='0'>
+						<tr class='header' id='header'>
+							<td class='display'>No.</td>
+							<td style='width:100px' class='display'>Unit Number</td>
+							<td style='width:100px' class='display'>Street Number</td>
+							<td style='width:100px' class='display'>Street Name</td>
+							<td style='width:100px' class='display'>Street Type</td>
+							<td style='width:130px' class='display'>&nbsp;</td>
+							
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td colspan='7' align='center'>
+					<input type='button' class='button' value='Add units' name='addunit' building_id='<?php echo $_GET['building_id']?>' id='addunit'></input>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>

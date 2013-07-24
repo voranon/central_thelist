@@ -1,0 +1,58 @@
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+
+
+<script type='text/javascript'>
+$(function(){
+	$('input#addeqtypeappallowedvalue').bind('click',function(){
+		windowW = 500;
+		windowH = 400;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		window.open('/equipmentconfiguration/addeqtypeapplicationallowedvalue?equipment_type_application_metric_id=<?= $_GET['equipment_type_application_metric_id'];?>', 'popup9', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=no, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+});
+</script>
+
+<form method="post" action="" name="interfaceconfigs">
+<table>
+<tr class='header'>
+<td>Config Name</td>
+<td>Value</td>
+<td>Remove</td>
+</tr>
+
+<?php 
+if (!isset($this->error)) {
+	if (isset($this->eq_type_app_allowed_values)) {
+
+		foreach ($this->eq_type_app_allowed_values as $app_allowed_value) {
+?>
+
+<tr>
+<td>Start: <input size='40' type='text' class='text' name='<?= $app_allowed_value['eq_type_allowed_metric_value_id'];?>[eq_type_allowed_metric_value_start]' value='<?= $app_allowed_value['eq_type_allowed_metric_value_start'];?>'></input></td>
+<td>End: <input size='40' type='text' class='text' name='<?= $app_allowed_value['eq_type_allowed_metric_value_id'];?>[eq_type_allowed_metric_value_end]' value='<?= $app_allowed_value['eq_type_allowed_metric_value_end'];?>'></input></td>
+<td><input type='checkbox' name='<?= $app_allowed_value['eq_type_allowed_metric_value_id'];?>[delete]' value='1'></input></td></tr>
+<tr><td><input type='hidden' name='<?= $app_allowed_value['eq_type_allowed_metric_value_id'];?>[eq_type_allowed_metric_value_id]' value='<?= $app_allowed_value['eq_type_allowed_metric_value_id'];?>'></input></td></tr>
+
+<?php
+		}
+	}
+} else {
+?>
+
+<?= $this->error;?>	
+
+<?php
+}
+?>
+
+<br>
+<tr><td><input type='button' class='button' name='addeqtypeappallowedvalue' id='addeqtypeappallowedvalue' value='Add Application Allowed Value'></input></td><td><input type='submit' value='Save' /></td></tr>
+<input type='hidden' name='equipment_type_application_metric_id' value='<?= $_GET['equipment_type_application_metric_id'];?>'></input>
+
+</table>
+</form>

@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/central_thelist/!svn/ver/1990/trunk/application/models/commander_pattern_interfaces
+END
+ideviceconfiguration.php
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/central_thelist/!svn/ver/1990/trunk/application/models/commander_pattern_interfaces/ideviceconfiguration.php
+END
+idevicecommand.php
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/central_thelist/!svn/ver/1990/trunk/application/models/commander_pattern_interfaces/idevicecommand.php
+END
+idevice.php
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/central_thelist/!svn/ver/1990/trunk/application/models/commander_pattern_interfaces/idevice.php
+END

@@ -1,0 +1,50 @@
+<?php $this->headScript()->appendFile('/javascripts/inventory/addequipment.js');?>
+<html>
+		<body onLoad="document.forms.addinveq.eq_serial.focus()">
+		
+		<br><br><br><br><br>
+		
+		<table align='center' width='1175px' cellpadding="10" border="2px" bordercolor="#CCCCCC" rules="none" class="bodytext" style="padding-top:10px">
+		
+		<form name='addinveq' action="/inventory/addinvequipment/" method="post">
+		
+		<tr>
+		<td>
+		Equipment added:
+		</td>
+		<td>
+		<input size='35' type='text' readonly='readonly' name='number_of_added' value='<?= $this->eq_added ?>'>
+		</td>
+		</tr>
+		
+		<tr>
+		<td>
+		Select Equipment Type:
+		</td>
+		<td>
+		<?= $this->eq_type_dd ?>
+		</td>
+		</tr>
+		
+		<tr>
+		<td>
+		Serial Number: 
+		</td>
+		<td>
+		<input size='50' type="text" autocomplete="off" name='eq_serial' value=''>
+		</td>
+		</tr>
+		
+		<tr>
+		<td>
+		</td>
+		<td>
+		<input type="submit" value="Add To Equipment" />
+		</td>
+		</tr>
+		</form>
+		
+		
+		</table>
+		</body>
+		</html>

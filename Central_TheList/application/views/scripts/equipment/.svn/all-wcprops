@@ -1,0 +1,83 @@
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/central_thelist/!svn/ver/963/trunk/application/views/scripts/equipment
+END
+testsethostname.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/central_thelist/!svn/ver/732/trunk/application/views/scripts/equipment/testsethostname.phtml
+END
+featureoninterface.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/central_thelist/!svn/ver/766/trunk/application/views/scripts/equipment/featureoninterface.phtml
+END
+monguid.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/central_thelist/!svn/ver/900/trunk/application/views/scripts/equipment/monguid.phtml
+END
+vlanoninterface.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/central_thelist/!svn/ver/766/trunk/application/views/scripts/equipment/vlanoninterface.phtml
+END
+datasourcemap.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/central_thelist/!svn/ver/866/trunk/application/views/scripts/equipment/datasourcemap.phtml
+END
+configoninterface.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/central_thelist/!svn/ver/827/trunk/application/views/scripts/equipment/configoninterface.phtml
+END
+testcreatesoftwareinterfaceondevice.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/central_thelist/!svn/ver/731/trunk/application/views/scripts/equipment/testcreatesoftwareinterfaceondevice.phtml
+END
+testcreatevlanoninterface.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/central_thelist/!svn/ver/708/trunk/application/views/scripts/equipment/testcreatevlanoninterface.phtml
+END
+testmonitorvlan.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/central_thelist/!svn/ver/745/trunk/application/views/scripts/equipment/testmonitorvlan.phtml
+END
+testcreateiponvlanondevice.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/central_thelist/!svn/ver/695/trunk/application/views/scripts/equipment/testcreateiponvlanondevice.phtml
+END
+testremovevlanoninterface.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/central_thelist/!svn/ver/708/trunk/application/views/scripts/equipment/testremovevlanoninterface.phtml
+END
+showequipment.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/central_thelist/!svn/ver/963/trunk/application/views/scripts/equipment/showequipment.phtml
+END
+testaddinterfacetosoftwareinterfaceondevice.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/central_thelist/!svn/ver/732/trunk/application/views/scripts/equipment/testaddinterfacetosoftwareinterfaceondevice.phtml
+END

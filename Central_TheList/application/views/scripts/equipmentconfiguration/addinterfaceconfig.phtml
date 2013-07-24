@@ -1,0 +1,84 @@
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+
+<script type="text/javascript">
+$(function(){
+	
+	if_id = <?= $_GET['if_id']?>;
+	
+	$('select#if_conf_id').bind('change',function(){
+
+		$.ajax({
+			url:"/equipmentconfiguration/getallowedifconfigsajax/",
+			data:'if_conf_id='+$(this).val()+'&if_id='+if_id,
+			async: false,
+	    	success: function(data){
+	    		if(data == ''){
+	    			$('input#value3').css('display','none');
+	    			$('select#value1').css('display','none');
+	    			$('input#value2').css('display','inline');
+	    		}else{
+	    			$('input#value3').css('display','none');
+	    			$('input#value2').css('display','none');
+	    			$('select#value1').css('display','inline');
+	    			$('select#value1').html(data);
+	    		}
+	    	} 
+		});  
+	});
+});
+</script>
+
+<body>
+<?= $this->error;?>
+<form method="post" action="" name="credentials">
+<table>
+
+<tr class='header'>
+<td>Configuration name</td>
+<td>Value</td>
+</tr>
+
+<?php 
+if (!isset($this->error)) {
+	if (isset($this->available_configurations)) {	
+?>
+
+<tr><td><SELECT id='if_conf_id' name='if_conf_id'><OPTION value='0'>---Select One---</OPTION>
+
+<?php 
+		
+		foreach ($this->available_configurations as $config) {
+?>
+
+<OPTION value='<?= $config['if_conf_id']?>'><?= $config['if_conf_name']?></OPTION>
+
+<?php
+		}
+?>
+</SELECT></td>
+
+<?
+	}
+}
+?>
+
+<td>
+<input type='test' readonly="readonly" id='value3' name='value3' value='Select Something' style='display:inline'></input>
+<select name='value1' id='value1' style='display:none'></select>
+<input type='text' id='value2' name='value2' value='' style='display:none'></input>
+</td></tr>
+
+<tr><td><input type='hidden' class='text' name='if_id' value='<?= $_GET['if_id']?>'></input></td></tr>
+
+<br>
+<tr> <td><input type='submit' value='Save' /></td></tr>
+
+
+</table>
+</form>
+</body>
+</html>

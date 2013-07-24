@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<script type="text/javascript" src="/javascripts/global/jquery/jquery-1.4.4.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	
+	$('select#script_type').bind('change', function(){
+		
+		var option_selected		=	$(this).find('option:selected').val();
+		
+			switch(option_selected){
+			
+				case 'add_ports':
+					var sub_form					= $("div.sub_form." + option_selected);
+					sub_form.show();
+					var submit_button				= $(sub_form).find('input[type=submit]');
+					
+					submit_button.bind('click', function(){
+						var switch_id				= parseInt($('#switch_id').val());
+						var current_port_count		= parseInt($('#cur_port_count').val());
+						var target_port_count		= parseInt($('#tar_port_count').val());
+						var output_window			= $('#output_window');
+						output_window.empty();
+						
+						
+						for (var i= current_port_count; i < target_port_count; i++){
+								var port_value		= i + 1;
+								var comment			= "/********Port " + port_value + "**********/</br>";
+								var current_text	= output_window.text();
+								var append_text		= current_text + comment;
+								var sql				= 
+									"INSERT INTO ports (</br>" +
+									"switchid</br>" +
+									",portnumber</br>" +
+									",porttype</br>" +
+									",unitid</br>" +
+									",interfaceid</br>" +
+									",portstatus</br>" +
+									",portspeed</br>" +
+									",portduplex</br>" +
+									",vlanid</br>" +
+									",unicastdisable</br>" +
+									",unicastreenable</br>" +
+									",multicastdisable</br>" +
+									",multicastreenable</br>" +
+									",broadcastdisable</br>" +
+									",broadcastreenable</br>" +
+									",pactivedate</br>" +
+									",pdeactivedate</br>" +
+									",plastupdate</br>" +
+									",activ_flg</br>" +
+									",del_flg</br>" +
+									",do_not_delete</br>" +
+									",equipid</br>" +
+									") </br>" +
+
+									"VALUES (</br>" +
+									"'" + switch_id + "'</br>" +
+									",'" + port_value + "'</br>" +
+									",'216'</br>" +
+									",null</br>" +
+									",null</br>" +
+									",'2'</br>" +
+									",'1'</br>" +
+									",'1'</br>" +
+									",'1'</br>" +
+									",'600'</br>" +
+									",'500'</br>" +
+									",'600'</br>" +
+									",'500'</br>" +
+									",'600'</br>" +
+									",'500'</br>" +
+									",'2030-01-01 00:00:00'</br>" +
+									",'2030-01-01 00:00:00'</br>" +
+									",'0000-00-00 00:00:00'</br>" +
+									",'1'</br>" +
+									",'0'</br>" +
+									",'1'</br>" +
+									",'0'</br>" +
+									");</br>";
+								//alert(sql);
+								append_text		+= sql;	
+								output_window.append(comment + sql);
+
+						}
+						
+
+						
+						return false;
+					})
+					break;
+			}
+			
+		
+	})
+	
+	$('.sub_form').hide();
+	$('#output_window_show_hide').bind('click', function(){
+		var output_window	= $("#output_window")
+		output_window.toggle();
+		
+	})
+	
+})
+</script>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<div>
+
+		<form>
+			<table>	
+				<tr>
+					<th>Script type</th>
+					<td>
+						<select id='script_type'>
+							<option></option>
+							<option value='add_ports'>Add Switch Ports</option>
+						</select>
+					</td>
+				</tr>
+			</table>
+		</form>
+
+</div>
+<div class='sub_form add_ports'>
+	<form>
+		<table>
+			<tr><th>Switch ID</th><td><input type="text" id='switch_id' /></td></tr>
+			<tr><th>Current Port Count</th><td><input type="text" id="cur_port_count"/></td></tr>
+			<tr><th>Target  Port Count</th><td><input type="text" id="tar_port_count" /></td></tr>
+			<tr><th></th><td><input type="submit" value="Generate Script"/></td></tr>
+		</table>
+	</form>
+</div>
+<div id="output_window_show_hide" style="border: 1px solid black; height: 20px; width: 200px">
+▼ Output Window
+</div>
+<div id="output_window">
+</div>
+</body>
+</html>

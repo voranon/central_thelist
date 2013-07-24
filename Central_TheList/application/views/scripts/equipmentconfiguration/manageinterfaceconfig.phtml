@@ -1,0 +1,127 @@
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+
+
+<script type='text/javascript'>
+$(function(){
+	$('input#addinterfaceconfig').bind('click',function(){
+		windowW = 500;
+		windowH = 200;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		window.open('/equipmentconfiguration/addinterfaceconfig?if_id=<?php echo $_GET['if_id'];?>', 'popup5', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=no, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+
+	$('input#addinterfaceipaddress').bind('click',function(){
+		windowW = 900;
+		windowH = 200;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		window.open('/equipmentconfiguration/addinterfaceipaddress?if_id=<?= $_GET['if_id'];?>', 'popup5', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=no, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+
+	$('input#syncdeviceinterfaceconfig').bind('click',function(){
+		windowW = 500;
+		windowH = 200;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		window.open('/equipmentconfiguration/syncdeviceinterfaceconfig?if_id=<?php echo $_GET['if_id'];?>', 'popup5', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=no, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+
+	$('input#ipaddressdns').bind('click',function(){
+		windowW = 700;
+		windowH = 500;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		ip_address_id = $(this).attr('ip_address_id');
+		window.open('/equipmentconfiguration/ipaddressdnsmanagement?eq_id=<?php echo $this->eq_id;?>&ip_address_id='+ip_address_id, 'popup5', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=yes, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+	
+});
+</script>
+
+<form method="post" action="" name="interfaceconfigs">
+<b>Configurations:</b>
+<table>
+<tr class='header'>
+<td>Config Name</td>
+<td>Value</td>
+<td>Remove</td>
+</tr>
+
+<?php 
+if (!isset($this->error)) {
+	if (isset($this->configs)) {
+
+		foreach ($this->configs as $config) {
+?>
+
+		<tr><td><?= $config['if_conf_name'];?></td>
+		<td><input type='text' class='text' name='configs[<?= $config['mapped_if_conf_map_id'];?>][if_conf_value_1]' value='<?= $config['if_conf_value_1'];?>'></input></td>
+		<td><input type='checkbox' name='configs[<?= $config['mapped_if_conf_map_id'];?>][delete]' value='1'></input></td></tr>
+		<input type='hidden' name='configs[<?= $config['mapped_if_conf_map_id'];?>][mapped_if_conf_map_id]' value='<?= $config['mapped_if_conf_map_id'];?>'></input>
+		<input type='hidden' name='configs[<?= $config['mapped_if_conf_map_id'];?>][if_conf_id]' value='<?= $config['if_conf_id'];?>'></input>
+
+<?php
+		}
+	}
+?>
+</table>
+<br><br>
+<b>IP Addresses:</b>
+<table border='1'>
+<tr class='header'>
+<td>Address</td>
+<td>Mask</td>
+<td>Type</td>
+<td>DNS</td>
+<td>DEL</td>
+</tr>
+<?	
+	if (isset($this->ipaddresses)) {
+		foreach($this->ipaddresses as $ipaddress) {	
+?>
+
+<tr>
+<td><?=$ipaddress['ipaddress']?></td>
+<td><?=$ipaddress['subnetmask']?></td>
+<td><SELECT name='ips[<?= $ipaddress['ip_address_map_id'] ?>][ip_address_map_type]'><?= $ipaddress['current_ip_address_map_type']?><?= $this->ip_address_map_types?></SELECT></td>
+<td><input type='button' class='button' name='ipaddressdns' ip_address_id='<?= $ipaddress['ip_address_id']?>' id='ipaddressdns' value='Manage DNS'></input></td>
+<td><input type='checkbox' name='ips[<?= $ipaddress['ip_address_map_id'] ?>][delete]' value='1'></input></td>
+</tr>
+
+<input type='hidden' name='ips[<?= $ipaddress['ip_address_map_id'] ?>][ip_address_map_id]' value='<?= $ipaddress['ip_address_map_id']?>'></input>
+<input type='hidden' name='ips[<?= $ipaddress['ip_address_map_id'] ?>][ip_address_id]' value='<?= $ipaddress['ip_address_id']?>'></input>
+
+<? 
+		}
+	}
+?>
+</table>
+
+<?	
+
+} else {
+?>
+
+<?= $this->error;?>	
+
+<?php
+}
+?>
+
+<br>
+<input type='button' class='button' name='addinterfaceconfig' id='addinterfaceconfig' value='Add Interface Config'></input>
+<input type='button' class='button' name='addinterfaceipaddress' id='addinterfaceipaddress' value='Add Interface IP'></input>
+<input type='button' class='button' name='syncdeviceinterfaceconfig' id='syncdeviceinterfaceconfig' value='Sync to Device'></input>
+<br><br>
+ <input type='submit' value='Save' /> <input type='checkbox' name='just_update' value='1'></input> Just Save
+
+
+<input type='hidden' name='if_id' value='<?= $_GET['if_id'];?>'></input>
+
+</table>
+</form>

@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/central_thelist/!svn/ver/2127/trunk/application/configs
+END
+database.ini
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/central_thelist/!svn/ver/1803/trunk/application/configs/database.ini
+END
+bai_dhcpd.ini
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/central_thelist/!svn/ver/274/trunk/application/configs/bai_dhcpd.ini
+END
+emailserver.ini
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/central_thelist/!svn/ver/1816/trunk/application/configs/emailserver.ini
+END
+application.ini
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/central_thelist/!svn/ver/1990/trunk/application/configs/application.ini
+END
+static_variables.ini
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/central_thelist/!svn/ver/2127/trunk/application/configs/static_variables.ini
+END
+LDAP.ini
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/central_thelist/!svn/ver/1990/trunk/application/configs/LDAP.ini
+END

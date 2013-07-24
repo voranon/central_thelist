@@ -1,0 +1,38 @@
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+
+<form method="post" action="" name="interfaceallowedconfigs">
+
+Add A new Configuration to this interface type:<br><br>
+<?php 
+if (!isset($this->error)) {
+	if (isset($this->available_configurations)) {	
+?>
+
+<SELECT id='if_conf_id' name='if_conf_id'><OPTION value='0'>---Select One---</OPTION>
+
+<?php 
+		
+		foreach ($this->available_configurations as $config) {
+?>
+
+<OPTION value='<?= $config['if_conf_id']?>'><?= $config['if_conf_name']?></OPTION>
+
+<?php
+		}
+?>
+</SELECT>
+
+<?
+	}
+}
+?>
+
+
+<input type='submit' value='Add Config' />
+<input type='hidden' name='if_type_id' value='<?= $_GET['if_type_id'];?>'></input>
+
+</form>

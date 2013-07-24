@@ -1,0 +1,121 @@
+10
+
+dir
+2182
+http://svn.belairinternet.com/svn/central_thelist/trunk/application/views/scripts
+http://svn.belairinternet.com/svn/central_thelist
+
+
+
+2012-10-16T03:55:03.185006Z
+2175
+voranon
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+16c4ef8c-f5c2-442c-af5e-f416435c4270
+
+basestation
+dir
+
+building
+dir
+
+calendar
+dir
+
+contact
+dir
+
+deployment
+dir
+
+device
+dir
+
+enduser
+dir
+
+engineerperspective
+dir
+
+equipment
+dir
+
+equipmentconfiguration
+dir
+
+error
+dir
+
+executiveofficer
+dir
+
+fieldinstallation
+dir
+
+forms
+dir
+
+index
+dir
+
+interface
+dir
+
+inventory
+dir
+
+main
+dir
+
+monitoring
+dir
+
+project
+dir
+
+purchasing
+dir
+
+purchasingperspective
+dir
+
+residentialsaleperspective
+dir
+
+sales
+dir
+
+salespitchestimate
+dir
+
+search
+dir
+
+serviceplan
+dir
+
+setting
+dir
+
+support
+dir
+
+task
+dir
+
+unit
+dir
+

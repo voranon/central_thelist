@@ -1,0 +1,30 @@
+<table align='center' border='1'>
+	<tr>
+		<td>Building Name:<?= $this->building['building_name']?></td>
+		<td>Unit#:<?= $this->unit['unit_name']?></td>
+		<td>
+			<input type='button' class='button' id='add_new_prospect' value='Add new prospect' unit_id='<?php echo $this->unit['unit_id']?>'></input>
+		</td>
+	</tr>
+</table>
+
+<table id='end_user_list' border='1' align='center' style='width:800px'>
+	<?php
+	if (isset($this->end_users)) {
+		foreach($this->end_users as $end_user)
+		{
+	?>
+				<tr>
+					<td style='width:550px' align='left'><?= $end_user['primary_contact_firstname'] . " d" . $end_user['primary_contact_lastname'] ?></td>
+					<td style='width:250px'>
+						<a target='_blank' href='/salespitchestimate/index/?end_user_service_id=<?= $end_user['end_user_service_id']?>'>Add services</a>
+						<a target='_top' href='/engineerperspective/endusercurrentservices/?end_user_service_id=<?= $end_user['end_user_service_id']?>'>Current services</a>
+					</td>
+				</tr>
+	<?php 
+		}
+	}		
+	?>
+	
+	
+</table>

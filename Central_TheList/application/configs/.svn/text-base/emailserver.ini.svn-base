@@ -1,0 +1,12 @@
+[thelist]
+
+emailserver.host=mail.belairinternet.com
+emailserver.name=zend-dev.belairinternet.com
+emailserver.username=mailrelay@belairmail.com
+emailserver.password=Jgyfg6645DGTD
+emailserver.from.address ='donotreply@belairinternet.com'
+emailserver.from.name	 = 'Ticketing System'
+
+
+
+

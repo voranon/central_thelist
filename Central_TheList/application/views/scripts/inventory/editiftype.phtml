@@ -1,0 +1,73 @@
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+
+<script type='text/javascript'>
+$(function(){
+	$('input#addiftypefeature').bind('click',function(){
+		windowW = 550;
+		windowH = 200;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		window.open('/inventory/iftypefeature/?if_type_id=<?php echo $_GET["if_type_id"]?>', 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=no, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+	$('input#editiftypefeature').live('click',function(){
+		windowW = 550;
+		windowH = 200;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		if_type_feature_map_id = $(this).attr('if_type_feature_map_id');
+		window.open('/inventory/iftypefeature/?if_type_id=<?php echo $_GET["if_type_id"]?>&if_type_feature_map_id='+if_type_feature_map_id, 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=no, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+	$('input#manageiftypeconfigs').live('click',function(){
+		windowW = 900;
+		windowH = 800;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		window.open('/equipmentconfiguration/manageiftypeconfigurations/?if_type_id=<?php echo $_GET["if_type_id"]?>', 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=yes, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+});
+</script>
+
+
+<div style="position:absolute;width:1250px;height:800px">
+	<div style="position:absolute;left:10px;top:10px">
+		<?php echo $this->placeholder('if_types_menu');?>
+	</div>
+	
+	<form method='post' action=''>
+	<div style="position:absolute;left:10px;top:50px">
+		Name: <input type="text" class="text" name='if_type_name' style="width:150px" value="<?php echo $this->if_type_name?>"></input>
+	</div>
+	<div style="position:absolute;left:260px;top:50px">
+		Type: <input type="text" class="text" name='if_type' style="width:150px" value="<?php echo $this->if_type?>"></input>
+	</div>
+	<div style="position:absolute;left:1010px;top:50px">
+		<input type='submit' class='button' value='Save'></input>
+	</div>
+	
+	<div style="position:absolute;left:10px;top:100px">
+		<input type='button' class='button' name='manageiftypeconfigs' id='manageiftypeconfigs' value='Manage Type Configs'></input>
+		<input class='button' type='button' id='addiftypefeature' value='Add Feature'></input>
+	</div>
+	
+	
+	<div style="position:absolute;left:0px;top:150px">
+		<table class='display' style='width:1050px;left:250px'>
+			<?php echo $this->if_type_features_list; ?>
+		</table>
+		<br>
+		<table class='display' style='width:1050px;left:250px'>
+			<?php echo $this->it_conf_maps; ?>
+		</table>
+	</div>
+	
+	
+	
+<td><input type='hidden' class='text' name='if_type_id' value='<?= $_GET['if_type_id']?>'></input></td>
+
+
+
+</div>

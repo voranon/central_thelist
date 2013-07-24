@@ -1,0 +1,42 @@
+
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+
+<body>
+<?= $this->error;?>
+<form method="post" action="" name="credentials">
+<table>
+
+<tr class='header'>
+<td>Subdomain</td>
+<td>Domain</td>
+<td>Type</td>
+</tr>
+
+<?php 
+echo "<tr>
+					<td><input type='text' class='text' name='subdomain' value=''></input></td>
+					<td><SELECT name='domain'><OPTION value=''>---Select One---</OPTION>".$this->domains."</SELECT></td>
+					<td><SELECT name='recordtype'><OPTION value=''>---Select One---</OPTION>".$this->dns_record_types."</SELECT></td>
+					
+					
+					</tr>
+					";
+
+?>
+
+
+<td><input type='hidden' class='text' name='eq_id' value='<?= $_GET['eq_id']?>'></input></td>
+<td><input type='hidden' class='text' name='ip_address_id' value='<?= $_GET['ip_address_id']?>'></input></td>
+
+<br>
+<tr> <td><input type='submit' value='Save' /></td></tr>
+
+
+</table>
+</form>
+</body>
+</html>

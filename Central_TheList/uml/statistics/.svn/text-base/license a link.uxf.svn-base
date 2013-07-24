@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="11.3">
+  <zoom_level>10</zoom_level>
+  <element>
+    <type>com.umlet.element.custom.State</type>
+    <coordinates>
+      <x>350</x>
+      <y>250</y>
+      <w>330</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Identify Base Station
+From Pictures
+good clearance required</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.State</type>
+    <coordinates>
+      <x>350</x>
+      <y>430</y>
+      <w>330</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Determine link distance</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>490</x>
+      <y>290</y>
+      <w>50</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>30;140;30;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.State</type>
+    <coordinates>
+      <x>340</x>
+      <y>540</y>
+      <w>330</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Do radio calc</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

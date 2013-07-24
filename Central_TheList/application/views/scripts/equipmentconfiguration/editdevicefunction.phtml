@@ -1,0 +1,75 @@
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+
+<script type='text/javascript'>
+$(function(){
+	$('input#addeqtypesoftwaremap').bind('click',function(){
+		windowW = 550;
+		windowH = 200;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		window.open('/inventory/eqtypesoftwaremap/?device_function_id=<?php echo $_GET["device_function_id"]?>', 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=no, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+	$('input#adddatasource').bind('click',function(){
+		windowW = 550;
+		windowH = 350;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		device_function_id = $(this).attr('device_function_id');
+		window.open('/equipmentconfiguration/datasource/?device_function_id='+device_function_id, 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=no, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+	$('input#addrratypemap').bind('click',function(){
+		windowW = 550;
+		windowH = 350;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		monitoring_ds_id = $(this).attr('monitoring_ds_id');
+		device_function_id = $(this).attr('device_function_id');
+		window.open('/equipmentconfiguration/rratypemap/?device_function_id='+device_function_id+'&monitoring_ds_id='+monitoring_ds_id, 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=no, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+
+	if( $('input#savedevicefunction').attr('read_only') == '1'  ){
+
+		$('input#savedevicefunction').attr('disabled', true);
+
+		}
+	
+		
+		
+});
+</script>
+
+<div style="position:absolute;width:1250px;height:800px">
+	
+	<div style="position:absolute;left:10px;top:10px">
+		<?php echo $this->placeholder('device_functions_menu');?>
+	</div>
+	
+	<form method='post' action=''>
+	
+	<div style="position:absolute;left:42px;top:50px">
+		Function Name: <input type="text" class="text" name='device_function_name' style="width:500px" value="<?php echo $this->device_function_name?>"></input>
+	</div>
+	<div style="position:absolute;left:10px;top:100px">
+		Function Description: <input type="text" class="text" name='device_function_desc' style="width:500px" value="<?php echo $this->device_function_desc?>"></input>
+	</div>
+		<div style="position:absolute;left:660px;top:50px">
+		Device Table: <?php echo $this->device_command_parameter_table_dd?>
+	</div>
+	
+	<div style="position:absolute;left:970px;top:50px">
+		<input type='submit' id='savedevicefunction' class='button' name='save' value='Save' read_only="<?php echo $this->device_function_read_only?>"></input>
+	</div>
+	
+	<div style="position:absolute;left:10px;top:150px">
+		<table  style='width:1050px;left:10px'>
+			<?php echo $this->eq_type_software_function_map_list; ?>
+				
+		</table>
+
+	</div>
+
+</div>

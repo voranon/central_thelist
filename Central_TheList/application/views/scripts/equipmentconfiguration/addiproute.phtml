@@ -1,0 +1,46 @@
+
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+<html>
+<script type="text/javascript">
+
+$(function(){
+
+});
+</script>
+
+<body>
+<?= $this->error;?>
+<form method="post" action="" name="credentials">
+<table>
+
+<tr class='header'>
+<td>Subnet</td>
+<td>Gateway IP address</td>
+<td>Route Cost</td>
+</tr>
+
+<?php 
+echo "<tr>
+<td><SELECT id='subnet' name='subnet'>".$this->subnets."</SELECT></td>
+<td><SELECT id='ip_address_map_id' name='ip_address_map_id'>".$this->ip_address_map_ids."</SELECT></td>
+<td><input type='number' class='text' name='gateway_cost' maxlength='4' size='4' value='1'></input></td>
+</tr>
+";
+
+?>
+
+
+<td><input type='hidden' class='text' name='eq_id' value='<?= $_GET['eq_id']?>'></input></td>
+
+<br>
+<tr> <td><input type='submit' value='Save' /></td></tr>
+
+
+</table>
+</form>
+</body>
+</html>

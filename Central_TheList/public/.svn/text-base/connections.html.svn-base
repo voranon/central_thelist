@@ -1,0 +1,24 @@
+
+<html>
+<head>
+<link href="jquery-ui-1.8.17.custom.css" media="screen" rel="stylesheet" type="text/css" >
+<link href="/css/connections.css" media="screen" rel="stylesheet" type="text/css" >
+<script type="text/javascript" src="/javascripts/global/jquery/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="/javascripts/global/jquery/jquery-ui-1.8.17.custom.min.js"></script>
+<script type="text/javascript" src="/javascripts/global/jquery/jquery.jsPlumb-1.3.4-all-min.js"></script>
+<script type="text/javascript" src="/javascripts/interfaceconnections.js"></script>
+
+<script type="text/javascript">
+
+</script>
+</head>
+<body>
+
+	<div id="menu">
+		<div id="add_baidiplexer" class="submenu">Add New BAI Diplexer</div>
+		<div id="add_equipment" class="submenu">Add Equipment</div>
+		
+	</div>
+
+</body>
+</html>

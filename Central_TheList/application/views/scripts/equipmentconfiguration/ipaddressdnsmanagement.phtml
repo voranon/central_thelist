@@ -1,0 +1,65 @@
+
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+
+<script type='text/javascript'>
+$(function(){
+
+	$('input#adddnsrecord').bind('click',function(){
+		windowW = 700;
+		windowH = 200;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		ip_address_id = $(this).attr('ip_address_id');
+		window.open('/equipmentconfiguration/adddnsrecord?eq_id=<?php echo $this->eq_id;?>&ip_address_id=<?php echo $this->ip_address_id;?>', 'popup6', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=no, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+
+});
+</script>
+<body>
+<?= $this->error;?>
+<form method="post" action="" name="dnsrecords">
+<table>
+
+<tr class='header'>
+<td>Sub Domain</td>
+<td>Domain</td>
+<td>Type</td>
+<td>Make Management FQDN</td>
+<td>Remove</td>
+</tr>
+
+<?php 
+if (isset($this->dns_records)) {
+	foreach($this->dns_records as $dnsrecord) {
+	
+	echo "<tr>
+			<td>".$dnsrecord['subdomain']."</td>
+			<td>".$dnsrecord['domain']."</td>
+			<td>".$dnsrecord['record_type']."</td>
+			<td><input type='checkbox' name='".$dnsrecord['record_id']."[make_management]' value='1'></input></td>
+			<td><input type='checkbox' name='".$dnsrecord['record_id']."[delete]' value='1'></input></td>
+			<td><input type='hidden' name='".$dnsrecord['record_id']."[record_id]' value='".$dnsrecord['record_id']."'></input></td>
+			<td><input type='hidden' name='ip_address_id' value='".$this->ip_address_id."'></input></td>
+			<td><input type='hidden' name='eq_id' value='".$dnsrecord['eq_id']."'></input></td>
+			</tr>
+			";
+	
+	}
+}
+
+?>
+
+<td><input type='hidden' class='text' name='eq_id' value='<?= $_GET['eq_id']?>'></input></td>
+
+<br>
+<tr><td><input type='button' class='button' name='adddnsrecord' id='adddnsrecord' value='Add DNS Record'></input></td> <td><input type='submit' value='Save' /></td></tr>
+
+
+</table>
+</form>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+<form method="post" action="" name="addeqtypeapplicationallowedvalue">
+<table>
+<tr class='header'>
+<td>Start Value</td>
+<td>End Value</td>
+</tr>
+
+<tr>
+<td>Start: <input type='text' class='text' name='eq_type_allowed_metric_value_start' value=''></input></td>
+<td>End: <input type='text' class='text' name='eq_type_allowed_metric_value_end' value=''></input></td>
+</tr>
+</table>
+<br>
+
+<table>
+<tr class='header'>
+<td>Special Allowed Value Name</td>
+<td>Use</td>
+</tr>
+
+<tr>
+<td>All Interface Names</td>
+<td><input type='checkbox' name='allow_all_interface_names' value='1'></input></td>
+</tr>
+</table>
+
+<br><br>
+
+<input type='submit' value='Save' />
+<input type='hidden' name='equipment_type_application_metric_id' value='<?= $_GET['equipment_type_application_metric_id'];?>'></input>
+
+
+</form>

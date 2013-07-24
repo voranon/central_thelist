@@ -1,0 +1,45 @@
+
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+
+<body>
+<?= $this->error;?>
+<form method="post" action="" name="credentials">
+<table>
+
+<tr class='header'>
+<td>Name</td>
+<td>Type</td>
+<td>Mac Address</td>
+<td>Vlan ID</td>
+<td>Master Interface</td>
+<td>Service Point</td>
+</tr>
+
+<?php 
+echo "<tr>
+<td><input type='text' class='text' name='if_name' value=''></input></td>
+<td><SELECT name='if_type_id'><OPTION value='0'>---Select One---</OPTION>".$this->interface_types."</SELECT></td>
+<td><input type='text' class='text' name='if_mac_address' maxlength='12' size='12' value='na'></input></td>
+<td><input type='number' class='text' name='vlan_id' size='5' value=''></input></td>
+<td><SELECT name='master_if_id'><OPTION value='0'>---Select One---</OPTION>".$this->interfaces."</SELECT></td>
+<td><SELECT name='service_point_id'><OPTION value='0'>---Select One---</OPTION>".$this->service_points."</SELECT></td>
+</tr>
+";
+
+?>
+
+
+<td><input type='hidden' class='text' name='eq_id' value='<?= $_GET['eq_id']?>'></input></td>
+
+<br>
+<tr> <td><input type='submit' value='Save' /></td></tr>
+
+
+</table>
+</form>
+</body>
+</html>

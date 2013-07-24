@@ -1,0 +1,47 @@
+<?php echo $this->doctype() ?>
+<!--
+ * Created on Sep 8, 2011
+ *
+ * To change the template for this generated file go to
+ * Window - Preferences - PHPeclipse - PHP - Code Templates
+-->
+<head>
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+</head>
+ 
+
+ 
+<body>
+<div class='title' style='width:1260px'>
+Projects
+</div>
+
+<div class='test1' style="height:40px;width:1260px">
+ <div style="position:absolute;left:50px">
+ 	<a href='/project/index'>Show all</a>
+ </div>
+ <div style="position:absolute;left:150px">
+ 	<a href='/project/create'>Create</a>
+ </div>
+ <div style="position:absolute;left:250px">
+ 	<a href='/project/edit'>Edit</a>
+ </div>
+ <div style="position:absolute;left:350px">
+ 		<a href='/project/Delete'>Delete</a>
+ </div>
+ <div style="position:absolute;left:1100px;text-align:right">
+ 	<a href='<?php echo $this->perspective?>'>my perspective</a>
+ </div>
+</div>
+
+<div class='test2' style="position:absolute">
+	<?php echo $this->layout()->content;?>
+</div>
+
+</body>
+ 
+</html>

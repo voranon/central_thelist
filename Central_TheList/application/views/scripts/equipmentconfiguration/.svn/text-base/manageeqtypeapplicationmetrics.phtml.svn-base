@@ -1,0 +1,120 @@
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+
+<script type='text/javascript'>
+$(function(){
+
+	$('input#addapplicationmetric').bind('click',function(){
+		windowW = 400;
+		windowH = 200;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		window.open('/equipmentconfiguration/addeqtypeapplicationmetric?eq_type_application_id=<?= $_GET['eq_type_application_id']?>', 'popup9', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=yes, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+
+	$('input#manageeqtypeappallowedvalues').bind('click',function(){
+		windowW = 700;
+		windowH = 400;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		equipment_type_application_metric_id = $(this).attr('equipment_type_application_metric_id');
+		window.open('/equipmentconfiguration/manageeqtypeapplicationallowedvalues?equipment_type_application_metric_id='+equipment_type_application_metric_id, 'popup10', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=yes, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+});
+</script>
+<body>
+
+<?php 
+if (!isset($this->error)) {
+?>
+	
+<form method="post" action="" name="typeconfigs">
+<table>
+
+<?php 
+	if (isset($this->current_metrics)) {
+?>
+<tr class='header'>
+<td>Configuration Name</td>
+<td>Default Value</td>
+<td>Max Maps</td>
+<td>Allowed Values</td>
+<td>Def. Map</td>
+<td>Req.</td>
+<td>Edit</td>
+<td>Remove</td>
+</tr>
+
+<?php 
+		
+		foreach ($this->current_metrics as $metric) {
+?>
+
+<tr>
+<td><?= $metric['equipment_application_metric_name']?></td>
+<td><input type='text' size='45' class='text' name='<?= $metric['equipment_type_application_metric_id'];?>[eq_type_metric_default_value_1]' value='<?= $metric['eq_type_metric_default_value_1'];?>'></input></td>
+<td><input type='text' size='8' class='text' name='<?= $metric['equipment_type_application_metric_id'];?>[eq_type_metric_max_maps]' value='<?= $metric['eq_type_metric_max_maps'];?>'></input></td>
+
+<td><input type='button' class='button' id='manageeqtypeappallowedvalues' name='manageeqtypeappallowedvalues' equipment_type_application_metric_id='<?= $metric['equipment_type_application_metric_id'];?>' value='Manage Values'></input></td>
+
+<?php
+if ($metric['eq_type_metric_default_map'] == 1 || $metric['eq_type_metric_mandetory'] == 1) {
+?>
+<td><input type='checkbox' name='<?= $metric['equipment_type_application_metric_id'];?>[eq_type_metric_default_map]' checked="checked" value='1'></input></td>
+<?php 
+} else {
+?>
+<td><input type='checkbox' name='<?= $metric['equipment_type_application_metric_id'];?>[eq_type_metric_default_map]' value='1'></input></td>
+<?php 
+}
+?>
+
+<?php
+if ($metric['eq_type_metric_mandetory'] == 1) {
+?>
+<td><input type='checkbox' name='<?= $metric['equipment_type_application_metric_id'];?>[eq_type_metric_mandetory]' checked="checked" value='1'></input></td>
+<?php 
+} else {
+?>
+<td><input type='checkbox' name='<?= $metric['equipment_type_application_metric_id'];?>[eq_type_metric_mandetory]' value='1'></input></td>
+<?php 
+}
+?>
+
+<?php
+if ($metric['eq_type_metric_conf_allow_edit'] == 1) {
+?>
+<td><input type='checkbox' name='<?= $metric['equipment_type_application_metric_id'];?>[eq_type_metric_conf_allow_edit]' checked="checked" value='1'></input></td>
+<?php 
+} else {
+?>
+<td><input type='checkbox' name='<?= $metric['equipment_type_application_metric_id'];?>[eq_type_metric_conf_allow_edit]' value='1'></input></td>
+<?php 
+}
+?>
+
+<td><input type='checkbox' name='<?= $metric['equipment_type_application_metric_id'];?>[delete]' value='1'></input></td>
+<input type='hidden' name='<?= $metric['equipment_type_application_metric_id'];?>[equipment_type_application_metric_id]' value='<?= $metric['equipment_type_application_metric_id'];?>'></input>
+<input type='hidden' name='<?= $metric['equipment_type_application_metric_id'];?>[equipment_application_metric_id]' value='<?= $metric['equipment_application_metric_id'];?>'></input>
+</tr>
+
+<?php
+		}
+	}
+	
+?>
+
+<td><input type='hidden' class='text' name='eq_type_application_id' value='<?= $_GET['eq_type_application_id']?>'></input></td>
+<br>
+<tr><td><input type='button' class='button' name='addapplicationmetric' id='addapplicationmetric' value='Add metric'></input></td> <td><input type='submit' value='Save' /></td></tr>
+
+<?php 
+}
+?>
+</table>
+</form>
+</body>
+</html>

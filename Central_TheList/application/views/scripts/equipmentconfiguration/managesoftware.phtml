@@ -1,0 +1,107 @@
+
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+
+<script type='text/javascript'>
+$(function(){
+
+	var software_package_id = "undefined";
+	
+	$('select#software_package_id').bind('change',function(){
+		 software_package_id = $(this).val();
+	});
+
+
+	
+	$('input#upgrade_firmware').bind('click',function(){
+		windowW = 500;
+		windowH = 500;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		window.open('/equipmentconfiguration/syncdevicefirmware?software_package_id='+software_package_id+'&eq_id=<?php echo $_GET['eq_id'];?>', 'popup219', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=no, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+});
+</script>
+
+<body>
+<form method="post" action="" name="credentials">
+
+
+<?php 
+if (!isset($this->error)) {
+if (isset($this->software)) {
+	
+?>
+Software:
+
+<table border=1>
+
+<tr class='header'>
+<td>Package Manufacturer</td>
+<td>Name</td>
+<td>Architecture</td>
+<td>Version</td>
+<td>New Version</td>
+</tr>	
+
+<tr>
+<td><?= $this->software['current_manufacturer'];?></td>
+<td><?= $this->software['current_name'];?></td>
+<td><?= $this->software['current_architecture'];?></td>
+<td><?= $this->software['current_version'];?></td>
+<td><SELECT id='software_package_id' name='software_package_id'><OPTION value=''>-NEW Version-</OPTION><?= $this->software['available_software_versions']; ?></SELECT></td>
+</tr>
+
+
+<td><input type='hidden' class='text' name='eq_id' value='<?= $_GET['eq_id']?>'></input></td>
+<br>
+</table>	
+<?php 
+}
+
+?>
+<input type='button' class='button' name='upgrade_firmware' id='upgrade_firmware' value='Sync to Device'></input>
+
+</form>
+<?
+if (isset($this->software['sw_history'])) {
+?>	
+<table border=1>
+
+<tr class='header'>
+<td>Package Manufacturer</td>
+<td>Name</td>
+<td>Architecture</td>
+<td>Version</td>
+<td>Result Time</td>
+<td>Result</td>
+</tr>	
+<?	
+	foreach($this->software['sw_history'] as $old_software) {
+?>
+<tr>
+<td><?= $old_software['software_package_manufacturer'];?></td>
+<td><?= $old_software['software_package_name'];?></td>
+<td><?= $old_software['software_package_architecture'];?></td>
+<td><?= $old_software['software_package_version'];?></td>
+<td><?= $old_software['result_timestamp'];?></td>
+<td><?= $old_software['result'];?></td>
+</tr>
+<?
+	}
+?>
+<br>
+</table>
+<?	
+}
+
+}
+
+?>
+
+
+</body>
+</html>

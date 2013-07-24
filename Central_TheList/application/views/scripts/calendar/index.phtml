@@ -1,0 +1,30 @@
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+
+<script type='text/javascript'>
+$(function(){
+	
+});
+</script>
+
+
+
+<div style="position:absolute;width:1250px;height:800px">
+	<div style="position:absolute;left:10px;top:10px">
+		<?php echo $this->placeholder('building_menu');?>
+	</div>
+<div style="position:absolute;top:60px;">
+		<table class='display' style='width:955px;left:150px'>
+		<tr class='header'>
+			<td class='display' style='width: 200px'>Building Name</td>
+			<td class='display' style='width: 200px'>Building Alias</td>
+			<td class='display' style='width: 200px'>Project Name</td>
+			<td class='display' style='width: 150px'>Created date</td>
+		</tr>
+		<?php echo $this->placeholder('building_table');?>
+		</table>
+</div>
+</div>

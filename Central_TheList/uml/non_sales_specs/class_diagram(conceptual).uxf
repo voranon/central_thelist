@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="11.3">
+  <zoom_level>10</zoom_level>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>0</x>
+      <y>590</y>
+      <w>330</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>service_plan_quote_option_mapping_temp
+--
+-service_plan_option_map_id
+-service_plan_quote_map_temp_id
+--
+
+Responsibilities
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>540</x>
+      <y>590</y>
+      <w>550</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>service_plan_temp_quote_mapping
+--
+-service_plan_quote_map_temp_id
+-end_user_service_id
+-service_plan_id
+--
+
+Responsibilities
+-- add_service_plan_quote_temp_option($service_plan_option_map_id,$price)
+-- remove_service_plan_quote_option($service_plan_quote_option_map_id)
+-- add_service_plan_quote_temp_eq_type($service_plan_eq_type_map_id,$price)
+-- remove_service_plan_quote_eq_type($service_plan_quote_eq_type_map_id)
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>610</x>
+      <y>850</y>
+      <w>420</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>
+end_user_services
+--
+-end_user_service_id
+-unit_id
+-contact
+-primary contact
+-service_plan_quote_mapping_temp
+--
+Responsibilities
+add_service_plan_temp_quote_mapping($service_plan_id)
+remove_service_plan_temp_quote_mapping($service_plan_id)
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1200</x>
+      <y>590</y>
+      <w>310</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>service_plan_quote_eq_type_mapping_temp
+--
+-service_plan_eq_type_map_id
+-service_plan_quote_map_temp_id
+--
+Responsibilities
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>750</x>
+      <y>750</y>
+      <w>50</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=n
+m2=1</panel_attributes>
+    <additional_attributes>30;30;30;100</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>300</x>
+      <y>610</y>
+      <w>260</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1
+m2=1
+</panel_attributes>
+    <additional_attributes>30;30;240;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1060</x>
+      <y>610</y>
+      <w>160</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1
+m2=1
+</panel_attributes>
+    <additional_attributes>140;30;30;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>630</x>
+      <y>300</y>
+      <w>290</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>service plan
+--
+-service_plan_id
+-service_plan_type_item
+
+--
+Responsibilities
+-- service_plan_unit_end_user_validation
+-- validate2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>580</x>
+      <y>0</y>
+      <w>350</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>units
+--
+-$service_plans:array=null
+-$active_service_plans:array=null;
+--
+Operation
++add_service_plan(service_plan_id)
++remove_service_plan(service_plan_id)
+
+--
+Responsibilities
++get_active_service_plans()
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>730</x>
+      <y>150</y>
+      <w>50</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m2= 1..*</panel_attributes>
+    <additional_attributes>30;30;30;150</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>740</x>
+      <y>460</y>
+      <w>50</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=1
+m2=n</panel_attributes>
+    <additional_attributes>30;30;30;130</additional_attributes>
+  </element>
+</diagram>

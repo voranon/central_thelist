@@ -1,0 +1,46 @@
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+
+<form method="post" action="" name="eqtypeappmetric">
+
+<?php 
+if (!isset($this->error)) {
+	if (isset($this->available_metrics)) {
+?>
+Add a new Metric to this application:<br><br>
+<SELECT id='equipment_application_metric_id' name='equipment_application_metric_id'><OPTION value='0'>---Select One---</OPTION>
+
+<?php 
+		
+		foreach ($this->available_metrics as $available_metric) {
+?>
+
+<OPTION value='<?= $available_metric['equipment_application_metric_id']?>'><?= $available_metric['equipment_application_metric_name']?></OPTION>
+
+<?php
+		}
+?>
+</SELECT>
+
+<?
+	} else {
+?>
+There are no metrics in the database
+<?php		
+	}
+	
+} else {
+?>
+<?= $this->error?>
+<?php	
+}
+?>
+
+
+<input type='submit' value='Add Metric' />
+<input type='hidden' name='eq_type_application_id' value='<?= $_GET['eq_type_application_id'];?>'></input>
+
+</form>

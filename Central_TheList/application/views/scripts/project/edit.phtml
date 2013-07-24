@@ -1,0 +1,117 @@
+
+<div style="position:absolute;width:1250px;height:530px;">
+	<div style="position:absolute;left:10px;top:10px">
+		<?php echo $this->placeholder('project_menu');?>
+	</div>
+	<div style="position:absolute;left:10px;top:50px">
+		Project name: <input type="text" class="text" style="width:150px" value="<?php echo $this->project_name?>"></input>
+	</div>
+	
+	<div style="position:absolute;left:10px;top:90px;">
+		Address: <textarea cols='60' rows='3' name='address' id='address'  style="resize:none"><?php echo $this->project_note1?></textarea>
+	</div>
+	<div style="position:absolute;left:600px;top:90px">
+		Must know: <textarea  cols='60' rows='3' name='mustknow' id='mustknow' style="resize:none"><?php echo $this->project_note2?></textarea>
+	</div>
+	<div style="position:absolute;left:0px;top:180px">
+		
+		<table class='display' style='width:500px'>	
+			<tr>
+				<td colspan='4' align='left'>Contacts:</td>
+				<td align='right' style='width:45px'><input class='button' type='button' id='add_contact' contact_type='project' contact_type_id='<?php echo $this->project_id?>' value='Add'></input></td>
+			</tr>
+			<tr class='header'>
+				<td class='display'>Title:</td>
+				<td class='display'>Name:</td>
+				<td class='display'>Cellphone:</td>
+				<td class='display'>Email:</td>
+				<td class='display'>Edit</td>
+			</tr>
+			<?php
+				echo $this->contact_list; 
+			?>
+			
+		</table>
+	</div>
+	<div style="position:absolute;left:510px;top:180px">
+		<table class='display' style='width:180px'>
+			<tr>
+				<td align='left'>Tasks:</td>
+				<td align='right' style='width:45px'><input class='button' type='button' id='add_task' task_type='project' task_type_id='<?php echo $this->project_id?>' value='Add'></input>
+				</td>
+			</tr>
+			<tr class='header'>
+				<td class='display'>Taks Name:</td>
+				<td class='display'>Edit</td>
+			</tr>
+			<?php
+				echo $this->task_list; 
+			?>
+		</table>
+	</div>
+	<div style="position:absolute;left:700px;top:180px">
+		<table class='display' style='width:230px'>
+			<tr>
+				<td align='left' colspan='2'>Buildings:</td>
+				<td align='right' style='width:45px'><input class='button' type='button' id='add_building' project_id='<?php echo $this->project_id?>' value='Add'></input>
+				</td>
+				
+			</tr>
+			<tr class='header'>
+				<td class='display'>Name:</td>
+				<td class='display'>Units</td>		
+				<td class='display'>Edit</td>	
+			</tr>
+			<?php
+				echo $this->building_list; 
+			?>
+		</table>
+	</div>
+	<div style="position:absolute;left:940px;top:180px">
+		<table class='display' style='width:200px'>
+			<tr>
+				<td align='left'>Entities:</td>
+				<td align='right' style='width:45px'><input class='button' type='button' id='add_entity' value='Add'></input>
+				</td>
+			</tr>
+			<tr class='header'>
+				<td class='display'>Entity Name:</td>
+				<td class='display'>Edit</td>
+			</tr>
+			<?php
+				echo $this->project_entitiy_list; 
+			?>
+		</table>
+	</div>
+	
+</div>
+
+<script type='text/javascript'>
+
+	
+
+
+	
+
+	$('input#add_entity').bind('click',function(){
+		windowW = 650;
+		windowH = 250;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		window.open('/project/addentity?project_id=<?php echo $_GET["project_id"]?>', 'popup2','width='+windowW+', height='+windowH+', menubar=no, scrollbars=yes, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+
+	$('input#edit_entity').bind('click',function(){
+		windowW = 650;
+		windowH = 250;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		project_entity_id = $(this).attr('project_entity_id');
+		window.open('/project/editentity?project_id=<?php echo $_GET["project_id"]?>&project_entity_id='+project_entity_id, 'popup2','width='+windowW+', height='+windowH+', menubar=no, scrollbars=yes, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+
+	
+
+
+	
+</script>

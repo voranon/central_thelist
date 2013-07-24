@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/central_thelist/!svn/ver/50/trunk/application/views/scripts/interface
+END
+addtype.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/central_thelist/!svn/ver/21/trunk/application/views/scripts/interface/addtype.phtml
+END
+addconnection.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/central_thelist/!svn/ver/30/trunk/application/views/scripts/interface/addconnection.phtml
+END
+removeconnection.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/central_thelist/!svn/ver/50/trunk/application/views/scripts/interface/removeconnection.phtml
+END
+index.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/central_thelist/!svn/ver/21/trunk/application/views/scripts/interface/index.phtml
+END

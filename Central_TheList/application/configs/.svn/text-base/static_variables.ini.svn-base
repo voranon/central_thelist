@@ -1,0 +1,35 @@
+[thelist]
+
+;ntp
+sv.primary_ntp_server 			= '10.250.0.17'
+sv.secondary_ntp_server 		= '10.250.0.17'
+
+;snmp
+sv.snmp_contact 				= 'Martin Madsen, Bel Air Internet'
+sv.snmp_trap_community 			= 'iugYYyg786FGh'
+sv.snmp_ro_community			= 'neptun'
+
+;company_information
+sv.company_name					= 'Bel Air Internet'
+sv.company_domain				= 'belairinternet.com'
+
+;syslog
+sv.primary_syslog_server		= '10.202.53.47'
+
+;repository
+sv.repository_server_fqdn		= 'repo.belairinternet.com'
+
+;recursive dns servers
+sv.recursive_dns_server1		= '68.170.70.150'
+sv.recursive_dns_server2		= '98.159.94.150'
+
+;storage servers
+;some of these servers are used to send file to that will then be downloaded by devices
+
+sv.http_config_server1							= 'martin-zend-dev.belairinternet.com'
+sv.http_config_server1_ssh_user					= 'root'
+sv.http_config_server1_ssh_pass					= 'merlin88'
+sv.http_config_server1_base_url					= 'app_file_store/device_configurations'
+sv.http_config_server1_folder_path				= '/zend/thelist/public/app_file_store/device_configurations'
+
+sv.bairouter_root_config_path					= '/home/configs'

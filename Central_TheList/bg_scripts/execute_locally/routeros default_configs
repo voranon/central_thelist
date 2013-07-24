@@ -1,0 +1,62 @@
+:delay 5s
+/system identity
+set name=mt751U-2HnD.freshinstall.belairinternet.com
+
+/ip dns
+set allow-remote-requests="no" cache-max-ttl="1m" cache-size="2048KiB" max-udp-packet-size="4096" servers="98.159.94.150,68.170.70.150"
+
+/ip dhcp-client
+add add-default-route=yes comment="default configuration" default-route-distance=1 disabled=no interface=ether1 use-peer-dns=yes use-peer-ntp=yes
+
+/user
+add disabled=no group=full name=bai_admin
+add disabled=no group=read name=bai_tech
+
+/user
+set 0 password=merlin3D
+set 1 password=merlin3D
+set 2 password=merlin3D
+
+
+
+
+
+
+
+
+
+//dont use below items only above
+
+/ip firewall address-list 
+add list=trusted address=10.202.53.0/24
+add list=trusted address=10.245.64.0/18
+add list=trusted address=98.159.94.0/24
+add list=trusted address=68.170.70.0/24
+add list=trusted address=72.37.180.184/29
+add list=trusted address=72.37.182.104/29
+add list=trusted address=108.60.42.0/27 comment="testing only"
+
+/ip firewall filter
+add action=accept chain=input comment="ICMP" disabled=no protocol=icmp
+add action=accept chain=input comment="Trusted Address List" disabled=no src-address-list=trusted
+add action=drop chain=input comment="" disabled=no
+
+/system logging action
+set remote bsd-syslog=no name=remote remote=10.241.0.30 remote-port=10514 src-address=0.0.0.0 syslog-facility=daemon syslog-severity=auto target=remote
+add bsd-syslog=yes name=remotesyslogdb remote=10.202.53.47 remote-port=514 src-address=0.0.0.0 syslog-facility=local2 syslog-severity=notice target=remote
+
+/system logging  remove [find]
+set 0 action=memory disabled=yes prefix=default_rule topics=info
+set 1 action=memory disabled=yes prefix=default_rule topics=error
+set 2 action=memory disabled=yes prefix=default_rule topics=warning
+set 3 action=echo disabled=yes prefix=default_rule topics=critical
+      
+add action=memory disabled=no prefix="" topics=info,!debug
+add action=memory disabled=no prefix="" topics=critical,!debug
+add action=memory disabled=no prefix="" topics=error,!debug
+add action=memory disabled=no prefix="" topics=event,!debug
+add action=memory disabled=no prefix="" topics=system,!debug
+add action=memory disabled=no prefix="" topics=warning,!debug
+add action=memory disabled=no prefix="" topics=wireless,!debug
+add action=remotesyslogdb disabled=no prefix=MTCPE-INFO topics=info,!debug,!wireless
+add action=remotesyslogdb disabled=no prefix=MTCPE-CRITICAL topics=critical,!debug,!wireless

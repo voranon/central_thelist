@@ -1,0 +1,220 @@
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+
+<?php 
+//if there is no error
+if ($this->error == '') {
+
+	if ($this->progress_status == 'not_provisioned_in_db') {
+		
+		if (isset($this->service_points)) {
+?>
+<script type='text/javascript'>
+$(function(){
+	$('select#service_point_id').bind('change',function(){
+
+		var service_point_id = "undefined";
+		var unit_id = <?= $this->unit_id ?>;
+		service_point_id = $(this).val();
+		
+		$.ajax({
+			url:"/fieldinstallation/getavailableservicepointinterfaces/",
+			data:"unit_id="+unit_id+"&service_point_id="+service_point_id,
+			async: false,
+	    	success: function(data){
+	    		$('select#if_id').html(data);
+	    	}
+		});  
+	});
+
+	$('input#getserviceport').bind('click',function(){
+		windowW = 900;
+		windowH = 400;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		task_id = $(this).attr('task_id');
+		window.open('/fieldinstallation/locateportinservicepoint/?task_id='+task_id+'&calendar_based_install=0', 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=yes, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+
+	$('input#validateserviceport').bind('click',function(){
+		windowW = 900;
+		windowH = 400;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		if_id = provision.elements["if_id"].value;
+		task_id = $(this).attr('task_id');
+		window.open('/fieldinstallation/locateportinservicepoint/?task_id='+task_id+'&calendar_based_install=0&if_ids='+if_id, 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=yes, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+
+});
+</script>
+
+
+<form name='provision' action='' method='post'>
+<center>
+<br>
+<br>
+If the customer is not yet connected to the service point you can get the best available port here.
+<br><br>
+<input type='button' class='button' task_id='<?= $this->task_id ?>' id='getserviceport' value='Find Me A Port on the Patch Panel'></input>
+<br>
+<br>
+<br>
+Or if the customer is already connected please select the patch panel and port number below, 
+<br><br>
+<b>if you choose a port and hit "validate port", but the next screen does not list a port, 
+<br>
+it is because the port cannot fulfil the requirement for the service plan</b>
+
+<br><br>
+<SELECT id='service_point_id' name='service_point_id'><OPTION value=''>---Select One---</OPTION><?= $this->service_points ?></SELECT> 
+<SELECT id='if_id' name='if_id'><OPTION value=''>---Select One---</OPTION></SELECT>
+<br><br>
+
+<input type='button' class='button' task_id='<?= $this->task_id ?>' id='validateserviceport' value='Validate Port'></input>
+</form>
+<?php
+		} else {
+			
+?>
+
+<b>This unit is not attached to any service points, this must be done first</b>
+
+<?php 
+		}
+		
+?>
+</center>
+<?php 
+		
+	} elseif ($this->progress_status == 'provisioned_in_db_device_config_failed') {
+		
+?>
+<br>
+<script type='text/javascript'>
+$(function(){
+	$('input#troubleshootpath').bind('click',function(){
+		windowW = 1300;
+		windowH = 700;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		path = $(this).attr('path');
+		window.open('/support/troubleshootpath/?path='+path, 'ttpath1', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=yes, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+
+	$('input#verifydevprovisioning').bind('click',function(){
+		windowW = 400;
+		windowH = 300;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		service_plan_quote_map_id = $(this).attr('service_plan_quote_map_id');
+		window.open('/support/verifydeviceprovisioning/?service_plan_quote_map_id='+service_plan_quote_map_id, 'ttpath2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=yes, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+
+});
+</script>
+
+The service has been provisioned in the database, but one or more devices in the path failed to configure properly.
+<br>
+
+<?php 
+if (isset($this->paths)) {
+?>
+<br>
+<br>
+<table width='1100px' border='0'>
+<tr>
+<td><b>Service paths:</b></td>
+<td width='175px'><input type='button' class='button' path='<?= $path['path_string'];?>' service_plan_quote_map_id='<?= $_GET['service_plan_quote_map_id'];?>' id='verifydevprovisioning' value='Verify Device Provisioning'></input></td>
+</tr>
+</table>
+
+
+<table width='1100px' border='1'>
+<tr>
+<td>FQDN</td>
+<td>Manufacturer</td>
+<td>Model</td>
+<td width='150px'><center><- CPE -- Border -></center></td>
+<td>FQDN</td>
+<td>Manufacturer</td>
+<td>Model</td>
+<td>Troubleshoot path</td>
+</tr>
+
+<?php 
+foreach ($this->paths as $index => $path) {
+?>
+
+<tr>
+<?php
+//we only have 2 equipment in the array start and end
+$i=0;
+foreach ($path['equipment'] as $single_equipment) {
+	$i++;
+?>
+
+<?php
+//start equipment
+if ($i == 1) {
+?>
+
+<td><?= $single_equipment['eq_fqdn']?></td>
+<td><?= $single_equipment['eq_manufacturer']?></td>
+<td><?= $single_equipment['eq_model_name']?></td>
+
+<td><center>--></center></td>
+
+<?php
+//end equipment
+} else {
+?>
+
+<td><?= $single_equipment['eq_fqdn']?></td>
+<td><?= $single_equipment['eq_manufacturer']?></td>
+<td><?= $single_equipment['eq_model_name']?></td>
+<td><input type='button' class='button' path='<?= $path['path_string'];?>' id='troubleshootpath' value='TroubleShoot Path'></input></td>
+<?php
+} 
+?>
+
+
+
+
+<?php
+}
+?>
+
+
+</tr>
+
+
+<?php
+}
+?>
+
+
+</table>
+
+
+<?php 
+}
+?>
+
+
+
+<?php 
+		
+}
+
+} else {
+
+?>
+ERROR: <?= $this->error?>
+
+<?php
+}
+?>

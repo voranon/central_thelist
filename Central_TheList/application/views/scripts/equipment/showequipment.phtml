@@ -1,0 +1,184 @@
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+
+<script type='text/javascript'>
+$(function(){
+	$('input#vlanoninterface').bind('click',function(){
+		windowW = 550;
+		windowH = 200;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		eq_id = $(this).attr('eq_id');
+		if_id = $(this).attr('if_id');
+		window.open('/equipment/vlanoninterface/?eq_id='+eq_id+'&if_id='+if_id, 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=no, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+	$('input#editvlan').bind('click',function(){
+		windowW = 550;
+		windowH = 200;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		eq_id = $(this).attr('eq_id');
+		if_id = $(this).attr('if_id');
+		vlan_pri_key_id = $(this).attr('vlan_pri_key_id');
+		window.open('/equipment/vlanoninterface/?vlan_pri_key_id='+vlan_pri_key_id+'&eq_id='+eq_id+'&if_id='+if_id, 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=no, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+
+	$('input#editiffeature').bind('click',function(){
+		windowW = 550;
+		windowH = 200;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		eq_id = $(this).attr('eq_id');
+		if_id = $(this).attr('if_id');
+		if_feature_map_id = $(this).attr('if_feature_map_id');
+		window.open('/equipment/featureoninterface/?if_feature_map_id='+if_feature_map_id+'&eq_id='+eq_id+'&if_id='+if_id, 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=no, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+
+	$('input#editifconfig').bind('click',function(){
+		windowW = 550;
+		windowH = 200;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		eq_id = $(this).attr('eq_id');
+		if_id = $(this).attr('if_id');
+		conf_if_map_id = $(this).attr('conf_if_map_id');
+		window.open('/equipment/configoninterface/?conf_if_map_id='+conf_if_map_id+'&eq_id='+eq_id+'&if_id='+if_id, 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=no, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+	$('input#adddatasourcemap').bind('click',function(){
+		windowW = 550;
+		windowH = 500;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		eq_id = $(this).attr('eq_id');
+		monitoring_guid_id = $(this).attr('monitoring_guid_id');
+		window.open('/equipment/datasourcemap/?eq_id='+eq_id+'&monitoring_guid_id='+monitoring_guid_id, 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=no, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+	$('input#editdatasourcemap').bind('click',function(){
+		windowW = 550;
+		windowH = 500;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		eq_id = $(this).attr('eq_id');
+		monitoring_guid_ds_map_id = $(this).attr('monitoring_guid_ds_map_id');
+		window.open('/equipment/datasourcemap/?eq_id='+eq_id+'&monitoring_guid_ds_map_id='+monitoring_guid_ds_map_id, 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=no, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+	$('input#addifmonguid').bind('click',function(){
+		windowW = 550;
+		windowH = 200;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		eq_id = $(this).attr('eq_id');
+		if_id = $(this).attr('if_id');
+		window.open('/equipment/monguid/?eq_id='+eq_id+'&if_id='+if_id, 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=no, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+	$('input#editifmonguid').bind('click',function(){
+		windowW = 550;
+		windowH = 200;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		eq_id = $(this).attr('eq_id');
+		monitoring_guid_id = $(this).attr('monitoring_guid_id');
+		window.open('/equipment/monguid/?eq_id='+eq_id+'&monitoring_guid_id='+monitoring_guid_id, 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=no, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+
+	$('input#show1hgraph').bind('click',function(){
+		windowW = 1600;
+		windowH = 550;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		monitoring_guid_id = $(this).attr('monitoring_guid_id');
+		datasource_name = $(this).attr('datasource_name');
+		rra_name = $(this).attr('rra_name');
+		end_time = $(this).attr('end_time');
+		start_time = $(this).attr('start_time');
+		window.open('/monitoring/singledatasourcegraph/?monitoring_guid_id='+monitoring_guid_id+'&datasource_name='+datasource_name+'&rra_name='+rra_name+'&end_time='+end_time+'&start_time='+start_time, 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=no, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+	
+});
+</script>
+
+<div style="position:absolute;width:1250px;height:800px">
+
+	<div style="position:absolute;left:10px;top:10px">
+		<?php echo $this->placeholder('equipment_inventory_menu');?>
+
+	</div>
+
+	<div style="position:absolute;left:10px;top:50px">
+	<table align='center' width='1150px' cellpadding="10" border="2px" bordercolor="#CCCCCC" rules="none" class="bodytext" style="padding-top:10px">
+		
+		<form name='addinveq' action="/equipment/addinvequipment/" method="post">
+		
+		<tr>
+		<td><b>
+		Equipment:
+		</b></td>
+		<td>
+		<input size='15' type='text' readonly='readonly' name='manufacturer' value='<?= $this->eq_manufacturer; ?>'>
+		</td>
+		<td>
+		Model:
+		</td>
+		<td>
+		<input size='15' type='text' readonly='readonly' name='model' value='<?= $this->eq_model_name; ?>'>
+		</td>
+		<td>
+		Serial:
+		</td>
+		<td>
+		<input size='25' type='text' readonly='readonly' name='serial' value='<?= $this->eq_serial_number; ?>'>
+		</td>
+		<td>
+		FQDN:
+		</td>
+		<td>
+		<input size='45' type='text' readonly='readonly' name='fqdn' value='<?= $this->eq_fqdn; ?>'>
+		</td>
+		</tr>
+		
+		<tr>
+		<td><b>
+		Software:
+		</b></td>
+		<td>
+		<input size='15' type='text' readonly='readonly' name='manufacturer' value='<?= $this->software_package_manufacturer; ?>'>
+		</td>
+		<td>
+		Name:
+		</td>
+		<td>
+		<input size='15' type='text' readonly='readonly' name='fqdn' value='<?= $this->software_package_name; ?>'>
+		</td>
+		<td>
+		Version:
+		</td>
+		<td>
+		<input size='25' type='text' readonly='readonly' name='serial' value='<?= $this->software_package_version; ?>'>
+		</td>
+		<td>
+		Arch:
+		</td>
+		<td>
+		<input size='45' type='text' readonly='readonly' name='model' value='<?= $this->software_package_architecture; ?>'>
+		</td>
+		</tr>
+				
+		
+		</form>
+		</table>
+
+	</div>
+
+	
+	
+	
+	<div style="position:absolute;top:200px;">
+		<table class='display' style='width:900px;left:250px'>
+		<?php echo $this->equipment_object_table;?>
+		</table>
+	</div>
+	
+</div>

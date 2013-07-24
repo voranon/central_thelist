@@ -1,0 +1,159 @@
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+
+<script type='text/javascript'>
+$(function(){
+
+	$('input#accept_override').bind('click',function(){
+		windowW = 700;
+		windowH = 200;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		sales_quote_id = $(this).attr('sales_quote_id');
+		window.open('/sales/acceptsalesquotemanualoverride/?sales_quote_id='+sales_quote_id, 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=no, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+
+	$('input#activatespmap').bind('click',function(){
+		windowW = 1300;
+		windowH = 700;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		service_plan_quote_map_id = $(this).attr('service_plan_quote_map_id');
+		window.open('/fieldinstallation/serviceplanmapmanualactivation/?service_plan_quote_map_id='+service_plan_quote_map_id, 'ttpath1', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=yes, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+
+	$('input#troubleshootserviceplan').bind('click',function(){
+		windowW = 900;
+		windowH = 900;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		service_plan_quote_map_id = $(this).attr('service_plan_quote_map_id');
+		window.open('/support/troubleshootserviceplan/?service_plan_quote_map_id='+service_plan_quote_map_id, 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=yes, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+
+	$('input#create_tmp_sale').bind('click',function(){
+		windowW = 900;
+		windowH = 900;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		service_plan_quote_map_id = $(this).attr('service_plan_quote_map_id');
+		window.open('/sales/tempaddbulksalesquotetoenduser/?end_user_service_id=<?= $_GET['end_user_service_id'] ?>', 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=yes, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+});
+</script>
+</div>
+<br><br><br><br><br><br><br>
+
+<input type='button' class='button' id='create_tmp_sale' value='Temp Create Sales Quote'></input>
+<br><br>
+
+
+
+
+<table border=1>
+<tr><td>Name</td><td>Phone Number</td></tr>
+<?php
+if ($this->contacts != null) {
+ foreach ($this->contacts as $contact) {
+?>
+
+<tr><td><?= $contact['firstname'] . " " . $contact['lastname']?></td><td><?= $contact['cellphone']?></td></tr>
+	
+<?php 	
+  }
+}
+?>
+</table>	
+
+
+<?php
+if ($this->sales_quotes != null) {
+	
+?>
+<br><br>
+<table border=1>
+<tr><td>Accepted</td><td>Created</td></tr>
+
+<?
+	foreach ($this->sales_quotes as $sales_quote) {
+		
+		if ($sales_quote['_sales_quote_accepted'] == 0) {
+			$sales_quote_accepted = 'No';
+			$accept_override = "<input type='button' class='button' sales_quote_id='".$sales_quote['_sales_quote_id']."' id='accept_override' value='Accept Override'></input>";
+		} else {
+			$sales_quote_accepted	= 'Yes';
+			$accept_override		= '';
+		}
+		
+?>
+
+<tr><td><?= $sales_quote_accepted . " " . $accept_override?></td><td><?= $sales_quote['_created']?></td></tr>
+
+
+<?php
+	if (isset($sales_quote['_service_plan_quote_maps'])) {
+?>
+<tr><td colspan=2><table border=1>
+<tr><td>Service Plan name</td><td>Activation</td><td>Deactivation</td><td>Trouble Shooting</td></tr>
+
+<?php 		
+		foreach ($sales_quote['_service_plan_quote_maps'] as $service_plan_map) {
+			
+			if ($sales_quote['_sales_quote_accepted'] == 1) {
+				
+				if ($service_plan_map['_activation'] == null) {
+					$activation					= "<input type='button' class='button' service_plan_quote_map_id='".$service_plan_map['_service_plan_quote_map_id']."' id='activatespmap' value='Activate'></input>";
+					$deactivation				= 'N/A';
+					$troubleshoot_service_plan	= 'N/A';
+				} else {
+					$activation = $service_plan_map['_activation'];
+					
+					if ($service_plan_map['_deactivation'] == null) {
+						$deactivation						= "<input type='button' class='button' service_plan_quote_map_id='".$service_plan_map['_service_plan_quote_map_id']."' id='deactivatespmap' value='De-activate'></input>";
+						$troubleshoot_service_plan			= "<input type='button' class='button' service_plan_quote_map_id='".$service_plan_map['_service_plan_quote_map_id']."' id='troubleshootserviceplan' value='Troubleshoot'></input>";
+					} else {
+						$deactivation 					= $service_plan_map['_deactivation'];
+						$troubleshoot_service_plan		= 'N/A';
+						
+					}
+				}
+				
+			} else {
+				$activation					= 'Not Accepted';
+				$deactivation				= 'N/A';
+				$troubleshoot_service_plan	= 'N/A';
+			}
+
+?>
+
+<tr><td><?= $service_plan_map['_service_plan']['_service_plan_name']?></td><td><?= $activation?></td><td><?= $deactivation?></td><td><?= $troubleshoot_service_plan?></td></tr>
+<?php
+		}
+?>
+
+</table></td></tr>
+
+<?php 
+	} 	
+?>
+
+
+
+<?php 
+  }
+  
+?>
+</table>
+<?
+} else {
+?>	
+<br><br>
+There are no sales quotes for this end user
+<?php 
+}
+?>
+
+<div>

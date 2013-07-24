@@ -1,0 +1,21 @@
+<?php $this->headScript()->appendFile('/javascripts/inventory/addequipment.js');?>
+<html>
+<center>
+<?php 
+if (isset($this->error)) {
+	
+	echo $this->error;
+}
+
+
+?>
+
+<br><br>
+<?= $this->addequipmenttounitform ?>
+</center>
+
+
+
+
+</body>
+</html>

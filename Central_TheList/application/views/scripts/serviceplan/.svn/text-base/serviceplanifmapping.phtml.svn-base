@@ -1,0 +1,117 @@
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+
+
+<script type="text/javascript">
+
+$(function(){
+
+	$('input#add').bind('click',function(){
+
+		
+		var service_plan_id = getUrlVars()["service_plan_id"];
+		var ifa = $('select#ifa').val();
+		var ifb = $('select#ifb').val();
+		if(ifa==0){
+			alert('Interface type a must be selected');
+		}else if(ifb==0){
+			alert('There is no interface type b available');
+		}else{
+		
+			 $.ajax({
+					url: "/serviceplan/addifmappingajax/",
+					data:"service_plan_id="+service_plan_id+"&if_type_a="+ifa+"&if_type_b="+ifb,
+				    success: function(data){
+					    window.location.reload();
+				    }
+			 });
+		}
+	});
+
+	$('img#delete').bind('click',function(){
+
+		var service_plan_id = getUrlVars()["service_plan_id"];
+		var if_type_a = $(this).attr('if_type_a');
+		var if_type_b = $(this).attr('if_type_b');
+
+		 $.ajax({
+				url: "/serviceplan/deleteifmappingajax/",
+				data:"service_plan_id="+service_plan_id+"&if_type_a="+ if_type_a+"&if_type_b="+ if_type_b,
+			    success: function(data){
+				   
+				    window.location.reload();
+			    }
+		 });
+		
+	})
+
+	$('select#ifa').bind('change',function(){
+
+		 var service_plan_id = getUrlVars()["service_plan_id"];
+		 var if_type_a       = $('select#ifa').val();
+		 
+		 $.ajax({
+				url: "/serviceplan/ifbajax/",
+				data:"service_plan_id="+service_plan_id+"&if_type_a="+if_type_a ,
+			    success: function(data){
+				  $('select#ifb').html(data);
+			    }
+		 });
+		 
+	});
+
+	
+});
+</script>
+
+<div style='position:relative;background-color:#77ee77;width:950px;height:400px'>
+	<div><?php echo $this->service_plan['_service_plan_name']?></div>
+	<div><?php echo $this->service_plan['_service_plan_desc']?></div>
+	<table border='1' style='margin-left:auto;margin-right:auto;width:500px'>
+		<tr>
+			<td>Interface type a</td>
+			<td>Interface type b</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td align='center'>
+				<select name='ifa' id='ifa' <?php echo ($this->editable?'':'disabled')?>>
+					<option value='0'>----Select One----</option>
+					<?php
+					foreach( $this->service_plan['interface_type_as'] as $interface_type_a){
+					?>
+					<option value='<?php echo $interface_type_a['_if_type_id']?>'> <?php echo $interface_type_a['_if_type_name']?></option>
+					<?php 
+					} 
+					?>
+				</select>
+			</td>
+			<td align='center'>
+				<select name='ifb' id='ifb' <?php echo ($this->editable?'':'disabled')?>>
+					<option value='0'>----Select One----</option>
+				</select>
+			</td>
+			<td align='center'><input type='button' name='Add' value='Add' id='add' <?php echo ($this->editable?'':'disabled')?>></input></td>
+		</tr>
+		<?php
+			
+			foreach(is_array($this->service_plan['service_plan_if_type_maps']) || is_object($this->service_plan['service_plan_if_type_maps']) ? $this->service_plan['service_plan_if_type_maps'] : array() as $service_plan_if_type_map_id => $service_plan_if_map)
+			{
+		?>
+		<tr>
+			<td><?php echo $service_plan_if_map['a']['_if_type_name'] ?></td>
+			<td><?php echo $service_plan_if_map['b']['_if_type_name'] ?></td>
+			<td align='center'>
+				<img name='delete' id='delete' if_type_a='<?php echo $service_plan_if_map['a']->get_if_type_id()?>' if_type_b='<?php echo $service_plan_if_map['b']->get_if_type_id()?>' src="/images/red_cross_no.jpg"  style='width:25px;height:20px' alt="Angry face"  <?php echo ($this->editable?'':'disabled')?>/>
+			</td>
+		</tr>
+		<?php 
+			}
+			
+		?>
+		
+	</table>
+</div>

@@ -1,0 +1,556 @@
+<?php echo $this->doctype() ?>
+<html>
+<head>
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+
+<script type='text/javascript'>
+$(function(){
+
+	var sales_quote_id = $('input#sales_quote_id').val();
+	var date		   = $('input#date').val(); 
+
+
+	// for date
+	$("#date" ).datepicker({
+		   onClose: function(dateText, inst) 
+		   {
+			 
+			   window.location.href = "/calendar/makeappointment/?sales_quote_id="+sales_quote_id+"&date="+dateText;
+		   }
+	});
+
+	$('input#prevous_day').bind('click',function(){
+		current = date;
+		temp=current.split('/');
+		var day = new Date(temp[2],temp[0]-1,temp[1]); /// (year,month,date)
+		day.setDate(day.getDate()-1);
+		
+		month=day.getMonth()+1;
+		date=day.getDate();
+		year=day.getFullYear();
+
+		date +='';
+		while (date.length < 2) 
+		{
+		  	date = '0' + date;
+		}
+
+		month +='';	
+		while (month.length < 2) 
+		{
+		  	month = '0' + month;
+		}
+		
+
+		pre_date = month+'/'+date+'/'+year;
+		window.location.href = "/calendar/makeappointment/?sales_quote_id="+sales_quote_id+"&date="+pre_date;
+		
+	});
+
+	$('input#next_day').bind('click',function(){
+		current = date;
+		temp=current.split('/');
+		var day = new Date(temp[2],temp[0]-1,temp[1]); /// (year,month,date)
+		day.setDate(day.getDate()+1);
+		
+		
+		month=day.getMonth()+1;
+		date=day.getDate();
+		year=day.getFullYear();
+
+		date +='';	
+		while (date.length < 2) 
+		{
+		  	date = '0' + date;
+		}
+
+		month +='';	
+		while (month.length < 2) 
+		{
+		  	month = '0' + month;
+		}
+		
+		next_date = month+'/'+date+'/'+year;
+		window.location.href = "/calendar/makeappointment/?sales_quote_id="+sales_quote_id+"&date="+next_date;
+		
+	});
+	// end date
+
+	$('td#installer').bind('click',function(){
+		alert('uid='+$(this).attr('uid'));
+	});
+
+	/*
+	$('td[name="timeslot"][status="confirmed"]').bind('click',function(){
+		
+		var windowW = 660;
+		var windowH = 520;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		
+		window.open('/Calendar/scheduledetail/?sales_quote_id='+sales_quote_id, 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=yes, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+			
+	});
+
+	$('td[name="timeslot"][status="tenative"]').bind('click',function(){
+		
+		var windowW = 660;
+		var windowH = 520;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		
+		window.open('/Calendar/scheduledetail/?sales_quote_id='+sales_quote_id, 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=yes, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+			
+	});
+	*/
+	$('td[name="timeslot"][status="available"]').bind('click',function(){
+
+		
+		var windowW = 360;
+		var windowH = 120;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+
+		var start = $(this).attr('start');
+		var stop  = $(this).attr('stop');
+		var date  = $(this).attr('date');
+		var uid   = $(this).attr('uid');
+	
+		window.open('/Calendar/scheduledetail/?sales_quote_id='+sales_quote_id+'&start='+start+'&stop='+stop+'&date='+date+'&uid='+uid, 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=yes, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+		
+	});
+	/*
+	$('td[name="timeslot"][status="not available"]').bind('click',function(){
+	
+		var windowW = 660;
+		var windowH = 520;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+	
+		window.open('/Calendar/scheduledetail/?sales_quote_id='+sales_quote_id, 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=yes, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+		
+	});
+	*/
+
+	$("td[bubble^='yes']").bind('mouseover',function(){
+		
+		var appointment_id = $(this).attr('appointment_id');
+		
+ 		var pl=$(this).position().left; 
+ 		var pt=$(this).position().top; 
+ 		var ol=$(this).offset().left;
+ 		var ot=$(this).offset().top;
+
+		$.ajax({
+			url: "/calendar/scheduledetailajax/",
+			data:"appointment_id="+appointment_id,
+			 success: function(data) {
+	//			alert(data);
+			
+			 $("table#bubble").css({'top':ot-100,'left':ol-140,'background-color':'#ffefdd'});
+			 $("table#bubble").html(data);
+			 $("table#bubble").fadeIn();
+			
+			 
+			
+		 	}
+		});
+		
+	});
+
+	$("td[bubble^='yes']").bind('mouseout',function(){
+				
+		$("table#bubble").hide();
+		
+	});
+	
+	
+	
+	
+});
+</script>
+
+</head>
+<body>
+<!-- all variable -->
+<input type='hidden' id='sales_quote_id' name='sales_quote_id' value='<?php echo $this->sales_quote_id?>'></input>
+
+
+
+<div style="position:absolute;width:1250px;height:800px">
+	
+	<div style="position:absolute;left:100px;top:10px;width:500px;height:100px">Installing:<?php echo $this->address?></div>
+	
+	<div style="position:absolute;left:800px;top:10px;width:260px;height:100px">
+		<input type='button' name='prevous_day' id='prevous_day' class='button' value='<<'></input>
+		<input type='text' name='date' id='date' class='text' value='<?php echo $this->date?>' style='width:80px'></input>
+		<input type='button' name='next_day' id='next_day' class='button' value='>>'></input>
+	</div>
+	
+	<div style="position:absolute;left:100px;top:30px;width:500px;height:100px">Services:</div>
+	<div style="position:absolute;left:100px;top:50px;width:500px;height:100px">Install Time:<?php echo $this->installation_time?> Mins</div>
+	
+	<div style="position:absolute;left:110px;top:100px;background-color:#FFBBFF;">
+	
+		<table style='width:900px;height:920px;' border='1'>
+			<tr style='height:25px'>
+				<td style='width:100px'>&nbsp;</td>
+				<td>
+					<table style='height:100%' border='1'>
+						<tr><?php
+								foreach(is_array($this->installers) || is_object($this->installers) ? $this->installers : array() as $installer)
+								{
+							?>
+								<td style='width:200px' id='installer' uid='<?php echo $installer->get_uid()?>'><?php echo $installer->get_firstname()?></td>
+							<?php 		
+								} 
+							?>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr style='height:110px'>
+				<td>7 am</td>
+				<td style='padding:0;margin:0'>
+					<table style='height:100%;width:100%'>
+						<tr>
+						<?php
+							foreach(is_array($this->installers) || is_object($this->installers) ? $this->installers : array() as $installer)
+							{
+						?>
+							<td style='padding:0;margin:0;width:200px'>
+							<table style='width:100%;height:100%' border='0'>
+								<tr style='height:21px;padding:0px;margin:0px;border:0px'>
+									<?php echo $this->calendar->check_calendar($this->unit->get_unit_id(),'07:00:00','07:14:00',$installer->get_uid(),$this->installation_time);?>
+								</tr>
+								<tr style='height:21px;padding:0px;margin:0px;border:0px'>
+									<?php echo $this->calendar->check_calendar($this->unit->get_unit_id(),'07:15:00','07:29:00',$installer->get_uid(),$this->installation_time);?>
+								</tr>
+								<tr style='height:21px;padding:0px;margin:0px;border:0px'>
+									<?php echo $this->calendar->check_calendar($this->unit->get_unit_id(),'07:30:00','07:44:00',$installer->get_uid(),$this->installation_time);?>
+								</tr>
+								<tr style='height:21px;padding:0px;margin:0px;border:0px'>
+									<?php echo $this->calendar->check_calendar($this->unit->get_unit_id(),'07:45:00','07:59:00',$installer->get_uid(),$this->installation_time);?>
+								</tr>
+							</table>
+							</td>
+						<?php 		
+							} 
+						?>
+						</tr>
+					</table>
+				</td>
+				
+			</tr>
+			<tr style='height:110px'>
+				<td>8 am</td>
+				<td style='padding:0;margin:0'>
+					<table style='height:100%;width:100%'>
+						<tr>
+						<?php
+							foreach(is_array($this->installers) || is_object($this->installers) ? $this->installers : array() as $installer)
+							{
+						?>
+							<td style='padding:0;margin:0;width:200px'>
+							<table style='width:100%;height:100%' border='0' >
+								<tr style='height:21px;padding:0px;margin:0px;border:0px'>
+									<?php echo $this->calendar->check_calendar($this->unit->get_unit_id(),'08:00:00','08:14:00',$installer->get_uid(),$this->installation_time); ?>
+								</tr>
+								<tr style='height:21px;padding:0px;margin:0px;border:0px'>
+									<?php echo $this->calendar->check_calendar($this->unit->get_unit_id(),'08:15:00','08:29:00',$installer->get_uid(),$this->installation_time);?>
+								</tr>
+								<tr style='height:21px;padding:0px;margin:0px;border:0px'>
+									<?php echo $this->calendar->check_calendar($this->unit->get_unit_id(),'08:30:00','08:44:00',$installer->get_uid(),$this->installation_time);?>
+								</tr>
+								<tr style='height:21px;padding:0px;margin:0px;border:0px'>
+									<?php echo $this->calendar->check_calendar($this->unit->get_unit_id(),'08:45:00','08:59:00',$installer->get_uid(),$this->installation_time);?>
+								</tr>
+							</table>
+							</td>
+						<?php 		
+							} 
+						?>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr style='height:110px'>
+				<td>9 am</td>
+				<td style='padding:0;margin:0'>
+					<table style='height:100%;width:100%'>
+						<tr>
+						<?php
+							foreach(is_array($this->installers) || is_object($this->installers) ? $this->installers : array() as $installer)
+							{
+						?>
+							<td style='padding:0;margin:0;width:200px'>
+							<table style='width:100%;height:100%' border='0' >
+								<tr style='height:21px;padding:0px;margin:0px;border:0px'>
+									<?php echo $this->calendar->check_calendar($this->unit->get_unit_id(),'09:00:00','09:14:00',$installer->get_uid());?>
+								</tr>
+								<tr style='height:21px;padding:0px;margin:0px;border:0px'>
+									<?php echo $this->calendar->check_calendar($this->unit->get_unit_id(),'09:15:00','09:29:00',$installer->get_uid());?>
+								</tr>
+								<tr style='height:21px;padding:0px;margin:0px;border:0px'>
+									<?php echo $this->calendar->check_calendar($this->unit->get_unit_id(),'09:30:00','09:44:00',$installer->get_uid());?>
+								</tr>
+								<tr style='height:21px;padding:0px;margin:0px;border:0px'>
+									<?php echo $this->calendar->check_calendar($this->unit->get_unit_id(),'09:45:00','09:59:00',$installer->get_uid());?>
+								</tr>
+							</table>
+							</td>
+						<?php 		
+							} 
+						?>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr style='height:110px'>
+				<td>10 am</td>
+				<td style='padding:0;margin:0'>
+					<table style='height:100%;width:100%'>
+						<tr>
+						<?php
+							foreach(is_array($this->installers) || is_object($this->installers) ? $this->installers : array() as $installer)
+							{
+						?>
+							<td style='padding:0;margin:0;width:200px'>
+							<table style='width:100%;height:100%' border='0' >
+								<tr style='height:21px;padding:0px;margin:0px;border:0px'>
+									<?php echo $this->calendar->check_calendar($this->unit->get_unit_id(),'10:00:00','10:14:00',$installer->get_uid());?>
+								</tr>
+								<tr style='height:21px;padding:0px;margin:0px;border:0px'>
+									<?php echo $this->calendar->check_calendar($this->unit->get_unit_id(),'10:15:00','10:29:00',$installer->get_uid());?>
+								</tr>
+								<tr style='height:21px;padding:0px;margin:0px;border:0px'>
+									<?php echo $this->calendar->check_calendar($this->unit->get_unit_id(),'10:30:00','10:44:00',$installer->get_uid());?>
+								</tr>
+								<tr style='height:21px;padding:0px;margin:0px;border:0px'>
+									<?php echo $this->calendar->check_calendar($this->unit->get_unit_id(),'10:45:00','10:59:00',$installer->get_uid());?>
+								</tr>
+							</table>
+							</td>
+						<?php 		
+							} 
+						?>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr style='height:110px'>
+				<td>11 am</td>
+				<td style='padding:0;margin:0'>
+					<table style='height:100%;width:100%'>
+						<tr>
+						<?php
+							foreach(is_array($this->installers) || is_object($this->installers) ? $this->installers : array() as $installer)
+							{
+						?>
+							<td style='padding:0;margin:0;width:200px'>
+							<table style='width:100%;height:100%' border='0' >
+								<tr style='height:21px;padding:0px;margin:0px;border:0px'>
+									<?php echo $this->calendar->check_calendar($this->unit->get_unit_id(),'11:00:00','11:14:00',$installer->get_uid());?>
+								</tr>
+								<tr style='height:21px;padding:0px;margin:0px;border:0px'>
+									<?php echo $this->calendar->check_calendar($this->unit->get_unit_id(),'11:15:00','11:29:00',$installer->get_uid());?>
+								</tr>
+								<tr style='height:21px;padding:0px;margin:0px;border:0px'>
+									<?php echo $this->calendar->check_calendar($this->unit->get_unit_id(),'11:30:00','11:44:00',$installer->get_uid());?>
+								</tr>
+								<tr style='height:21px;padding:0px;margin:0px;border:0px'>
+									<?php echo $this->calendar->check_calendar($this->unit->get_unit_id(),'11:45:00','11:59:00',$installer->get_uid());?>
+								</tr>
+							</table>
+							</td>
+						<?php 		
+							} 
+						?>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr style='height:110px'>
+				<td>12 pm</td>
+				<td style='padding:0;margin:0'>
+					<table style='height:100%;width:100%'>
+						<tr>
+						<?php
+							foreach(is_array($this->installers) || is_object($this->installers) ? $this->installers : array() as $installer)
+							{
+						?>
+							<td style='padding:0;margin:0;width:200px'>
+							<table style='width:100%;height:100%' border='0' >
+								<tr style='height:21px;padding:0px;margin:0px;border:0px'>
+									<?php echo $this->calendar->check_calendar($this->unit->get_unit_id(),'12:00:00','12:14:00',$installer->get_uid());?>
+								</tr>
+								<tr style='height:21px;padding:0px;margin:0px;border:0px'>
+									<?php echo $this->calendar->check_calendar($this->unit->get_unit_id(),'12:15:00','12:29:00',$installer->get_uid());?>
+								</tr>
+								<tr style='height:21px;padding:0px;margin:0px;border:0px'>
+									<?php echo $this->calendar->check_calendar($this->unit->get_unit_id(),'12:30:00','12:44:00',$installer->get_uid());?>
+								</tr>
+								<tr style='height:21px;padding:0px;margin:0px;border:0px'>
+									<?php echo $this->calendar->check_calendar($this->unit->get_unit_id(),'12:45:00','12:59:00',$installer->get_uid());?>
+								</tr>
+							</table>
+							</td>
+						<?php 		
+							} 
+						?>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr style='height:110px'>
+				<td>1 pm</td>
+				<td style='padding:0;margin:0'>
+					<table style='height:100%;width:100%'>
+						<tr>
+						<?php
+							foreach(is_array($this->installers) || is_object($this->installers) ? $this->installers : array() as $installer)
+							{
+						?>
+							<td style='padding:0;margin:0;width:200px'>
+							<table style='width:100%;height:100%' border='0' >
+								<tr style='height:21px;padding:0px;margin:0px;border:0px'>
+									<?php echo $this->calendar->check_calendar($this->unit->get_unit_id(),'13:00:00','13:14:00',$installer->get_uid());?>
+								</tr>
+								<tr style='height:21px;padding:0px;margin:0px;border:0px'>
+									<?php echo $this->calendar->check_calendar($this->unit->get_unit_id(),'13:15:00','13:29:00',$installer->get_uid());?>
+								</tr>
+								<tr style='height:21px;padding:0px;margin:0px;border:0px'>
+									<?php echo $this->calendar->check_calendar($this->unit->get_unit_id(),'13:30:00','13:44:00',$installer->get_uid());?>
+								</tr>
+								<tr style='height:21px;padding:0px;margin:0px;border:0px'>
+									<?php echo $this->calendar->check_calendar($this->unit->get_unit_id(),'13:45:00','13:59:00',$installer->get_uid());?>
+								</tr>
+							</table>
+							</td>
+						<?php 		
+							} 
+						?>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr style='height:110px'>
+				<td>2 pm</td>
+				<td style='padding:0;margin:0'>
+					<table style='height:100%;width:100%'>
+						<tr>
+						<?php
+							foreach(is_array($this->installers) || is_object($this->installers) ? $this->installers : array() as $installer)
+							{
+						?>
+							<td style='padding:0;margin:0;width:200px'>
+							<table style='width:100%;height:100%' border='0' >
+								<tr style='height:21px;padding:0px;margin:0px;border:0px'>
+									<?php echo $this->calendar->check_calendar($this->unit->get_unit_id(),'14:00:00','14:14:00',$installer->get_uid());?>
+								</tr>
+								<tr style='height:21px;padding:0px;margin:0px;border:0px'>
+									<?php echo $this->calendar->check_calendar($this->unit->get_unit_id(),'14:15:00','14:29:00',$installer->get_uid());?>
+								</tr>
+								<tr style='height:21px;padding:0px;margin:0px;border:0px'>
+									<?php echo $this->calendar->check_calendar($this->unit->get_unit_id(),'14:30:00','14:44:00',$installer->get_uid());?>
+								</tr>
+								<tr style='height:21px;padding:0px;margin:0px;border:0px'>
+									<?php echo $this->calendar->check_calendar($this->unit->get_unit_id(),'14:45:00','14:59:00',$installer->get_uid());?>
+								</tr>
+							</table>
+							</td>
+						<?php 		
+							} 
+						?>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr style='height:110px'>
+				<td>3 pm</td>
+				<td style='padding:0;margin:0'>
+					<table style='height:100%;width:100%'>
+						<tr>
+						<?php
+							foreach(is_array($this->installers) || is_object($this->installers) ? $this->installers : array() as $installer)
+							{
+						?>
+							<td style='padding:0;margin:0;width:200px'>
+							<table style='width:100%;height:100%' border='0' >
+								<tr style='height:21px;padding:0px;margin:0px;border:0px'>
+									<?php echo $this->calendar->check_calendar($this->unit->get_unit_id(),'15:00:00','15:14:00',$installer->get_uid());?>
+								</tr>
+								<tr style='height:21px;padding:0px;margin:0px;border:0px'>
+									<?php echo $this->calendar->check_calendar($this->unit->get_unit_id(),'15:15:00','15:29:00',$installer->get_uid());?>
+								</tr>
+								<tr style='height:21px;padding:0px;margin:0px;border:0px'>
+									<?php echo $this->calendar->check_calendar($this->unit->get_unit_id(),'15:30:00','15:44:00',$installer->get_uid());?>
+								</tr>
+								<tr style='height:21px;padding:0px;margin:0px;border:0px'>
+									<?php echo $this->calendar->check_calendar($this->unit->get_unit_id(),'15:45:00','15:59:00',$installer->get_uid());?>
+								</tr>
+							</table>
+							</td>
+						<?php 		
+							} 
+						?>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr style='height:110px'>
+				<td>4 pm</td>
+				<td style='padding:0;margin:0'>
+					<table style='height:100%;width:100%'>
+						<tr>
+						<?php
+							foreach(is_array($this->installers) || is_object($this->installers) ? $this->installers : array() as $installer)
+							{
+						?>
+							<td style='padding:0;margin:0;width:200px'>
+							<table style='width:100%;height:100%' border='0' >
+								<tr style='height:21px;padding:0px;margin:0px;border:0px'>
+									<?php echo $this->calendar->check_calendar($this->unit->get_unit_id(),'16:00:00','16:14:00',$installer->get_uid());?>
+								</tr>
+								<tr style='height:21px;padding:0px;margin:0px;border:0px'>
+									<?php echo $this->calendar->check_calendar($this->unit->get_unit_id(),'16:15:00','16:29:00',$installer->get_uid());?>
+								</tr>
+								<tr style='height:21px;padding:0px;margin:0px;border:0px'>
+									<?php echo $this->calendar->check_calendar($this->unit->get_unit_id(),'16:30:00','16:44:00',$installer->get_uid());?>
+								</tr>
+								<tr style='height:21px;padding:0px;margin:0px;border:0px'>
+									<?php echo $this->calendar->check_calendar($this->unit->get_unit_id(),'16:45:00','16:59:00',$installer->get_uid());?>
+								</tr>
+							</table>
+							</td>
+						<?php 		
+							} 
+						?>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			
+			
+		</table>
+		
+	</div>
+	
+</div>
+
+
+<table  border="1" id="bubble" style="display:none;position:absolute;background-color:#ffefdd;width:175px;height:65px">
+	
+</table>
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,92 @@
+10
+
+dir
+2182
+http://svn.belairinternet.com/svn/central_thelist/trunk/uml
+http://svn.belairinternet.com/svn/central_thelist
+
+
+
+2012-10-16T20:32:28.090246Z
+2182
+voranon
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+16c4ef8c-f5c2-442c-af5e-f416435c4270
+
+.project
+file
+
+
+
+
+2012-10-16T05:36:33.921000Z
+daf87115b27ccce91b335cfc90cb5203
+2012-02-09T00:59:08.670206Z
+281
+voranon
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+207
+
+Existing Equipment
+dir
+
+Field Technicians
+dir
+
+Installations
+dir
+
+device interactions
+dir
+
+er_diagrams
+dir
+
+non_sales_specs
+dir
+
+overview
+dir
+
+sales
+dir
+
+statistics
+dir
+
+troubleshooter
+dir
+

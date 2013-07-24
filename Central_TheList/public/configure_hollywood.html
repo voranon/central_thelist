@@ -1,0 +1,124 @@
+<html>
+<head>
+<style type="text/css">
+body
+{
+	
+}
+input, select{
+	width: 220px;
+}
+
+</style>
+
+<script type="text/javascript" src="/javascripts/global/jquery/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="/javascripts/global/inventory.js"></script>
+<script type="text/javascript" src="/javascripts/global/device.js"></script>
+<script type="text/javascript" src="/javascripts/hollywood.js"></script>
+</head>
+<body>
+	<form>
+	<img id="loading" src="images/27.gif" style='position: absolute'/>
+			<div style='position: relative;'>
+					<div style='float: left;border: 1px solid black; width:400px; height: 200px;'>
+						<table>
+							<tr><th><label>Unit Number</label></th><td><input type="text" id="unit_number"/></td></tr>					
+							<tr>
+							<th><label>Property</label></th>
+								<th>
+								<select class="properties">
+									<option></option>
+									<option id="1823g" value="0">1823 Grace</option>
+									<option id="1820w" value="1">1820 Whitley</option>
+									<option id="1837w" value="2">1837 Whitley</option>
+									<option id="6600y" value="3">6600 Yucca</option>
+								</select>
+								</th>
+							</tr>
+
+							<tr><th><label>Switch</label></th><td><select id="switches"></select></td></tr>
+							<tr><th><label>Switchport</label></th><td><select id="switchport"></select></td></tr>
+							<tr><th><label>MAC Address</label></th><td><select id="macaddress"></select></td></tr>
+							<tr><th><label id="ipaddress">IP Address</label></th><td><input type="text" id="ipaddress"/></td></tr>
+							
+						</table>
+					</div>
+			<div style="float: left; border: 1px solid black; width: 400px; height:200px;">
+			<table>
+				<tr><th>Upload Speed
+					</th><td>
+						<select id="download">
+<option value='1000'>1 Mbit/sec </option>
+<option value='2000'>2 Mbit/sec </option>
+<option value='3000'>3 Mbit/sec </option>
+<option value='4000'>4 Mbit/sec </option>
+<option value='5000'>5 Mbit/sec </option>
+<option value='6000'>6 Mbit/sec </option>
+<option value='7000'>7 Mbit/sec </option>
+<option value='8000'>8 Mbit/sec </option>
+<option value='9000'>9 Mbit/sec </option>
+<option value='10000'>10 Mbit/sec </option>
+<option value='11000'>11 Mbit/sec </option>
+<option value='12000'>12 Mbit/sec </option>
+<option value='13000'>13 Mbit/sec </option>
+<option value='14000'>14 Mbit/sec </option>
+<option value='15000'>15 Mbit/sec </option>
+<option value='16000'>16 Mbit/sec </option>
+<option value='17000'>17 Mbit/sec </option>
+<option value='18000'>18 Mbit/sec </option>
+<option value='19000'>19 Mbit/sec </option>
+<option value='20000'>20 Mbit/sec </option>
+<option value='21000'>21 Mbit/sec </option>
+<option value='22000'>22 Mbit/sec </option>
+<option value='23000'>23 Mbit/sec </option>
+<option value='24000'>24 Mbit/sec </option>
+<option value='25000'>25 Mbit/sec </option>
+<option value='26000'>26 Mbit/sec </option>
+<option value='27000'>27 Mbit/sec </option>
+<option value='28000'>28 Mbit/sec </option>
+<option value='29000'>29 Mbit/sec </option>
+<option value='30000'>30 Mbit/sec </option>
+
+						</select>
+					</td></tr>
+				<tr><th>Download Speed</th><td><select id="upload">
+<option value='1000'>1 Mbit/sec </option>
+<option value='2000'>2 Mbit/sec </option>
+<option value='3000'>3 Mbit/sec </option>
+<option value='4000'>4 Mbit/sec </option>
+<option value='5000'>5 Mbit/sec </option>
+<option value='6000'>6 Mbit/sec </option>
+<option value='7000'>7 Mbit/sec </option>
+<option value='8000'>8 Mbit/sec </option>
+<option value='9000'>9 Mbit/sec </option>
+<option value='10000'>10 Mbit/sec </option>
+<option value='11000'>11 Mbit/sec </option>
+<option value='12000'>12 Mbit/sec </option>
+<option value='13000'>13 Mbit/sec </option>
+<option value='14000'>14 Mbit/sec </option>
+<option value='15000'>15 Mbit/sec </option>
+<option value='16000'>16 Mbit/sec </option>
+<option value='17000'>17 Mbit/sec </option>
+<option value='18000'>18 Mbit/sec </option>
+<option value='19000'>19 Mbit/sec </option>
+<option value='20000'>20 Mbit/sec </option>
+<option value='21000'>21 Mbit/sec </option>
+<option value='22000'>22 Mbit/sec </option>
+<option value='23000'>23 Mbit/sec </option>
+<option value='24000'>24 Mbit/sec </option>
+<option value='25000'>25 Mbit/sec </option>
+<option value='26000'>26 Mbit/sec </option>
+<option value='27000'>27 Mbit/sec </option>
+<option value='28000'>28 Mbit/sec </option>
+<option value='29000'>29 Mbit/sec </option>
+<option value='30000'>30 Mbit/sec </option>				
+				</select></td></tr>
+			</table>
+			</div>
+<input type="submit" id="submit" />
+</div>
+	</form>
+<div id="feedback">
+</div>
+</body>
+</html>

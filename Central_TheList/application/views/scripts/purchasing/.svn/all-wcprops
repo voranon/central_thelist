@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/central_thelist/!svn/ver/166/trunk/application/views/scripts/purchasing
+END
+purchaseorders.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/central_thelist/!svn/ver/74/trunk/application/views/scripts/purchasing/purchaseorders.phtml
+END
+editpurchaseorderitem.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/central_thelist/!svn/ver/110/trunk/application/views/scripts/purchasing/editpurchaseorderitem.phtml
+END
+edit.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/central_thelist/!svn/ver/166/trunk/application/views/scripts/purchasing/edit.phtml
+END
+create.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/central_thelist/!svn/ver/74/trunk/application/views/scripts/purchasing/create.phtml
+END
+addpurchaseorderitem.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/central_thelist/!svn/ver/110/trunk/application/views/scripts/purchasing/addpurchaseorderitem.phtml
+END
+index.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/central_thelist/!svn/ver/74/trunk/application/views/scripts/purchasing/index.phtml
+END

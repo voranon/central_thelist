@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/central_thelist/!svn/ver/1753/trunk/application/models/html_elements/forms/equipmentconfigurationforms
+END
+devicecommandmapform.php
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/central_thelist/!svn/ver/1753/trunk/application/models/html_elements/forms/equipmentconfigurationforms/devicecommandmapform.php
+END
+commandregexparameterform.php
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/central_thelist/!svn/ver/1753/trunk/application/models/html_elements/forms/equipmentconfigurationforms/commandregexparameterform.php
+END
+devicefunctionform.php
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/central_thelist/!svn/ver/1753/trunk/application/models/html_elements/forms/equipmentconfigurationforms/devicefunctionform.php
+END
+commandparameterform.php
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/central_thelist/!svn/ver/1753/trunk/application/models/html_elements/forms/equipmentconfigurationforms/commandparameterform.php
+END
+commandregexmapform.php
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/central_thelist/!svn/ver/1753/trunk/application/models/html_elements/forms/equipmentconfigurationforms/commandregexmapform.php
+END

@@ -1,0 +1,940 @@
+<?php echo $this->doctype() ?>
+<!--
+ * Created on Sep 8, 2011
+ *
+ * To change the template for this generated file go to
+ * Window - Preferences - PHPeclipse - PHP - Code Templates
+-->
+<head>
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+
+<script type="text/javascript">
+$(function(){
+
+
+
+	//// to submit the sale quote
+	$("input#send_quote").bind('click',function(){
+
+		var num_of_service_plan = $('div[name="sale_quote"] div[name="service_plan"]').size();
+		
+		var number_of_yellow=0;
+		
+		$('div#internet-tab table').each(function(index1){
+			$(this).find("tr").each(function(index2){
+				
+				color = $(this).find('td').css('background-color');
+				var green = 'rgb(85, 255, 85)';
+				var yellow= 'rgb(255, 255, 85)';
+				if( color == yellow ){
+					number_of_yellow++;
+				}
+				
+			});	
+		});
+
+		$('div#tv-tab table').each(function(index1){
+			$(this).find("tr").each(function(index2){
+				
+				color = $(this).find('td').css('background-color');
+				var green = 'rgb(85, 255, 85)';
+				var yellow= 'rgb(255, 255, 85)';
+				if( color == yellow ){
+					number_of_yellow++;
+				}
+				
+			});	
+		});
+
+		$('div#phone-tab table').each(function(index1){
+			$(this).find("tr").each(function(index2){
+				
+				color = $(this).find('td').css('background-color');
+				var green = 'rgb(85, 255, 85)';
+				var yellow= 'rgb(255, 255, 85)';
+				if( color == yellow ){
+					number_of_yellow++;
+				}
+				
+			});	
+		});
+
+		var contact_size=0;
+		contact_size = $('table#contact tr').size();
+		
+		
+
+		if(contact_size == 0){
+			alert('Sale quote need to have a contact');
+		}else if( number_of_yellow > 0 ){
+			alert('All equipments and options need to be green');
+		}else if( num_of_service_plan == 0){
+			alert('Service plans need to be selected');
+		}else{
+			//start saving data from here
+
+			var end_user_service_id = getUrlVars()["end_user_service_id"];
+			
+			/*
+			// create a new sale quote
+		
+			$.ajax({
+					url: "/salespitchestimate/insertsalequoteajax/",
+					type: 'POST',
+					data: "end_user_service_id="+getUrlVars()["end_user_service_id"],
+					async:false,
+	    			success: function(data){
+		    			
+		    			sales_quote_id = data;
+		    			
+					}
+			});
+			*/
+			
+			
+			$('div[name="sale_quote"] div[name="service_plan"]').each(function(service_plan_index){
+			
+				var service_plan_price = $(this).find('div[name="serviceplan_cost"]').html();
+				
+				
+				service_plan_id = $(this).attr('id');
+				
+				
+				//alert(sales_quote_id);
+				//alert(service_plan_id);
+				//alert(service_plan_price);
+				
+				// call ajax to map service_plan_id to sale_quiote_id here and get service_plan_quote_map_id
+				
+				$.ajax({
+						url:  "/salespitchestimate/maptempsalequotetoserviceplanajax/",
+						type: "POST",
+						data: "end_user_service_id="+end_user_service_id+"&service_plan_id="+service_plan_id+"&price="+service_plan_price,
+						async:false,
+	    				success: function(data)
+	    				{
+		    				service_plan_quote_map_temp_id = data;
+						}
+				});
+				
+			
+				$(this).find('table[name="Equipment"] tr[type="service_plan_eq_type_mapping"]').each(function(equipment_index){
+					service_plan_eq_type_map_id = $(this).attr('id');
+					price						= $(this).find('td[name="price"]').html();
+					
+					// call ajax to map service_plan_quote_map_id to service_plan_eq_type_map_id 
+					//alert('service_plan_eq_type_map_id='+service_plan_eq_type_map_id);
+					$.ajax({
+						url: "/salespitchestimate/inserttempeqmappingajax/",
+						type:"POST",
+						data:"end_user_service_id="+end_user_service_id+"&service_plan_quote_map_temp_id="+service_plan_quote_map_temp_id+"&service_plan_eq_type_map_id="+service_plan_eq_type_map_id+"&price="+price,
+						async:false,
+	    				success: function(data){
+	    					alert(data);
+	    					service_plan_quote_map_id = data;
+	    					
+						}
+					});
+					
+				});
+			
+				$(this).find('table[name="Option"] tr[type="service_plan_option_mapping"]').each(function(equipment_index){
+					service_plan_option_map_id = $(this).attr('id');
+					price						= $(this).find('td[name="price"]').html();
+					
+					// call ajax to map service_plan_quote_map_id to service_plan_option_map_id 
+					//alert('service_plan_option_map_id='+service_plan_option_map_id);
+					$.ajax({
+						url: "/salespitchestimate/inserttempopmappingajax/",
+						type:"POST",
+						data:"end_user_service_id="+end_user_service_id+"&service_plan_quote_map_temp_id="+service_plan_quote_map_temp_id+"&service_plan_option_map_id="+service_plan_option_map_id+"&price="+price,
+						async:false,
+	    				success: function(data){
+	    					alert(data);
+	    					service_plan_quote_map_id = data;
+	    					
+						}
+					});
+					
+				});
+			
+			});
+			
+
+			window.location = '/calendar/makeappointment/?sales_quote_id='+sales_quote_id;
+			
+		}
+		
+		
+	});
+
+
+	$('input#follow_up').bind('click',function(){
+		alert('follow_up line 160-170');
+	});
+
+	$('input#save_quote').bind('click',function(){
+		alert('save_quote line 165-175')
+	});
+	
+
+	$("#tabs").tabs();
+	
+	////////////////////////////////////////////////////////////////
+	$('td#drag,div#drag').bind('dragstart',function(ev){
+		
+		
+		
+		var type = $(this).attr('type');
+		var dt = ev.originalEvent.dataTransfer;
+		
+		dt.setData("type",type);
+			
+		if(type == 'sale_quote'){
+			
+		}else if(type == 'service_plan'){
+			
+			var service_plan_id 		= $(this).attr('service_plan_id');
+		    var mrc_term				= $(this).attr('mrc_term');
+			var mrc					    = $(this).attr('mrc');
+			var nrc					    = $(this).attr('nrc');
+
+			
+			dt.setData("service_plan_id", service_plan_id);
+			dt.setData("mrc_term",mrc_term);
+			dt.setData("mrc",mrc);
+			dt.setData("nrc",nrc);
+			
+			
+		}else{
+			alert('otherd');
+		}
+		
+	});
+
+	
+	$('div#basket').bind('dragover',function(ev){
+		ev.preventDefault(); 
+	});
+
+	
+	$('div#basket').bind('drop',function(ev){
+		
+		ev.preventDefault();
+		var dt 		= ev.originalEvent.dataTransfer;
+		var type 	= dt.getData("type");
+	
+		var end_user_service_id = getUrlVars()["end_user_service_id"];
+		
+		
+
+		if(type == 'sale_quote')
+		{
+			alert('sale_quote');
+			
+		}
+		else if(type == 'service_plan')
+		{
+			
+			
+			var service_plan_id	= dt.getData("service_plan_id");
+			var mrc_term		= dt.getData("mrc_term");
+			var nrc             = dt.getData("nrc"); 	
+			var mrc             = dt.getData("mrc"); 	
+
+			$.ajax({
+				url: "/salespitchestimate/serviceplandropajax/",
+				type:"POST",
+				data:"end_user_service_id="+end_user_service_id+"&service_plan_id="+service_plan_id+"&mrc_term="+mrc_term+"&nrc="+nrc+"&mrc="+mrc,
+				async:false,
+				success: function(data){
+					alert(data);
+				}
+			});
+				
+		}
+		else if(type == 'service_plan_eq_type_mapping')
+		{
+					
+		}
+		else if(type == 'service_plan_option_mapping')
+		{
+				
+		}else{
+			alert('other items');
+		}
+		 		
+		//ev.target.appendChild(document.getElementById(data));
+		
+	});
+
+
+	function update_total_amount(string,option){
+		
+		
+		price = string.slice(0, -1);
+		
+ 		n_m	  = string.charAt( string.length-1 ); // get last character
+
+ 		if(option == '+'){
+ 			if(n_m == 'm'){
+ 	 	 		total_mrc = parseFloat(total_mrc)+parseFloat(price);
+ 		 		$('table[name="total_amount"] td[name="total_mrc"]').html(total_mrc);
+ 		 		
+ 		 	}else if(n_m == 'n'){
+ 		 		total_nrc = parseFloat(total_nrc)+parseFloat(price);
+ 		 		$('table[name="total_amount"] td[name="total_nrc"]').html(total_nrc);
+ 		 		
+ 			}
+ 	 	}else if(option == '-'){
+ 	 		if(n_m == 'm'){
+ 	 	 		total_mrc = parseFloat(total_mrc)-parseFloat(price);
+ 		 		$('table[name="total_amount"] td[name="total_mrc"]').html(total_mrc);
+ 		 		
+ 		 	}else if(n_m == 'n'){
+ 		 		total_nrc = parseFloat(total_nrc)-parseFloat(price);
+ 		 		$('table[name="total_amount"] td[name="total_nrc"]').html(total_nrc);
+ 		 		
+ 			}
+ 	 	}else{
+ 	 	 	alert('forget opation');
+ 	 	}			 		
+		
+		
+	}
+	
+		// delete service plan
+	$('img#service_delete').live('click',function(){
+		
+		var service_plan_type  = $(this).closest('div').attr('service_plan_type');
+		var connection		   = $(this).closest('div').attr('connection');
+		var serviceplan_price  = $(this).closest('div').find('div[name="serviceplan_cost"]').html();
+		
+
+		var answer = confirm("Are you sure you want to remove this service plan?");
+		
+
+		if( answer == true){
+			if(service_plan_type == 'internet'){
+				$('div#internet-tab table[connection="'+connection+'"]').remove();
+				$("#tabs").tabs("select", "internet-tab");
+			}else if(service_plan_type == 'phone'){
+				$('div#phone-tab table[connection="'+connection+'"]').remove();
+				$("#tabs").tabs("select", "phone-tab");
+			}else if(service_plan_type == 'tv'){
+				$('div#tv-tab table[connection="'+connection+'"]').remove();
+				$("#tabs").tabs("select", "tv-tab");
+			}
+			$(this).closest('div').remove();
+			update_total_amount(serviceplan_price,'-');
+		}else if( answer == false){
+		}
+		
+		
+	});
+
+		// delete equipment mapping
+	$('img#eq_delete').live('click',function(){
+		var service_plan_type  = $(this).closest('tr').attr('service_plan_type');
+		var connection		   = $(this).closest('tr').attr('connection');
+		var mapping_type       = $(this).closest('tr').attr('mapping_type');
+		var type			   = $(this).closest('tr').attr('type');  // eq or op
+		var price			   = $(this).closest('tr').find('td[name="price"]').html();
+		
+		if(service_plan_type == 'Internet'){
+
+			if( mapping_type == 'required' ){
+				alert('salespitchestimate_layout.phtml line 585-595');
+			}else if( mapping_type == 'more_option' ){
+				var count	= $(this).closest('table').find('tr[service_plan_type="Internet"][connection="'+connection+'"][mapping_type="'+mapping_type+'"][type="'+type+'"]').size();
+				
+				if(count == 1){
+					 $('div#internet-tab table').find('td[connection="'+connection+'"][mapping_type="more_option"][type="'+type+'"]').css('background-color','#FFFF55');
+				}
+			}else{
+				alert('something else');
+			}
+				
+		}else if(service_plan_type == 'Phone'){
+			
+
+			if( mapping_type == 'required' ){
+				alert('salespitchestimate_layout.phtml line 600-610');
+			}else if( mapping_type == 'more_option' ){
+				var count	= $(this).closest('table').find('tr[service_plan_type="Phone"][connection="'+connection+'"][mapping_type="'+mapping_type+'"][type="'+type+'"]').size();
+				
+				if(count == 1){
+					 $('div#internet-tab table').find('td[connection="'+connection+'"][mapping_type="more_option"][type="'+type+'"]').css('background-color','#FFFF55');
+				}
+			}else{
+				alert('something else');
+			}
+			
+		}else if(service_plan_type == 'TV'){
+
+			if( mapping_type == 'required' ){
+				alert('salespitchestimate_layout.phtml line 610-620');
+			}else if( mapping_type == 'more_option' ){
+				var count	= $(this).closest('table').find('tr[service_plan_type="TV"][connection="'+connection+'"][mapping_type="'+mapping_type+'"][type="'+type+'"]').size();
+				
+				if(count == 1){
+					 $('div#internet-tab table').find('td[connection="'+connection+'"][mapping_type="more_option"][type="'+type+'"]').css('background-color','#FFFF55');
+				}
+			}else{
+				alert('something else');
+			}
+		}	
+			
+	
+			
+		$(this).closest('tr').remove();
+		update_total_amount(price,'-');
+
+		
+	});
+
+		// delete option mapping 
+	$('img#op_delete').live('click',function(){
+		
+		var service_plan_type  = $(this).closest('tr').attr('service_plan_type');
+		var connection		   = $(this).closest('tr').attr('connection');
+		var mapping_type       = $(this).closest('tr').attr('mapping_type');
+		var type			   = $(this).closest('tr').attr('type');
+		var price			   = $(this).closest('tr').find('td[name="price"]').html();
+
+		if(service_plan_type == 'Internet'){
+		
+			if( mapping_type == 'more_option' ){
+				var count	= $(this).closest('table').find('tr[service_plan_type="Internet"][connection="'+connection+'"][mapping_type="'+mapping_type+'"][type="'+type+'"]').size();
+				
+				if(count == 1){
+					 $('div#internet-tab table').find('td[connection="'+connection+'"][mapping_type="more_option"][type="'+type+'"]').css('background-color','#FFFF55');
+				}
+			}
+			
+			
+			
+		}else if(service_plan_type == 'Phone'){
+			if( mapping_type == 'more_option' ){
+				var count	= $(this).closest('table').find('tr[service_plan_type="Phone"][connection="'+connection+'"][mapping_type="'+mapping_type+'"][type="'+type+'"]').size();
+				
+				if(count == 1){
+					 $('div#internet-tab table').find('td[connection="'+connection+'"][mapping_type="more_option"][type="'+type+'"]').css('background-color','#FFFF55');
+				}
+			}
+		}else if(service_plan_type == 'TV'){
+			if( mapping_type == 'more_option' ){
+				var count	= $(this).closest('table').find('tr[service_plan_type="TV"][connection="'+connection+'"][mapping_type="'+mapping_type+'"][type="'+type+'"]').size();
+				
+				if(count == 1){
+					 $('div#internet-tab table').find('td[connection="'+connection+'"][mapping_type="more_option"][type="'+type+'"]').css('background-color','#FFFF55');
+				}
+			}
+		}	
+			
+		//count = $(this).closest('tr')
+			
+		$(this).closest('tr').remove();
+		update_total_amount(price,'-');
+	});
+
+});
+
+
+
+function serviceplan(service_plan_id)
+{
+	
+	/// get service plan general info
+	$.ajax({
+		url: "/salespitchestimate/getserviceplanajax/",
+		type: 'POST',
+		data:"service_plan_id="+service_plan_id,
+		async:false,
+	    success: function(data){
+		   
+		    temp = data.split('!');
+		    id   = temp[0];
+			name = temp[1];
+			price= temp[2];
+			type = temp[3];
+			
+		}
+	});
+
+
+	/// get service plan optional equipment
+	$.ajax({
+		url: "/salespitchestimate/getserviceplaneqoptionalajax/",
+		type: 'POST',
+		data:"service_plan_id="+service_plan_id,
+		async:false,
+	    success: function(data){
+			
+	    	eq_options='';
+			if(data != ''){  
+				
+	    	temp1 = data.split('!');
+			eq_options = new Array(temp1.length);
+			
+				for(i=0; i < temp1.length; i++){
+					
+				     temp2 = temp1[ i ].split('~');
+				     
+				     eq_options[i] = new Array(3);	
+							     
+				     eq_options[i][0] = temp2[0];  // id
+				     eq_options[i][1] = temp2[1];  // name
+				     eq_options[i][2] = temp2[2];  // price
+							  
+				}
+			}  
+	    }
+	});
+	
+	this.eq_options 		= eq_options;
+
+	/// get service plan required more equipment
+	$.ajax({
+		url: "/salespitchestimate/getserviceplaneqmoreajax/",
+		type: 'POST',
+		data:"service_plan_id="+service_plan_id,
+		async:false,
+	    success: function(data){
+			
+	    	eq_more_options='';
+			if(data != ''){  
+				
+	    	temp1 = data.split('!');
+			eq_more_options = new Array(temp1.length);
+			
+				for(i=0; i < temp1.length; i++){
+					
+				     temp2 = temp1[ i ].split('~');
+				     
+				     eq_more_options[i] = new Array(3);	
+							     
+				     eq_more_options[i][0] = temp2[0];  // id
+				     eq_more_options[i][1] = temp2[1];  // name
+				     eq_more_options[i][2] = temp2[2];  // price
+							  
+				}
+			}  
+	    }
+	});
+	
+	this.eq_more_options 		= eq_more_options;
+
+	/// get service plan required once equipment
+	$.ajax({
+		url: "/salespitchestimate/getserviceplaneqrequirementsajax/",
+		type: 'POST',
+		data:"service_plan_id="+service_plan_id,
+		async:false,
+	    success: function(data){
+   
+	    	eq_requirements='';
+			if(data != ''){  
+				
+	    	temp1 = data.split('!')
+			eq_requirements = new Array(temp1.length);
+			
+				for(i=0; i < temp1.length; i++){
+					
+				     temp2 = temp1[ i ].split('~');
+				     
+				     eq_requirements[i] = new Array(3);	
+							     
+				     eq_requirements[i][0] = temp2[0];
+				     eq_requirements[i][1] = temp2[1];
+				     eq_requirements[i][2] = temp2[2];
+							  
+				}
+			}  
+	    }
+	});
+	
+	this.eq_requirements 		= eq_requirements;
+
+
+	/// get service plan optional option
+	$.ajax({
+		url: "/salespitchestimate/getserviceplanoptionoptionalajax/",
+		type: 'POST',
+		data:"service_plan_id="+service_plan_id,
+		async:false,
+	    success: function(data){
+			
+	    	option_options='';
+			if(data != ''){  
+				
+	    	temp1 = data.split('!')
+			option_options = new Array(temp1.length);
+			
+				for(i=0; i < temp1.length; i++){
+					
+				     temp2 = temp1[ i ].split('~');
+				     
+				     option_options[i] = new Array(3);	
+							     
+				     option_options[i][0] = temp2[0];
+				     option_options[i][1] = temp2[1];
+				     option_options[i][2] = temp2[2];
+							  
+				}
+			}  
+	    }
+	});
+	
+	this.option_options 		= option_options;
+
+	/// get service plan required more option
+	$.ajax({
+		url: "/salespitchestimate/getserviceplanoptionmoreajax/",
+		type: 'POST',
+		data:"service_plan_id="+service_plan_id,
+		async:false,
+	    success: function(data){
+			
+	    	option_more_options='';
+			if(data != ''){  
+				
+	    	temp1 = data.split('!');
+			option_more_options = new Array(temp1.length);
+			
+				for(i=0; i < temp1.length; i++){
+					
+				     temp2 = temp1[ i ].split('~');
+				     
+				     option_more_options[i] = new Array(3);	
+							     
+				     option_more_options[i][0] = temp2[0];
+				     option_more_options[i][1] = temp2[1];
+				     option_more_options[i][2] = temp2[2];
+					 
+				}
+			}  
+	    }
+	});
+	
+	this.option_more_options 		= option_more_options;
+
+	
+	// get service plan required once option
+	$.ajax({
+		url: "/salespitchestimate/getserviceplanoptionrequirementsajax/",
+		type: 'POST',
+		data:"service_plan_id="+service_plan_id,
+		async:false,
+	    success: function(data){
+		    
+	    	option_requirements ='';
+			if(data != ''){ 
+	    		temp1 = data.split('!')
+	    			  
+				option_requirements = new Array(temp1.length);
+			
+				for(i=0; i < temp1.length; i++)
+				{
+				
+				     temp2 = temp1[ i ].split('~');
+				     
+				     option_requirements[i] = new Array(3);	
+							     
+				     option_requirements[i][0] = temp2[0];
+				     option_requirements[i][1] = temp2[1];
+				     option_requirements[i][2] = temp2[2];
+				     
+				}
+			}
+	    }
+	});
+	
+	this.option_requirements 	= option_requirements;
+
+	this.id   = id;
+	this.name = name;
+	this.price= price;
+	this.type = type;
+	
+	
+}
+
+serviceplan.prototype.generate_options = function(){
+
+	var connection=0;
+	if(this.type == 'Internet'){
+		
+		if ($('div#internet-tab table').last().attr('connection') === undefined){
+			connection = 0; 
+		}else{
+			connection = parseInt( $('div#internet-tab table').last().attr('connection') ) + 1;
+		}
+								
+		output=		"<table style='float:left;width:25%' border='1'  connection="+connection+">";
+		output+="<caption>Connection "+(connection+1)+"</caption>";
+		
+	}else if( this.type == 'Phone' ){
+		
+		if ($('div#phone-tab table').last().attr('connection') === undefined){
+			connection = 0; 
+		}else{
+			connection = parseInt( $('div#phone-tab table').last().attr('connection') ) + 1;
+		}
+		
+		output=		"<table style='float:left;width:25%' border='1'  connection="+connection+">";
+		output+="<caption>Phone 	 "+(connection+1)+"</caption>";
+		
+	}else if( this.type == 'TV'){
+		
+		if ($('div#tv-tab table').last().attr('connection') === undefined){
+			connection = 0; 
+		}else{
+			connection = parseInt( $('div#tv-tab table').last().attr('connection') ) + 1;
+		}
+		
+		output=		"<table style='float:left;width:25%' border='1'  connection="+connection+">";
+		output+="<caption>TV 		 "+(connection+1)+"</caption>";
+		
+	}
+	
+				// for generating all optional equipments 
+				for(var i=0; i<this.eq_options.length; i++ )
+				{
+					output+="<tr><td connection="+connection+" mapping_type='option' type='service_plan_eq_type_mapping' id='drag' draggable='true' item_id="+this.eq_options[i][0]+" style='background-color:#55FF55'>eq_"+this.eq_options[i][1]+"/"+this.eq_options[i][2]+"</td></tr>";
+				}
+	
+				for(var i=0; i<this.eq_more_options.length; i++ )
+				{
+					output+="<tr><td connection="+connection+" mapping_type='more_option' type='service_plan_eq_type_mapping' id='drag'  draggable='true' item_id="+this.eq_more_options[i][0]+" style='background-color:#ffFF55'>eq_"+this.eq_more_options[i][1]+"/"+this.eq_more_options[i][2]+"</td></tr>";
+				}
+
+				// for generating all optional options
+				for(var i=0; i<this.option_options.length; i++ )
+				{
+					output+="<tr><td connection="+connection+" mapping_type='option' type='service_plan_option_mapping' id='drag'  draggable='true' item_id="+this.option_options[i][0]+" style='background-color:#55FF55'>op_"+this.option_options[i][1]+"/"+this.option_options[i][2]+"</td></tr>";
+				}
+				
+				for(var i=0; i<this.option_more_options.length; i++)
+				{
+					output+="<tr><td connection="+connection+" mapping_type='more_option' type='service_plan_option_mapping' id='drag'  draggable='true' item_id="+this.option_more_options[i][0]+" style='background-color:#ffFF55'>op_"+this.option_more_options[i][1]+"/"+this.option_more_options[i][2]+"</td></tr>";	
+				}
+
+	output+= "</table>";
+
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+
+	
+	if(this.type == 'Internet'){
+		
+		$("#tabs").tabs("select", "internet-tab");
+		$('div#internet-tab').append(output);
+				
+		if( connection > 4){
+			var new_size = (100 / connection );
+			$('div#internet-tab table').css('width',new_size+'%');
+		}
+		
+	}else if( this.type == 'Phone' ){
+		
+		$("#tabs").tabs("select", "phone-tab");
+		$('div#phone-tab').append(output);
+				
+		if( connection > 4){
+			var new_size = (100 / connection );
+			$('div#phone-tab table').css('width',new_size+'%');
+		}
+		
+	}else if( this.type == 'TV'){
+		
+		$("#tabs").tabs("select", "tv-tab");
+		$('div#tv-tab').append(output);
+		
+		if( connection > 4){
+			var new_size = (100 / connection );
+			$('div#tv-tab table').css('width',new_size+'%');
+		}
+		
+	}
+	
+	;
+	
+	$('td#drag').bind('dragstart',function(ev){
+
+
+	    /*
+		var primarykey 	= $(this).attr('item_id');
+		var type 		= $(this).attr('type');
+		var connection 	= $(this).attr('connection');
+		var mapping_type= $(this).attr('mapping_type');
+		
+		var dt = ev.originalEvent.dataTransfer;
+
+		dt.setData("type",type);
+		dt.setData("primary", primarykey);
+		dt.setData("connection",connection);
+		dt.setData("mapping_type",mapping_type);
+		*/
+	});	
+	
+}
+
+
+
+
+
+function serviceplan_eq_mapping(id){
+	
+	
+	$.ajax({
+		url: "/salespitchestimate/getserviceplaneqmapajax/",
+		type: 'POST',
+		data:"id="+id,
+		async:false,
+	    success: function(data){
+		    	    	   
+		    temp = data.split('!')
+		    name   							= temp[0];
+			price  							= temp[1];
+			serviceplan_type 				= temp[2];
+			serviceplan_id      			= temp[3];
+			service_plan_eq_type_group_id	= temp[4];
+			service_plan_eq_type_group_max  = temp[5];
+		}
+	});
+	
+	this.id								= id;
+	this.name							= name;
+	this.price							= price;
+	this.serviceplan_type				= serviceplan_type;
+	this.serviceplan_id     			= serviceplan_id;
+	this.service_plan_eq_type_group_id  = service_plan_eq_type_group_id;
+	this.service_plan_eq_type_group_max = service_plan_eq_type_group_max; 
+	
+}
+
+
+function serviceplan_op_mapping(id){
+	
+	
+	$.ajax({
+		url: "/salespitchestimate/getserviceplanopmapajax/",
+		type: 'POST',
+		data:"id="+id,
+		async:false,
+	    success: function(data){
+		
+	    	temp = data.split('!')
+		    name   							= temp[0];
+			price							= temp[1];
+			serviceplan_type 				= temp[2];
+			serviceplan_id      			= temp[3];
+			service_plan_op_type_group_id	= temp[4];
+			service_plan_op_type_group_max  = temp[5];
+		}
+	});
+	
+	this.id 							= id;
+	this.name							= name;
+	this.price							= price;
+	this.serviceplan_type				= serviceplan_type;
+	this.serviceplan_id     			= serviceplan_id;
+	this.service_plan_op_type_group_id  = service_plan_op_type_group_id;
+	this.service_plan_op_type_group_max = service_plan_op_type_group_max; 
+	
+}
+
+
+
+
+</script>
+</head>
+
+<body>
+	<input name='end_user_service_id' id='end_user_service_id' type='hidden' value='<?php echo $_GET['end_user_service_id']?>'></input>
+	<div style="float:left;width:220px;background-color:#ddddee">
+		Belair Logo
+	</div>
+
+
+	
+	
+	<div style="float:left;top:20px;left:240px;width:1000px;background-color:#00bFFb">
+		<?php echo $this->layout()->content;?>
+	</div>
+	
+	<div style="float:left;background-color:#00bFFb;min-height:500px">
+		<div style='width:320px;height:90px;background-color:#BBEEDD'>
+		Contact
+		<table id='contact' name='contact' border='1' style='width:100%'>
+			<tr>
+				<td style='width:70%'><?php echo $this->enduser_firstname.' '.$this->enduser_lastname?></td>
+				<td style='width:70%'><?php echo $this->enduser_title?></td>
+			</tr>
+			
+		</table>
+		</div>
+		
+		<div style='clear:both;width:320px;background-color:#BBEEDD'>
+		<input class='button' type='button' value='Add Contact'></input>
+		</div>
+		
+		<div id='basket' style='position:fixed;clear:both;width:320px;min-height:600px;background-color:#BBEEEE'>
+			
+			<div style="width:100%;border:2px solid red;">Estimate</div>
+			
+			
+			<div name='sale_quote' id='0' style='width:100%;border:2px solid red;clear:both'>
+			
+				
+				
+				<div name='internet_service_plan_head' style='width:100%;border:2px solid blue;clear:both'>
+				Internet
+				</div>
+				
+				<div name='phone_service_plan_head' style='width:100%;border:2px solid blue;clear:both'>
+				Phone
+				</div>
+				
+				<div name='tv_service_plan_head' style='width:100%;border:2px solid blue;clear:both'>
+				TV
+				</div>
+				
+					
+				<div style='clear:both;width:320px;background-color:#BBEEDD'>
+					<input class='button' type='button' value='Send quote' id='send_quote'></input>
+					<input class='button' type='button' value='Follow up' id='follow_up'></input>
+					<input class='button' type='button' value='Save' id='save_quote'></input>
+				</div>
+			</div>
+			<table border='1' width='100%' name='total_amount'>
+				<tr>
+					<td align='left' style='width:70%'>Total Monthly:</td>
+					<td name='total_mrc'>0</td>
+				</tr>
+				<tr>
+					<td align='left' style='width:70%'>Total Equipment/Option:</td>
+					<td name='total_nrc'>0</td>
+				</tr>
+				<tr>
+					<td align='left' style='width:70%'>Tax:</td>
+					<td name='total_tax'>0</td>
+				</tr>
+				<tr>
+					<td align='left' style='width:70%'>Install Time:</td>
+					<td name='install_time'>10 hr 15 min</td>
+				</tr>
+			</table>
+				
+		</div>
+	
+	</div>
+	
+	
+</body>
+</html>

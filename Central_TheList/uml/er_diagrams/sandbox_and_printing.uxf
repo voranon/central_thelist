@@ -1,0 +1,3359 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="11.3">
+  <zoom_level>6</zoom_level>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>1224</x>
+      <y>1308</y>
+      <w>78</w>
+      <h>132</h>
+    </coordinates>
+    <panel_attributes>equipment
+--
+eq_id
+eq_master_id
+eq_type_id
+eq_fqdn
+eq_name
+eq_serialnumber
+eq_poll_priority
+eq_active
+po_item_id
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>1242</x>
+      <y>1620</y>
+      <w>60</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>apis
+--
+api_id
+name
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>1224</x>
+      <y>1512</y>
+      <w>78</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>equipment_apis
+--
+eq_api_id
+eq_id
+api_id
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>1224</x>
+      <y>1722</y>
+      <w>156</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>equipment_auth
+--
+eq_auth_id
+eq_api_id
+auth_type (user / password / enable password)
+auth_value
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1206</x>
+      <y>1512</y>
+      <w>30</w>
+      <h>222</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>18;18;18;210</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1284</x>
+      <y>1512</y>
+      <w>30</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;EER
+</panel_attributes>
+    <additional_attributes>18;18;18;108</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1284</x>
+      <y>1308</y>
+      <w>30</w>
+      <h>216</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;EER
+</panel_attributes>
+    <additional_attributes>18;204;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>1698</x>
+      <y>1110</y>
+      <w>90</w>
+      <h>138</h>
+    </coordinates>
+    <panel_attributes>equipment_types
+--
+eq_type_id
+eq_model_name
+eq_manufacturer
+eq_type_name
+eq_type_desc
+eq_type_active
+eq_type_protected
+eq_type_friendly_name
+eq_type_serialized</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1284</x>
+      <y>1110</y>
+      <w>426</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>414;18;18;198</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>1920</x>
+      <y>1308</y>
+      <w>108</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>interfaces
+--
+if_id
+eq_id
+if_name
+if_type_id
+if_mac_address
+service_point_id
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>2028</x>
+      <y>1758</y>
+      <w>84</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>interfacetypes
+--
+if_type_id
+name
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1284</x>
+      <y>1308</y>
+      <w>648</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>636;18;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>2010</x>
+      <y>1308</y>
+      <w>30</w>
+      <h>462</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>18;18;18;450</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>2208</x>
+      <y>1758</y>
+      <w>132</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>##interface_feature_mapping
+--
+if_feature_map_id
+if_type_id
+feature_id
+if_feature_value
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>2094</x>
+      <y>1740</y>
+      <w>126</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>114;18;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>2322</x>
+      <y>1758</y>
+      <w>30</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>18;18;18;96</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>2532</x>
+      <y>1986</y>
+      <w>132</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>delivery_types
+--
+delivery_type_id
+delivery_type_name
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>3048</x>
+      <y>1986</y>
+      <w>84</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>homerun type
+--
+homerun_type_id
+homerun_name
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>2892</x>
+      <y>1986</y>
+      <w>168</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;EER
+</panel_attributes>
+    <additional_attributes>18;18;156;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>2514</x>
+      <y>1854</y>
+      <w>30</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>18;18;18;132</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>2664</x>
+      <y>2076</y>
+      <w>138</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>service_plans
+--
+service_plan_id
+delivery_type_id
+service_plan_name
+service_plan_cost
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>2646</x>
+      <y>1986</y>
+      <w>30</w>
+      <h>102</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>18;18;18;90</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>1500</x>
+      <y>684</y>
+      <w>60</w>
+      <h>156</h>
+    </coordinates>
+    <panel_attributes>units
+--
+unit_id
+unit_name
+unit_type (items table)
+number
+streetnumber
+streetname
+streettype
+city
+state
+zip
+note
+building_id
+createdate
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1542</x>
+      <y>414</y>
+      <w>30</w>
+      <h>282</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;EER
+</panel_attributes>
+    <additional_attributes>18;270;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>1560</x>
+      <y>426</y>
+      <w>78</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>buildings
+--
+building_id
+building_name
+building_alias
+note1
+note2
+note3
+project_id
+createdate
+
+
+
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>2796</x>
+      <y>1290</y>
+      <w>96</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>service_points
+--
+service_point_id
+service_point_name
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>2790</x>
+      <y>696</y>
+      <w>102</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>##service_point_avail
+--
+service_point_avail_id
+unit_id
+service_point_id
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1542</x>
+      <y>684</y>
+      <w>1260</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;EER
+</panel_attributes>
+    <additional_attributes>1248;18;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>2874</x>
+      <y>696</y>
+      <w>24</w>
+      <h>606</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;EER
+</panel_attributes>
+    <additional_attributes>18;18;18;594</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>2010</x>
+      <y>1290</y>
+      <w>798</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>18;18;786;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>2424</x>
+      <y>1854</y>
+      <w>108</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>##delivery_feature_mapping
+--
+delivery_feature_map_id
+delivery_type_id
+feature_id
+if_feature_value
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>2322</x>
+      <y>1854</y>
+      <w>114</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>102;18;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>2778</x>
+      <y>1986</y>
+      <w>132</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>##homeruns_delivery_type_map
+--
+homeruns_delivery_type_map_id
+delivery_type_id
+homerun_type_id
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>2646</x>
+      <y>1986</y>
+      <w>144</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;EER
+</panel_attributes>
+    <additional_attributes>132;18;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>1416</x>
+      <y>534</y>
+      <w>84</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>unit_services
+--
+unit_service_id
+unit_id
+created
+deactivated
+
+bg=magenta</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>1344</x>
+      <y>156</y>
+      <w>60</w>
+      <h>204</h>
+    </coordinates>
+    <panel_attributes>contacts
+--
+contact_id
+firstname
+lastname
+streetnumber
+streetname
+streettype
+city
+state
+zip
+cellphone
+homephone
+officephone
+fax
+email
+creator
+createdate
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1386</x>
+      <y>156</y>
+      <w>30</w>
+      <h>216</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>18;18;18;204</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1482</x>
+      <y>528</y>
+      <w>30</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;EER
+</panel_attributes>
+    <additional_attributes>18;18;18;156</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1902</x>
+      <y>1200</y>
+      <w>30</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>18;18;18;108</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>2664</x>
+      <y>1734</y>
+      <w>114</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>delivery_group
+--
+delivery_group_id
+delivery_group_name
+
+(internet, phone, dtv)
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>2646</x>
+      <y>1734</y>
+      <w>30</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;EER
+</panel_attributes>
+    <additional_attributes>18;84;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>1374</x>
+      <y>2076</y>
+      <w>126</w>
+      <h>102</h>
+    </coordinates>
+    <panel_attributes>##service_plan_mapping
+--
+service_plan_map_id
+service_plan_id
+unit_id
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1482</x>
+      <y>2076</y>
+      <w>1194</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>18;18;1182;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>2964</x>
+      <y>684</y>
+      <w>84</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>##homerun_mapping
+--
+homerun_map_id
+homerun_type_id
+unit_id
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>3030</x>
+      <y>672</y>
+      <w>30</w>
+      <h>1332</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;EER
+</panel_attributes>
+    <additional_attributes>18;18;18;1320</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1542</x>
+      <y>666</y>
+      <w>1434</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;EER
+</panel_attributes>
+    <additional_attributes>1422;18;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>1638</x>
+      <y>258</y>
+      <w>222</w>
+      <h>102</h>
+    </coordinates>
+    <panel_attributes>projects
+--
+project_id
+project_name
+note1
+note2
+project_entity_id
+createdate
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1620</x>
+      <y>246</y>
+      <w>30</w>
+      <h>192</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>18;180;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>1740</x>
+      <y>156</y>
+      <w>120</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>main entity
+--
+main_id
+name
+note
+createdate
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1842</x>
+      <y>156</y>
+      <w>24</w>
+      <h>114</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>18;102;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>1404</x>
+      <y>360</y>
+      <w>156</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>##building_contact_mapping
+--
+building_contact_id
+contact_id
+building_id
+contact_title
+createdate</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1386</x>
+      <y>156</y>
+      <w>60</w>
+      <h>114</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>18;18;48;102</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1482</x>
+      <y>684</y>
+      <w>30</w>
+      <h>1404</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>18;18;18;1392</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>1920</x>
+      <y>1200</y>
+      <w>108</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>interface_connections
+--
+if_conn_id
+if_id_a
+if_id_b
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>2010</x>
+      <y>1200</y>
+      <w>30</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>18;18;18;108</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>2028</x>
+      <y>1854</y>
+      <w>84</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>interface_assoc
+--
+iftype_assoc_id
+if_type_id_1
+if_type_id_2
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>2010</x>
+      <y>1752</y>
+      <w>30</w>
+      <h>114</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>18;102;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>1818</x>
+      <y>1560</y>
+      <w>102</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>interface_resource_pool
+--
+interface_resource_id
+interface_resource_type_id
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1902</x>
+      <y>1308</y>
+      <w>30</w>
+      <h>264</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>18;252;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>1818</x>
+      <y>1674</y>
+      <w>126</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>interface_resource_type
+--
+interface_resource_type_id
+name
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1800</x>
+      <y>1560</y>
+      <w>30</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+</panel_attributes>
+    <additional_attributes>18;114;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1584</x>
+      <y>138</y>
+      <w>168</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>156;18;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1518</x>
+      <y>240</y>
+      <w>132</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>120;18;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1542</x>
+      <y>360</y>
+      <w>30</w>
+      <h>78</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>18;66;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>1500</x>
+      <y>156</y>
+      <w>102</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>##main_contact_mapping
+--
+contact_id
+main_id
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>1434</x>
+      <y>258</y>
+      <w>102</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>##project_contact_mapping
+--
+project_contact_id
+contact_id
+project_id
+contact_title
+creator
+createdate
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>1200</x>
+      <y>516</y>
+      <w>144</w>
+      <h>78</h>
+    </coordinates>
+    <panel_attributes>##unitservice_contact_mapping
+--
+contact_id
+unitservice_id
+created
+deactivated</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1326</x>
+      <y>156</y>
+      <w>30</w>
+      <h>372</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>18;18;18;360</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1386</x>
+      <y>138</y>
+      <w>126</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>18;18;114;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1326</x>
+      <y>516</y>
+      <w>102</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>90;18;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>1788</x>
+      <y>882</y>
+      <w>180</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>##available_monitor_data_source_mapping
+--
+avail_mon_ds_map_id
+eq_type_id
+avail_mon_ds_id
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1770</x>
+      <y>882</y>
+      <w>30</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>18;228;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>2124</x>
+      <y>882</y>
+      <w>180</w>
+      <h>138</h>
+    </coordinates>
+    <panel_attributes>available_monitoring_data_sources
+--
+avail_mon_ds_id
+def_rrd_ds_name
+def_rrd_step
+def_rrd_ds_type_counter
+def_rrd_heartbeat
+def_rrd_max_value
+def_rrd_min_value
+def_mysql_table_type
+def_mysql_table_name
+def_mysql_table_engine
+def_mon_ds_active
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>1944</x>
+      <y>732</y>
+      <w>180</w>
+      <h>78</h>
+    </coordinates>
+    <panel_attributes>##available_rrd_ds_rra
+--
+avail_rrd_ds_rra_id
+avail_mon_ds_id
+rra_type_id
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1950</x>
+      <y>864</y>
+      <w>186</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>174;18;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>2106</x>
+      <y>726</y>
+      <w>30</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>18;156;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>2658</x>
+      <y>780</y>
+      <w>102</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>monitoring_guids
+--
+mon_guid
+mon_guid_priority
+table_id
+pri_key_id
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>2490</x>
+      <y>882</y>
+      <w>168</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>monitoring_data_sources
+--
+mon_ds_id
+avail_mon_ds_id
+mon_guid
+repo_create_attempt_count
+mon_ds_active
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>2640</x>
+      <y>780</y>
+      <w>24</w>
+      <h>114</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>18;18;18;102</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>2484</x>
+      <y>996</y>
+      <w>174</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>mysql_table_type
+--
+mysql_table_type_id
+column_name
+column_data_type
+column_length
+column_default
+column_auto_increment
+column_nullable
+etc
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>2640</x>
+      <y>876</y>
+      <w>24</w>
+      <h>132</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;EER
+</panel_attributes>
+    <additional_attributes>18;18;18;120</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>2106</x>
+      <y>714</y>
+      <w>126</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;EER
+</panel_attributes>
+    <additional_attributes>18;18;114;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>2490</x>
+      <y>1326</y>
+      <w>144</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>##vlans
+--
+vlan_pri_key_id
+vlan_id
+vlan_type (native or trunk)
+if_id
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>2832</x>
+      <y>1488</y>
+      <w>96</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>ip_subnets
+--
+ip_subnet_id
+ip_subnet_address
+ip_subnet_cidr_mask
+ip_gateway
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>2634</x>
+      <y>1488</y>
+      <w>114</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>ip_addresses
+--
+ip_address_id
+ip_address
+ip_subnet_id
+vlan_pri_key_id
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>2730</x>
+      <y>1470</y>
+      <w>114</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>102;18;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>2010</x>
+      <y>1308</y>
+      <w>492</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>18;18;480;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>2346</x>
+      <y>1494</y>
+      <w>144</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>connection_queues
+--
+connection_queue_id
+vlan_pri_key_id
+connection_queue_type_id
+connection_queue_name
+connection_queue_rate
+connection_queue_rate_ceiling
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>2616</x>
+      <y>1326</y>
+      <w>24</w>
+      <h>174</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>18;18;18;162</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>1590</x>
+      <y>1002</y>
+      <w>108</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>monitoring_commands
+--
+mon_cmd_id
+command
+eq_type_id
+mon_cmd_type
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1680</x>
+      <y>996</y>
+      <w>30</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>18;114;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>2286</x>
+      <y>864</y>
+      <w>210</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;EER
+</panel_attributes>
+    <additional_attributes>204;18;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>2220</x>
+      <y>732</y>
+      <w>174</w>
+      <h>78</h>
+    </coordinates>
+    <panel_attributes>rra_type
+--
+rra_type_id
+consolidation_function
+acceptable_data_loss
+data_points_before_consolidation
+amount_of_data_points
+rra_active
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>2136</x>
+      <y>1494</y>
+      <w>144</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>connection_queue_types
+--
+connection_queue_type_id
+connection_queue_type_name
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>2262</x>
+      <y>1476</y>
+      <w>96</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>18;18;84;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>2112</x>
+      <y>1110</y>
+      <w>108</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>##static_if_types
+--
+static_if_type_id
+eq_type_id
+if_index_number
+if_type_id
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1770</x>
+      <y>1092</y>
+      <w>354</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>18;18;342;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>2094</x>
+      <y>1110</y>
+      <w>30</w>
+      <h>660</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>18;648;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>372</x>
+      <y>1608</y>
+      <w>60</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>menus
+--
+menu_id
+menu_name
+role_id
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>432</x>
+      <y>1854</y>
+      <w>90</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>menuitems
+--
+menuitem_id
+menu_id
+page_id
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>414</x>
+      <y>1608</y>
+      <w>24</w>
+      <h>258</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>18;246;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>588</x>
+      <y>1608</y>
+      <w>114</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>acl_roles
+--
+role_id
+role_name
+role_supervisor
+role_description
+role_default
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>612</x>
+      <y>1956</y>
+      <w>90</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>acl_resources
+--
+resource_id
+resource_name
+resource_description
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>810</x>
+      <y>1782</y>
+      <w>90</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>acl_privileges
+--
+privilege_id
+privilege_name
+resource_id
+privilege_description
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>612</x>
+      <y>1782</y>
+      <w>90</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>acl_access_control_list
+--
+role_id
+resource_id
+privilege_id
+acl_description
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>684</x>
+      <y>1590</y>
+      <w>24</w>
+      <h>204</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;EER
+</panel_attributes>
+    <additional_attributes>18;192;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>594</x>
+      <y>1782</y>
+      <w>24</w>
+      <h>186</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;EER
+</panel_attributes>
+    <additional_attributes>18;18;18;174</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>678</x>
+      <y>1764</y>
+      <w>144</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;EER
+</panel_attributes>
+    <additional_attributes>18;18;132;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>414</x>
+      <y>1590</y>
+      <w>186</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;EER
+</panel_attributes>
+    <additional_attributes>174;18;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>798</x>
+      <y>1956</y>
+      <w>144</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>htmlpages
+--
+page_id
+page_name
+controller
+action
+page_desc
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>684</x>
+      <y>1782</y>
+      <w>138</w>
+      <h>186</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>126;18;18;174</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>684</x>
+      <y>1938</y>
+      <w>126</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>114;18;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>816</x>
+      <y>1608</y>
+      <w>264</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>users
+--
+uid
+ad_identity
+firstname
+lastname
+title
+department
+role_id
+cellphone
+officephone
+homephone
+email
+createdate
+lastlogon
+bg=cyan</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>684</x>
+      <y>1608</y>
+      <w>144</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>132;18;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>2010</x>
+      <y>330</y>
+      <w>24</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>18;78;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>1728</x>
+      <y>588</y>
+      <w>60</w>
+      <h>78</h>
+    </coordinates>
+    <panel_attributes>notes
+--
+note_id
+note_contect
+creator
+createdate
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>2358</x>
+      <y>258</y>
+      <w>102</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>project_entities
+--
+project_entity_id
+project_entity_name
+note
+createdate
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>2154</x>
+      <y>258</y>
+      <w>120</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>##project_entity_mapping
+--
+project_entity_entity_id
+project_entity_id
+project_id
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>2256</x>
+      <y>246</y>
+      <w>114</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>102;18;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1842</x>
+      <y>246</y>
+      <w>324</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>18;18;312;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>1860</x>
+      <y>330</y>
+      <w>168</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>##project_task_mapping
+--
+project_task_id
+task_id
+project_id
+createdate
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1842</x>
+      <y>258</y>
+      <w>24</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>18;18;18;78</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>2028</x>
+      <y>408</y>
+      <w>96</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>tasks
+--
+task_id
+task_name
+master_task_id
+task_owner
+task_queue_id
+task_queueowner_id
+task_priority
+task_status
+task_subtype
+creator
+bg=orange</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>2214</x>
+      <y>522</y>
+      <w>60</w>
+      <h>78</h>
+    </coordinates>
+    <panel_attributes>queue
+--
+queue_id
+queue_name
+createdate
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>2106</x>
+      <y>390</y>
+      <w>120</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>18;18;108;132</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>2106</x>
+      <y>408</y>
+      <w>120</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;EER
+</panel_attributes>
+    <additional_attributes>108;132;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>2442</x>
+      <y>408</y>
+      <w>168</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>DUPLICATE:users:DUPLICATE
+--
+Duplicate of users table 
+here for ease of referance
+and not to clutter the diagram
+bg=cyan</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>2352</x>
+      <y>522</y>
+      <w>90</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>##user_queue_mapping
+--
+user_queue_id
+queue_id
+uid
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>2424</x>
+      <y>408</y>
+      <w>24</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>18;18;18;114</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>2256</x>
+      <y>522</y>
+      <w>108</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>18;18;96;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>2106</x>
+      <y>390</y>
+      <w>348</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>18;18;336;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>1926</x>
+      <y>588</y>
+      <w>102</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>##task_note_mapping
+--
+task_note_id
+task_id
+note_id
+creator
+createdate
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1770</x>
+      <y>588</y>
+      <w>168</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>18;18;156;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>2010</x>
+      <y>408</y>
+      <w>24</w>
+      <h>192</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>18;180;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>2490</x>
+      <y>1650</y>
+      <w>144</w>
+      <h>102</h>
+    </coordinates>
+    <panel_attributes>connection_queue_filters
+--
+connection_queue_filter_id
+connection_queue_id
+subnet_address
+subnet_mask
+direction
+protocol
+port
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>2472</x>
+      <y>1326</y>
+      <w>24</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>18;18;18;168</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>2472</x>
+      <y>1494</y>
+      <w>30</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>18;18;18;156</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1284</x>
+      <y>684</y>
+      <w>30</w>
+      <h>636</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>18;624;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>816</x>
+      <y>1308</y>
+      <w>264</w>
+      <h>222</h>
+    </coordinates>
+    <panel_attributes>equipment_logs
+--
+eq_log_id
+eq_id
+uid 
+eq_log_type (from items, see below)
+eq_log_note
+creator
+createdate
+
+---
+---
+Events:
+Placed in inventory
+Transfered to technician
+RMA to Vendor
+Tested Working
+Tested Failed
+System verified install
+removed by customer
+stolen
+missing
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1062</x>
+      <y>1308</y>
+      <w>174</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>162;18;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>798</x>
+      <y>1308</y>
+      <w>30</w>
+      <h>312</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>18;300;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>2496</x>
+      <y>1200</y>
+      <w>108</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>pseudo_interfaces
+--
+pseudo_if_id
+pseudo_if_name
+if_type_id
+pseudo_if_mac_address
+
+(should this have a primary if or a tx/rx radios 
+so we can eliminate the mac-address?
+That would work for Nstreme, but not for VRRP)
+so the answer is no.
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>2010</x>
+      <y>1182</y>
+      <w>246</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>18;18;234;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>2244</x>
+      <y>1200</y>
+      <w>108</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>##pseudo_interface_mapping
+--
+pseudo_if_map_id
+if_id
+pseudo_if_id
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>2334</x>
+      <y>1182</y>
+      <w>174</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>162;18;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>888</x>
+      <y>1116</y>
+      <w>348</w>
+      <h>204</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>18;18;336;192</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>960</x>
+      <y>108</y>
+      <w>150</w>
+      <h>78</h>
+    </coordinates>
+    <panel_attributes>app_event_logs
+--
+a_logid
+priority
+message
+timestamp
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>1752</x>
+      <y>408</y>
+      <w>156</w>
+      <h>78</h>
+    </coordinates>
+    <panel_attributes>##building_task_mapping
+--
+building_task_id
+building_id
+task_id
+createdate
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1620</x>
+      <y>408</y>
+      <w>144</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>18;18;132;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1890</x>
+      <y>408</y>
+      <w>144</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>138;18;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>1728</x>
+      <y>486</y>
+      <w>108</w>
+      <h>78</h>
+    </coordinates>
+    <panel_attributes>note_attachments
+--
+note_attachment_id
+filepath
+note_id
+creator
+createdate
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1710</x>
+      <y>486</y>
+      <w>30</w>
+      <h>114</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>18;18;18;102</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>960</x>
+      <y>192</y>
+      <w>150</w>
+      <h>138</h>
+    </coordinates>
+    <panel_attributes>user_event_logs
+--
+u_logid
+uid
+page_name
+event
+class_name
+method_name
+primary_key_name
+primary_key_value
+message_1
+message_2
+timestamp</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>2802</x>
+      <y>2622</y>
+      <w>198</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>DUPLICATE:unit_services:DUPLICATE
+--
+Duplicate of unit_services table 
+here for ease of referance
+and not to clutter the diagram
+bg=magenta</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>2784</x>
+      <y>2466</y>
+      <w>30</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>18;156;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>2802</x>
+      <y>2466</y>
+      <w>144</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>##unit_service_plan_mapping
+--
+unit_service_plan_map_id
+service_plan_id
+unit_service_id
+service_plan_activate
+service_plan_deactivate
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>2784</x>
+      <y>2076</y>
+      <w>30</w>
+      <h>402</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>18;18;18;390</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>1302</x>
+      <y>684</y>
+      <w>114</w>
+      <h>102</h>
+    </coordinates>
+    <panel_attributes>##equipment_mapping
+--
+equipment_mapping_id
+eq_id
+unit_id
+unit_service_id
+created
+deactivated</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1398</x>
+      <y>684</y>
+      <w>114</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>102;18;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1398</x>
+      <y>534</y>
+      <w>30</w>
+      <h>162</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>18;18;18;150</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>348</x>
+      <y>324</y>
+      <w>60</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>unit
+--
+attribute
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>474</x>
+      <y>324</y>
+      <w>84</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>##unit_eq_mapping
+--
+attribute
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>180</x>
+      <y>324</y>
+      <w>108</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>##contact unit mapping
+--
+contact_id
+unit_id
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>60</x>
+      <y>324</y>
+      <w>60</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>contact
+--
+attribute
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>600</x>
+      <y>324</y>
+      <w>60</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>equipment
+--
+attribute
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>348</x>
+      <y>396</y>
+      <w>60</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>##unit_serviceplan_mapping
+--
+attribute
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>348</x>
+      <y>468</y>
+      <w>60</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>service_plan
+--
+attribute
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>102</x>
+      <y>318</y>
+      <w>90</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;</panel_attributes>
+    <additional_attributes>18;18;78;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>270</x>
+      <y>312</y>
+      <w>90</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;</panel_attributes>
+    <additional_attributes>78;18;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>390</x>
+      <y>312</y>
+      <w>96</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;</panel_attributes>
+    <additional_attributes>18;18;84;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>540</x>
+      <y>318</y>
+      <w>72</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;</panel_attributes>
+    <additional_attributes>60;18;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>360</x>
+      <y>330</y>
+      <w>30</w>
+      <h>78</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;</panel_attributes>
+    <additional_attributes>18;18;18;66</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>354</x>
+      <y>414</y>
+      <w>30</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;</panel_attributes>
+    <additional_attributes>18;54;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>336</x>
+      <y>12</y>
+      <w>60</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>unit
+--
+attribute
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>462</x>
+      <y>12</y>
+      <w>84</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>##unit_eq_mapping
+--
+attribute
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>168</x>
+      <y>12</y>
+      <w>108</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>##contact unit mapping
+--
+attribute
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>48</x>
+      <y>12</y>
+      <w>60</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>contact
+--
+attribute
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>588</x>
+      <y>12</y>
+      <w>60</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>equipment
+--
+attribute
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>480</x>
+      <y>84</y>
+      <w>60</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>##unit_serviceplan_mapping
+--
+attribute
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>486</x>
+      <y>156</y>
+      <w>60</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>service_plan
+--
+attribute
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>90</x>
+      <y>6</y>
+      <w>90</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;</panel_attributes>
+    <additional_attributes>18;18;78;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>258</x>
+      <y>0</y>
+      <w>90</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;</panel_attributes>
+    <additional_attributes>78;18;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>378</x>
+      <y>0</y>
+      <w>96</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;</panel_attributes>
+    <additional_attributes>18;18;84;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>528</x>
+      <y>6</y>
+      <w>72</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;</panel_attributes>
+    <additional_attributes>60;18;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>492</x>
+      <y>24</y>
+      <w>30</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;</panel_attributes>
+    <additional_attributes>18;18;18;60</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>492</x>
+      <y>96</y>
+      <w>30</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;</panel_attributes>
+    <additional_attributes>18;60;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>2238</x>
+      <y>1854</y>
+      <w>102</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>features
+--
+feature_id
+feature_name
+feature_desc
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>744</x>
+      <y>1116</y>
+      <w>30</w>
+      <h>156</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;EER
+</panel_attributes>
+    <additional_attributes>18;18;18;144</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>522</x>
+      <y>888</y>
+      <w>144</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>vendors
+--
+vendor_id
+vendor_name
+vendor_street_number
+vendor_street
+vendor_street_type
+vendor_city
+vendor_state
+vendor_zip
+vendor_country
+fg=
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>306</x>
+      <y>822</y>
+      <w>144</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>purchase_requests
+--
+purchase_request_id
+purchase_request_title
+creator
+createdate
+
+fg=
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>306</x>
+      <y>1116</y>
+      <w>144</w>
+      <h>132</h>
+    </coordinates>
+    <panel_attributes>purchase_request_items
+--
+purchase_request_item_id
+purchase_request_id
+eq_type_id
+quantity
+deliver_by
+purchase_request_item_note
+task_id
+fg=
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>288</x>
+      <y>822</y>
+      <w>30</w>
+      <h>324</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+fg=
+</panel_attributes>
+    <additional_attributes>18;18;18;312</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>762</x>
+      <y>888</y>
+      <w>144</w>
+      <h>156</h>
+    </coordinates>
+    <panel_attributes>purchase_orders
+--
+po_id
+po_number
+po_subject
+vendor_id
+po_terms (items table)
+po_freight (items table)
+creator
+order_date
+po_status (items table)
+createdate
+shipping_cost
+po_lock
+fg=
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>888</x>
+      <y>888</y>
+      <w>30</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+fg=
+</panel_attributes>
+    <additional_attributes>18;18;18;228</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>762</x>
+      <y>1116</y>
+      <w>144</w>
+      <h>174</h>
+    </coordinates>
+    <panel_attributes>purchase_order_items
+--
+po_item_id
+po_id
+eq_type_id
+quantity
+account
+piece_cost
+deliver_by
+po_item_note
+creator
+createdate
+not_serialized_amount_received
+canceled_amount
+canceled_desc</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>528</x>
+      <y>1116</y>
+      <w>144</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>##purchase_request_to_po_mapping
+--
+request_to_po_map_id
+purchase_request_item_id
+po_item_id
+fg=
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>432</x>
+      <y>1098</y>
+      <w>108</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+fg=
+</panel_attributes>
+    <additional_attributes>18;18;96;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>654</x>
+      <y>1098</y>
+      <w>120</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+fg=
+</panel_attributes>
+    <additional_attributes>108;18;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>648</x>
+      <y>870</y>
+      <w>126</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+fg=
+</panel_attributes>
+    <additional_attributes>18;18;114;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>0</x>
+      <y>1116</y>
+      <w>168</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>DUPLICATE:tasks:DUPLICATE
+--
+Duplicate of tasks table 
+here for ease of referance
+and not to clutter the diagram
+bg=orange</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>150</x>
+      <y>1116</y>
+      <w>168</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+fg=
+</panel_attributes>
+    <additional_attributes>18;18;156;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>450</x>
+      <y>1260</y>
+      <w>312</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>DUPLICATE:equipment_types:DUPLICATE
+--
+Duplicate of equipment_types table 
+here for ease of referance
+and not to clutter the diagram
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>432</x>
+      <y>1116</y>
+      <w>30</w>
+      <h>156</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>18;144;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>1530</x>
+      <y>1230</y>
+      <w>168</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>eq_type_serial_match
+--
+eq_type_serial_match_id
+eq_type_id
+regex
+eq_type_serial_match_active
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1680</x>
+      <y>1110</y>
+      <w>30</w>
+      <h>132</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>18;18;18;120</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>2340</x>
+      <y>2412</y>
+      <w>192</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>DUPLICATE:equipment_types:DUPLICATE
+--
+Duplicate of equipment_types table 
+here for ease of referance
+and not to clutter the diagram
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>2514</x>
+      <y>2196</y>
+      <w>30</w>
+      <h>228</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>18;216;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>2664</x>
+      <y>1818</y>
+      <w>114</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>##delivery_group_mapping
+--
+delivery_group_map_id
+delivery_group_id
+delivery_type_id
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>2646</x>
+      <y>1818</y>
+      <w>30</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>18;168;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>2400</x>
+      <y>2196</y>
+      <w>132</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>##delivery_eq_type_mapping
+--
+delivery_eq_type_map_id
+delivery_eq_type_grp_id
+eq_type_id
+delivery_type_id
+
+
+
+
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>2514</x>
+      <y>1986</y>
+      <w>30</w>
+      <h>222</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>18;18;18;210</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>2178</x>
+      <y>2196</y>
+      <w>132</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>delivery_eq_type_grp
+--
+delivery_eq_type_grp_id
+required_quantity
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>2922</x>
+      <y>2076</y>
+      <w>132</w>
+      <h>138</h>
+    </coordinates>
+    <panel_attributes>##service_plan_options_mapping
+--
+service_plan_options_map_id
+service_plan_options_grp_id
+service_plan_id
+
+is_service_plan_upgrade
+cost_to_customer
+
+
+internet_queue_speed_id
+directv_plan_id
+phone_feature_id
+internet_address_space_id
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>2784</x>
+      <y>2058</y>
+      <w>150</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>18;18;138;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>3210</x>
+      <y>2148</y>
+      <w>162</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>internet_queue_speeds
+--
+internet_queue_speed_id
+internet_queue_direction
+internet_queue_cap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>3036</x>
+      <y>2058</y>
+      <w>186</w>
+      <h>102</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;EER
+</panel_attributes>
+    <additional_attributes>18;18;174;90</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>2904</x>
+      <y>2076</y>
+      <w>30</w>
+      <h>234</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>18;222;18;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>3210</x>
+      <y>2076</y>
+      <w>162</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>directv_plans
+--
+directv_plan_id
+directv_plan_name
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>3036</x>
+      <y>2058</y>
+      <w>186</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;EER
+</panel_attributes>
+    <additional_attributes>18;18;174;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>3210</x>
+      <y>2232</y>
+      <w>162</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>phone_features
+--
+phone_feature_id
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>3036</x>
+      <y>2076</y>
+      <w>186</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;EER
+</panel_attributes>
+    <additional_attributes>18;18;174;156</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>3210</x>
+      <y>2310</y>
+      <w>162</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>internet_address_space_allocation
+--
+internet_address_space_allocation_id
+internet_subnet_size
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>3036</x>
+      <y>2076</y>
+      <w>186</w>
+      <h>246</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;EER
+</panel_attributes>
+    <additional_attributes>18;18;174;234</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>2922</x>
+      <y>2298</y>
+      <w>132</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>service_plan_options_grp
+--
+service_plan_options_grp_id
+required_quantity
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>2292</x>
+      <y>2178</y>
+      <w>120</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>18;18;108;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.custom.EER_Entity</type>
+    <coordinates>
+      <x>2664</x>
+      <y>2412</y>
+      <w>102</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>##eq_type_cost_mapping
+--
+eq_type_cost_map_id
+eq_type_id
+service_plan_id
+cost_to_customer
+
+
+
+
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>2514</x>
+      <y>2412</y>
+      <w>162</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>18;18;150;18</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>2646</x>
+      <y>2076</y>
+      <w>30</w>
+      <h>348</h>
+    </coordinates>
+    <panel_attributes>lt=EER&gt;
+</panel_attributes>
+    <additional_attributes>18;18;18;336</additional_attributes>
+  </element>
+</diagram>

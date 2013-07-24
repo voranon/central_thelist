@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/central_thelist/!svn/ver/2078/trunk/application/models/device_configuration/multipledevice
+END
+interface.php
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/central_thelist/!svn/ver/2078/trunk/application/models/device_configuration/multipledevice/interface.php
+END
+interfaceconnectionqueues.php
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/central_thelist/!svn/ver/1934/trunk/application/models/device_configuration/multipledevice/interfaceconnectionqueues.php
+END
+interfaceconnectionqueuefilters.php
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/central_thelist/!svn/ver/1943/trunk/application/models/device_configuration/multipledevice/interfaceconnectionqueuefilters.php
+END
+configdifferences.php
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/central_thelist/!svn/ver/1931/trunk/application/models/device_configuration/multipledevice/configdifferences.php
+END
+dhcpserver.php
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/central_thelist/!svn/ver/2065/trunk/application/models/device_configuration/multipledevice/dhcpserver.php
+END

@@ -1,0 +1,89 @@
+<script type="text/javascript">
+$(function(){
+	$('select#perspective').bind('change',function(){
+		$.ajax({
+  			url: "/setting/menuajax/",
+  			data:"mode=1&perspective="+$(this).val(),
+  		    success: function(data) {
+  	  		   $("div#menu").html(data);
+  	  		   $("input#add_menu").removeAttr("disabled");     
+  	  		   $("input#menu_name").removeAttr("disabled");
+  	  		   
+  		    }
+		});
+	});
+
+	$('img#menu_delete').live('click',function(){
+		var perspective = $('select#perspective').val();
+		var menu_id=$(this).attr('menu_id');
+		$.ajax({
+  			url: "/setting/deletemenuajax/",
+  			data:"menu_id="+menu_id+"&perspective="+perspective,
+  		    success: function(data) {
+  	  		   
+  		    	 $("div#menu").html(data);
+  	  		}
+		});
+		
+	});
+
+
+	
+
+	$('input#add_menu').bind('click',function(){
+		var perspective = $('select#perspective').val();
+		var menu_name   = $('input#menu_name').val();
+		//alert(perspective);
+		
+		$.ajax({
+  			url: "/setting/addmenuajax/",
+  			data:"mode=1&perspective="+$('select#perspective').val()+"&menu_name="+menu_name,
+  		    success: function(data) {
+  	  		  
+  		    	$("div#menu").html(data);
+  		    	$("input#menu_name").val(""); 
+  		    	$("div#menuitem").html(""); 
+  		    	
+  	  		}
+		});
+		
+	});
+
+
+	$('input#menu').live('click',function(){
+		
+		$.ajax({
+  			url: "/setting/menuitemajax/",
+  			data:"menuid="+$(this).val(),
+  		    success: function(data) {
+  	  		    $("div#menuitem").html(data);
+  		    }
+		});
+	});
+
+	$('input#page').live('click',function(){
+		$.ajax({
+  			url: "/setting/menueditajax/",
+  			data:"menuid="+$(this).attr('menu_id')+"&pageid="+$(this).attr('page_id')+"&check="+$(this).attr('checked'),
+  		    success: function(data) {
+  	  		    
+  		    }
+		});
+		
+	});
+});
+</script>
+
+<div style="position:absolute;">
+	<div style="position:absolute;left:10px;top:10px">
+		<select name="perspective" id="perspective" style="width:183px">
+			<?php echo $this->perspective;?>
+		</select>
+	</div>
+	<input type="text" id="menu_name" disabled style="position:absolute;left:10px;top:50px;width:180px;"></input>
+	<input type="button" class="button" id="add_menu"  disabled value="Add menu" style="position:absolute;left:60px;top:80px;"></input>
+	<div id="menu" style="position:absolute;left:10px;top:120px;height:420px;width:200px;background-color:#feefff;text-align:left">
+	</div>
+	<div id="menuitem" style="position:absolute;left:210px;top:40px;height:500px;width:800px;background-color:#DDDDDD;">
+	</div>
+</div>

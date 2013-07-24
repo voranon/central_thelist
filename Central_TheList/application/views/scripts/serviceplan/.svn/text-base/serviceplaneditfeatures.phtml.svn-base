@@ -1,0 +1,131 @@
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+
+<script type="text/javascript">
+$(function(){
+	
+	$('input#add_interfacefeature').bind('click',function(){
+
+		var interface_feature_id 		= $('select#interface_feature').val();
+		var interface_feature_value 	= $('input#interface_feature_value').val();
+		var service_plan_id				= getUrlVars()["service_plan_id"];
+
+		if( interface_feature_id == 0 ){
+			alert('Interface Feature must be selected');
+		}else if( isNaN(interface_feature_value) || ( interface_feature_value.length == 0 ) ){
+			alert('Interface feature value is not a number');
+		}else{
+			
+			$.ajax({
+				url: "/serviceplan/addinterfacefeatureajax/",
+				data:"service_plan_id="+service_plan_id+"&interface_feature_id="+interface_feature_id+"&interface_feature_value="+interface_feature_value,
+			    success: function(data){
+				  
+				   window.location.reload();
+			    }
+			});
+		}
+		
+		
+	});
+
+	
+	$('input#save_serviceplan_feature').bind('click',function(){
+
+			var interface_feature_value  = $(this).closest('tr').find('input#interface_feature_value').val();
+			var interface_feature_id	 = $(this).attr('interface_feature_id');
+			var service_plan_id				= getUrlVars()["service_plan_id"];
+
+			if( isNaN(interface_feature_value) || ( interface_feature_value.length == 0 ) ){
+				alert('Interface feature value is not a number');
+			}else{
+				$.ajax({
+					url: "/serviceplan/updateinterfacefeatureajax/",
+					data:"service_plan_id="+service_plan_id+"&interface_feature_id="+interface_feature_id+"&interface_feature_value="+interface_feature_value,
+				    success: function(data){
+					   window.location.reload();
+				    }
+				});
+			}
+			
+	});
+
+	$('img#delete').bind('click',function(){
+
+		 var interface_feature_id	 = $(this).attr('interface_feature_id');
+		 var service_plan_id				= getUrlVars()["service_plan_id"];
+		 
+		 $.ajax({
+				url: "/serviceplan/deleteinterfacefeatureajax/",
+				data:"service_plan_id="+service_plan_id+"&interface_feature_id="+interface_feature_id,
+			    success: function(data){
+				   
+				   window.location.reload();
+			    }
+		 });
+		
+	});
+	
+
+
+	
+});
+</script>
+
+<div style='background-color:#77ee77;width:900px;'>
+	
+	<table border='1' style='width:510px;margin-left:auto;margin-right:auto;'>
+		<tr><td align='center' colspan='100%' >Interface features</td></tr>
+		<tr>
+			<td align='center' style='width:200px'>Interface Features</td>
+			<td align='center' style='width:170px'>Interface Feature Value</td>
+			<td align='center' style='width:70px'>Add/Save</td>
+			<td align='center' style='width:70px'>Delete</td>
+		</tr>
+		<tr>
+			<td align='center'>
+				<select name='interface_feature' id='interface_feature' <?php echo ($this->editable ?'':'disabled')?>>
+					<option value='0'>----Select One----</option>
+				<?php
+				foreach( $this->interface_features as $interface_feature ){
+				?>
+					<option value='<?php echo $interface_feature['if_feature_id'] ?>'> <?php echo $interface_feature['if_feature_name']?></option>
+				<?php 	
+				} 
+				?>
+				</select>
+			</td>
+			<td align='center'>
+				<input name='interface_feature_value' id='interface_feature_value' class='text' type='text' style='width:70px' <?php echo ($this->editable ?'':'readonly')?>></input>
+			</td>
+			<td align='center'><input type='button' name='add_interfacefeature' id='add_interfacefeature' value='Add' <?php echo ($this->editable ?'':'disabled')?>></input></td>
+			<td align='center'>
+				
+			</td>
+		</tr>
+		<?php
+		foreach(is_array($this->service_plan_features) || is_object($this->service_plan_features) ? $this->service_plan_features : array() as $service_plan_feature)
+		{
+		//->get_if_feature_name()
+		?>
+		<tr>
+			<td align='center'><?php echo $service_plan_feature['_if_feature_name']?>
+			</td>
+			<td align='center'>
+				<input type='text'   class='text' name='interface_feature_value' id='interface_feature_value' value='<?php echo $service_plan_feature['_serviceplan_if_feature_map_value']?>' style='width:70px' <?php echo ($this->editable ?'':'readonly')?>></input>
+			</td>
+			<td align='center'>
+				<input type='button' name='save_serviceplan_feature' id='save_serviceplan_feature' value='Update' interface_feature_id='<?php echo $service_plan_feature['_if_feature_id']?>' <?php echo ($this->editable ?'':'disabled')?>></input>
+			</td>
+			<td align='center'><img   name='delete' id='delete' interface_feature_id='<?php echo $service_plan_feature['_if_feature_id']?>' src="/images/red_cross_no.jpg"  style='width:25px;height:20px' alt="Angry face" <?php echo ($this->editable ?'':'disabled')?>/>
+			</td>
+		</tr>
+		<?php 	
+		} 
+		?>
+	</table>
+
+</div>

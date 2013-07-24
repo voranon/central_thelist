@@ -1,0 +1,30 @@
+<?php 
+$this->headLink()->appendStylesheet('/css/project/addcontact.css');
+
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+
+?>
+<script type="text/javascript">
+/*
+$(function(){
+	$('input#test').bind('click',function(){
+		 var test =  window.opener.jQuery('#end_user_list');
+		 test.append('<tr><td>non</td>test<td></td></tr>');
+		 //alert(test.html());
+		//	alert('d');
+	});
+
+});
+*/	
+</script>
+
+<div>
+<?php 
+echo $this->addcontactform;
+?>
+</div>
+
+
+

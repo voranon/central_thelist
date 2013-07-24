@@ -1,0 +1,67 @@
+
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+
+<script type='text/javascript'>
+$(function(){
+	$('input#addrole').bind('click',function(){
+		windowW = 700;
+		windowH = 200;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		window.open('/equipmentconfiguration/addrole?eq_id=<?php echo $_GET['eq_id'];?>', 'popup5', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=no, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+
+
+});
+</script>
+<body>
+<?php 
+
+if ($this->error == '') {
+
+?>
+<form method="post" action="" name="roles">
+<table>
+
+<tr class='header'>
+<td>Role Name</td>
+<td>Remove</td>
+</tr>
+
+<?php 
+if (isset($this->roles)) {
+	foreach($this->roles as $role) {
+		
+?>
+	
+<tr>
+<td><?= $role['equipment_role_name']?></td>
+<td><input type='checkbox' name='<?= $role['equipment_role_map_id']?>[delete]' value='1'></input></td>
+<td><input type='hidden' name='<?= $role['equipment_role_map_id']?>[equipment_role_map_id]' value='<?= $role['equipment_role_map_id']?>'></input></td>
+</tr>
+		
+	
+<?php 
+	
+	}
+}
+
+?>
+
+<td><input type='hidden' class='text' name='eq_id' value='<?= $_GET['eq_id']?>'></input></td>
+
+<br>
+<tr><td><input type='button' class='button' name='addrole' id='addrole' value='Add Role'></input></td> <td><input type='submit' value='Save' /></td></tr>
+
+<?php 
+	}
+
+?>
+</table>
+</form>
+</body>
+</html>

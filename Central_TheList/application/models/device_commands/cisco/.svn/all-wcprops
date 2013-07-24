@@ -1,0 +1,251 @@
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/central_thelist/!svn/ver/2127/trunk/application/models/device_commands/cisco
+END
+getequipment.php
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/central_thelist/!svn/ver/1955/trunk/application/models/device_commands/cisco/getequipment.php
+END
+getinterfacedescription.php
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/central_thelist/!svn/ver/1912/trunk/application/models/device_commands/cisco/getinterfacedescription.php
+END
+getinterfaceswitchportmode.php
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/central_thelist/!svn/ver/1910/trunk/application/models/device_commands/cisco/getinterfaceswitchportmode.php
+END
+getsoftware.php
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/central_thelist/!svn/ver/2127/trunk/application/models/device_commands/cisco/getsoftware.php
+END
+removetransitvlans.php
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/central_thelist/!svn/ver/1923/trunk/application/models/device_commands/cisco/removetransitvlans.php
+END
+getinterfacespeed.php
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/central_thelist/!svn/ver/1929/trunk/application/models/device_commands/cisco/getinterfacespeed.php
+END
+setinterfacedescription.php
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/central_thelist/!svn/ver/1912/trunk/application/models/device_commands/cisco/setinterfacedescription.php
+END
+getinterfacelayer2mtu.php
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/central_thelist/!svn/ver/1911/trunk/application/models/device_commands/cisco/getinterfacelayer2mtu.php
+END
+logout.php
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/central_thelist/!svn/ver/1912/trunk/application/models/device_commands/cisco/logout.php
+END
+setinterfaceadminstatus.php
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/central_thelist/!svn/ver/2016/trunk/application/models/device_commands/cisco/setinterfaceadminstatus.php
+END
+removeinterfaceswitchportencapsulation.php
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/central_thelist/!svn/ver/1910/trunk/application/models/device_commands/cisco/removeinterfaceswitchportencapsulation.php
+END
+getmanagementinterfacename.php
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/central_thelist/!svn/ver/1918/trunk/application/models/device_commands/cisco/getmanagementinterfacename.php
+END
+setinterfacespeed.php
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/central_thelist/!svn/ver/1923/trunk/application/models/device_commands/cisco/setinterfacespeed.php
+END
+setinterfacenativevlan.php
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/central_thelist/!svn/ver/1910/trunk/application/models/device_commands/cisco/setinterfacenativevlan.php
+END
+getserialnumber.php
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/central_thelist/!svn/ver/2085/trunk/application/models/device_commands/cisco/getserialnumber.php
+END
+gettransitvlans.php
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/central_thelist/!svn/ver/1955/trunk/application/models/device_commands/cisco/gettransitvlans.php
+END
+getinterfacestatus.php
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/central_thelist/!svn/ver/2016/trunk/application/models/device_commands/cisco/getinterfacestatus.php
+END
+removeinterfacecamentries.php
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/central_thelist/!svn/ver/1995/trunk/application/models/device_commands/cisco/removeinterfacecamentries.php
+END
+setinterfaceduplex.php
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/central_thelist/!svn/ver/1910/trunk/application/models/device_commands/cisco/setinterfaceduplex.php
+END
+setinterfaceconfig.php
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/central_thelist/!svn/ver/2024/trunk/application/models/device_commands/cisco/setinterfaceconfig.php
+END
+saveconfiguration.php
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/central_thelist/!svn/ver/1912/trunk/application/models/device_commands/cisco/saveconfiguration.php
+END
+getinterfaceswitchportencapsulation.php
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/central_thelist/!svn/ver/1910/trunk/application/models/device_commands/cisco/getinterfaceswitchportencapsulation.php
+END
+getinterfacenativevlan.php
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/central_thelist/!svn/ver/2019/trunk/application/models/device_commands/cisco/getinterfacenativevlan.php
+END
+addtransitvlans.php
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/central_thelist/!svn/ver/1913/trunk/application/models/device_commands/cisco/addtransitvlans.php
+END
+getroutingtable.php
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/central_thelist/!svn/ver/1912/trunk/application/models/device_commands/cisco/getroutingtable.php
+END
+setterminal.php
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/central_thelist/!svn/ver/1955/trunk/application/models/device_commands/cisco/setterminal.php
+END
+getinterfaceswitchportallowedvlans.php
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/central_thelist/!svn/ver/2001/trunk/application/models/device_commands/cisco/getinterfaceswitchportallowedvlans.php
+END
+getinterfaceduplex.php
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/central_thelist/!svn/ver/2062/trunk/application/models/device_commands/cisco/getinterfaceduplex.php
+END
+getarptable.php
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/central_thelist/!svn/ver/2075/trunk/application/models/device_commands/cisco/getarptable.php
+END
+getinterfaceconfig.php
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/central_thelist/!svn/ver/2061/trunk/application/models/device_commands/cisco/getinterfaceconfig.php
+END
+removeinterfacedescription.php
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/central_thelist/!svn/ver/1912/trunk/application/models/device_commands/cisco/removeinterfacedescription.php
+END
+setinterfaceswitchportencapsulation.php
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/central_thelist/!svn/ver/1910/trunk/application/models/device_commands/cisco/setinterfaceswitchportencapsulation.php
+END
+getinterfacemacaddress.php
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/central_thelist/!svn/ver/2101/trunk/application/models/device_commands/cisco/getinterfacemacaddress.php
+END
+setinterfaceswitchportmode.php
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/central_thelist/!svn/ver/1910/trunk/application/models/device_commands/cisco/setinterfaceswitchportmode.php
+END
+removeinterfacenativevlan.php
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/central_thelist/!svn/ver/2019/trunk/application/models/device_commands/cisco/removeinterfacenativevlan.php
+END
+placedeviceconnectioninrootfolder.php
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/central_thelist/!svn/ver/1955/trunk/application/models/device_commands/cisco/placedeviceconnectioninrootfolder.php
+END
+getinterfacespanningtreestatus.php
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/central_thelist/!svn/ver/2016/trunk/application/models/device_commands/cisco/getinterfacespanningtreestatus.php
+END
+getequipmenttype.php
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/central_thelist/!svn/ver/2108/trunk/application/models/device_commands/cisco/getequipmenttype.php
+END
+removeinterfaceswitchportallowedvlans.php
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/central_thelist/!svn/ver/1918/trunk/application/models/device_commands/cisco/removeinterfaceswitchportallowedvlans.php
+END
+getcamtable.php
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/central_thelist/!svn/ver/2075/trunk/application/models/device_commands/cisco/getcamtable.php
+END
+addinterfaceswitchportallowedvlans.php
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/central_thelist/!svn/ver/1912/trunk/application/models/device_commands/cisco/addinterfaceswitchportallowedvlans.php
+END

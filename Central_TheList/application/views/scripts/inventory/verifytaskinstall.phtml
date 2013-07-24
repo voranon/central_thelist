@@ -1,0 +1,415 @@
+<html>
+<head>
+<?php
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+<script type='text/javascript'>
+
+$(function(){
+
+	var $submit = $("input[type=submit]");
+	if ( $("input#error").length > 0 ) {
+		$submit.attr("disabled","disabled");
+	} else {
+		$submit.removeAttr("disabled");
+	}
+
+	$('input#reportbrokeninterface').bind('click',function(){
+		windowW = 400;
+		windowH = 400;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		ip_address_id = $(this).attr('ip_address_id');
+		window.open('/support/reportbrokenservicepointinterface?if_id=<?php echo $_GET['if_id']?>&task_id=<?php echo $_GET['task_id']?>', 'popup5', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=yes, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+
+});
+
+</script>
+</head>
+
+
+<?php 
+$errors = "<table border='0' style='width:575px'>";
+$forpost	= '';
+$page_url	= '';
+$the_table	= '';
+
+if (isset($_GET['task_id']) && !isset($this->error)) {
+	
+	$forpost = "<input type='hidden' name='task_id' value='".$_GET['task_id']."'>
+				<input type='hidden' name='if_id' value='".$_GET['if_id']."'>
+				<input type='hidden' name='action' value='".$_GET['action']."'>
+				";
+	
+	
+	//here because we allow caching when error is present
+	$page_url = "/inventory/verifytaskinstall/?task_id=".$_GET['task_id']."&if_id=".$_GET['if_id']."&action=".$_GET['action'];
+
+	$the_table = "
+		
+		<table border='0' style='width:575px'>
+		<tr><td align='left' style='font-size:18; color:#0E598C;'></td></tr>
+
+		";
+	
+	foreach ($this->task_equipment_validation_array as $task => $equipment_area) {
+	
+		foreach($equipment_area as $key => $area) {
+			
+			if ($key == 'this_task') {
+				
+				$the_table .= "
+									<tr><td>
+									<table border='0' style='width:575px'>
+									<tr><td colspan='4' align='center' style='font-size:18; color:#0E598C;'>Equipment Matching This Install</td></tr>
+									<tr class='header'>
+									<td>Name</td>
+									<td>Serial</td>
+									<td>Receiver ID</td>
+									<td>Access Card</td>
+									</tr>";
+				
+				foreach($area as $single_equipment) {
+					
+					if(isset($single_equipment['error'])) {
+					
+						$errors .= "<tr><td><b><font color='#FF0000'>".$single_equipment['error']."</font></b><input type='hidden' id='error' value='WeHaveAnError'></td></tr>";
+					
+						$forpost .= "<input type='hidden' name='equipment_error[".$single_equipment['service_plan_quote_eq_type_map_id']."]' value='".$single_equipment['eq_id']."'>";
+						
+						$cell_color ="#FF0000";
+						
+					} else {
+						
+						$forpost .= "<input type='hidden' name='this_task_all_clear[".$single_equipment['service_plan_quote_eq_type_map_id']."]' value='".$single_equipment['eq_id']."'>";
+						
+						$cell_color ="#FFFFFF";
+						
+					}
+					
+					$the_table .= "
+								 	<tr>
+								 	<td bgcolor='".$cell_color."'>".$single_equipment['equipment_type_name']."</td>
+								 	<td bgcolor='".$cell_color."'>".$single_equipment['equipment_serial_number']."</td>
+								 	";
+					
+					if(isset($single_equipment['receiver_id'])) {
+					
+						$the_table .= "	<td bgcolor='".$cell_color."'>".$single_equipment['receiver_id']."</td>";
+					
+					} else {
+							
+						$the_table .= "	<td></td>";
+							
+					}
+					
+					if(isset($single_equipment['access_card'])) {
+						
+						$the_table .= "	<td bgcolor='".$cell_color."'>".$single_equipment['access_card']."</td></tr>";
+						
+					} else {
+						
+						$the_table .= "	<td></td></tr>";
+	
+					}
+				
+				}
+				
+				$the_table .= "</table></td></tr>";
+				
+			} elseif ($key == 'unfulfilled_requirement') {
+				
+				$the_table .= "
+									<tr><td>
+									<table border='0' style='width:575px'>
+									<tr><td colspan='6' align='center' style='font-size:18; color:#0E598C;'>Missing Requirements not found on port</td></tr>
+									<tr class='header'>
+									<td>Device Type</td>
+									<td>Serial Number</td>
+									<td>Receiver ID</td>
+									<td>Access Card</td>
+									<td>Model</td>
+									<td>Use This Equipment</td>
+									</tr>";
+				
+				foreach($area as $single_equipment) {
+					
+					$the_table .= "
+								 	<tr>
+								 	<td>".$single_equipment['equipment_group_name']."</td>
+								 	<td><input name='unfulfilled_serial[".$single_equipment['service_plan_quote_eq_type_map_id']."]' type='text' value=''></td>
+								 	<td><input name='unfulfilled_receiver_id[".$single_equipment['service_plan_quote_eq_type_map_id']."]' type='text' value=''></td>
+								 	<td><input name='unfulfilled_access_card[".$single_equipment['service_plan_quote_eq_type_map_id']."]' type='text' value=''></td>
+								 	<td><SELECT name='unfulfilled_model[".$single_equipment['service_plan_quote_eq_type_map_id']."]'>".$this->receiver_types."</SELECT></td>
+								 	<td><SELECT name='unfulfilled_use_other_device[".$single_equipment['service_plan_quote_eq_type_map_id']."]'>".$this->other_devices."</SELECT></td>
+									</tr>
+									";
+					
+				}
+				
+				$the_table .= "</table></td></tr>";
+				
+			} elseif ($key == 'old_task') {
+				
+				$the_table .= "
+									<tr><td>
+									<table border='0' style='width:575px'>
+									<tr><td align='center' colspan='4' style='font-size:18; color:#0E598C;'>Equipment From Previous Task</td></tr>
+									<tr class='header'>
+									<td>Name</td>
+									<td>Serial</td>
+									<td>Receiver ID</td>
+									<td>Access Card</td>
+									</tr>";
+				
+				foreach($area as $single_equipment) {
+					
+					if(isset($single_equipment['error'])) {
+					
+						$errors .= "<tr><td><b><font color='#FF0000'>".$single_equipment['error']."</font></b><input type='hidden' id='error' value='WeHaveAnError'></td></tr>";
+					
+						$forpost .= "<input type='hidden' name='equipment_error[".$single_equipment['service_plan_quote_eq_type_map_id']."]' value='".$single_equipment['eq_id']."'>";
+						
+						$cell_color ="#FF0000";
+							
+					} else {
+	
+						$forpost .= "<input type='hidden' name='old_task_all_clear[".$single_equipment['service_plan_quote_eq_type_map_id']."]' value='".$single_equipment['eq_id']."'>";
+						
+						$cell_color ="#FFFFFF";
+							
+					}
+					
+					$the_table .= "
+								 	<tr>
+								 	<td bgcolor='".$cell_color."'>".$single_equipment['equipment_type_name']."</td>
+								 	<td bgcolor='".$cell_color."'>".$single_equipment['equipment_serial_number']."</td>
+								 	";
+					
+					if(isset($single_equipment['receiver_id'])) {
+					
+						$the_table .= "	<td bgcolor='".$cell_color."'>".$single_equipment['receiver_id']."</td>";
+					
+					} else {
+							
+						$the_table .= "	<td></td>";
+							
+					}
+					
+					if(isset($single_equipment['access_card'])) {
+						
+						$the_table .= "	<td bgcolor='".$cell_color."'>".$single_equipment['access_card']."</td></tr>";
+						
+					} else {
+						
+						$the_table .= "	<td></td></tr>";
+	
+					}
+				}
+				
+				$the_table .= "</table></td></tr>";
+				
+			} elseif ($key == 'other_task') {
+				
+				$the_table .= "
+									<tr><td>
+									<table border='0' style='width:575px'>
+									<tr><td colspan='4' align='center' style='font-size:18; color:#0E598C;'>Equipment For Future Tasks</td></tr>
+									<tr class='header'>
+									<td>Name</td>
+									<td>Serial</td>
+									<td>Receiver ID</td>
+									<td>Access Card</td>
+									</tr>";
+				
+				foreach($area as $single_equipment) {
+					
+					if(isset($single_equipment['error'])) {
+					
+						$errors .= "<tr><td><b><font color='#FF0000'>".$single_equipment['error']."</font></b><input type='hidden' id='error' value='WeHaveAnError'></td></tr>";
+					
+						$forpost .= "<input type='hidden' name='equipment_error[".$single_equipment['eq_id']."]' value='".$single_equipment['eq_id']."'>";
+						
+						$cell_color ="#FF0000";
+							
+					} else {
+	
+						$forpost .= "<input type='hidden' name='other_task_all_clear[".$single_equipment['eq_id']."]' value='".$single_equipment['eq_id']."'>";
+						
+						$cell_color ="#FFFFFF";
+							
+					}
+					
+					$the_table .= "
+								 	<tr>
+								 	<td bgcolor='".$cell_color."'>".$single_equipment['equipment_type_name']."</td>
+								 	<td bgcolor='".$cell_color."'>".$single_equipment['equipment_serial_number']."</td>
+								 	";
+					
+					if(isset($single_equipment['receiver_id'])) {
+					
+						$the_table .= "	<td bgcolor='".$cell_color."'>".$single_equipment['receiver_id']."</td>";
+					
+					} else {
+							
+						$the_table .= "	<td>N/A</td>";
+							
+					}
+					
+					if(isset($single_equipment['access_card'])) {
+						
+						$the_table .= "	<td bgcolor='".$cell_color."'>".$single_equipment['access_card']."</td></tr>";
+						
+					} else {
+						
+						$the_table .= "	<td>N/A</td></tr>";
+	
+					}
+				}
+				
+				$the_table .= "</table></td></tr>";
+				
+				
+			} elseif ($key == 'unknown_receivers') {
+				
+				$the_table .= "
+									<tr><td>
+									<table border='0' style='width:575px'>
+									<tr><td align='center' colspan='2' style='font-size:18; color:#0E598C;'>Unknown Receivers</td></tr>
+									<tr class='header'>
+									<td>Receiver ID</td>
+									<td>Access Card</td>
+									</tr>";
+				
+				foreach($area as $single_equipment) {
+					
+					$forpost .= "<input type='hidden' name='unknown_device[receivers][".$single_equipment['access_card']."][receiver_id]' value='".$single_equipment['receiver_id']."'>";
+					$forpost .= "<input type='hidden' name='unknown_device[receivers][".$single_equipment['access_card']."][access_card]' value='".$single_equipment['access_card']."'>";
+					$forpost .= "<input type='hidden' name='unknown_device[receivers][".$single_equipment['access_card']."][ip_address]' value='".$single_equipment['ip_address']."'>";
+					$the_table .= "
+								 	<tr>
+								  	<td>".$single_equipment['receiver_id']."</td>
+								 	<td>".$single_equipment['access_card']."</td></tr>
+								 	";
+						}
+				
+				$the_table .= "</table></td></tr>";
+				
+			} elseif ($key == 'unknown_device') {
+				
+				$the_table .= "
+									<tr><td>
+									<table border='0' style='width:575px'>
+									<tr><td align='center' colspan='2' style='font-size:18; color:#0E598C;'>Unknown Devices</td></tr>
+									<tr class='header'>
+									<td>IP Address</td>
+									<td>MAC Address</td>
+									</tr>";
+				
+				foreach($area as $single_equipment) {
+					
+					$forpost .= "<input type='hidden' name='unknown_device[others][".$single_equipment['mac_address']."][mac_address]' value='".$single_equipment['mac_address']."'>";
+					$forpost .= "<input type='hidden' name='unknown_device[others][".$single_equipment['mac_address']."][ip_address]' value='".$single_equipment['ip_address']."'>";
+					
+					$the_table .= "
+								 	<tr>
+								 	<td>".$single_equipment['ip_address']."</td>
+								 	<td>".$single_equipment['mac_address']."</td></tr>
+								 	";
+						}
+				
+				$the_table .= "</table></td></tr>";
+			}
+		}
+	}
+	
+	$the_table .= "</table>";
+}
+$errors .= "</table>";
+
+
+?>
+
+
+<body>
+<center>
+
+<br>
+<font color='#FF0000'><?= $this->validation_message; ?></font>
+<br>
+
+<form name='submitforcomplete' action="/inventory/verifytaskinstall/" method="post">
+
+<?php 
+
+if (isset($_GET['task_id']) && !isset($this->error)) {
+
+	foreach ($this->task_equipment_validation_array as $task => $equipment_area) {
+	
+		foreach($equipment_area as $key => $area) {
+	
+			if ($key == 'trouble_device') {
+				
+				echo "
+														
+									<table border='0' style='width:575px'>
+									<tr><td align='center' colspan='3' style='font-size:18; color:#0E598C;'>Trouble Devices: Must Be Fixed</td></tr>
+									<tr class='header'>
+									<td>IP Address</td>
+									<td>MAC Address</td>
+									<td>Trouble</td>
+									</tr>";
+	
+				foreach($area as $single_equipment) {
+					
+					echo "<tr><td><input type='hidden' id='error' value='WeHaveAnError'></td></tr>";
+	
+					echo "
+										 	<tr>
+										 	<td>".$single_equipment['ip_address']."</td>
+										 	<td>".$single_equipment['mac_address']."</td>
+										 	<td>".$single_equipment['trouble_text']."</td></tr>
+										 	";
+				}
+	
+				echo "</table>";
+			}
+		}
+	}
+}
+?>
+
+<?php 
+if (isset($this->error)) {
+	
+	echo $this->error;
+	
+}
+?>
+
+<br>
+<?= $errors;?>
+<?= $the_table;?><br>
+<?= $forpost;?><br>
+
+<?php 
+//close the tables
+$errors .= "</table>";
+
+?>
+
+<?php 
+if (!isset($this->error)) {
+	echo '<input type="submit" value="Complete This Task" />';
+}
+?>
+
+<input type="button" value="Rescan Port" onClick="window.location.href='<?= $page_url;?>'"/>
+<input type="button" value="Interface Problem" id='reportbrokeninterface'/>
+</form>
+</center>
+</body>
+</html>

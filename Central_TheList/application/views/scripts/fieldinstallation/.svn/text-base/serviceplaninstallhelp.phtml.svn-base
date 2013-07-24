@@ -1,0 +1,209 @@
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+
+<script type='text/javascript'>
+$(function(){
+
+	$('input#serviceports').bind('click',function(){
+		windowW = 900;
+		windowH = 400;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		task_id = $(this).attr('task_id');
+		window.open('/fieldinstallation/locateportinservicepoint/?task_id='+task_id, 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=yes, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+
+	$('input#helpimage').bind('click',function(){
+		windowW = 900;
+		windowH = 400;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		help_image_url = $(this).attr('help_image_url');
+		window.open(help_image_url, 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=no, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+
+	$('input#retrydeviceconfig').bind('click',function(){
+		windowW = 1300;
+		windowH = 700;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		task_id = $(this).attr('task_id');
+		window.open('/fieldinstallation/serviceplanmapmanualactivation/?task_id='+task_id, 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=no, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+
+	$('input#validateinstallation').bind('click',function(){
+		windowW = 900;
+		windowH = 400;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		task_id = $(this).attr('task_id');
+		window.open('/fieldinstallation/validateinstallation/?task_id='+task_id, 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=no, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+
+});
+</script>
+
+<div style="position:absolute;left:10px;top:0px">
+	<table class='display' style='width:100px;left:250px'>
+			<?= $this->placeholder('installerdashboard');?>
+	</table>
+</div>
+
+<?php
+
+if (isset($this->error)) {
+	
+	echo $this->error;
+	
+}
+
+?>
+
+
+<?php 
+
+if (isset($this->task_array['1']) && !isset($this->error)) {
+//create tasks table
+echo "
+ 	 		 	<br><br>
+ 	 		 	<table border='0' style='width:1150px'>
+ 	 		 	<tr>
+ 	 		 	<td align='center' style='font-size:18; color:#0E598C;'>Tasks</td>
+ 	 		 	</tr>
+				</table>
+				";
+
+echo "<table border='0' style='width:1150px'>";
+ 
+echo "
+	 			<tr class='header'>
+	 		 	<td bgcolor='#BB9966' width='50%'>Name</td>
+	 		 	<td bgcolor='#BB9966' width='50%'>Status</td>
+	 		 	</tr>
+	 		 	";
+
+echo "
+	 	 	<tr>
+	 	 	<td>".$this->task_array['1']['task_name']."</td>
+	 	 	<td>".$this->task_array['1']['task_install_status']."</td>
+	 		</tr>
+	 		</table>";
+
+}
+
+?>
+
+<table border='0' style='width:1150px'>
+<tr>
+
+
+<?php
+
+
+if(isset($this->required_equipment_array['equipment_name']) && !isset($this->error)){
+	 
+	//create equipments table
+	echo
+		 				"<td><table border='0' style='width:575px'>
+		 		 		<tr class='header'>
+		 		 		<td>Install This Equipment</td>
+		 		 		</tr>";
+	
+	foreach($this->required_equipment_array['equipment_name'] as $equipment) {
+		 
+		echo "<tr><td>".$equipment."</td></tr>";
+	}
+	
+	echo "</table>";
+}
+
+
+
+?>
+
+
+
+
+
+<?php 
+
+
+ 
+if(isset($this->task_array['1']['notes']) && !isset($this->error)){
+	
+	//create notes table
+	echo 	"<table border='0' style='width:575px'>
+		 		 		<tr class='header'>
+		 		 		<td>Notes</td>
+		 		 		</tr>";
+
+	foreach($this->task_array['1']['notes'] as $task_note) {
+
+		echo "<tr><td>".$task_note."</td></tr>";
+	}
+	
+	echo "</table></td>";
+}
+
+
+
+
+?>
+
+
+
+<?php 
+
+
+
+
+if(isset($this->service_plan_help_array['images']) && !isset($this->error)){
+	
+	//create help table
+	echo	"<td>
+					<table border='0' style='width:575px'>
+	 		 		<tr class='header'>
+	 		 		<td>Help</td>
+	 		 		</tr>
+					";
+
+	foreach($this->service_plan_help_array['images'] as $help_image_url) {
+			
+		echo "<tr><td><input type='button' class='button' help_image_url='".$help_image_url."' id='helpimage' value='Image of Setup'></input></td></tr>";
+	}
+	
+	
+	echo "</table></td>";
+
+}
+
+?>
+
+
+<?php 
+//the service port button
+if ($this->task_array['1']['task_install_progress_id'] == 97) {
+	
+	echo "<tr><td><input type='button' class='button' task_id='".$this->task_array['1']['task_id']."' id='serviceports' value='Service Port'></input></td></tr>";
+	
+} elseif ($this->task_array['1']['task_install_progress_id'] == 98) {
+	
+	echo "<tr><td><input type='button' class='button' task_id='".$this->task_array['1']['task_id']."' id='retrydeviceconfig' value='Retry Device Configuration'></input></td></tr>";
+	
+} elseif ($this->task_array['1']['task_install_progress_id'] == 99) {
+	
+	echo "<tr><td><input type='button' class='button' task_id='".$this->task_array['1']['task_id']."' id='validateinstallation' value='Validate Installation'></input></td></tr>";
+	
+} elseif ($this->task_array['1']['task_install_progress_id'] == 100) {
+	
+	//install is complete do nothing
+} else {
+	echo "we had to use the item_id for this page, it seems to have changed please have software dev change this code";
+}
+?>
+
+</tr>
+</table>

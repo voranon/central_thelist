@@ -1,0 +1,8 @@
+<option value='0'>----Select One----</option>
+<?php
+foreach($this->equipments as $equipment){
+?>	
+<option value='<?php echo $equipment['eq_id']?>'><?php echo $equipment['eq_serial_number']?></option>	
+<?php
+} 
+?>

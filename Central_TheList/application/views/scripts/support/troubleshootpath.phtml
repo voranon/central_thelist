@@ -1,0 +1,418 @@
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+
+<script type='text/javascript'>
+
+$(function(){
+	$('input#syncdeviceinterfaceconfig').bind('click',function(){
+		windowW = 500;
+		windowH = 200;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		if_id = $(this).attr('if_id');
+		window.open('/equipmentconfiguration/syncdeviceinterfaceconfig?if_id='+if_id, 'popup5', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=no, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+	$('input#refreshpath').bind('click',function(){
+		windowW = 500;
+		windowH = 200;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		path = $(this).attr('path');
+		window.open('/support/troubleshootpath/?path='+path, 'ttpath1', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=no, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+});
+
+
+</script>
+
+<?php 
+if (!isset($this->error)) {
+?>
+
+<?php
+if (isset($this->path_equipments)) {
+	?>
+<br>
+<br>
+<table border='0'>
+<tr>
+<td><b>Service path from Customer towards Core :</b></td>
+<td><input type='button' class='button' path='<?= $this->path ?>' id='refreshpath' value='Refresh Path'></input></td>
+</tr>
+</table>
+
+<table border='2'>
+
+<tr>
+<td>Equipment Name</td>
+<td>Interface Name</td>
+<td></td>
+<td>Type</td>
+<td>Serial</td>
+<td>Status</td>
+<td>Conf Sync</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<?php 
+$i=0;
+foreach ($this->path_equipments as $index => $equipment) {
+?>
+
+
+<?php
+//first equipment
+if ($i == 0) {
+?>
+
+<tr>
+<td><?= $equipment['eq_fqdn']?></td>
+<td></td>
+<td></td>
+<td><?= $equipment['eq_manufacturer']?> - <?= $equipment['eq_model_name']?></td>
+<td><?= $equipment['eq_serial_number']?></td>
+<?
+if ($equipment['eq_status'] === false) {
+?>
+<td bgcolor="#FF3300"><center>Unreachable</center></td>
+<?
+} elseif ($equipment['eq_status'] === true) {
+?>
+<td bgcolor="#99FF33"><center>Reachable</center></td>
+<?
+} elseif ($equipment['eq_status'] === null) {
+?>
+<td bgcolor="#000000"><center><font color="#FFFFFF">Unk.</font></center></td>
+<?
+}
+?>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td></td>
+<td><?= $equipment['outbound_interface_name']?></td>
+<td></td>
+<td></td>
+<td></td>
+<?
+if ($equipment['outbound_op_status'] === false) {
+?>
+<td bgcolor="#FF3300"><center>Down</center></td>
+<?
+} elseif ($equipment['outbound_op_status'] === true) {
+?>
+<td bgcolor="#99FF33"><center>UP</center></td>
+<?
+} elseif ($equipment['outbound_op_status'] === null) {
+?>
+<td bgcolor="#000000"><center><font color="#FFFFFF">Unk.</font></center></td>
+<?
+} elseif ($equipment['outbound_op_status'] == 'shut') {
+?>
+<td bgcolor="#FF99FF"><center>Shut</center></td>
+<?
+}
+?>
+<?
+if ($equipment['outbound_sync_status'] === false) {
+?>
+<td bgcolor="#FF3300"><center><input type='button' class='button' if_id='<?= $equipment['outbound_if_id']?>' id='syncdeviceinterfaceconfig' value='SYNC'></input></center></td>
+<?
+} elseif ($equipment['outbound_sync_status'] === true) {
+?>
+<td bgcolor="#99FF33"><center>IN SYNC</center></td>
+<?
+}
+?>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<?php
+//last equipment
+} elseif ($i == ($this->no_of_equipments - 1)) {
+?>
+
+<tr>
+<td bgcolor="#0099FF" colspan=10 height='35'><center>Interface Connection</center></td>
+</tr>
+
+<tr>
+<td></td>
+<td><?= $equipment['inbound_interface_name']?></td>
+<td></td>
+<td></td>
+<td></td>
+<?
+if ($equipment['inbound_op_status'] === false) {
+?>
+<td bgcolor="#FF3300"><center>Down</center></td>
+<?
+} elseif ($equipment['inbound_op_status'] === true) {
+?>
+<td bgcolor="#99FF33"><center>UP</center></td>
+<?
+} elseif ($equipment['inbound_op_status'] === null) {
+?>
+<td bgcolor="#000000"><center><font color="#FFFFFF">Unk.</font></center></td>
+<?
+} elseif ($equipment['inbound_op_status'] == 'shut') {
+?>
+<td bgcolor="#FF99FF"><center>Shut</center></td>
+<?
+}
+?>
+<?
+if ($equipment['inbound_sync_status'] === false) {
+?>
+<td bgcolor="#FF3300"><center><input type='button' class='button' if_id='<?= $equipment['inbound_if_id']?>' id='syncdeviceinterfaceconfig' value='SYNC'></input></center></td>
+<?
+} elseif ($equipment['inbound_sync_status'] === true) {
+?>
+<td bgcolor="#99FF33"><center>IN SYNC</center></td>
+<?
+}
+?>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td><?= $equipment['eq_fqdn']?></td>
+<td></td>
+<td></td>
+<td><?= $equipment['eq_manufacturer']?> - <?= $equipment['eq_model_name']?></td>
+<td><?= $equipment['eq_serial_number']?></td>
+<?
+if ($equipment['eq_status'] === false) {
+?>
+<td bgcolor="#FF3300"><center>Unreachable</center></td>
+<?
+} elseif ($equipment['eq_status'] === true) {
+?>
+<td bgcolor="#99FF33"><center>Reachable</center></td>
+<?
+} elseif ($equipment['eq_status'] === null) {
+?>
+<td bgcolor="#000000"><center><font color="#FFFFFF">Unk.</font></center></td>
+<?
+}
+?>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<?php
+//all equipment in the middle that is not a service panel
+} elseif (isset($equipment['inbound_interface_name']) && isset($equipment['outbound_interface_name'])) {
+?>
+
+<tr>
+<td bgcolor="#0099FF" colspan=10 height='35'><center>Interface Connection</center></td>
+</tr>
+
+<tr>
+<td></td>
+<td><?= $equipment['inbound_interface_name']?></td>
+<td></td>
+<td></td>
+<td></td>
+<?
+if ($equipment['inbound_op_status'] === false) {
+?>
+<td bgcolor="#FF3300"><center>Down</center></td>
+<?
+} elseif ($equipment['inbound_op_status'] === true) {
+?>
+<td bgcolor="#99FF33"><center>UP</center></td>
+<?
+} elseif ($equipment['inbound_op_status'] === null) {
+?>
+<td bgcolor="#000000"><center><font color="#FFFFFF">Unk.</font></center></td>
+<?
+} elseif ($equipment['inbound_op_status'] == 'shut') {
+?>
+<td bgcolor="#FF99FF"><center>Shut</center></td>
+<?
+}
+?>
+<?
+if ($equipment['inbound_sync_status'] === false) {
+?>
+<td bgcolor="#FF3300"><center><input type='button' class='button' if_id='<?= $equipment['inbound_if_id']?>' id='syncdeviceinterfaceconfig' value='SYNC'></input></center></td>
+<?
+} elseif ($equipment['inbound_sync_status'] === true) {
+?>
+<td bgcolor="#99FF33"><center>IN SYNC</center></td>
+<?
+}
+?>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td><?= $equipment['eq_fqdn']?></td>
+<td></td>
+<td></td>
+<td><?= $equipment['eq_manufacturer']?> - <?= $equipment['eq_model_name']?></td>
+<td><?= $equipment['eq_serial_number']?></td>
+<?
+if ($equipment['eq_status'] === false) {
+?>
+<td bgcolor="#FF3300"><center>Unreachable</center></td>
+<?
+} elseif ($equipment['eq_status'] === true) {
+?>
+<td bgcolor="#99FF33"><center>Reachable</center></td>
+<?
+} elseif ($equipment['eq_status'] === null) {
+?>
+<td bgcolor="#000000"><center><font color="#FFFFFF">Unk.</font></center></td>
+<?
+}
+?>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td></td>
+<td><?= $equipment['outbound_interface_name']?></td>
+<td></td>
+<td></td>
+<td></td>
+<?
+if ($equipment['outbound_op_status'] === false) {
+?>
+<td bgcolor="#FF3300"><center>Down</center></td>
+<?
+} elseif ($equipment['outbound_op_status'] === true) {
+?>
+<td bgcolor="#99FF33"><center>UP</center></td>
+<?
+} elseif ($equipment['outbound_op_status'] === null) {
+?>
+<td bgcolor="#000000"><center><font color="#FFFFFF">Unk.</font></center></td>
+<?
+} elseif ($equipment['outbound_op_status'] == 'shut') {
+?>
+<td bgcolor="#FF99FF"><center>Shut</center></td>
+<?
+}
+?>
+<?
+if ($equipment['outbound_sync_status'] === false) {
+?>
+<td bgcolor="#FF3300"><center><input type='button' class='button' if_id='<?= $equipment['outbound_if_id']?>' id='syncdeviceinterfaceconfig' value='SYNC'></input></center></td>
+<?
+} elseif ($equipment['outbound_sync_status'] === true) {
+?>
+<td bgcolor="#99FF33"><center>IN SYNC</center></td>
+<?
+}
+?>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<?php
+//all equipment in the middle that is a service panel
+} elseif (isset($equipment['inbound_interface_name'])) {
+?>
+
+<tr>
+<td bgcolor="#0099FF" colspan=10 height='35'><center>Interface Connection</center></td>
+</tr>
+
+<tr>
+<td></td>
+<td><?= $equipment['inbound_interface_name']?></td>
+<td></td>
+<td></td>
+<td></td>
+<td>N/A</td>
+<td>N/A</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td><?= $equipment['eq_fqdn']?></td>
+<td></td>
+<td></td>
+<td><?= $equipment['eq_manufacturer']?> - <?= $equipment['eq_model_name']?></td>
+<td><?= $equipment['eq_serial_number']?></td>
+<td>N/A</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td></td>
+<td><?= $equipment['inbound_interface_name']?></td>
+<td></td>
+<td></td>
+<td></td>
+<td>N/A</td>
+<td>N/A</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<?php
+}
+?>
+
+
+<?php
+$i++;
+}
+?>
+
+
+</table>
+
+
+<?php 
+} else {
+?>
+There is no equipment in this path
+<?php 
+}
+?>
+
+<?php 
+} else {
+?>
+<center>
+<br><br>
+<b>
+<?= $this->error?>
+</b>
+</center>
+
+<?php 
+}
+?>

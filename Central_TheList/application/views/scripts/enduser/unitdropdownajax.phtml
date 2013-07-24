@@ -1,0 +1,8 @@
+	<option value='0'>----Select One----</option>
+<?php
+foreach($this->units as $unit){
+?>	
+	<option value='<?php echo $unit['unit_id']?>'><?php echo $unit['number']?></option>	
+<?php 	
+} 
+?>

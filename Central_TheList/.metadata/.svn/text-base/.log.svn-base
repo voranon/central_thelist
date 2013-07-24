@@ -1,0 +1,37 @@
+!SESSION 2011-09-12 18:40:39.202 -----------------------------------------------
+eclipse.buildId=I20110613-1736
+java.version=1.6.0_23
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.modeling.product -product org.eclipse.epp.package.modeling.product -product org.eclipse.epp.package.modeling.product
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.modeling.product -product org.eclipse.epp.package.modeling.product -data C:\workspace\thelist_zend -product org.eclipse.epp.package.modeling.product
+
+!ENTRY org.eclipse.jface 2 0 2011-09-12 18:40:45.936
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2011-09-12 18:40:45.936
+!MESSAGE A conflict occurred for CTRL+O:
+Binding(CTRL+O,
+	ParameterizedCommand(Command(org.eclipse.graphiti.ui.internal.action.SaveImageAction,Export Diagram,
+		Export Diagram,
+		Category(org.eclipse.graphiti.ui.Graphiti_Category,Edit,Graphiti Diagram Editor,true),
+		,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(CTRL+O,
+	ParameterizedCommand(Command(org.eclipse.papyrus.sysml.modelexplorer.FlowPort_OutCreateCommand,Create a new FlowPort_Out,
+		Create a new FlowPort_Out,
+		Category(org.eclipse.papyrus.editor.category,Papyrus Category,this a category of papyrus commands,true),
+		org.eclipse.papyrus.sysml.modelexplorer.handler.FlowPort_OutHandler,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY org.eclipse.osgi 2 1 2011-09-12 18:40:50.671
+!MESSAGE NLS unused message: ConnectorCreateCommand_INVALID_ARGS_MSG in: org.eclipse.papyrus.diagram.deployment.custom.messages.messages
+
+!ENTRY org.eclipse.osgi 2 1 2011-09-12 18:40:50.671
+!MESSAGE NLS unused message: ConnectorCreateCommand_INVALID_SOURCE_MSG in: org.eclipse.papyrus.diagram.deployment.custom.messages.messages
+
+!ENTRY org.eclipse.osgi 2 1 2011-09-12 18:40:50.671
+!MESSAGE NLS unused message: ConnectorCreateCommand_INVALID_TARGET_MSG in: org.eclipse.papyrus.diagram.deployment.custom.messages.messages

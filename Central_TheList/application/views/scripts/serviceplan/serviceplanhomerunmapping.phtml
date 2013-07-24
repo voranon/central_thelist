@@ -1,0 +1,160 @@
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+
+
+<script type="text/javascript">
+
+$(function(){
+	
+	$('input#eq_type_group').bind('click',function(){
+		var eq_type_group_id 	= $(this).val();
+		var service_plan_id		= getUrlVars()["service_plan_id"];
+
+		
+		
+		$.ajax({
+			url: "/serviceplan/geteqtypeajax/",
+			type: 'POST',
+			data:"service_plan_id="+service_plan_id	+"&eq_type_group_id="+eq_type_group_id,
+			async:false,
+		    success: function(data){
+
+		    	$('div#eq_type').html('');	
+		    	$('div#static_if').html('');
+				$('div#eq_type').html(data);
+		    }
+		});
+	});
+
+		
+
+	$('input#eq_type').live('click',function(){
+		var eq_type_id 			= $(this).val();
+		var service_plan_id		= getUrlVars()["service_plan_id"];
+		
+		$.ajax({
+			url: "/serviceplan/getstaticiftypeajax/",
+			type: 'POST',
+			data:"service_plan_id="+service_plan_id	+"&eq_type_id="+eq_type_id,
+			async:false,
+		    success: function(data){
+				//alert(data);
+				
+				$('div#static_if').html(data);
+		    }
+		});
+		
+	});
+
+	
+
+    $('input#map_static_if').bind('click',function(){
+        var homerun_type_group_id		= $('input[name="homerun_type_group"]:checked').val();
+    	var service_plan_eq_type_map_id = $('input[name="eq_type_group"]:checked').attr('service_plan_eq_type_map_id');
+    	// testing 
+    	var eq_type_id						= $('input[name="eq_type"]:checked').val();
+        var if_static_id                = $('input[name="if_static"]:checked').val();
+	
+		if( homerun_type_group_id === undefined){
+			alert('Homerun Type Group need to be selected');
+		}else if( service_plan_eq_type_map_id === undefined ){
+          	alert('Equipment Type Group need to be selected');
+        }else if(if_static_id === undefined){
+            alert('Static Interface need to be selected');
+        }else{
+            /*
+         	alert(homerun_type_group_id);   
+         	alert(service_plan_eq_type_map_id);   
+         	alert(eq_type);
+         	alert(if_static_id);
+         	*/
+         	$.ajax({
+    			url: "/serviceplan/maphomerunstaticifajax/",
+    			type: 'POST',
+	   			data:"homerun_type_group_id="+homerun_type_group_id+"&service_plan_eq_type_map_id="+service_plan_eq_type_map_id+"&if_static_id="+if_static_id+"&eq_type_id="+eq_type_id,
+    			async:false,
+    		    success: function(data){
+    				alert(data);
+    			}
+    		});
+    		
+        }
+        	
+    });
+	
+	
+});
+
+</script>
+
+
+
+<div style='background-color:#77ee77;width:950px;'>
+	<div style='margin-left:auto;margin-right:auto'>Home run/static interface mapping</div>
+	<div><?php echo $this->service_plan['_service_plan_name']?></div>
+	<div><?php echo $this->service_plan['_service_plan_desc']?></div>
+	<div style='margin-left:auto;margin-right:auto;background-color:#7aa5dd;width:400px'>
+		Homerun Type Group
+		<table>
+		<?php
+		foreach(is_array($this->homeruntypegroups) || is_object($this->homeruntypegroups) ? $this->homeruntypegroups : array() as $homeruntypegroup){
+		?>
+			<tr>
+				<td>
+					<input type="radio" name="homerun_type_group" id="homerun_type_group" homerun_type_group_id="<?php echo $homeruntypegroup['homerun_type_group_id']?>" value="<?php echo $homeruntypegroup['homerun_type_group_id']?>" <?php echo ($this->editable?'':'disabled')?> /><?php echo $homeruntypegroup['homerun_type_group_name'] ?>
+				</td>
+			</tr>
+		<?php 	
+		}
+		?>
+		</table>
+	</div>
+	<div style='margin-left:auto;margin-right:auto;background-color:#7aa5dd;width:750px;min-height:50px;overflow:hidden'>
+			
+		<div style='background-color:#7aa88d;width:250px;min-height:100px;float:left'>
+			Equipment Type Group
+			<div id='eq_type_group'>
+				
+				<table>
+					<?php
+				
+					foreach(is_array( $this->service_plan['service_plan_eq_type_groups'] ) || is_object( $this->service_plan['service_plan_eq_type_groups'] ) ? $this->service_plan['service_plan_eq_type_groups'] : array() as $service_plan_eq_type_group)
+					{
+					?>
+						<tr>
+							<td>
+								<input type="radio" name="eq_type_group" id='eq_type_group'  service_plan_eq_type_map_id="<?php echo $service_plan_eq_type_group['_service_plan_eq_type_map_id']?>" value="<?php echo $service_plan_eq_type_group['_service_plan_eq_type_map_id']?>" <?php echo ($this->editable?'':'disabled')?>/><?php echo $service_plan_eq_type_group['_eq_type_group_name']?>
+							</td>
+						</tr>
+					<?php 
+					}
+					
+					?>
+				</table>
+							
+			</div>
+		</div>
+		<div style='background-color:#bbbddd;width:250px;min-height:100px;float:left'>
+		Equipment Type
+			<div id='eq_type'>
+					
+				
+			</div>
+		</div>
+		<div style='background-color:#bddddd;width:250px;min-height:100px;float:left'>
+		Static Interface
+			<div id='static_if'>
+				
+			</div>
+		</div>
+		 
+	
+	</div>
+	<div><input type='button' name='map_static_if'  id='map_static_if' value='Map static interface' <?php echo ($this->editable?'':'disabled')?>> </input></div>
+	
+	
+	
+</div>

@@ -1,0 +1,341 @@
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+</div>
+<script type='text/javascript'>
+$(function(){
+
+
+	$('input#addinterfaceconfig').bind('click',function(){
+		windowW = 500;
+		windowH = 200;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		if_id = $(this).attr('if_id');
+		window.open('/equipmentconfiguration/addinterfaceconfig?if_id='+if_id, 'popup5', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=no, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+
+	$('input#addipaddress').bind('click',function(){
+		windowW = 900;
+		windowH = 200;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		window.open('/equipmentconfiguration/addinterfaceipaddress?if_id='+if_id, 'popup5', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=no, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+	
+	$('input#manage_credentials').bind('click',function(){
+		windowW = 760;
+		windowH = 520;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		window.open('/equipmentconfiguration/managecredentials?eq_id=<?php echo $this->eq_id;?>', 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=no, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+
+	$('input#manage_backups').bind('click',function(){
+		windowW = 900;
+		windowH = 520;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		window.open('/equipmentconfiguration/managebackups?eq_id=<?php echo $this->eq_id;?>', 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=yes, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+
+	$('input#manage_interfaces').bind('click',function(){
+		windowW = 1300;
+		windowH = 700;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		window.open('/equipmentconfiguration/manageinterfaces?eq_id=<?php echo $this->eq_id;?>', 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=yes, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+
+	$('input#manage_ipaddresses').bind('click',function(){
+		windowW = 760;
+		windowH = 520;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		window.open('/equipmentconfiguration/manageipaddresses?eq_id=<?php echo $this->eq_id;?>', 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=yes, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+
+	$('input#manage_roles').bind('click',function(){
+		windowW = 760;
+		windowH = 520;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		window.open('/equipmentconfiguration/manageroles?eq_id=<?php echo $this->eq_id;?>', 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=yes, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+
+	$('input#manage_iproutes').bind('click',function(){
+		windowW = 400;
+		windowH = 400;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		window.open('/equipmentconfiguration/manageiproutes?eq_id=<?php echo $this->eq_id;?>', 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=yes, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+
+	$('input#manage_ipsubnets').bind('click',function(){
+		windowW = 800;
+		windowH = 900;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		window.open('/equipmentconfiguration/manageipsubnets?ip_subnet_master_id=null', 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=yes, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+
+	$('a#addactiveequipment').bind('click',function(){
+		windowW = 570;
+		windowH = 700;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		window.open('/inventory/addactiveequipment', 'popup2','width='+windowW+', height='+windowH+', menubar=no, scrollbars=no, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+
+	});
+	
+	$('input#expandinterfaces').bind('click',function(){
+
+		if($('table#currentinterfaces').css('display') == 'none') {
+			$('table#currentinterfaces').css('display','block');
+			
+		} else {
+			$('table#currentinterfaces').css('display','none');
+		}
+	});
+
+	$('input#expandinterfaceconfig').bind('click',function(){
+
+		if_id = $(this).attr('if_id');
+		
+		if($('table#interfaceconfiguration_'+if_id).css('display') == 'none') {
+			$('table#interfaceconfiguration_'+if_id).css('display','block');
+		} else {
+			$('table#interfaceconfiguration_'+if_id).css('display','none');
+		}
+	});
+
+});
+</script>
+
+<br>
+<center>
+<?= $this->equipment_fqdn;?>
+<br>
+Serial: <?= $this->equipment_serial;?>
+</center>
+
+<br>
+
+<!--
+* Service Start
+-->
+<table border='1' width='1100px'>
+<tr class='header'>
+<td><b>Services:</b></td>
+<td width='150px'><input type='button' class='button' name='expandservices' id='expandservices' value='Expand Services'></input></td>
+<td width='150px'><input type='button' class='button' name='addservice' eq_id='".<?= $this->eq_id ?>."' id='addservice' value='Add Service'></input></td>
+</tr>
+
+</table>
+<table id='currentservices' border='1' width='1100px' style='display:none'>
+<tr class='header'>
+</tr>
+</table>
+
+<!--
+* Service End
+-->
+
+<br>
+
+<!--
+* Routes Start
+-->
+
+<table border='1' width='1100px'>
+<tr class='header'>
+<td><b>Routes:</b></td>
+<td width='150px'><input type='button' class='button' name='expandroutes' id='expandroutes' value='Expand Routes'></input></td>
+<td width='150px'><input type='button' class='button' name='addservice' eq_id='".<?= $this->eq_id ?>."' id='addservice' value='Add Route'></input></td>
+</tr>
+</table>
+
+<table id='currentroutes' border='1' width='1100px' style='display:none'>
+<tr class='header'>
+</tr>
+</table>
+
+<!--
+* Routes End
+-->
+
+<br>
+
+<!--
+* Interfaces Start
+-->
+<form method="post" action="" name="interfaceconfigs">
+
+<table border='2' width='1100px'>
+<tr class='header'>
+<td><b>Interfaces:</b></td>
+<td width='150px'><input name='interfaces_db_only' type='submit' value='Commit To DB' /></td>
+<td width='150px'><input name='interfaces_db_and_device' type='submit' value='Commit To Device' /></td>
+<td width='150px'><input type='button' class='button' name='expandinterfaces' id='expandinterfaces' value='Expand Interfaces'></input></td>
+<td width='150px'><input type='button' class='button' name='addservice' eq_id='".<?= $this->eq_id ?>."' id='addservice' value='Add Interface'></input></td>
+</tr>
+
+<tr><td border=3 colspan=100%>
+<?php
+if (isset($this->interfaces)) {
+?>
+	
+<table id='currentinterfaces' border='1' style='display:none'>
+
+<tr class='header' style="width: 100%">
+<td>Interface Name</td>
+<td>Type</td>
+<td>Mac Address</td>
+<td>Service Point</td>
+<td>Remove</td>
+<td style="width: 100%">Expand Configurations</td>
+</tr>
+
+<?php 
+	foreach($this->interfaces as $interface) {
+?>
+
+<tr>
+<td><input type='text' class='text' name='interface[<?=$interface['if_id']?>][if_name]' value='<?=$interface['if_name']?>'></input></td>
+<td><SELECT name='interface[<?=$interface['if_id']?>][interface_type]'><?= $interface['current_interface_type']?><?=$this->interface_types?></SELECT></td>
+<td><input type='text' class='text' name='interface[<?=$interface['if_id']?>][if_mac_address]' value='<?=$interface['if_mac_address']?>'></input></td>
+<td><SELECT name='interface[<?=$interface['if_id']?>][service_point_id]'><?=$interface['current_service_point']?><?=$this->service_points?></SELECT></td>
+<td><input type='checkbox' name='interface[<?=$interface['if_id']?>][delete]' value='1'></input></td>
+<td><input type='button' if_id='<?=$interface['if_id']?>' class='button' name='expandinterfaceconfig' id='expandinterfaceconfig' value='Expand Config'></input></td>
+<input type='hidden' name='interface[<?=$interface['if_id']?>][if_id]' value='<?=$interface['if_id']?>'></input>
+</tr>
+
+<!--
+* Int Config Start
+-->
+
+<tr><td colspan=100%>
+
+<table id='interfaceconfiguration_<?=$interface['if_id']?>' border='1' style='display:none'>
+<tr class='header'>
+<td>
+<b>Configurations:</b>
+</td>
+<td width=45%>
+<input type='button' class='button' name='addinterfaceconfig' if_id='<?=$interface['if_id']?>' id='addinterfaceconfig' value='Add Interface Config'></input>
+<input type='button' class='button' name='addipaddress' if_id='<?=$interface['if_id']?>' id='addipaddress' value='Add IP Address'></input>
+</td>
+</tr>
+<tr>
+
+
+
+<!--
+* Interface Configurations Start
+-->
+
+
+<td>
+<table border='1'>
+<tr class='header'>
+<td>Config Name</td>
+<td>Value</td>
+<td>DEL</td>
+</tr>
+<?php
+if (isset($interface['configs'])) {
+	foreach ($interface['configs'] as $config) {
+?>
+
+<tr>
+<td><?= $config['if_conf_name'];?></td>
+<td><input type='text' class='text' name='interface[<?=$interface['if_id']?>][config][<?= $config['mapped_if_conf_map_id'];?>][if_conf_value_1]' value='<?= $config['if_conf_value_1'];?>'></input></td>
+<td><input type='checkbox' name='interface[<?=$interface['if_id']?>][config][<?= $config['mapped_if_conf_map_id'];?>][delete]' value='1'></input></td>
+</tr>
+<input type='hidden' name='interface[<?=$interface['if_id']?>][config][<?= $config['mapped_if_conf_map_id'];?>][mapped_if_conf_map_id]' value='<?= $config['mapped_if_conf_map_id'];?>'></input>
+<input type='hidden' name='interface[<?=$interface['if_id']?>][config][<?= $config['mapped_if_conf_map_id'];?>][if_conf_id]' value='<?= $config['if_conf_id'];?>'></input>
+
+<?php	
+	}
+}
+?>
+
+</table></td>
+<!--
+* Interface Configurations End
+-->
+
+<!--
+* Interface IPs Start
+-->
+<td><table border='1'>
+<tr class='header'>
+<td>Address</td>
+<td>Mask</td>
+<td>Type</td>
+<td>DNS</td>
+<td>DEL</td>
+</tr>
+<?php
+if (isset($interface['ips'])) {
+	foreach ($interface['ips'] as $ipaddress) {
+		?>
+
+<tr>
+<td><?=$ipaddress['ipaddress']?></td>
+<td><?=$ipaddress['subnetmask']?></td>
+<td><SELECT name='interface[<?=$interface['if_id']?>][ips][<?= $ipaddress['ip_address_map_id'] ?>][ip_address_map_type]'><?= $ipaddress['current_ip_address_map_type']?><?= $this->ip_address_map_types?></SELECT></td>
+<td><input type='button' class='button' name='ipaddressdns' ip_address_id='<?= $ipaddress['ip_address_id']?>' id='ipaddressdns' value='Manage DNS'></input></td>
+<td><input type='checkbox' name='interface[<?= $interface['if_id']?>][ips][<?= $ipaddress['ip_address_map_id'] ?>][delete]' value='1'></input></td>
+</tr>
+
+<input type='hidden' name='interface[<?= $interface['if_id']?>][ips][<?= $ipaddress['ip_address_map_id'] ?>][ip_address_map_id]' value='<?= $ipaddress['ip_address_map_id']?>'></input>
+<input type='hidden' name='interface[<?= $interface['if_id']?>][ips][<?= $ipaddress['ip_address_map_id'] ?>][ip_address_id]' value='<?= $ipaddress['ip_address_id']?>'></input>
+			
+<?php	
+	}
+}
+?>
+
+</table></td>
+<!--
+* Interface Ips End
+-->
+
+
+
+</tr>
+</table>
+</td></tr>
+<!--
+* Int Config End
+-->
+
+
+
+
+<?php 
+	}
+//end of interface loop	
+?>
+
+</table>
+
+<?php 
+}
+//is interfaces set at all
+?>
+</td></tr>
+</table>
+
+<input type='hidden' name='eq_id' value='<?= $_GET['eq_id']?>'></input>
+</form>
+
+<!--
+* Interfaces End
+-->
+
+
+<div>

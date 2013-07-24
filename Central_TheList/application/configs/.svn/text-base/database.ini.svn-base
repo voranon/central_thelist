@@ -1,0 +1,47 @@
+[thelist]
+
+db.adapter  = PDO_MYSQL
+db.host     = localhost
+db.username = zend_thelist
+db.password = WiGwOoU
+db.dbname   = thelist
+
+[thelist_information_schema]
+
+db.adapter  = PDO_MYSQL
+db.host     = localhost
+db.username = zend_thelist
+db.password = WiGwOoU
+db.dbname   = information_schema
+
+[traffic_flow]
+
+db.adapter  = PDO_MYSQL
+db.host     = traffic-flow.belairinternet.com
+db.username = zend_thelist
+db.password = HJVuyf675FE3443
+db.dbname   = ip_flows
+
+[mydns]
+
+db.adapter  = PDO_MYSQL
+db.host     = localhost
+db.username = zend_thelist
+db.password = WiGwOoU
+db.dbname   = mydns
+
+[syslog]
+
+db.adapter  = PDO_MYSQL
+db.host     = syslog.belairinternet.com
+db.username = zend_thelist
+db.password = WiGwOoU
+db.dbname   = dhcp_request_tracking
+
+[tracking]
+
+db.adapter  = PDO_MYSQL
+db.host     = localhost
+db.username = zend_thelist
+db.password = WiGwOoU
+db.dbname   = thelist_tracking

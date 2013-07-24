@@ -1,0 +1,100 @@
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+
+<script type='text/javascript'>
+$(function(){
+	$('input#add_static_if_type').bind('click',function(){
+		windowW = 760;
+		windowH = 520;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		window.open('/inventory/addstaticiftype/?eq_type_id=<?php echo $_GET["eq_type_id"]?>', 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=yes, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+	$('input#edit_static_if_type').live('click',function(){
+		windowW = 760;
+		windowH = 520;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		static_if_type_id = $(this).attr('static_if_type_id');
+		window.open('/inventory/editstaticiftype/?eq_type_id=<?php echo $_GET["eq_type_id"]?>&static_if_type_id='+static_if_type_id, 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=yes, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+	$('input#add_regex').live('click',function(){
+		windowW = 760;
+		windowH = 520;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		window.open('/inventory/addeqtyperegex/?eq_type_id=<?php echo $_GET["eq_type_id"]?>', 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=yes, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+	$('input#edit_regex').live('click',function(){
+		windowW = 760;
+		windowH = 520;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		eq_type_serial_match_id = $(this).attr('eq_type_serial_match_id');
+		window.open('/inventory/editeqtyperegex/?eq_type_id=<?php echo $_GET["eq_type_id"]?>&eq_type_serial_match_id='+eq_type_serial_match_id, 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=yes, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+
+	$('input#manageeqtypeapplications').live('click',function(){
+		windowW = 500;
+		windowH = 400;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		window.open('/equipmentconfiguration/manageeqtypeapplications?eq_type_id=<?php echo $_GET["eq_type_id"]?>', 'popup2', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=yes, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+	
+});
+</script>
+
+
+<div style="position:absolute;width:1250px;height:800px">
+	<div style="position:absolute;left:10px;top:10px">
+		<?php echo $this->placeholder('eq_types_menu');?>
+	</div>
+	
+	<form method='post' action=''>
+	<div style="position:absolute;left:10px;top:50px">
+		Model Name: <input type="text" class="text" name='eq_model_name' style="width:150px" value="<?php echo $this->eq_model_name?>"></input>
+	</div>
+	<div style="position:absolute;left:260px;top:50px">
+		Manufacturer: <input type="text" class="text" name='eq_manufacturer' style="width:150px" value="<?php echo $this->eq_manufacturer?>"></input>
+	</div>
+	<div style="position:absolute;left:510px;top:50px">
+		Name: <input type="text" class="text" name='eq_type_name' style="width:150px" value="<?php echo $this->eq_type_name?>"></input>
+	</div>
+	<div style="position:absolute;left:720px;top:50px">
+		Description: <input type="text" class="text" name='eq_type_desc' style="width:200px" value="<?php echo $this->eq_type_desc?>"></input>
+	</div>
+		<div style="position:absolute;left:1010px;top:50px">
+		<input type='submit' class='button' value='Save'></input>
+	</div>
+	
+	<div style="position:absolute;left:32px;top:100px">
+		Serialized: <input type="text" class="text" name='eq_type_serialized' style="width:50px" value="<?php echo $this->eq_type_serialized?>"></input>
+	</div>
+	<div style="position:absolute;left:160px;top:100px">
+		Protect: <input type="text" class="text" name='eq_type_protected' style="width:50px" value="<?php echo $this->eq_type_protected?>"></input>
+	</div>
+	<div style="position:absolute;left:280px;top:100px">
+		Equipment Type PO name: <input type="text" class="text" name='eq_type_friendly_name' style="width:570px" value="<?php echo $this->eq_type_friendly_name?>"></input>
+	</div>
+	
+	<div style="position:absolute;left:10px;top:150px">
+		<input type='button' class='button' name='manageeqtypeapplications' id='manageeqtypeapplications' value='Manage Type Applications'></input>
+		<input class='button' type='button' id='add_static_if_type' value='Add Static Interface Type'></input></td>
+	</div>
+
+	<div style="position:absolute;left:0px;top:200px">
+		
+			<?php echo $this->static_if_types_list; ?>
+			<?php echo $this->regex_list; ?>
+
+	</div>
+	
+
+
+
+
+</div>

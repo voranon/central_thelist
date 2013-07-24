@@ -1,0 +1,66 @@
+<?php
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+
+
+
+
+
+<center>
+<?php 
+
+if (isset($this->service_point_interfaces_array)) {
+
+	echo "
+		
+		<table border='0' style='width:575px'>
+		<tr>
+		<td align='center' style='font-size:18; color:#0E598C;'>Interfaces</td>
+		</tr>
+		</table>
+		<table border='0' style='width:575px'>
+		<tr class='header'>
+		<td>Verify</td>
+		<td>Action</td>
+		<td>Current Status</td>
+		<td>Patch Panel ID</td>
+		<td>Interface</td>
+		</tr>
+		";
+	
+	foreach ($this->service_point_interfaces_array as $patch_panel_name => $interfaces) {
+	
+		foreach($interfaces as $interface) {
+			
+			echo "
+				 	<tr>
+				 	<td><a href='/inventory/verifytaskinstall/?task_id=".$_GET['task_id']."&if_id=".$interface['if_id']."&action=".$interface['operation']."'>Verify</a></td>
+				 	<td>".$interface['operation']."</td>
+				 	<td>".$interface['status']."</td>
+				 	<td>".$patch_panel_name."</td>
+				 	<td>".$interface['if_name']."</td>
+				 	</tr>
+				 	";
+		}
+	}
+	
+	echo "</table>";
+
+}
+
+
+?>
+
+<?php 
+if (isset($this->error)) {
+	
+	echo $this->error;
+	
+}
+
+
+?>
+
+</center>

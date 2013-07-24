@@ -1,0 +1,39 @@
+@CHARSET "ISO-8859-1";
+select,input[type=text]
+{
+	width: 310px;
+}
+
+fieldset[id=directtv_subform]
+{
+	width: 400px;
+}
+
+#more_options
+{
+	width: 500px;
+	border: 1px solid #000000;	
+	border-radius: 0;
+	position: fixed;
+	top: 500px;
+	
+}
+
+#more_options #header
+{
+	text-align: left;
+	color: #FFFFFF;
+	height: 20px;
+	border: 1px solid black;
+	border-radius: 0;
+	background-color: #606060 ;
+	font-family: arial;
+}
+
+#unit_config
+{
+	border: 1px solid black;
+	width: 500px;	
+	border-radius: 0;
+	margin-bottom: 25px;
+}

@@ -1,0 +1,215 @@
+<script type='text/javascript'>
+
+$(function(){
+	// initialize page
+	
+	// set text area scroll all the way to the end
+	var height = $('textarea#outputnote').attr('scrollHeight'); 
+	$('textarea#outputnote').scrollTop( height );
+		
+	// finish initialize page
+	$('textarea#note').bind('keydown',function(e){
+		
+		if(e.which == 13 && e.shiftKey){   ///// start new line
+			
+			old_height = $(this).height();
+			//old_message= $(this).val();
+			
+			$(this).css('height',old_height+15);
+			//$(this).val(old_message+'\n');
+
+		}else if(e.which == 13){   ///// save
+			
+			var text = $(this).val();
+			var end_user_service_id = getUrlVars()["end_user_service_id"];
+
+			
+			$.ajax({
+				url: "/salespitchestimate/notesaveajax/",
+				type: 'POST',
+				dataType:'html',
+				data:"text="+text+"&end_user_service_id="+end_user_service_id,
+			    success: function(data){
+					
+					$('textarea#outputnote').val(data);
+					var height = $('textarea#outputnote').attr('scrollHeight'); 
+					$('textarea#outputnote').scrollTop( height );
+					$('textarea#note').val('');
+					
+					
+				}
+			});
+			$(this).css('height',15);
+			
+		}
+	});
+
+	setInterval(refreshNote,1000);
+	
+	function refreshNote()
+	
+	{
+		var end_user_service_id = getUrlVars()["end_user_service_id"];
+		
+		$.ajax({
+			url: "/salespitchestimate/updatenoteajax/",
+			type: 'POST',
+			dataType:'html',
+			data:"end_user_service_id="+end_user_service_id,
+		    success: function(data){
+			    old_notes=data;
+			    new_notes=$('textarea#outputnote').val();
+			    if(old_notes.length != new_notes.length){
+					
+					$('textarea#outputnote').val(data);
+					var height = $('textarea#outputnote').attr('scrollHeight'); 
+					$('textarea#outputnote').scrollTop( height );
+					
+				}
+				
+				
+			}
+		});
+	
+	}
+	
+
+	// window.location.href = "/calendar/makeappointment/?sales_quote_id="+sales_quote_id;
+
+	
+	///////////////// drag and drop
+	
+
+
+	
+	// to delete equipment in the basket
+
+});
+
+
+</script>
+
+<div style='float:left;background-color:#EEDBDB;min-height:850px;width:100%'>
+<?php //echo $this->test?>
+	
+	
+	
+	  
+	<div style='float:left;min-height:130px;width:990px;background-color:#ACCCCC;padding:3px;'>
+		<label    style='float:left'>Latest Notes</label>													
+		<textarea id='outputnote' style='clear:both;display:block;height:80px;width:985px;resize:none'><?php foreach( is_array($this->notes)  || is_object($this->notes)  ? $this->notes : array() as $note )
+		{	
+			echo '&#13;&#10;'.$note->get_createdate().':'.$note->get_creator().'&#13;&#10;'.$note->get_note_content();	
+		}?>
+		</textarea>
+		<textarea id='note' name='note' style='clear:both;display:block;height:16px;width:984px;resize:none;padding:1px' rows="1" placeholder="Start Typing to add new note,start  new line by hitting shift+enter and save by hitting enter"></textarea>
+		
+	</div>
+	
+	
+	<div style="background-color:#ACFFCC;float:left;width:650px;height:266px" >
+		<table border='1' style='width:100%'>
+			<?
+			
+				$count=0;
+				foreach( $this->service_plans as $service_plan)
+				{
+					
+				$count++;
+				
+					if( ($count % 4) == 1 )
+					{
+					 echo "<tr style='height:80px'>";
+					}
+			
+			?>
+					<td draggable='true' id='drag' type='service_plan' service_plan_id='<?=$service_plan['_service_plan_id']?>' 
+																	   mrc_term ='<?=$service_plan[ '_service_plan_default_mrc_term' ]?>'
+																	   mrc='<?=$service_plan[ '_service_plan_default_mrc'] ?>'
+																	   nrc='<?=$service_plan[ '_service_plan_default_nrc'] ?>'> 
+																	   
+						<table>
+							<tr><td><?=$service_plan['_service_plan_type']?></td></tr>
+							<tr><td><?=$service_plan['_service_plan_name']?></td></tr>
+							<tr><td><?=$service_plan['_service_plan_default_mrc']?></td></tr>
+						</table>
+					</td> 
+			<?
+			
+					if( ($count % 4) == 0 )
+					{
+						echo "</tr>";
+					}
+				
+				
+					
+				}
+				
+			?>
+		</table>
+	</div>
+	
+	<div style='float:left; min-height:260px;width:340px;background-color:#CCEECC;padding:3px;'>
+	
+		<label style='float:left;'>Suggestions:</label>
+		<div style='clear:both;height:162px;width:330px;resize:none;background-color:#C0E0E0;'></div>
+		<table border='1' width='340px'>
+			<tr>
+				<td id='drag' draggable='true' type='sale_quote'>e1</td>
+				<td id='drag' draggable='true' type='sale_quote'>e2</td>
+				<td id='drag' draggable='true' type='sale_quote'>e3</td>
+				<td id='drag' draggable='true' type='sale_quote'>e4</td>
+			</tr>
+			<tr>
+				<td id='drag' draggable='true' type='sale_quote'>e5</td>
+				<td id='drag' draggable='true' type='sale_quote'>e6</td>
+				<td id='drag' draggable='true' type='sale_quote'>e7</td>
+				<td id='drag' draggable='true' type='sale_quote'>e8</td>
+			</tr>
+		</table>
+	</div>
+	
+	<div style='clear:both;background-color:#CCEEAA;min-height:250px;width:100%'>
+		<label style='float:left;'>Choices/Options:</label>
+		<div id="tabs" style='clear:both;background-color:#CC2200;min-height:120px'>
+			<ul>
+				<li><a href="#internet-tab">Internet</a></li>
+				<li><a href="#phone-tab">Phone</a></li>
+				<li><a href="#tv-tab">TV</a></li>
+			</ul>
+			<div id="internet-tab" 	style="overflow: hidden">
+				<!-- ajax will full fill this part -->
+				
+				<!-- 
+				<table style='float:left;width:20%' border='1'>
+					<tr><td>1</td></tr>
+					<tr><td>1</td></tr>
+				</table>
+				<table style='float:left;width:20%' border='1'>
+					<tr><td>1</td></tr>
+				</table>
+				<table style='float:left;width:20%' border='1'>
+					<tr><td>1</td></tr>
+				</table>
+				<table style='float:left;width:20%' border='1'>
+					<tr><td>1</td></tr>
+				</table>
+				<table style='float:left;width:20%' border='1'>
+					<tr><td>2</td></tr>
+				</table>
+				-->
+			</div>
+			<div id="phone-tab" 	style="overflow: hidden">
+				<!-- ajax will full fill this part -->
+			</div>
+			<div id="tv-tab" 		style="overflow: hidden">
+				<!-- ajax will full fill this part -->
+			</div>
+		</div>
+	</div>
+
+</div>
+
+
+
+

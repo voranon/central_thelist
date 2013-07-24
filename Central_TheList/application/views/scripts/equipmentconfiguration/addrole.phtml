@@ -1,0 +1,33 @@
+
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+<html>
+<script type="text/javascript">
+
+$(function(){
+
+});
+</script>
+
+<body>
+<?= $this->error;?>
+<form method="post" action="" name="credentials">
+<table>
+
+
+
+Add Role:
+<SELECT name='equipment_role_id'><OPTION value=''>---Select One---</OPTION><?= $this->available_roles; ?></SELECT>
+<td><input type='hidden' class='text' name='eq_id' value='<?= $_GET['eq_id']?>'></input></td>
+
+<br>
+<tr> <td><input type='submit' value='Save' /></td></tr>
+
+
+</table>
+</form>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+
+<?php 
+if (!isset($this->error)) {
+?>
+
+
+<form method="post" action="" name="interfaceallowedconfigs">
+<center>
+<table border=1>
+<tr>
+<td colspan=2><b>Report Broken Service Point Interface:</b></td>
+</tr>
+
+<?php 
+if (isset($this->old_task)) {
+?>
+<tr>
+<td colspan=2><?= $this->old_task;?></td>
+</tr>
+
+<?
+}
+?>
+
+<tr>
+<td>Reported By:</td><td><?= $this->tech_firstname;?> <?= $this->tech_lastname;?></td>
+</tr>
+<tr>
+<td>Equipment Serial:</td><td><?= $this->eq_serial;?></td>
+</tr>
+<tr>
+<td>Interface Name:</td><td><?= $this->if_name;?></td>
+</tr>
+<tr>
+<td colspan=2>Issue:</td>
+</tr>
+<tr><td colspan=2>
+<textarea name="report_txt" rows="4" cols="35">
+</textarea>
+</td></tr>
+
+
+
+<br>
+<tr><td colspan=2><center><input type='submit' value='Submit Report' /></center></td></tr>
+
+</table>
+</center>
+<input type='hidden' name='if_id' value='<?= $this->if_id;?>'></input>
+<input type='hidden' name='eq_id' value='<?= $this->eq_id;?>'></input>
+<input type='hidden' name='task_id' value='<?= $this->task_id;?>'></input>
+</form>
+<?php 
+} else {
+?>
+<center>
+<br><br>
+<b>
+<?= $this->error?>
+</b>
+</center>
+
+<?php 
+}
+?>

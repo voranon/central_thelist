@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/central_thelist/!svn/ver/717/trunk/application/views/scripts/task
+END
+addtaskpopup.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/central_thelist/!svn/ver/643/trunk/application/views/scripts/task/addtaskpopup.phtml
+END
+search.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/central_thelist/!svn/ver/686/trunk/application/views/scripts/task/search.phtml
+END
+main.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/central_thelist/!svn/ver/717/trunk/application/views/scripts/task/main.phtml
+END
+edittaskpopup.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/central_thelist/!svn/ver/643/trunk/application/views/scripts/task/edittaskpopup.phtml
+END

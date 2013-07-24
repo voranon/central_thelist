@@ -1,0 +1,70 @@
+<?php echo $this->doctype() ?>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en_US" xml:lang="en_US">
+<!--
+ * Created on Sep 8, 2011
+ *
+ * To change the template for this generated file go to
+ * Window - Preferences - PHPeclipse - PHP - Code Templates
+-->
+<head>
+<?php 
+echo $this->headTitle();
+echo $this->headScript();
+?>
+</head>
+ 
+<body>
+<table align='center'  width='100%' border='1' >
+ <tr>
+ 	<td align='right'>
+ 		<b>Name:</b><?php echo $this->firstname.$this->departmenet?> <?php echo $this->lastname?>
+ 		<b>Title:</b><?php echo $this->title?>
+ 	</td>
+ 	<td align='center'>
+	<a href="/index/logout/">logout</a>
+	</td>
+ </tr>
+ <tr>
+ 	<td width='90%'>
+ 		<?php
+ 		echo $this->menu 
+ 		?>
+ 	</td>
+ 	<td align='center'>
+ 		<select name='perspective' id='perspective'>
+ 		<?php
+ 		echo $this->perspective;	 
+ 		?>
+ 		</select>
+ 	</td>
+ </tr>
+ <tr>
+ 	<td colspan='100%'>Customize menu</td>
+ </tr>
+
+ <!-- 
+ <tr>
+ 	<form method="post" action="/main/search">
+ 	<td colspan='100%'>
+ 		<input type='text'></input>
+ 		<select name='search'>
+ 			<option value='ticket'>Ticket</option>
+ 			<option value='to do things'>To do things</option>
+ 		</select>
+ 		<input type="submit" value='search'></input>
+ 	</td>
+ 	</form>
+ </tr>
+ -->
+</table>
+
+<table align='right'  width='100%' height='500px' border='1'>
+	<tr>
+	<td><?php echo $this->layout()->content;?></td>
+	</tr>
+</table>
+
+</body>
+ 
+</html>

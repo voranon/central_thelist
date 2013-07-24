@@ -1,0 +1,47 @@
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+
+	//create apointment table
+	$the_table = "";
+	
+	$the_table .= "
+	
+	<table border='0' style='width:1150px'>
+	<tr>
+	<td align='center' style='font-size:18; color:#0E598C;'>Appointments</td>
+	</tr>
+	</table>
+	<table border='0' style='width:1150px'>
+	<tr class='header'>
+	<td>Appointment Type</td><td>Start Time</td><td>End Time</td><td>Address</td>
+	<td>Contact Name</td><td>Cell Phone</td><td>Home Phone</td><td>Office Phone</td>
+	</tr>
+	
+	";
+	
+	 foreach ($this->appointments as $appointment) {
+
+	 	$the_table .= "
+	 	<tr>
+	 	<td><a href='/fieldinstallation/appointment/?calendar_appointment_id=".$appointment['calendar_appointment_id']."'>".$appointment['appointment_type']."</a></td>
+	 	<td>".$appointment['start_time']."</td><td>".$appointment['end_time']."</td><td>".$appointment['address']." #".$appointment['unit_number']."<br>".$appointment['address2']."</td>
+	 	<td>".$appointment['pri_contact_name']."</td><td>".$appointment['pri_contact_cell']."</td>
+	 	<td>".$appointment['pri_contact_home']."</td><td>".$appointment['pri_contact_office']."</td>
+	 	</tr>
+	 	";
+	 	
+	 }
+
+	 $the_table .= "</table>";
+	 
+?>
+
+<div style="position:absolute;left:10px;top:0px">
+	<table class='display' style='width:100px;left:250px'>
+			<?= $this->placeholder('installerdashboard');?>
+	</table>
+</div>
+
+<?= $the_table;?>

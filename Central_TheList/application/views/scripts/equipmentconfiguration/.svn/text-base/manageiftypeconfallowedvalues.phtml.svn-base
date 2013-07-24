@@ -1,0 +1,58 @@
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+
+
+<script type='text/javascript'>
+$(function(){
+	$('input#addinterfaceconfigallowedvalue').bind('click',function(){
+		windowW = 500;
+		windowH = 200;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+		window.open('/equipmentconfiguration/addinterfaceconfigallowedvalue?interface_type_configuration_id=<?php echo $_GET['interface_type_configuration_id'];?>', 'popup9', 'width='+windowW+', height='+windowH+', menubar=no, scrollbars=no, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+	});
+});
+</script>
+
+<form method="post" action="" name="interfaceconfigs">
+<table>
+<tr class='header'>
+<td>Config Name</td>
+<td>Value</td>
+<td>Remove</td>
+</tr>
+
+<?php 
+if (!isset($this->error)) {
+	if (isset($this->type_conf_allowed_values)) {
+
+		foreach ($this->type_conf_allowed_values as $config_value) {
+?>
+
+<tr>
+<td>Start: <input type='text' class='text' name='<?= $config_value['if_type_allowed_config_value_id'];?>[if_type_allowed_config_value_start]' value='<?= $config_value['if_type_allowed_config_value_start'];?>'></input></td>
+<td>End: <input type='text' class='text' name='<?= $config_value['if_type_allowed_config_value_id'];?>[if_type_allowed_config_value_end]' value='<?= $config_value['if_type_allowed_config_value_end'];?>'></input></td>
+<td><input type='checkbox' name='<?= $config_value['if_type_allowed_config_value_id'];?>[delete]' value='1'></input></td></tr>
+<tr><td><input type='hidden' name='<?= $config_value['if_type_allowed_config_value_id'];?>[if_type_allowed_config_value_id]' value='<?= $config_value['if_type_allowed_config_value_id'];?>'></input></td></tr>
+
+<?php
+		}
+	}
+} else {
+?>
+
+<?= $this->error;?>	
+
+<?php
+}
+?>
+
+<br>
+<tr><td><input type='button' class='button' name='addinterfaceconfigallowedvalue' id='addinterfaceconfigallowedvalue' value='Add Interface Config Allowed Value'></input></td><td><input type='submit' value='Save' /></td></tr>
+<input type='hidden' name='interface_type_configuration_id' value='<?= $_GET['interface_type_configuration_id'];?>'></input>
+
+</table>
+</form>

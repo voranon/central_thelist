@@ -1,0 +1,60 @@
+[base]
+name=CentOS Base
+baseurl=http://repo.belairinternet.com/centos/$releasever/os/$basearch/
+gpgcheck=0
+gpgkey=http://mirror.centos.org/centos/RPM-GPG-KEY-centos4
+enabled=0
+
+[update]
+name=CentOS Updates
+baseurl=http://repo.belairinternet.com/centos/$releasever/updates/$basearch/
+gpgcheck=0
+gpgkey=http://mirror.centos.org/centos/RPM-GPG-KEY-centos4
+enabled=0
+
+[addons]
+name=CentOS Addons
+baseurl=http://repo.belairinternet.com/centos/$releasever/addons/$basearch/
+gpgcheck=0
+gpgkey=http://mirror.centos.org/centos/RPM-GPG-KEY-centos4
+enabled=0
+
+[extras]
+name=CentOS Extras
+baseurl=http://repo.belairinternet.com/centos/$releasever/extras/$basearch/
+gpgcheck=0
+gpgkey=http://mirror.centos.org/centos/RPM-GPG-KEY-centos4
+enabled=0
+
+[centosplus]
+name=CentOS Plus
+baseurl=http://repo.belairinternet.com/centos/$releasever/centosplus/$basearch/
+gpgcheck=0
+enabled=0
+gpgkey=http://mirror.centos.org/centos/RPM-GPG-KEY-centos4
+enabled=0
+
+[contrib]
+name=CentOS Contrib
+baseurl=http://repo.belairinternet.com/centos/\/contrib/$basearch/
+gpgcheck=0
+gpgkey=http://mirror.centos.org/centos/RPM-GPG-KEY-centos4
+enabled=0
+
+[remi]
+name=Remi
+baseurl=http://repo.belairinternet.com/remi/$basearch/
+gpgcheck=0
+enabled=0
+
+[epel]
+name=Epel
+baseurl=http://repo.belairinternet.com/epel/$basearch/
+gpgcheck=0
+enabled=0
+
+[baiadd]
+name=BAI Add
+baseurl=http://repo.belairinternet.com/baiadd/$basearch/
+gpgcheck=0
+enabled=0

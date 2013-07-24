@@ -1,0 +1,104 @@
+
+<script type='text/javascript'>
+$(function(){
+	$('input#barcode').focus();
+
+
+	$('input#remove').live('click',function(){
+			var eq_id = $(this).attr('eq_id');
+			$('tr[eq_id='+eq_id+']').remove();
+	});
+	
+	$('select#new_owner').bind('change',function(){
+		$('input#barcode').focus();
+	});
+
+	
+	 $('input#barcode').bind('keypress',function(event){
+		if(event.keyCode == 13){
+
+			var new_owner = $('select#new_owner').val();
+			var barcode   = $(this).val();
+			$.ajax({
+				url:"/inventory/eqtransferajax/",
+				data:"barcode="+barcode+"&new_owner="+new_owner+"&mode=query",
+				async: false,
+		    	success: function(data){
+
+					if(data=='not_found'){
+						$('table#header').append("<tr><td colspan='6'>"+barcode+" barcode not found</td></tr>");
+					}else{
+						$('table#header').append(data);
+					}
+			    	
+		    		
+
+		    		$('input#barcode').val('');
+		    		$(this).focus();
+		    		
+		    	}
+			});  
+		}
+	});
+
+
+	$('input#change').bind('click',function(){
+
+		$('tr#eq').each(function(){
+			var eq_id = $(this).attr('eq_id');
+			var new_owner_id = $(this).find('td#new_owner').attr('new_owner');
+			
+			
+			$.ajax({
+				url:"/inventory/eqtransferajax/",
+				data:"eq_id="+eq_id+"&new_owner_id="+new_owner_id+"&mode=update",
+				async: false,
+		    	success: function(data){
+		    		window.location.reload();
+		    	}
+			});  
+
+			
+		});
+		
+		
+	});
+});
+</script>
+
+<div style="position:absolute;width:1250px;height:800px">
+	<div style="position:absolute;left:150px;top:20px">
+		Barcode: <input name='barcode' id='barcode' type='text' class='text' style="width: 200px"></input>
+	</div>
+	
+	
+	
+	<div style='position:absolute;left:550px;top:20px'>
+		New Owner:<select name='new_owner' id='new_owner' style='width: 200px'>
+				 <?php
+				 	echo $this->user_list; 
+				 ?>
+				  </select>
+	</div>
+	
+	<div style='position:absolute;left:500px;top:80px'>
+			<input type='button' class='button' name='change' id='change' value='Change'></input>
+	</div>
+	
+	<div style='position:absolute;left:150px;top:150px'>
+		
+		<table class='display' style='width:900px' id='header'>
+			<tr class='header'>
+				<td width='50px'>Eq ID</td>
+				<td width='200px'>Equipment Type</td>
+				<td>Serial Number</td>
+				<td width='200px'>Owner</td>
+				<td width='200px'>New Owner</td>
+				<td width='100px'>Edit</td>
+			</tr>
+			
+		</table>
+	
+	</div>
+	
+</div>

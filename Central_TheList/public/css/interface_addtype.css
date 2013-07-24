@@ -1,0 +1,17 @@
+@CHARSET "ISO-8859-1";
+input[type=text]
+{
+	width: 300px;
+}
+fieldset
+{
+	width: 300px;
+}
+#features
+{
+	margin-left: 100px;
+}
+#submit
+{
+	margin-left: 375px;
+}

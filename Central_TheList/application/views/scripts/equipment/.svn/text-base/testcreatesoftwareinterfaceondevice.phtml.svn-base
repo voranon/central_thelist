@@ -1,0 +1,68 @@
+<?php $this->headScript()->appendFile('/javascripts/inventory/addequipment.js');?>
+<html>
+		<body onLoad="document.forms.addinveq.eq_serial.focus()">
+		
+		<br><br><br><br><br>
+		
+		<table align='center' width='1175px' cellpadding="10" border="2px" bordercolor="#CCCCCC" rules="none" class="bodytext" style="padding-top:10px">
+		
+		<form name='addinveq' action="/equipment/testcreatesoftwareinterfaceondevice" method="post">
+		
+		<tr>
+		<td>
+		Equipment ID:
+		</td>
+		<td>
+		<input size='35' type='text' name='eq_id' value='1'>
+		</td>
+		</tr>
+		
+		<tr>
+		<td>
+		Interface Name:
+		</td>
+		<td>
+		<input size='35' type='text' name='if_name' value=''>
+		</td>
+		</tr>
+		
+		<tr>
+		<td>
+		Interface Type:
+		</td>
+		<td>
+		<?php echo $this->list_of_interface_types;?>
+		</td>
+		</tr>
+		
+		<tr>
+		<td>
+		Mac Address (no spaces):
+		</td>
+		<td>
+		<input size='35' type='text' name='if_mac_address' value='000000000000'>
+		</td>
+		</tr>
+		
+		<tr>
+		<td>
+		Index:
+		</td>
+		<td>
+		<input size='35' type='text' name='if_index' value='0'>
+		</td>
+		</tr>
+		
+		<tr>
+		<td>
+		</td>
+		<td>
+		<input type="submit" value="Create Soft Interface" />
+		</td>
+		</tr>
+		</form>
+		
+		
+		</table>
+		</body>
+		</html>

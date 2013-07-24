@@ -1,0 +1,51 @@
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+
+<center>
+
+
+<form action='' method='post'>
+
+<?php 
+//if there is no error
+if ($this->error == '') {
+	
+	if ($this->sales_quote_status == 0) {
+
+?>
+<br>
+<br>
+Do You really want to manually ACCEPT the sales quote for: <?=$this->primary_contact_name ?>
+<br><br>
+<input type='submit' class='button' sales_quote_id='<?= $this->sales_quote_id ?>'  value='Manually Accept Quote'></input>
+<input type='hidden' name='sales_quote_id' value='<?= $this->sales_quote_id ?>'></input>
+<input type='hidden' name='new_accepted_status' value='1'></input>
+<?php 
+		
+		
+	} else {
+		
+?>
+<br>
+<br>
+Do You really want to manually UN-ACCEPT the sales quote for: <?=$this->primary_contact_name ?> 
+<br><br>
+<input type='submit' class='button' sales_quote_id='<?= $this->sales_quote_id ?>'  value='Manually UN-Accept Quote'></input>
+<input type='hidden' name='sales_quote_id' value='<?= $this->sales_quote_id ?>'></input>
+<input type='hidden' name='new_accepted_status' value='0'></input>
+<?php 
+		
+	}
+
+} else {
+
+?>
+ERROR: <?= $this->error?>
+
+<?php
+}
+?>
+</center>

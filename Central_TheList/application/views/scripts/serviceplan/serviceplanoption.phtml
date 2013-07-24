@@ -1,0 +1,161 @@
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+
+
+<script type="text/javascript">
+
+$(function(){
+	$('input#add_option').bind('click',function(){
+		var service_plan_option 		= $('select#service_plan_option').val();
+		var service_plan_option_group	= $('select#service_plan_option_group').val();
+		var service_plan_id				= $('input#service_plan_id').val();
+		
+		var install_time				= $('input#add_install_time').val();
+		var mrc							= $('input#add_mrc').val();
+		var nrc							= $('input#add_nrc').val();
+		var mrc_term					= $('input#add_mrc_term').val();
+		
+		$.ajax({
+			url: "/serviceplan/addoptionajax/",
+			data:"service_plan_option="+service_plan_option+"&service_plan_option_group="+service_plan_option_group+"&service_plan_id="+service_plan_id+"&install_time="+install_time+"&mrc="+mrc+"&nrc="+nrc+"&mrc_term="+mrc_term,
+		    success: function(data){
+			   // alert(data);
+			   window.location.reload();
+		    }
+		});
+	});
+
+	$('input#save_option').bind('click',function(){
+
+		
+		
+		var service_plan_option_mapping_id = $(this).attr('service_plan_option_mapping_id');
+		var service_plan_id				   = $('input#service_plan_id').val();
+		
+		
+		
+		var install_time = $(this).parent().closest('tr').find('input#save_install_time').val();		
+		var mrc			 = $(this).parent().closest('tr').find('input#save_mrc').val();
+		var nrc			 = $(this).parent().closest('tr').find('input#save_nrc').val();
+		var mrc_term	 = $(this).parent().closest('tr').find('input#save_mrc_term').val();
+		
+		$.ajax({
+			url: "/serviceplan/saveoptionajax/",
+			data:"service_plan_id="+service_plan_id+"&service_plan_option_mapping_id="+service_plan_option_mapping_id+"&install_time="+install_time+"&mrc="+mrc+"&nrc="+nrc+"&mrc_term="+mrc_term,
+		    success: function(data){
+			   // alert(data);
+			   window.location.reload();
+		    }
+		});
+	});
+
+	$('img#delete_service_plan_option_map').live('click',function(){
+		$.ajax({
+			url: "/serviceplan/deleteserviceplanoptionajax/",
+			data:"service_plan_option_mapping_id="+$(this).attr('service_plan_option_mapping_id'),
+		    success: function(data){
+			   // alert(data);
+			   window.location.reload();
+		    }
+		});
+		
+	});
+	
+});
+
+</script>
+
+
+
+<div style='position:relative;background-color:#77ee77;width:1000px;height:400px'>
+		<div><?php echo $this->service_plan['_service_plan_name']?></div>
+		<div><?php echo $this->service_plan['_service_plan_desc']?></div>
+		<input type='hidden' name='service_plan_id' id='service_plan_id' value='<?php echo $this->service_plan['_service_plan_id']?>'></input>
+		<div style='position:relative;left:100px'>
+			<table border='1' style='width:500px'>
+				<tr>
+					<td align='center'>Option Name</td>
+					<td align='center'>Option Group</td>
+					<td align='center'>Install Time</td>
+					<td align='center'>Mrc</td>
+					<td align='center'>Nrc</td>
+					<td align='center'>Mrc Term</td>
+					<td align='center'>&nbsp;</td>
+					<td align='center'>Delete</td>
+				</tr>
+				<tr>
+					<td align='center'>
+					<select name='service_plan_option' id='service_plan_option' <?php echo ($this->editable?'':'disabled')?>>
+						<option value='0'>-----Select One-----</option>
+						<?php foreach( $this->options as $option){?>
+							<option value='<?php echo $option['service_plan_option_id'] ?>'><?php echo $option['short_description']?></option>
+						<?php }?>	
+					</select>
+					</td>
+					<td align='center'>
+					<select name='service_plan_option_group'  id='service_plan_option_group' <?php echo ($this->editable?'':'disabled')?>>
+						<option value='0'>-----Select One-----</option>
+						<?php foreach( $this->option_groups as $option_group){?>
+						<option value='<?php echo $option_group['service_plan_option_group_id'] ?>'>
+							Min=<?php echo $option_group['service_plan_option_required_quantity']?>/
+							Max=<?php echo $option_group['service_plan_option_max_quantity']?>
+							- <?php echo $option_group['service_plan_option_group_name']?>
+						</option>
+						<?php }?>	
+					</select>
+					</td>
+					
+					<td><input type='text' class='text' style='width:60px' name='add_install_time' id='add_install_time' <?php echo ($this->editable?'':'readonly')?>></input></td>
+					<td><input type='text' class='text' style='width:60px' name='add_mrc' 		   id='add_mrc'          <?php echo ($this->editable?'':'readonly')?>></input></td>
+					<td><input type='text' class='text' style='width:60px' name='add_nrc' 		   id='add_nrc'			 <?php echo ($this->editable?'':'readonly')?>></input></td>
+					<td><input type='text' class='text' style='width:60px' name='add_mrc_term'     id='add_mrc_term'	 <?php echo ($this->editable?'':'readonly')?>></input></td>
+					
+					<td align='center'>
+						<input type='button' id='add_option' value='Add' <?php echo ($this->editable?'':'disabled')?>></input>
+					</td>
+					<td>&nbsp;</td>
+				</tr>
+				
+				<?php
+				foreach($this->service_plan_options as $service_plan_option)
+				{
+				?>
+				<tr>
+					<td><?php echo $service_plan_option['short_description']?></td>
+					<td><?php echo $service_plan_option['service_plan_option_group_name']?></td>
+					
+					<td><input type='text' class='text' style='width:60px' id='save_install_time' value='<?php echo $service_plan_option['service_plan_option_additional_install_time']?>' <?php echo ($this->editable?'':'readonly')?>></input></td>
+					<td><input type='text' class='text' style='width:60px' id='save_mrc' value='<?php echo $service_plan_option['service_plan_option_default_mrc']?>'					   <?php echo ($this->editable?'':'readonly')?>></td>
+					<td><input type='text' class='text' style='width:60px' id='save_nrc' value='<?php echo $service_plan_option['service_plan_option_default_nrc']?>'					   <?php echo ($this->editable?'':'readonly')?>></td>
+					<td><input type='text' class='text' style='width:60px' id='save_mrc_term' value='<?php echo $service_plan_option['service_plan_option_default_mrc_term']?>'			   <?php echo ($this->editable?'':'readonly')?>></td>
+					
+					<td align='center'>
+						<input type='button' id='save_option' service_plan_option_mapping_id='<?php echo $service_plan_option['service_plan_option_map_id']?>' value='Save' <?php echo ($this->editable?'':'disabled')?>>
+						</input>
+					</td>		
+					<td align='center'>
+						<?php
+							if(!$this->editable){
+						?>
+								<img id='' service_plan_option_mapping_id='<?php echo $service_plan_option['service_plan_option_map_id']?>' src="/images/red_cross_no.jpg"  style='width:25px;height:20px' alt="Angry face"/>
+						<?php		
+							}else{
+						?>
+								<img id='delete_service_plan_option_map' service_plan_option_mapping_id='<?php echo $service_plan_option['service_plan_option_map_id']?>' src="/images/red_cross_no.jpg"  style='width:25px;height:20px' alt="Angry face"/>
+						<?php 
+							}
+						?>
+						
+						
+					</td>
+				</tr>
+				<?php 	
+				} 
+				?>
+			</table>
+			
+		</div>
+</div>

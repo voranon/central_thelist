@@ -1,0 +1,285 @@
+<script type="text/javascript">
+$(function(){
+
+	$('input#searchbox_radio').live('click',function(){
+		var searchbox_id = $(this).attr('searchbox_id');
+		$.ajax({
+  			url: "/setting/searchboxajax/",
+  			data:"searchbox_id="+searchbox_id,
+  		    success: function(data) {
+  	  		 	//alert(data+'d');
+  	  	  		
+  		    }
+		});
+	});
+	
+	$('img#delete_searchbox').live('click',function(){
+			alert($(this).attr('searchbox_id'));
+	});
+	
+	$('input#delete_searchbox_table').bind('click',function(){
+		 var already_selected_tables 		=  $('select#selected_search_table').val();
+		 if( already_selected_tables == null ){
+			 already_selected_tables_length = 0; 
+		 }else{
+			 already_selected_tables_length =  already_selected_tables.length;
+		 }
+		 
+		 for( x = 0; x < already_selected_tables_length; x++){
+			 $('select#selected_search_table option[value="'+already_selected_tables[x]+'"]').remove();
+			 //
+		 }
+
+		update_displaycolumn();
+		update_query();
+
+		 
+	});
+
+	$('input#clear_searchbox_table').bind('click',function(){
+			$('select#selected_search_table').html();
+			update_displaycolumn();
+			update_query();
+	});
+
+	$('input#add_searchbox_table').bind('click',function(){
+		
+		 var selected_tables 		  =  $('select#search_table').val();
+		 if(selected_tables == null){
+			selected_tables_length = 0;
+		 }else{
+			selected_tables_length = selected_tables.length;	
+		 }
+		
+		 var already_selected_tables 		=  $('select#selected_search_table option');
+		 var already_selected_tables_length =  $('select#selected_search_table option').size();
+		 
+		 for(i = 0; i < selected_tables_length;i++)
+		 {
+		
+			 var found=0;
+			 
+			 for(x = 0; x < already_selected_tables_length; x++ ){
+					
+				 if( selected_tables[i] == $( $('select#selected_search_table option').get(x) ).val() ){
+					found=1;		 
+				 }
+				
+			 }
+			
+			 if(!found){
+				 $('select#selected_search_table').append("<option value='"+selected_tables[i]+"'>"+selected_tables[i]+"</option>");
+				
+				
+			 }
+		 }
+		 update_displaycolumn();
+		 update_searconhcolumn();
+		 update_scope();
+		 update_query();
+		
+	});
+
+
+	$('input#display_column').live('click',function(){
+		var alias  = $(this).parents("tr").find("td input#alias").val();
+		var column = $(this).parents("tr").find("td#column").html();
+		var check  = $(this).attr('checked');
+	
+		update_query();
+	});
+
+
+	function update_searconhcolumn(){
+		
+		var tables='';
+		for(x = 0; x < $('select#selected_search_table option').size(); x++ )
+		{
+			tables += $( $('select#selected_search_table option').get(x) ).val()+',';
+			
+		}	
+		$.ajax({
+				url: "/setting/buildsearchoncolumnajax/",
+				data:"tables="+tables,    //need to past 4 parameter
+				 async: false,
+			    success: function(data) {
+			    	$('table#searchon_column').html('');
+		  		    $('table#searchon_column').append(data);
+		  		    
+		  		 //	alert(data);
+		  	  		
+			    }
+		});
+    }
+	
+	function update_displaycolumn(){
+		var tables='';
+		for(x = 0; x < $('select#selected_search_table option').size(); x++ )
+		{
+			tables += $( $('select#selected_search_table option').get(x) ).val()+',';
+			
+		}	
+		$.ajax({
+				url: "/setting/buildcolumnajax/",
+				data:"tables="+tables,    //need to past 4 parameter
+				 async: false,
+			    success: function(data) {
+			    	$('table#display_column').html('');
+		  		    $('table#display_column').append(data);
+		  		    
+		  		 //	alert(data);
+		  	  		
+			    }
+		});
+
+	}
+
+	function update_scope(){
+		var tables='';
+		for(x = 0; x < $('select#selected_search_table option').size(); x++ )
+		{
+			tables += $( $('select#selected_search_table option').get(x) ).val()+',';
+			
+		}	
+		$.ajax({
+				url: "/setting/buildscopeajax/",
+				data:"tables="+tables,    //need to past 4 parameter
+				 async: false,
+			    success: function(data) {
+			    	$('table#scope_column').html('');
+		  		    $('table#scope_column').append(data);
+		  		    
+		  		 //	alert(data);
+		  	  		
+			    }
+		});
+	}
+	
+	function update_query(){
+
+	var columns='';
+	for(x = 0; x < $('table#display_column tr').size() ; x++){
+		column = $( $('table#display_column tr').get(x) ).find('td').html();
+		alias  = $( $('table#display_column tr').get(x) ).find('td input#alias').val();
+		check  = $( $('table#display_column tr').get(x) ).find('td input#display_column').attr('checked');
+		if(check == true){
+			columns += column+',';
+		}
+	}
+    
+		
+	var tables='';
+	for(x = 0; x < $('select#selected_search_table option').size(); x++ )
+	{
+		tables += $( $('select#selected_search_table option').get(x) ).val()+',';
+		
+	}	
+
+	
+	 $.ajax({
+			url: "/setting/buildqueryajax/",
+			data:"tables="+tables+"&columns="+columns,    //need to past 4 parameter
+			 async: false,
+		    success: function(data) {
+	  		    $('textarea#query').html(data);
+	  		 	//alert(data);
+	  	  		
+		    }
+			});
+
+	 
+	
+	};
+
+	
+	
+});
+
+
+
+
+</script>
+
+<div style="position:absolute;width:1350px;height:730px;background-color:#DDDDDD;">
+	<div style="position:absolute;width:220px;height:730px;background-color:#ffeeaa">
+		<input type='text'   name='searchbox_name' id='searchbox_name'class='text' style="position:absolute;left:25px;top:10px;width:165px"></input>
+		<input type='button' name='add_searchbox'  id='add_searchbox' value='Add Search box' class='button' style="position: absolute;left:27px;top:40px;width:165px"></input>
+		<table name='searchboxes' id='searchboxes' style='position:absolute;left:25px;top:100px' border=1>
+			<?php echo $this->searchbox_list?>
+		</table>
+	</div>
+	
+	
+	<div style="position:absolute;left:220px;height:730px;width:1130px;background-color:#bbeebb">
+		<fieldset style="position:absolute;left:10px;width:1080px;height:110px">              
+		<legend>SQL:</legend>
+		 
+		<textarea style="position:absolute;left:60px;resize:none" name='query' id='query' cols='100' rows='5' readonly></textarea>
+			
+		</fieldset>
+		
+		
+		
+		<fieldset style="position:absolute;left:10px;top:140px;width:1080px;height:120px">              
+		<legend>Tables:</legend>  
+		<select name="search_table" id="search_table" multiple='multiple' size='4' style="position:absolute;left:58px;top:20px;width:400px;height:110px">
+			<?php
+				echo $this->table_names; 
+			?>
+		</select>
+		
+		<input type='button' class='button' name='add_searchbox_table' id='add_searchbox_table' value='>> Add Table >>' style='position:absolute;width:105px;height:110px;left:472px;top:20px;'></input>
+		
+		<select name="selected_search_table" id="selected_search_table" multiple='multiple' size='4' style="position:absolute;left:590px;top:20px;width:400px;height:110px">
+			
+		</select>
+		
+		<input type='button' class='button' name='delete_searchbox_table' id='delete_searchbox_table' value='Delete Table' style='position:absolute;width:100px;height:50px;left:995px;top:20px;'></input>
+		<input type='button' class='button' name='clear_searchbox_table' id='clear_searchbox_table'   value='Clear All'  style='position:absolute;width:100px;height:50px;left:995px;top:80px;'></input>
+		
+		</fieldset>
+		
+		<fieldset style="position:absolute;left:10px;top:290px;width:550px;height:405px">              
+		<legend>Display columns:</legend>
+		 	
+			<table class='display' border='1' width='530px'>
+				<tr>
+					<th width='240px'>Table.Column Name</th><th width='150px'>Alias</th><th width='15'></th>
+				</tr>
+			</table>
+			<div style='overflow: auto;height: 350px; width: 550px;'>
+			<table class='display' name='display_column' id='display_column' border='1' width='530px'>
+			</table>
+			</div>  
+		</fieldset>
+		
+		<fieldset style="position:absolute;left:600px;top:290px;width:220px;height:405px">              
+		<legend>Search on columns:</legend>
+			<table class='display' border='1' width='220px'>
+				<tr>
+					<th width='140px'>Table.Column Name</th>
+				</tr>
+			</table>  
+			<div style='overflow: auto;height: 350px; width: 220px;'>
+			<table class='display' name='searchon_column' id='searchon_column' border='1' width='220px'>
+			</table>
+			</div>
+		</fieldset>
+		<fieldset style="position:absolute;left:860px;top:290px;width:230px;height:405px">
+		<legend>Scope:</legend>
+			<table class='display' border='1' width='230px'>
+				<tr>
+					<th width='140px'>Table.Column Name</th>
+					<th width='60px'>Value</th>
+				</tr>
+			</table>
+			<div style='overflow: auto;height: 350px; width: 230px;'>
+			<table class='display' name='scope_column' id='scope_column' border='1' width='230px'>
+			</table>
+			</div>
+		</fieldset>
+		
+	</div>
+	
+	 
+</div>

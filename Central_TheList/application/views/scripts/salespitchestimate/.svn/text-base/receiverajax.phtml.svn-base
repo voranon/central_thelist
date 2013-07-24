@@ -1,0 +1,10 @@
+<?php
+foreach($this->receivers as $receiver){
+?>
+	<tr id='eq_type_group' eq_type_group_id=<?php echo $receiver['eq_type_group_id'] ?>>
+		<td><?php echo $receiver['eq_type_group_name'] ?></td>
+		<td><img id='delete_receiver' eq_type_group_id=<?php echo $receiver['eq_type_group_id'] ?> src="/images/red_cross_no.jpg"  style='width:15px;height:15px' alt="Angry face"/></td>
+	</tr>
+<?php 
+}
+?>

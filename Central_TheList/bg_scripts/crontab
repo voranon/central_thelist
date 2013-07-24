@@ -1,0 +1,28 @@
+SHELL=/bin/bash
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+MAILTO=root
+HOME=/
+
+# run-parts
+01 * * * * root run-parts /etc/cron.hourly
+02 4 * * * root run-parts /etc/cron.daily
+22 4 * * 0 root run-parts /etc/cron.weekly
+42 4 1 * * root run-parts /etc/cron.monthly
+
+#general_scripts
+02 07 * * * root /scripts/correct_time.sh
+
+#zend_scripts
+01 01 * * * root rm -rf /zend/thelist/public/app_file_store/barcodes/*
+06 01 * * * root rm -rf /zend/thelist/public/app_file_store/monitoring/rrd_graphs/*
+06 01 * * * root php /zend/thelist/bg_scripts/execute_locally/upgrade_equipment_firmware.php
+
+
+#other
+
+#backup equipment
+23 02 * * * root curl http://thelist-test.belairinternet.com/soap/runbackup
+
+
+#make device configurations writable for all
+06 01 * * * root chmod -R 777 /zend/thelist/public/app_file_store/device_configurations

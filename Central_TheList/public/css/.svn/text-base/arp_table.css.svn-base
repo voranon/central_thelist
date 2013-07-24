@@ -1,0 +1,25 @@
+@CHARSET "ISO-8859-1";
+body
+{
+	font-family: tahoma;
+	font-size: 100%;
+}
+table
+{
+	border: 2px #3366FF solid;
+	border-collapse:collapse;
+
+}
+
+td
+{
+	border: 2px #3366FF solid;
+	padding: 5px;
+}
+
+#search
+{
+	border: 2px solid #3366FF;
+	width: 230px;
+	
+}

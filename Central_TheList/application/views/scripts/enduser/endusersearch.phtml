@@ -1,0 +1,103 @@
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+
+<script type="text/javascript">
+
+$(function(){
+	
+	$('select#building').bind('change',function(){
+		
+		if($(this).val() != 0){
+			$('select#unit').css('display','inline');
+			$('label#unit').css('display','inline');
+		}else{
+			$('select#unit').css('display','none');
+			$('label#unit').css('display','none');
+			$('div#display').html('');
+		}
+		
+		$.ajax({
+			url:"/unit/getunitsfrombuildingdropdownajax/",
+			data:'building_id='+$(this).val(),
+			async: false,
+	    	success: function(data){
+				
+	    		$('select#unit').html('<OPTION>--Pick One--</OPTION>'+ data);
+	    	}
+		});  
+	});
+
+	$('select#unit').bind('change',function(){
+		
+		$.ajax({
+			url:"/unit/getactiveendusersinunitsearchajax/",
+			data:'unit_id='+$(this).val(),
+			success: function(data){
+						    	
+		    	$('div#display').html(data);
+		    	
+	    	}
+		}); 
+		
+	});
+
+	$('input#add_new_prospect').live('click',function(){
+		
+		windowW = 800;
+		windowH = 600;
+		x    = (screen.width/2)-(windowW/2);
+		y    = (screen.height/2)-(windowH/2);
+
+		var unit_id = $('select#unit').val();
+	
+		window.open('/Enduser/addnewprospect/?unit_id='+unit_id, 'popup2','width='+windowW+', height='+windowH+', menubar=no, scrollbars=yes, toolbar=no, location=no, status=yes, resizable=no, top='+y+', left='+x);
+		
+		//alert('add new contact and create end user here');
+	});
+
+});
+
+</script>
+
+<?
+if (!isset($this->error)) {
+?>
+
+<div style='position:relative;background-color:#99ee99;width:900px;'>
+	
+	<!-- <label style='position:relative;left:-350px'>Start Search:</label> -->
+	<div style='position:relative;background-color:#aaffaa'>
+		<label>Building:</label>
+		<select name='building' id='building'>
+				<option value='0'>----Select One----</option>
+				
+<?php foreach($this->buildings as $building){ ?>
+	<option value='<?php echo $building['building_id']?>'><?php echo $building['building_name']?></option>
+<?php
+} 
+?>
+			
+		</select>
+		<label id='unit' style='display:none'>Unit:</label>
+		<select name='unit' id='unit' style='display:none'>
+			
+		</select>
+		
+		
+	</div>
+	<div style='position:relative;background-color:#5aff55' id='display'>
+	
+	</div>
+	
+</div>
+
+<? 
+} else {
+?>
+<?= $this->error?>
+<?
+}
+?>

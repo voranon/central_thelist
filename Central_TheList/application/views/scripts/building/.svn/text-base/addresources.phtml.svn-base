@@ -1,0 +1,481 @@
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+
+
+
+<script type='text/javascript'>
+$(function(){
+
+	//set up tab
+	//$( "#tabs" ).tabs();
+
+
+	
+	$("#tabs").tabs().addClass('ui-tabs-vertical ui-helper-clearfix');
+	$("#tabs li").removeClass('ui-corner-top').addClass('ui-corner-left');
+	
+
+	$('#tabs').bind('tabsselect', function(event, ui) {
+		 // Objects available in the function context:
+		 // ui.tab     // anchor element of the selected (clicked) tab
+		 // ui.panel   // element, that contains the selected/clicked tab contents
+		 // ui.index   // zero-based index of the selected (clicked) tab
+		 
+		if(ui.panel.id=='address'){
+			$('input#add').attr('value','Update Address');
+			$('input#remove').attr('value','Remove Address');
+			$('input#remove').attr("disabled", "disabled");
+			
+			$('input#add').attr('mode',ui.panel.id);
+			$('input#remove').attr('mode',ui.panel.id);
+			
+		}else if(ui.panel.id=='homerun'){
+			$('input#add').attr('value','Add Homeruns');
+			$('input#remove').attr('value','Remove Homeruns');
+			$('input#add').attr('mode',ui.panel.id);
+			
+			$('input#remove').removeAttr('disabled');
+			$('input#remove').attr('mode',ui.panel.id);
+		}else if(ui.panel.id=='serviceplan'){
+			$('input#add').attr('value','Add Service Plans');
+			$('input#remove').attr('value','Remove Service Plans');
+			$('input#add').attr('mode',ui.panel.id);
+			$('input#remove').removeAttr('disabled');
+			$('input#remove').attr('mode',ui.panel.id);
+		}else if(ui.panel.id=='servicepoint'){
+			$('input#add').attr('value','Add Service Points');
+			$('input#remove').attr('value','Remove Service Points');
+			$('input#add').attr('mode',ui.panel.id);
+			$('input#remove').removeAttr('disabled');
+			$('input#remove').attr('mode',ui.panel.id);
+		}else if(ui.panel.id=='unitgroup'){
+			$('input#add').attr('value','Add Unit Groups');
+			$('input#remove').attr('value','Remove Unit Groups');
+			$('input#add').attr('mode',ui.panel.id);
+			$('input#remove').removeAttr('disabled');
+			$('input#remove').attr('mode',ui.panel.id);
+		}
+		
+	});
+
+
+	$('select#service_plan').bind('click',function(){
+		
+	});
+	
+	$('input#select_all').bind('click',function(){
+		if($(this).attr('checked')){
+			$('input#selected').attr('checked','true');
+		}else{
+			$('input#selected').removeAttr('checked');
+		}
+	});
+
+	$('input#selected').live('click',function(){
+		if( $(this).attr('checked') ){
+			var all_selected= true;
+			$('input#selected').each(function(){
+				if( !$(this).attr('checked') ){
+					all_selected= false;
+				}	
+			});
+			
+			if(!all_selected){
+				$('input#select_all').removeAttr('checked');
+			}else{
+				$('input#select_all').attr('checked','true');
+			}
+			
+		}else{
+			$('input#select_all').removeAttr('checked');
+		}
+	});
+	
+	
+	
+	$('input#add').bind('click',function(){
+		
+	 var mode = $('input#add').attr('mode');
+	 
+		//alert($('table#unit').size());
+		
+
+	 $('table#unit').each(function(){ 
+		 
+		 var unit_id  = $(this).attr('unit_id');
+		 var check    = $(this).find('input#selected').attr('checked');
+		 if(check){
+		 
+			 if(mode=='address'){
+			
+				 var streetnumber=$('input#streetnumber').val();
+				 var streetname  =$('input#streetname').val();
+				 var streettype  =$('input#streettype').val();
+				 var city        =$('input#city').val();
+				 var state       =$('select#state').val();
+				 var zip         =$('input#zip').val();
+			 
+				 var data ="mode="+mode+
+					 	   "&unit_id="+unit_id+
+					 	   "&streetnumber="+streetnumber+
+					 	   "&streetname="+streetname+
+					 	   "&streettype="+streettype+
+				 		   "&city="+city+
+					 	   "&state="+state+
+					 	   "&zip="+zip; 
+
+				 $.ajax({
+						url:"/building/addresourcesajax/",
+						data:data,
+						async: false,
+				    	success: function(data){
+				    		//alert(data);
+				    	}
+				 }); 
+				 
+			 }else if(mode=='homerun'){
+				 $('select#homerun_types').each(function(){
+					if($(this).val() > 0){
+						var homerun_type_id = $(this).attr('homerun_type_id');
+						var quantity        = $(this).val();
+
+						var data ="mode="+mode+
+					 	   		  "&unit_id="+unit_id+
+					 	   		  "&homerun_type_id="+homerun_type_id+
+					 	   		  "&quantity="+quantity; 
+						
+						$.ajax({
+								url:"/building/addresourcesajax/",
+								data:data,
+								async: false,
+						    	success: function(data){
+						    		
+						    	}
+						}); 
+					}
+			     });
+		 	 }else if(mode=='serviceplan'){
+			 	 var selected_plans = $('select#service_plan').val();
+			 	
+			 	 for(i=0; i < selected_plans.length; i++ ){
+				 	 
+			 		var data ="mode="+mode+
+		 	   		  		  "&unit_id="+unit_id+
+		 	   		  		  "&service_plan_id="+selected_plans[i];
+
+			 		$.ajax({
+						url:"/building/addresourcesajax/",
+						data:data,
+						async: false,
+				    	success: function(data){
+				    		//alert(data);
+				    	}
+					});  
+		 	 
+				 	
+				 }
+			 	 
+			 }else if(mode=='servicepoint'){
+				 var selected_points = $('select#service_points').val();
+				 for(i=0; i < selected_points.length; i++ ){
+
+					 var data ="mode="+mode+
+	   		  		  		   "&unit_id="+unit_id+
+ 	   		  		  		   "&service_point_id="+selected_points[i];
+
+					 $.ajax({
+							url:"/building/addresourcesajax/",
+							data:data,
+							async: false,
+					    	success: function(data){
+					    		//alert(data);
+					    	}
+					 });   
+				 }
+				 
+			 }else if(mode=='unitgroup'){
+				
+				 var selected_groups = $('select#unit_groups').val();
+				
+				 for(i=0; i < selected_groups.length; i++ ){
+					 var data ="mode="+mode+
+		  		  		   	   "&unit_id="+unit_id+
+		  		  		       "&unit_grp_id="+selected_groups[i];
+					 
+			 		$.ajax({
+							url:"/building/addresourcesajax/",
+							data:data,
+							async: false,
+			    			success: function(data){
+			    				//alert(data);
+			    			}
+			 		});   
+				 }
+		 	 }
+		 
+		 	
+			 
+
+			 
+		 } // if(check){
+	 }); // end  $('table#unit').each(function(){
+	 location.reload();
+		
+	});
+
+
+
+
+
+
+	 
+	$('input#remove').bind('click',function(){
+
+		 var mode = $('input#remove').attr('mode');
+		 
+		 $('table#unit').each(function(){
+			 var unit_id  = $(this).attr('unit_id');
+			 var check    = $(this).find('input#selected').attr('checked');
+			 if(check){
+				 if(mode=='address'){
+								 
+				 }else if(mode=='homerun'){
+					 $('select#homerun_types').each(function(){
+						if($(this).val() > 0){
+							var homerun_type_id = $(this).attr('homerun_type_id');
+							var quantity        = $(this).val();
+
+							var data ="mode="+mode+
+						 	   		  "&unit_id="+unit_id+
+						 	   		  "&homerun_type_id="+homerun_type_id+
+						 	   		  "&quantity="+quantity; 
+							
+							$.ajax({
+									url:"/building/removeresourcesajax/",
+									data:data,
+									async: false,
+							    	success: function(data){
+							    		//alert(data);
+							    		
+							    	}
+							}); 
+						}
+				     });
+			 	 }else if(mode=='serviceplan'){
+			 		var selected_plans = $('select#service_plan').val();
+				 	
+				 	 for(i=0; i < selected_plans.length; i++ ){
+					 	 
+				 		var data ="mode="+mode+
+			 	   		  		  "&unit_id="+unit_id+
+			 	   		  		  "&service_plan_id="+selected_plans[i];
+
+				 		$.ajax({
+							url:"/building/removeresourcesajax/",
+							data:data,
+							async: false,
+					    	success: function(data){
+					    		//alert(data);
+					    	}
+						});  
+			 	 
+					 	
+					 }
+				 }else if(mode=='servicepoint'){
+					 var selected_points = $('select#service_points').val();
+					 
+				 	 for(i=0; i < selected_points.length; i++ ){
+				 		
+				 		var data ="mode="+mode+
+			 	   		  		  "&unit_id="+unit_id+
+			 	   		  		  "&service_point_id="+selected_points[i];
+						
+				 		$.ajax({
+							url:"/building/removeresourcesajax/",
+							data:data,
+							async: false,
+					    	success: function(data){
+					    		//alert(data);
+					    	}
+						});  
+			 	 
+					 	
+					 }
+				 	
+				 }else if(mode=='unitgroup'){
+					 var selected_groups = $('select#unit_groups').val();
+					 
+				 	 for(i=0; i < selected_groups.length; i++ ){
+				 		
+				 		var data ="mode="+mode+
+			 	   		  		  "&unit_id="+unit_id+
+			 	   		  		  "&unit_grp_id="+selected_groups[i];
+						
+				 		$.ajax({
+							url:"/building/removeresourcesajax/",
+							data:data,
+							async: false,
+					    	success: function(data){
+					    	//	alert(data);
+					    	}
+						});  
+			 	 
+					 	
+					 }
+			 	 } 
+			 }
+		 }); 
+		 location.reload();
+	});
+
+
+
+	
+});
+</script>
+
+<style type="text/css">
+	
+/* Vertical Tabs
+----------------------------------*/
+.ui-tabs-vertical { width: 55em; }
+.ui-tabs-vertical .ui-tabs-nav { padding: .2em .1em .2em .2em; float: left; width: 12em; }
+.ui-tabs-vertical .ui-tabs-nav li { clear: left; width: 100%; border-bottom-width: 1px !important; border-right-width: 0 !important; margin: 0 -1px .2em 0; }
+.ui-tabs-vertical .ui-tabs-nav li a { display:block; }
+.ui-tabs-vertical .ui-tabs-nav li.ui-tabs-selected { padding-bottom: 0; padding-right: .1em; border-right-width: 1px; border-right-width: 1px; }
+.ui-tabs-vertical .ui-tabs-panel { padding: 1em; float: right; width: 40em;}
+</style>
+
+<div style='position:absolute;width:100%;height:100%;'>
+	<?php echo $this->error?>
+	<div id="tabs" style="position:absolute;width:500px;left:630px">
+		<ul style="width:160px">
+			<li><a href="#address">Address</a></li>
+			<li><a href="#homerun">Home Runs</a></li>
+			<li><a href="#serviceplan">Service Plans</a></li>
+			<li><a href="#servicepoint">Service Points</a></li>
+			<li><a href="#unitgroup">Unit Groups</a></li>
+		</ul>
+		<div id="address" style='position:absolute;left:175px;'>
+		
+			<table border='0'>
+				<tr>
+					<td align='left'>Street Number</td>
+					<td align='left'><input type='text' style='width:140px' class='text' name='streetnumber' id='streetnumber'></input></td>
+				</tr>
+				<tr>
+					<td align='left'>Street Name</td>
+					<td align='left'><input type='text' style='width:140px' class='text' name='streetname' id='streetname'></input></td>
+				</tr>
+				<tr>
+					<td align='left'>Street Type</td>
+					<td align='left'><input type='text' style='width:140px' class='text' name='streettype' id='streettype'></input></td>
+				</tr>
+				<tr>
+					<td align='left'>City</td>
+					<td align='left'><input type='text' style='width:140px' class='text' name='city' id='city'></input></td>
+				</tr>
+				<tr>
+					<td align='left'>State</td>
+					<td>
+					<select name="state" id="state" style="width:60px;"><option value="0">--Select One--</option>
+							   <option value="AL">AL</option><option value="AK">AK</option><option value="AZ">AZ</option><option value="AR">AR</option><option value="CA" selected>CA</option><option value="CO">CO</option><option value="CT">CT</option><option value="DE">DE</option><option value="FL">FL</option><option value="GA">GA</option>
+							   <option value="HI">HI</option><option value="ID">ID</option><option value="IL">IL</option><option value="IN">IN</option><option value="IA">IA</option><option value="KS">KS</option><option value="KY">KY</option><option value="LA">LA</option><option value="ME">ME</option><option value="MD">MD</option>															   <option value="Massachusetts">MA</option>
+							   <option value="MI">MI</option><option value="MN">MN</option><option value="MS">MS</option><option value="MO">MO</option><option value="MT">MT</option><option value="NE">NE</option><option value="NV">NV</option><option value="NH">NH</option><option value="NJ">NJ</option><option value="NM">NM</option>
+							   <option value="NY">NY</option><option value="NC">NC</option><option value="ND">ND</option><option value="OH">OH</option><option value="OK">OK</option><option value="OR">OR</option><option value="PA">PA</option><option value="RI">RI</option><option value="SC">SC</option><option value="SD">SD</option>															   <option value="Tennessee">TN</option>
+							   <option value="TX">TX</option><option value="UT">UT</option><option value="VT">VT</option><option value="VA">VA</option><option value="WA">WA</option><option value="WV">WV</option><option value="WI">WI</option><option value="WY">WY</option>
+					</select>
+					</td>
+				</tr>
+				<tr>
+					<td align='left'>Zip</td>
+					<td><input type='text' style='width:140px' class='text' name='zip' id='zip'></input></td>
+				</tr>
+			</table>
+		
+	
+		</div>
+		<div id="homerun" style='position:absolute;left:175px;'>
+			
+			<div style="position:absolute">
+			<?php echo $this->homerun_type_list;?>
+			</div>
+		</div>
+		<div id="serviceplan" style='position:absolute;left:175px;'>
+			<div style="position: absolute;top:5px">
+			Hold down the Ctrl for multiple
+			</div>
+			<div style="position:absolute;height:200px;top:30px">
+			
+			<select name="service_plan" id="service_plan" multiple='multiple' size='7' style="width:280px;height:180px">
+  				<?php echo $this->service_plans;?>
+			</select>
+			
+			
+			</div>
+			
+		</div>
+		<div id="servicepoint" style='position:absolute;left:175px;'>
+			
+			<div style="position: absolute;top:5px">
+			Hold down the Ctrl for multiple
+			</div>
+			
+			<div style="position:absolute;height:200px;top:30px">
+			
+			<select name="service_points" id="service_points" multiple='multiple' size='7' style="width:280px;height:180px">
+  				<?php echo $this->service_points;?>
+			</select>
+					
+			</div>
+			
+		</div>
+		<div id="unitgroup" style='position:absolute;left:175px;'>
+			<div style="position: absolute;top:5px">
+			Hold down the Ctrl for multiple
+			</div>
+			
+			<div style="position:absolute;height:200px;top:30px">
+			
+			<select name="unit_groups" id="unit_groups" multiple='multiple' size='7' style="width:280px;height:180px">
+  				<?php echo $this->unit_groups;?>
+			</select>
+					
+			</div>
+		</div>
+	</div>
+	
+	
+	
+	<div style='position:absolute;left:160px;top:160px;'>
+		<input class='button' style='width:150px' type='button' id='add'    mode='address' value='Update Address'></input>
+		<input class='button' style='width:150px' type='button' id='remove' mode='address' value='Remove Address' disabled></input>
+	</div>
+	
+	<div style='position:absolute;left:260px;top:190px;'>
+		<form method='post' action='' >
+			<input class='text'   type='text'   name='start' id='start' style='width:30px' maxlength='3'></input>
+			<input class='text'   type='text'   name='stop'  id='stop' style='width:30px' maxlength='3'></input>
+			<input class='button' type='submit' name='list' id='list' value='List'></input>
+		</form>
+	</div>
+	
+	
+	
+	<div style='position:absolute;left:10px;top:260px;'>
+		<table border='0'>
+			<tr>
+				<td align='right'>Select all 
+					<input type='checkbox' id='select_all' name='select_all' checked></input>
+				</td>
+			</tr>
+			<?php echo $this->unit_list?>
+		</table>
+	</div>
+	
+	
+	
+</div>

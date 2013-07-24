@@ -1,0 +1,53 @@
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+
+<script type='text/javascript'>
+
+$(function(){
+	
+});
+</script>
+
+
+
+<?php 
+//begin html for service plan map verification
+if (isset($_GET['service_plan_quote_map_id'])) {
+?>
+
+<?php 
+if (!isset($this->allverified)) {
+?>
+
+<?php
+if (isset($this->issues)) {
+	?>
+
+<?php 
+} else {
+?>
+There is no equipment in this path
+<?php 
+}
+?>
+
+<?php 
+} else {
+?>
+<center>
+<br><br>
+<b>
+Every device is provisioned correctly.
+</b>
+</center>
+
+<?php 
+}
+?>
+
+<?php 
+}
+?>

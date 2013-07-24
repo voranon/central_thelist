@@ -1,0 +1,14 @@
+@CHARSET "ISO-8859-1";
+input[type=text], select
+{
+	width: 200px;
+}
+input#task_name
+{
+	width: 400px;
+}
+
+.active_form_element
+{
+	border: 1px solid #FF0000;
+}

@@ -1,0 +1,22 @@
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+
+
+<form method="post" action="" name="credentials">
+<table>
+
+<tr class='header'>
+<td>Sub domain</td>
+<td>Domain</td>
+<td>Remove</td>
+</tr>
+<?= $this->management_fqdn;?>
+<br>
+<tr><td><input type='submit' value='Save' /></td></tr>
+
+
+</table>
+</form>

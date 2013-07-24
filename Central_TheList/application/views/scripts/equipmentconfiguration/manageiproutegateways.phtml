@@ -1,0 +1,48 @@
+<?php
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+
+<script type='text/javascript'>
+$(function(){
+
+});
+</script>
+<body>
+<?= $this->error;?>
+<form method="post" action="" name="ipaddresses">
+<table>
+
+<tr class='header'>
+<td>Gateway IP</td>
+<td>Remove</td>
+</tr>
+
+<?php 
+if (isset($this->gateways)) {
+	foreach($this->gateways as $gateway) {
+	
+	echo "<tr>
+			<td>".$gateway['ip_address']."</td>
+			<td><input type='checkbox' name='".$gateway['ip_route_gateway_id']."[delete]' value='1'></input></td>
+			<td><input type='hidden' name='".$gateway['ip_route_gateway_id']."[ip_route_id]' value='".$gateway['ip_route_id']."'></input></td>
+			<td><input type='hidden' name='".$gateway['ip_route_gateway_id']."[ip_route_gateway_id]' value='".$gateway['ip_route_gateway_id']."'></input></td>
+			</tr>
+			";
+	
+	}
+}
+
+?>
+
+<td><input type='hidden' class='text' name='eq_id' value='<?= $_GET['eq_id']?>'></input></td>
+
+<br>
+<tr><td><input type='submit' value='Save' /></td></tr>
+
+
+</table>
+</form>
+</body>
+</html>

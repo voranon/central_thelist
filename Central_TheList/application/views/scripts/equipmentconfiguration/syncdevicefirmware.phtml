@@ -1,0 +1,60 @@
+<?php 
+echo $this->headLink();
+echo $this->headTitle();
+echo $this->headScript();
+?>
+
+
+<script type='text/javascript'>
+$(function(){
+	
+	
+});
+</script>
+
+<?
+if (!isset($this->error)) { 
+?>
+
+<form method="post" action="" name="syncinterfaceconfig">
+<center>
+<table width='450' border=1>
+
+<tr><td colspan=2><b>Confirm Override you are about to sync and reboot:</b><br></td></tr>
+
+<tr><td>Device:</td><td> <?= $this->software_sync['eq_fqdn'];?></td></tr>
+<tr><td>Serial number:</td><td> <?= $this->software_sync['eq_serial_number'];?></td></tr>
+</table>
+<br>
+<b>Current Firmware:</b>
+<br>
+<table width='450' border=1>
+<tr><td>Current Software Manufacturer:</td><td> <?= $this->software_sync['current_manufacturer'];?></td></tr>
+<tr><td>Current Software Name:</td><td> <?= $this->software_sync['current_name'];?></td></tr>
+<tr><td>Current Software Arch:</td><td> <?= $this->software_sync['current_architecture'];?></td></tr>
+<tr><td>Current Software Version:</td><td> <?= $this->software_sync['current_version'];?></td></tr>
+</table>
+<br>
+<b>NEW Firmware:</b>
+<br>
+<table width='450' border=1>
+<tr><td>New Software Manufacturer:</td><td> <?= $this->software_sync['new_manufacturer'];?></td></tr>
+<tr><td>New Software Name:</td><td> <?= $this->software_sync['new_name'];?></td></tr>
+<tr><td>New Software Arch:</td><td> <?= $this->software_sync['new_architecture'];?></td></tr>
+<tr><td>New Software Version:</td><td> <?= $this->software_sync['new_version'];?></td></tr>
+
+<tr><td colspan=2><center><input type='submit' name='upgrade' value='Sync' /></center></td></tr>
+
+</table>
+</center>
+<input type='hidden' name='software_package_id' value='<?= $_GET['software_package_id'];?>'></input>
+<input type='hidden' name='eq_id' value='<?= $this->software_sync['eq_id'];?>'></input>
+</form>
+
+<?
+} else {
+?>
+<?= $this->error;?>
+<?
+}
+?>

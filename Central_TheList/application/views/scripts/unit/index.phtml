@@ -1,0 +1,9 @@
+<?php $this->headScript()->appendFile('/javascripts/unit/unit.js');?>
+<?php $this->headLink()->appendStylesheet('/css/unit/index.css');?>
+<div>
+<table id="units">
+	<p>Search: <input type="text" id="search"></p>
+	<tr><th>Unit</th><th>Property</th><th>IP Address</th><th>Mac Address</th><th>Switch</th><th>Patch Panel Port</th><th>Switchport</th><th>Router</th><th>Wifi Info</th></tr>
+	<?php echo $this->unit_table; ?>	
+</table>
+</div>
